@@ -18,14 +18,6 @@ When(/^this "(.*?)" is not linked with "(.*?)" account$/) do |arg1, arg2|
   pending # express the regexp above with the code you wish you had
 end
 
-Then(/^I log out$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I authenticate on "(.*?)" with "(.*?)" account$/) do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
-end
-
 Then(/^this "(.*?)" is already linked with "(.*?)" account$/) do |arg1, arg2|
   pending # express the regexp above with the code you wish you had
 end

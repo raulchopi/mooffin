@@ -17,8 +17,15 @@ Feature: Authentication with third party service
     When I authenticate on "<service>" with "Flynn" account
     And this "<service>" is not linked with "Flynn" account
     Then I should see "Your account has been linked."
-    And I log out
-    And I authenticate on "<service>" with "Flynn" account
+    Examples:
+      | service  |
+      | Twitter  |
+      | Google   |
+      | Facebook |
+
+  Scenario Outline: The user can link their account with another third party and login
+    Given @flynn is in the system
+    When I authenticate on "<service>" with "Flynn" account
     And this "<service>" is already linked with "Flynn" account
     Then I should see "Logged in successfully"
 

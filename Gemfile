@@ -8,29 +8,26 @@ end
 
 group :test, :development do
   gem "debugger", "~> 1.6.1"
+  gem "cucumber-rails", "~> 1.4.0"
+  gem "capybara", "~> 2.1.0"
+  gem "factory_girl", "~> 4.2.0"
   gem "rspec-rails", "~> 2.14.0"
   gem 'webrat'
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-	gem "sass-rails", "~> 4.0.0"
-	gem "haml", "~> 4.0.3"
-	gem "coffee-rails", "~> 4.0.0"
-	gem "uglifier", "~> 2.2.1"
-end
+
+gem "sass-rails", "~> 4.0.0"
+gem "zurb-foundation", "~> 4.3.2"
+gem "haml", "~> 4.0.3"
+gem "coffee-rails", "~> 4.0.0"
+gem "uglifier", "~> 2.2.1"
+
 
 gem "jquery-rails", "~> 3.0.4"
 
 gem "json"
 
-# we don't call the group :test because we don't want them auto-required
-group :testing do
-	gem "cucumber-rails", "~> 1.4.0"
-	gem "capybara", "~> 2.1.0"
-	gem "factory_girl", "~> 4.2.0"
-end
+
 
 #Third party authentication
 gem 'omniauth-facebook'
