@@ -23,7 +23,7 @@ Feature: Authentication with third party service
       | Google   |
       | Facebook |
 
-  Scenario Outline: The user can link their account with another third party and login
+  Scenario Outline: The user login in the system with an existing account
     Given @flynn is in the system
     When I authenticate on "<service>" with "Flynn" account
     And this "<service>" is already linked with "Flynn" account
