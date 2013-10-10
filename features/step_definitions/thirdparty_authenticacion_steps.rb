@@ -1,9 +1,9 @@
 Given(/^I visit the home page$/) do
-  pending # express the regexp above with the code you wish you had
+  visit home_path
 end
 
 When(/^I try to sign up with "(.*?)"$/) do |provider|
-  pending # express the regexp above with the code you wish you had
+  visit "/auth/#{provider.downcase}"
 end
 
 When(/^I authenticate on "(.*?)" with "(.*?)" account$/) do |provider, user|

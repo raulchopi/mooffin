@@ -40,3 +40,4 @@ Feature: Authentication with third party service
       | Twitter  |
       | Google   |
       | Facebook |
+      
