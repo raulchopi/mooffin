@@ -6,6 +6,10 @@ group :development do
 	gem "sqlite3", "~> 1.3.8"
 end
 
+group :assets do
+  gem "compass-rails"
+end
+
 group :test, :development do
   gem "debugger", "~> 1.6.1"
   gem "cucumber-rails", "~> 1.4.0", require: false
