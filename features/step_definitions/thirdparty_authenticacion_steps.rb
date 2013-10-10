@@ -1,24 +1,31 @@
-Given(/^@flynn isn't in the system$/) do
+Given(/^I visit the home page$/) do
   pending # express the regexp above with the code you wish you had
 end
 
-When(/^I authenticate on "(.*?)" with "(.*?)" account$/) do |service, user|
-  set_omniauth service
-  visit "/auth/#{service.downcase}"
+When(/^I try to sign up with "(.*?)"$/) do |provider|
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I authenticate on "(.*?)" with "(.*?)" account$/) do |provider, user|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should redirect to my new profile page$/) do
+  pending # express the regexp above with the code you wish you had
 end
 
 Then(/^I should see "(.*?)"$/) do |msg|
   pending # express the regexp above with the code you wish you had
 end
 
-Given(/^@flynn is in the system$/) do
+When(/^I try to sign in with "(.*?)"$/) do |provider|
   pending # express the regexp above with the code you wish you had
 end
 
-When(/^this "(.*?)" is not linked with "(.*?)" account$/) do |service, user|
+When(/^this "(.*?)" is not linked with "(.*?)" account$/) do |provider, user|
   pending # express the regexp above with the code you wish you had
 end
 
-Then(/^this "(.*?)" is already linked with "(.*?)" account$/) do |service, user|
+When(/^this "(.*?)" is already linked with "(.*?)" account$/) do |provider, user|
   pending # express the regexp above with the code you wish you had
 end
