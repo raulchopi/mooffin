@@ -12,6 +12,7 @@ end
 
 group :test, :development do
   gem "debugger", "~> 1.6.1"
+  gem "database_cleaner", "~> 1.2.0"
   gem "cucumber-rails", "~> 1.4.0", require: false
   gem "capybara", "~> 2.1.0"
   gem "factory_girl", "~> 4.2.0"
