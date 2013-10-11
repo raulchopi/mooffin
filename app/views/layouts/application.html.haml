@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %title Mooffin
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "app"
+    = csrf_meta_tag
+  %body
+
+  = yield
