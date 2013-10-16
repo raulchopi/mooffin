@@ -1,4 +1,4 @@
 class Link < ActiveRecord::Base
-	belongs_to :receipt
+	belongs_to :recipe
 	belongs_to :ingredient
 end

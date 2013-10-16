@@ -1,3 +1,3 @@
 class Step < ActiveRecord::Base
-	belongs_to :receipt
+	belongs_to :recipe
 end

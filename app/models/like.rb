@@ -1,4 +1,4 @@
 class Like < ActiveRecord::Base
 	belongs_to :user
-	belongs_to :receipt
+	belongs_to :recipe
 end

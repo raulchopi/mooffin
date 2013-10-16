@@ -32,6 +32,8 @@ gem "jquery-rails", "~> 3.0.4"
 
 gem "json"
 
+gem "paperclip", "~> 3.0"
+
 
 
 #Third party authentication
