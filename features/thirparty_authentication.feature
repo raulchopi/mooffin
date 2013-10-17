@@ -8,10 +8,10 @@ Feature: Authentication with third party service
     And I should see "Your account has been created."
 
     Examples:
-      | service  |
-      | Twitter  |
-      | Google   |
-      | Facebook |
+      | service        |
+      | Twitter        |
+      | Google_oauth2  |
+      | Facebook       |
 
 
   Scenario Outline: The user can link their account with another third party and login
@@ -22,10 +22,10 @@ Feature: Authentication with third party service
     Then I should redirect to my new profile page
     And I should see "Your account has been linked."
     Examples:
-      | service  |
-      | Twitter  |
-      | Google   |
-      | Facebook |
+      | service        |
+      | Twitter        |
+      | Google_oauth2  |
+      | Facebook       |
 
   Scenario Outline: The user login in the system with an existing account
     Given I visit the home page
@@ -36,8 +36,8 @@ Feature: Authentication with third party service
     And I should see "Logged in successfully"
 
     Examples:
-      | service  |
-      | Twitter  |
-      | Google   |
-      | Facebook |
+      | service        |
+      | Twitter        |
+      | Google_oauth2  |
+      | Facebook       |
       

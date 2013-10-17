@@ -6,10 +6,6 @@ group :development do
 	gem "sqlite3", "~> 1.3.8"
 end
 
-group :assets do
-  gem "compass-rails"
-end
-
 group :test, :development do
   gem "debugger", "~> 1.6.1"
   gem "database_cleaner", "~> 1.2.0"
@@ -21,9 +17,10 @@ group :test, :development do
 end
 
 
-gem "sass-rails", "~> 4.0.0"
 gem "zurb-foundation", "~> 4.3.2"
 gem "haml", "~> 4.0.3"
+gem "sass-rails", "~> 4.0.0"
+gem "compass-rails"
 gem "coffee-rails", "~> 4.0.0"
 gem "uglifier", "~> 2.2.1"
 
@@ -35,8 +32,11 @@ gem "json"
 
 
 #Third party authentication
+gem 'omniauth'
+gem 'omniauth-oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem "omniauth-google-oauth2"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

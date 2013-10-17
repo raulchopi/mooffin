@@ -1,5 +1,5 @@
 Given(/^I visit the home page$/) do
-  visit home_path
+  visit "home/index"
 end
 
 When(/^I try to sign up with "(.*?)"$/) do |provider|
