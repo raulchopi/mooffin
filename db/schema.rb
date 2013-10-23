@@ -51,8 +51,7 @@ ActiveRecord::Schema.define(version: 20130907134824) do
   end
 
   create_table "ingredients", force: true do |t|
-    t.string    "name"
-    t.integer   "importance"
+    t.string    "name"    
   end
 
   create_table "steps", force: true do |t|
@@ -71,6 +70,7 @@ ActiveRecord::Schema.define(version: 20130907134824) do
   create_table "links", force: true do |t|
     t.integer   "recipe_id"
     t.integer   "ingredient_id"
+    t.integer   "importance"
     t.integer   "unit_id"
     t.float     "number"
     
