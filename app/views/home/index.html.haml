@@ -11,8 +11,15 @@
 		%li='Mis recetas'
 		%li='Favoritas'
 
-#main 
-	asdfasdfasdf
+#content
+	#buscador
+	= form_for(Ingredient.show) do |ingredient|
+		= ingredient.text_field :name, :value => Ingredient.name
+		= ingredient.submit
+		
+	#main
+		Pantalla principal
+		
 
 %footer
 	Mooffin 2013
