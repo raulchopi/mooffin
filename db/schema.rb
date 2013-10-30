@@ -53,6 +53,11 @@ ActiveRecord::Schema.define(version: 20131016164406) do
     t.datetime "updated_at"
   end
 
+  create_table "receipts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "recipes", force: true do |t|
     t.integer  "user_id",     null: false
     t.string   "title",       null: false
@@ -80,11 +85,11 @@ ActiveRecord::Schema.define(version: 20131016164406) do
     t.datetime "updated_at"
   end
 
-
   create_table "users", force: true do |t|
     t.string   "name",       null: false
     t.string   "surname",    null: false
     t.string   "username",   null: false
+    t.string   "email",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
