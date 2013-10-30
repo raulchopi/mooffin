@@ -18,10 +18,12 @@ group :test, :development do
   gem "capybara", "~> 2.1.0"  
   # RSpec (unit tests, some integration tests)
   gem "rspec-rails", "~> 2.14.0"
+  gem "shoulda-matchers", "~> 2.4.0"
   # Acceptance test
   gem 'webrat'
   # General helpers
   gem "factory_girl", "~> 4.2.0"
+  gem "mocha", "~> 0.14.0", require: false
 end
 
 
