@@ -11,21 +11,23 @@ header
 
 body
    width: 1100px
-   //background-color: #f2f2f2
    margin: 0 auto
 
 html
    background-color: #FFFFFF
 
-#logo  
-   background: image-url('logo.png')
-   height: image-height('logo.png')
-   width: image-width('logo.png')
-   position: absolute
+#logo
+   padding: 20px 0 0 50px
    -webkit-transition: opacity .2s ease-in-out
    -moz-transition: opacity .2s ease-in-out
    -o-transition: opacity .2s ease-in-out
    transition: opacity .2s ease-in-out
+
+   a img
+      overflow: hidden
+      position: absolute
+      max-width: 140px
+      max-height: 130px
 
    &:hover
       opacity: .7
