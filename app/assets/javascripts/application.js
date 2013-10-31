@@ -15,6 +15,7 @@
 //= require angular
 //= require angular-animate
 //= require angular-resource
+//= require ng-rails-csrf
 //= require foundation
 //= require turbolinks
 //= require_tree .

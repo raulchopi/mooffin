@@ -38,6 +38,8 @@ gem "uglifier", "~> 2.2.1"
 # JS
 gem "jquery-rails", "~> 3.0.4"
 gem "coffee-rails", "~> 4.0.0"
+# AngularJS related stuff
+gem 'ng-rails-csrf', :git => "git://github.com/xrd/ng-rails-csrf.git"
 gem "angularjs-rails", "~> 1.0.8"
 
 gem "json"
