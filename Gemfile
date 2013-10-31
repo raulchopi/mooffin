@@ -38,6 +38,7 @@ gem "uglifier", "~> 2.2.1"
 # JS
 gem "jquery-rails", "~> 3.0.4"
 gem "coffee-rails", "~> 4.0.0"
+gem "angularjs-rails", "~> 1.0.8"
 
 gem "json"
 
