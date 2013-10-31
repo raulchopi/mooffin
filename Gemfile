@@ -26,9 +26,12 @@ end
 
 
 gem "haml", "~> 4.0.3"
+gem "haml-rails"
 # CSS
 gem "sass-rails", "~> 4.0.0"
+gem "sprockets"
 gem "compass", "~> 0.12.2"
+gem "compass-rails", github: "Compass/compass-rails", branch: "rails4-hack"
 gem "zurb-foundation", "~> 4.3.2"
 
 gem "uglifier", "~> 2.2.1"
@@ -36,7 +39,6 @@ gem "uglifier", "~> 2.2.1"
 # JS
 gem "jquery-rails", "~> 3.0.4"
 gem "coffee-rails", "~> 4.0.0"
-
 gem "json"
 
 gem "paperclip", "~> 3.0"
