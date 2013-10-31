@@ -1,7 +1,9 @@
 %html
 %body
 %header
-	%a{ :href => "#", :id => 'logo' }= 'Moffin'
+	/ %a{ :href => "#", :id => 'logo' }= 'Moffin'
+	#logo
+		= link_to image_tag( 'logo.png'), '#'
 	#login=  'Login'
 	
 
@@ -13,9 +15,9 @@
 
 #content
 	#buscador
-	= form_for(Ingredient.show) do |ingredient|
-		= ingredient.text_field :name, :value => Ingredient.name
-		= ingredient.submit
+	/ = form_for(@ingredient) do |ing|
+	/	= ing.text_field :name, :value => @ingredient.name
+	/	= ing.submit
 		
 	#main
 		Pantalla principal
