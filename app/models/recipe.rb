@@ -4,5 +4,5 @@ class Recipe < ActiveRecord::Base
 	has_many :links
 	has_many :steps
 	has_many :opinions
-	has_attached_file :photo => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => ""
+	# has_attached_file :photo => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => ""
 end
