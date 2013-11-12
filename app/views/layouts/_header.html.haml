@@ -1,0 +1,24 @@
+%header
+	/ %a{ :href => "#", :id => 'logo' }= 'Moffin'
+	#logo
+		= link_to image_tag( 'logo.png'), '#'
+	#login
+		#login_nav
+			%ul
+				%li 
+					= link_to 'Registro', '/signup', class: 'btn_login'
+					/ %a{ href: 'signup_path', :class => 'btn_login' }= 'Registro'
+				%li	
+					%a{ :class => 'btn_login', 'ng-click' => 'foo()' }= 'Login'
+		#login_form
+			= form_for :users, :html => {:class => 'form_login'} do |f|
+				= f.text_field :name, :class => 'login_text'
+				= f.password_field :password, :class => 'login_text'
+				= f.submit 'Login', :class => 'login_btn'
+
+
+%nav{:id =>'menu_principal'}
+	%ul		
+		%li='Qué cocino?'
+		%li='Mis recetas'
+		%li='Favoritas'

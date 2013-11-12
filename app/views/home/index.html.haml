@@ -1,17 +1,7 @@
 %html
 %body
-%header
-	/ %a{ :href => "#", :id => 'logo' }= 'Moffin'
-	#logo
-		= link_to image_tag( 'logo.png'), '#'
-	#login=  'Login'
-	
 
-%nav{:id =>'menu_principal'}
-	%ul		
-		%li='Qué cocino?'
-		%li='Mis recetas'
-		%li='Favoritas'
+= render :partial => 'layouts/header'
 
 #content
 	#buscador
@@ -22,6 +12,4 @@
 	#main
 		Pantalla principal
 		
-
-%footer
-	Mooffin 2013
+= render :partial => 'layouts/footer'

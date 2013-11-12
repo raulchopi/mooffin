@@ -6,6 +6,12 @@ GIT
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
 
+GIT
+  remote: git://github.com/xrd/ng-rails-csrf.git
+  revision: aa8f4fe42b8851c8eacce8f8c113a8674cca4281
+  specs:
+    ng-rails-csrf (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -277,6 +283,7 @@ DEPENDENCIES
   jquery-rails (~> 3.0.4)
   json
   mocha (~> 0.14.0)
+  ng-rails-csrf!
   omniauth
   omniauth-facebook
   omniauth-google-oauth2

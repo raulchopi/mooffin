@@ -1,0 +1,30 @@
+%html
+%body
+
+= render :partial => 'layouts/header'
+
+#content
+	#buscador
+	/ = form_for(@ingredient) do |ing|
+	/	= ing.text_field :name, :value => @ingredient.name
+	/	= ing.submit
+		
+	#main
+
+		= form_for :users, :html => {:id => 'form_signup'} do |f|
+			= f.label :name, "Nombre"
+			= f.text_field :name
+			= f.label :surname, "Apellidos"
+			= f.text_field :surname
+			= f.label :username, "Nombre de usuario"
+			= f.text_field :username
+			= f.label :email, "Email"
+			= f.text_field :email
+			= f.label :encrypted_password, "Contraseña"
+			= f.password_field :encrypted_password
+			= f.label :encrypted_password, "Repita la contraseña"
+			= f.password_field :encrypted_password
+			= f.submit 'Login', :class => 'signup_btn'
+  
+		
+= render :partial => 'layouts/footer'

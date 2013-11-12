@@ -81,10 +81,11 @@ ActiveRecord::Schema.define(version: 20131030140053) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "name",       null: false
-    t.string   "surname",    null: false
-    t.string   "username",   null: false
-    t.string   "email",      null: false
+    t.string   "name",               null: false
+    t.string   "surname",            null: false
+    t.string   "username",           null: false
+    t.string   "email",              null: false
+    t.string   "encrypted_password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
