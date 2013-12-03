@@ -7,14 +7,16 @@
 			%ul
 				%li 
 					= link_to 'Registro', '/signup', class: 'btn_login'
-					/ %a{ href: 'signup_path', :class => 'btn_login' }= 'Registro'
 				%li	
-					%a{ :class => 'btn_login', 'ng-click' => 'foo()' }= 'Login'
+					%a{ :class => 'btn_login'}= 'Login'
 		#login_form
 			= form_for :users, :html => {:class => 'form_login'} do |f|
 				= f.text_field :name, :class => 'login_text'
 				= f.password_field :password, :class => 'login_text'
 				= f.submit 'Login', :class => 'login_btn'
+
+
+			%a{ :class => 'btn_close_login'}= 'x'
 
 
 %nav{:id =>'menu_principal'}
