@@ -1,0 +1,11 @@
+#buscador
+	%div{ 'ng-app' => 'instantIngredientsSearch', 'ng-controller' => 'InstantIngredientsSearchController' }
+		%div.bar
+			<!-- Create a binding between the searchString model and the text field -->
+			%input{ :type => 'text', 'ng-model' => 'searchString', :class => 'searcher_bar', :placeholder => 'Ingrediéntame...' }
+
+		%ul
+			%li{ 'ng-repeat' => 'i in items | searchFor:searchString' }
+				%a{ :href => '{{i.url}}' }
+					%img{ 'ng-src' => '{{i.image}}' }
+				%p {{i.title}}

@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
-	
+  authenticates_with_sorcery!
+
+  
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_USERNAME = /\A[A-Za-z0-9_]+\z/
 
-	before_validation :strip_and_downcase
+  before_validation :strip_and_downcase
  # before_validation :set_current_language, on: :create
 
   validates :username, presence: true, uniqueness: true, 
@@ -12,17 +14,18 @@ class User < ActiveRecord::Base
     format: { with: VALID_EMAIL_REGEX }
   validates_length_of :username, maximum: 32
   validates_length_of :email, in: 6..100
+  validates :password, presence: true, confirmation: true, length: {minimum: 3}
 
   has_many :authorizations
   has_many :opinions
-	has_many :recipes
+  has_many :recipes
   has_many :likes
 
-	def set_current_language
-  	self.language = I18n.locale.to_s if self.language.blank?
+  def set_current_language
+    self.language = I18n.locale.to_s if self.language.blank?
   end
 
-	def strip_and_downcase
+  def strip_and_downcase
     if username.present?
       username.strip!
       username.downcase!

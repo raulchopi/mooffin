@@ -49,6 +49,8 @@ gem "json"
 
 gem "paperclip", "~> 3.0"
 
+#Authentication
+gem 'sorcery'
 
 
 #Third party authentication
