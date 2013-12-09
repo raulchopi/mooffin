@@ -1,13 +1,10 @@
 %html
 %body
 
-= render :partial => 'layouts/header'
+= render :partial => 'layouts/shared/header'
 
 #content
 	#buscador
-	/ = form_for(@ingredient) do |ing|
-	/	= ing.text_field :name, :value => @ingredient.name
-	/	= ing.submit
 		
 	#main
 
@@ -27,4 +24,4 @@
 			= f.submit 'Login', :class => 'signup_btn'
   
 		
-= render :partial => 'layouts/footer'
+= render :partial => 'layouts/shared/footer'

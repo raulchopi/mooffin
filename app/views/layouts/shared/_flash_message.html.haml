@@ -1,0 +1,4 @@
+- flash.each do |level, message|
+	%div.fade.in{ :class => flash_class(level) }
+		%a.close{:href => "#", "data-dismiss" => "alert",} ×
+		%p= message
