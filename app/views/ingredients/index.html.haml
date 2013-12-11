@@ -1,0 +1,14 @@
+%html
+
+	= render :partial => 'layouts/shared/header'
+
+	%body
+
+		%h1 All ingredients
+
+		%ul.ingredients
+			- @ingredients.each do |ingredient|
+				%li
+					= link_to ingredient.name, ingredient
+
+	= render :partial => 'layouts/shared/footer'

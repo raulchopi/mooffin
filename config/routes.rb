@@ -7,6 +7,8 @@ Mooffin::Application.routes.draw do
   get 'logout'  	=> 'sessions#destroy',  :as => 'logout'
 
   resources :sessions
+
+  resources :ingredients
   
   #OAuth
   #get '/auth/:provider/callback', :to => 'sessions#create'

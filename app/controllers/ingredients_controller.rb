@@ -9,10 +9,15 @@ class IngredientsController < ApplicationController
   end
 
   def index
-  	@ingredient = Ingredient.search(params[:name])
-  	
+    @ingredients = Ingredient.all
     respond_to do |format|
-      format.html # index.html.erb      		
+      format.json {
+        render json: @ingredients
+      }
+      format.html {
+        @ingredients
+      }
     end
   end
+
 end
