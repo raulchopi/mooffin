@@ -14,14 +14,14 @@
 						%a{ :class => 'btn_login'}= 'Login'
 			#login_form
 				= form_for :sessions, :url => sessions_path, :html => {:class => 'form_login'} do |f|
-					= f.text_field :name, :class => 'login_text'
+					= f.text_field :username, :class => 'login_text'
 					= f.password_field :password, :class => 'login_text'
 					= f.submit 'Login', :class => 'login_btn'
 
 
 				%a{ :class => 'btn_close_login'}= 'x'
 
-			= render :partial => 'layouts/flash_message'
+			= render :partial => 'layouts/shared/flash_message'
 
 
 %nav{:id =>'menu_principal'}
