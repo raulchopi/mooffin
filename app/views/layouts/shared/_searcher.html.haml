@@ -4,6 +4,6 @@
 			<!-- Create a binding between the searchString model and the text field -->
 			%input{ :type => 'text', 'ng-model' => 'searchString', :class => 'searcher_bar', :placeholder => 'Ingrediéntame...' }
 
-		%ul
-			%li{ 'ng-repeat' => 'i in ingredients | searchFor:searchString' }
-				%p {{i.name}}
+			%table{ 'ng-show' => 'searchString.length >= 2' }
+				%tr{ 'ng-repeat' => 'i in ingredients | searchFor:searchString' }
+					%td {{i.name}}
