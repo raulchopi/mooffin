@@ -5,7 +5,8 @@ class CreateUsers < ActiveRecord::Migration
 	    t.string   	:surname,	:null => false
 	    t.string   	:username,	:null => false
 	    t.string   	:email,		:null => false
-	    t.string    :encrypted_password
+      t.string    :crypted_password, :null => false
+      t.string    :salt,   :default => nil      
       t.timestamps
     end
   end

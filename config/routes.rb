@@ -6,6 +6,7 @@ Mooffin::Application.routes.draw do
   get 'login'   	=> 'sessions#new',   	:as => 'login'
   get 'logout'  	=> 'sessions#destroy',  :as => 'logout'
 
+  resources :users
   resources :sessions
 
   resources :ingredients
