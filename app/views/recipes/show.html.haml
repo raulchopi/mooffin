@@ -9,24 +9,21 @@
 	#main
 		#receta
 			#tituloreceta
-				Pasta a la universitaria
+				= @recipe.title
 			#detallesreceta
-				Dificultad: mínima
+				Dificultad: 
+				= @recipe.difficulty
 			#ingredientesreceta
 				%ul
-					%li Pasta
-					%li Tomate
-					%li Atún
-					%li Huevo
-					%li Salchicas
+					= @links.each do |ing|
+						%li= ing.number
 
 			#fotoreceta
 				= image_tag("logo.png")
 			#elaboracionreceta
-				Poner a cocer la pasta y el huevo.
-				Freír las salchichas, agregar el tomate y atún.
-				Mezclar todo.
-				Voilá.
+				%ul
+					= @steps.each do |step|
+						%li= step.description
 
   
 		
