@@ -1,0 +1,33 @@
+%html
+%body
+
+= render :partial => 'layouts/shared/header'
+
+#content
+	#buscador
+		
+	#main
+		#receta
+			#tituloreceta
+				Pasta a la universitaria
+			#detallesreceta
+				Dificultad: mínima
+			#ingredientesreceta
+				%ul
+					%li Pasta
+					%li Tomate
+					%li Atún
+					%li Huevo
+					%li Salchicas
+
+			#fotoreceta
+				= image_tag("logo.png")
+			#elaboracionreceta
+				Poner a cocer la pasta y el huevo.
+				Freír las salchichas, agregar el tomate y atún.
+				Mezclar todo.
+				Voilá.
+
+  
+		
+= render :partial => 'layouts/shared/footer'
