@@ -23,9 +23,14 @@ app.filter "searchFor", ->
 # The controller
 angular.module('instantIngredientsSearch').controller 'InstantIngredientsSearchController', ($scope, InstantIngredientsSearchFactory) ->
   
+  $scope.selected_ingredients = []
+
   $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then((ingredients) ->
     $scope.ingredients = ingredients
   )
+
+  $scope.setValue = (i) ->
+    $scope.selected_ingredients.push i
 
 
 # The factory

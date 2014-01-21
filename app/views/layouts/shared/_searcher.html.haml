@@ -5,5 +5,9 @@
 			%input{ :type => 'text', 'ng-model' => 'searchString', :class => 'searcher_bar', :placeholder => 'Ingrediéntame...' }
 
 			%table{ 'ng-show' => 'searchString.length >= 2' }
-				%tr{ 'ng-repeat' => 'i in ingredients | searchFor:searchString' }
+				%tr{ 'ng-repeat' => 'i in ingredients | searchFor:searchString', 'ng-click' => 'setValue(i)' }
 					%td {{i.name}}
+
+		%ul
+			%li{ 'ng-repeat' => 'ing in selected_ingredients' } 
+				{{ing.name}}
