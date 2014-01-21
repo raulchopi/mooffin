@@ -6,7 +6,5 @@ class RecipesController < ApplicationController
 	end
 
 	def show
-		@links 			= @recipe.links
-		@steps			= @recipe.steps
 	end
 end

@@ -10,19 +10,30 @@
 		#receta
 			#tituloreceta
 				= @recipe.title
+
 			#detallesreceta
-				Dificultad: 
-				= @recipe.difficulty
+				.dificultad
+					Dificultad: #{@recipe.difficulty} 
+				.tiempoElaboracion
+					#{@recipe.time} minutos
+
 			#ingredientesreceta
+				.titulo
+					Ingredientes
 				%ul
-					= @links.each do |ing|
-						%li= ing.number
+					- @recipe.links.each do |link|
+						%li
+							= link.number
+							= link.unit.unit
+							= link.ingredient.name
 
 			#fotoreceta
 				= image_tag("logo.png")
 			#elaboracionreceta
+				.titulo
+					Elaboración
 				%ul
-					= @steps.each do |step|
+					- @recipe.steps.each do |step|
 						%li= step.description
 
   
