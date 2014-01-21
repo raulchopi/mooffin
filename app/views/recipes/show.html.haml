@@ -1,0 +1,41 @@
+%html
+%body
+
+= render :partial => 'layouts/shared/header'
+
+#content
+	#buscador
+		
+	#main
+		#receta
+			#tituloreceta
+				= @recipe.title
+
+			#detallesreceta
+				.dificultad
+					Dificultad: #{@recipe.difficulty} 
+				.tiempoElaboracion
+					#{@recipe.time} minutos
+
+			#ingredientesreceta
+				.titulo
+					Ingredientes
+				%ul
+					- @recipe.links.each do |link|
+						%li
+							= link.number
+							= link.unit.unit
+							= link.ingredient.name
+
+			#fotoreceta
+				= image_tag("logo.png")
+			#elaboracionreceta
+				.titulo
+					Elaboración
+				%ul
+					- @recipe.steps.each do |step|
+						%li= step.description
+
+  
+		
+= render :partial => 'layouts/shared/footer'

@@ -8,9 +8,9 @@ class UserMailer < ActionMailer::Base
   #
   def activation_needed_email(user)
     @user = user
-    @greeting = "Hi"
-    @url  = "http://localhost:3000"
-    mail(:to => user.email, :subject => "Welcome to My Awesome Site")
+    @greeting = "Hola"
+    @url  = "http://localhost:3000/users/#{user.activation_token}/activate"
+    mail(:to => user.email, :subject => "Bienvenido a Mooffin")
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -18,9 +18,10 @@ class UserMailer < ActionMailer::Base
   #
   #   en.user_mailer.activation_success_email.subject
   #
-  def activation_success_email
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def activation_success_email(user)
+    @user = user
+    @greeting = "Hola"
+    @url  = "http://localhost:3000"
+    mail(:to => user.email, :subject => "Tu cuenta fue activada correctamente!")
   end
 end
