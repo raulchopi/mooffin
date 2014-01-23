@@ -25,21 +25,27 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientsSearchC
   
   $scope.selected_ingredients = []
 
-  $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then((ingredients) ->
+  $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
     $scope.ingredients = ingredients
-  )
 
   $scope.setValue = (i) ->
-    $scope.selected_ingredients.push i
+    already_in_it = false
+    if $scope.selected_ingredients.length > 0
+      angular.forEach $scope.selected_ingredients, (ingr, index) ->
+        already_in_it = true if ingr == i
+
+    $scope.selected_ingredients.push i if already_in_it == false
+
+  $scope.removeIngredient = (index) ->
+    $scope.selected_ingredients.splice index, 1
+
 
 
 # The factory
 angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFactory', ($http) ->
   
   getIngredients: ->
-    
     #return the promise directly.
     $http.get("/ingredients.json").then (result) ->
-      
       #resolve the promise as the data
       result.data

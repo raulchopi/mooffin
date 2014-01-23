@@ -1,11 +1,20 @@
 %html
-%body
+	
+	%head
+		%title Mooffin
 
-= render :partial => 'layouts/shared/header'
+	%body
 
-#content
-	= render :partial => 'layouts/shared/searcher'
+		= render :partial => 'layouts/shared/header'
 
-	#main
+		#content{ 'ng-app' => 'instantIngredientsSearch' }
+			= render :partial => 'layouts/shared/searcher'
 
-= render :partial => 'layouts/shared/footer'
+			#main
+
+				#home{'ng-hide' => 'show_recipes'}
+
+				#recipes{'ng-show' => 'show_recipes'}
+					= render :partial => 'layouts/shared/proposals'
+
+		= render :partial => 'layouts/shared/footer'
