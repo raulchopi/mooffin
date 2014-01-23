@@ -22,10 +22,13 @@ $(".btn_close_login").click(function(){
 
 // ######  SEARCHER BEHAVIOUR ######
 
-$(".searcher_bar").click(function(){
-  $('#buscador .bar input').css({'background-image':'none', 'text-indent':'10px'});
-});
+//$(".searcher_bar").click(function(){
+//  $('#buscador .bar input').css({'background-image':'none', 'text-indent':'10px'});
+//});
 
 $(".searcher_bar").focusout(function(){
-  $('#buscador .bar input').css({'background-image': 'url("magnifier.png")', 'text-indent':'40px'});
+  //$('#buscador .bar input').css({'background-image': 'url("magnifier.png")', 'text-indent':'40px'});
+  $(".resultIngTable").fadeOut('fast');
+  this.value='';
+  //this.focus();
 });
