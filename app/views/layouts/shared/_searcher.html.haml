@@ -8,7 +8,8 @@
 				%tr{ 'ng-repeat' => 'i in ingredients | searchFor:searchString', 'ng-click' => 'setValue(i)' }
 					%td {{i.name}}
 
-		%ul
-			%li{ 'ng-repeat' => 'ing in selected_ingredients' } 
-				{{ing.name}} 
-				%span{ 'ng-click' => 'removeIngredient($index)' } X
+		#ingSel
+			%ul
+				%li{ 'ng-repeat' => 'ing in selected_ingredients' } 
+					{{ing.name}} 
+					%span{ 'ng-click' => 'removeIngredient($index)' } X

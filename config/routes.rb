@@ -3,6 +3,7 @@ Mooffin::Application.routes.draw do
 
   get '/signup' 	=> 'users#new', 		:as => 'signup'
   get '/recetas' 	=> 'recipes#show',		:as => 'recipes'
+  get '/recetas/nueva'  => 'recipes#new',    :as => 'new_recipe'
   get '/recetas/:id' => 'recipes#show', :as => 'recipe'
 
   get 'login'   	=> 'sessions#new',   	:as => 'login'

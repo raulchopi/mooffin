@@ -1,5 +1,6 @@
 class Recipe < ActiveRecord::Base
 	belongs_to :user
+	belongs_to :difficulty
 	has_many :likes
 	has_many :links
 	has_many :steps

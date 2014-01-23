@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131209162954) do
+ActiveRecord::Schema.define(version: 20140122154254) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id",    null: false
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 20131209162954) do
     t.string   "provider",   null: false
     t.string   "uid",        null: false
     t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "difficulties", force: true do |t|
+    t.string   "desc",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62,20 +68,20 @@ ActiveRecord::Schema.define(version: 20131209162954) do
   end
 
   create_table "recipes", force: true do |t|
-    t.integer  "user_id",     null: false
-    t.string   "title",       null: false
-    t.integer  "difficulty",  null: false
-    t.integer  "time",        null: false
-    t.integer  "servings",    null: false
-    t.text     "description", null: false
-    t.float    "rating",      null: false
+    t.integer  "user_id",       null: false
+    t.string   "title",         null: false
+    t.integer  "difficulty_id", null: false
+    t.integer  "time",          null: false
+    t.integer  "servings",      null: false
+    t.text     "description",   null: false
+    t.float    "rating",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "steps", force: true do |t|
     t.integer  "recipe_id",   null: false
-    t.integer  "order",       null: false
+    t.integer  "orden",       null: false
     t.integer  "time",        null: false
     t.text     "description", null: false
     t.datetime "created_at"
@@ -84,6 +90,7 @@ ActiveRecord::Schema.define(version: 20131209162954) do
 
   create_table "units", force: true do |t|
     t.string   "unit",       null: false
+    t.string   "desc",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -13,7 +13,7 @@
 
 			#detallesreceta
 				.dificultad
-					Dificultad: #{@recipe.difficulty} 
+					Dificultad: #{@recipe.difficulty.desc} 
 				.tiempoElaboracion
 					#{@recipe.time} minutos
 
@@ -24,7 +24,7 @@
 					- @recipe.links.each do |link|
 						%li
 							= link.number
-							= link.unit.unit
+							= link.unit.desc
 							= link.ingredient.name
 
 			#fotoreceta
@@ -36,6 +36,5 @@
 					- @recipe.steps.each do |step|
 						%li= step.description
 
-  
 		
 = render :partial => 'layouts/shared/footer'

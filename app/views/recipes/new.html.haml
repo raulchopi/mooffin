@@ -1,0 +1,22 @@
+%html
+%body
+
+= render :partial => 'layouts/shared/header'
+
+#content
+	#buscador
+		
+	#main
+		#nuevaReceta
+			= form_for @recipe, :html => {:id => 'form_recipe'} do |f|
+				= f.label :title, "Título"
+				= f.text_field :title
+				= f.label :time, "Tiempo"
+				= f.text_field :time
+				= f.label :servings, "Comensales"
+				= f.text_field :servings
+				= f.label :difficulty, "Dificultad"
+				= f.collection_select :difficulty, Difficulty.all, :id, :desc
+				= f.submit 'Crear', :class => 'signup_btn'
+		
+= render :partial => 'layouts/shared/footer'
