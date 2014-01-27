@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140122154254) do
+ActiveRecord::Schema.define(version: 20140127084035) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id",    null: false
@@ -97,10 +97,10 @@ ActiveRecord::Schema.define(version: 20140122154254) do
 
   create_table "users", force: true do |t|
     t.string   "name",                                        null: false
-    t.string   "surname",                                     null: false
+    t.string   "surname"
     t.string   "username",                                    null: false
     t.string   "email",                                       null: false
-    t.string   "crypted_password",                            null: false
+    t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -116,12 +116,11 @@ ActiveRecord::Schema.define(version: 20140122154254) do
     t.integer  "failed_logins_count",             default: 0
     t.datetime "lock_expires_at"
     t.string   "unlock_token"
-    t.string   "activation_state"
-    t.string   "activation_token"
-    t.datetime "activation_token_expires_at"
+    t.string   "provider"
+    t.string   "access_token"
+    t.string   "uid"
   end
 
-  add_index "users", ["activation_token"], name: "index_users_on_activation_token"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at"
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token"

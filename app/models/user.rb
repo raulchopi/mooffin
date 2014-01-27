@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     format: { with: VALID_EMAIL_REGEX }
   validates_length_of :username, maximum: 32
   validates_length_of :email, in: 6..100
-  validates :password, presence: true, confirmation: true, length: {minimum: 3}
+  #validates :password, presence: true, confirmation: true, length: {minimum: 3}
 
   has_many :authorizations
   has_many :opinions
@@ -36,5 +36,17 @@ class User < ActiveRecord::Base
       email.downcase!
     end
   end
+
+  def self.create_with_omniauth(auth)  
+    create! do |user|  
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.first_name
+      user.surname = auth.info.last_name
+      user.username = auth.uid
+      user.email = auth.info.email
+      #user.password = Devise.friendly_token[0,20]
+    end  
+  end 
 
 end
