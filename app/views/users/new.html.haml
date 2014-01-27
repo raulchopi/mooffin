@@ -1,3 +1,5 @@
+-content_for(:title, 'Mooffin - Registro')
+
 %html
 %body
 
@@ -22,6 +24,5 @@
 			= f.label :confirm_password, "Repita la contraseña"
 			= f.password_field :confirm_password
 			= f.submit 'Registrar', :class => 'signup_btn'
-  
 		
 = render :partial => 'layouts/shared/footer'

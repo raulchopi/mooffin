@@ -9,8 +9,6 @@ Mooffin::Application.routes.draw do
   get 'login'   	=> 'sessions#new',   	:as => 'login'
   get 'logout'  	=> 'sessions#destroy',  :as => 'logout'
 
-  #devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-
   get 'sign_in', :to => 'devise/sessions#new', :as => :new_user_session
   get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
 

@@ -1,22 +1,23 @@
 %header
-	/ %a{ :href => "#", :id => 'logo' }= 'Moffin'
 	#logo
 		= link_to image_tag( 'logo.png'), root_path
 	#login
 		- if current_user
-			= current_user.name
-			= link_to 'Logout', logout_path
+			#logout
+				= link_to current_user.name, "/users/#{current_user.username}"
+				= link_to 'Salir', logout_path, class: 'salir'
 		- else
 			#login_nav				
 				%ul
 					%li 
 						= link_to 'Registro', signup_path, class: 'btn_login'
 					%li	
-						%a{ :class => 'btn_login'}= 'Login'
-
-					%li
-						%a{:href => '/auth/google_oauth2'}= 'Sign in with Google'
+						%a{ :class => 'btn_login'}= 'Login'				
+						
 			#login_form
+				%span.entrarCon Entra con:
+				= link_to image_tag('google_icon.png'), '/auth/google_oauth2'
+				= link_to image_tag('facebook_icon.png'), '/auth/facebook'
 				= form_for :sessions, :url => sessions_path, :html => {:class => 'form_login'} do |f|
 					= f.text_field :username, :class => 'login_text'
 					= f.password_field :password, :class => 'login_text'
@@ -31,6 +32,7 @@
 %nav{:id =>'menu_principal'}
 	%ul		
 		%li= link_to 'Qué cocino?', root_path
-		%li= link_to 'Mis recetas', recipes_path
-		%li='Favoritas'
-		%li= link_to 'Nueva receta', new_recipe_path
+		- if current_user 
+			%li= link_to 'Mis recetas', recipes_path
+			%li='Favoritas'
+			%li= link_to 'Nueva receta', new_recipe_path
