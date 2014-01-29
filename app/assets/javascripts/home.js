@@ -3,7 +3,7 @@
 
 
 $(document).ready(function(){
-  $("#login_form").hide();
+  $("#login_box").hide();
 });
 
 
@@ -11,11 +11,11 @@ $(document).ready(function(){
 
 $(".btn_login").click(function(){
   $("#login_nav").hide();
-  $("#login_form").fadeIn('slow');
+  $("#login_box").fadeIn('slow');
 });
 
 $(".btn_close_login").click(function(){
-  $("#login_form").hide();
+  $("#login_box").hide();
 	$("#login_nav").fadeIn('slow');
 });
 

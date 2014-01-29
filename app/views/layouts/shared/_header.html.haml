@@ -14,17 +14,18 @@
 					%li	
 						%a{ :class => 'btn_login'}= 'Login'				
 						
-			#login_form
-				%span.entrarCon Entra con:
-				= link_to image_tag('google_icon.png'), '/auth/google_oauth2'
-				= link_to image_tag('facebook_icon.png'), '/auth/facebook'
-				= form_for :sessions, :url => sessions_path, :html => {:class => 'form_login'} do |f|
-					= f.text_field :username, :class => 'login_text'
-					= f.password_field :password, :class => 'login_text'
-					= f.submit 'Login', :class => 'login_btn'
+			#login_box
+				#login_omniauth
+					%span.entrarCon Entra con:
+					= link_to image_tag('google_icon.png'), '/auth/google_oauth2'
+					= link_to image_tag('facebook_icon.png'), '/auth/facebook'
+				#login_form
+					= form_for :sessions, :url => sessions_path, :html => {:class => 'form_login'} do |f|
+						= f.text_field :username, :class => 'login_text'
+						= f.password_field :password, :class => 'login_text'
+						= f.submit 'Login', :class => 'login_btn'
 
-
-				%a{ :class => 'btn_close_login'}= 'x'
+					%a{ :class => 'btn_close_login'}= 'x'
 
 			= render :partial => 'layouts/shared/flash_message'
 
