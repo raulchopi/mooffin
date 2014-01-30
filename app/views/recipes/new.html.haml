@@ -4,9 +4,14 @@
 = render :partial => 'layouts/shared/header'
 
 #content
-	#buscador
+	#anhadirIng
+		= form_for @link do |l|
+			= l.text_field :number
+			= l.collection_select :unit, Unit.all, :id, :desc
+			= l.text_field :ingredient , :html => {'ng-model' => 'searchString', :class => 'searcher_bar', :placeholder => 'Ingrediente'}
+			= l.text_field :importance
 		
-	#main
+	#mainNuevaReceta
 		#nuevaReceta
 			= form_for @recipe, :html => {:id => 'form_recipe'} do |f|
 				= f.label :title, "Título"

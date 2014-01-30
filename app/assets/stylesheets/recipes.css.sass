@@ -1,6 +1,16 @@
 @import "compass"
 @import "compass/layout"
 
+@mixin cajas_texto
+	border: 0px solid
+	border-bottom: 1px solid #BAB6BA
+	background-color: transparent
+	margin: 0 5px 0 0
+	padding: 0 6px 0 6px
+	-webkit-box-shadow: inset 0 -7px 5px 0px rgba(186, 182, 186, 0.1)
+	box-shadow: inset 0 -7px 5px 0px rgba(186, 182, 186, 0.1)
+	float: left
+	margin: 0 2px 0 2px
 
 #receta
 	margin-left: 20px
@@ -66,8 +76,42 @@
 		li
 
 // NEW
+#anhadirIng
+	width: 40%
+	height: 100%
+	float: left
+	border-right: solid thin #e8e8e8
+	padding: 75px 0 0 0
+
+	#new_link
+		width: 90%
+		margin: 0px auto
+
+		#link_number
+			width: 10%
+			@include cajas_texto
+
+		#link_unit
+			width: 30%
+			float: left
+			margin: 0 2px 0 2px
+
+		#link_ingredient
+			width: 40%
+			@include cajas_texto
+
+		#link_importance
+			width: 15%
+			@include cajas_texto
+
+#mainNuevaReceta
+	width: 60%
+	float: left
+	height: 100%
+
+
 #nuevaReceta
-	width: 400px
+	width: 100%
 	margin: 0 auto
 	margin-top: 50px
 

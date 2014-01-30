@@ -14,6 +14,7 @@ Mooffin::Application.routes.draw do
 
   resources :ingredients
   resources :recipes
+  resources :links
   
   #OAuth
   get '/auth/:provider/callback', :to => 'sessions#create'
