@@ -5,18 +5,18 @@
 	%head
 		%title yield(:title)
 
-	%body
+	%body{ 'ng-app' => 'instantIngredientsSearch' }
 
 		= render :partial => 'layouts/shared/header'
 
-		#content{ 'ng-app' => 'instantIngredientsSearch' }
+		#content{ 'ng-controller' => 'InstantIngredientsSearchController' }
 			= render :partial => 'layouts/shared/searcher'
 
 			#main
 
-				#home{'ng-hide' => 'show_recipes'}
+				#home{'ng-hide' => 'show_recipes.length > 0'} eeeiooooo
 
-				#recipes{'ng-show' => 'show_recipes'}
+				#recipes{'ng-show' => 'show_recipes.length > 0'}
 					= render :partial => 'layouts/shared/proposals'
 
 		= render :partial => 'layouts/shared/footer'

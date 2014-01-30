@@ -24,6 +24,7 @@ app.filter "searchFor", ->
 angular.module('instantIngredientsSearch').controller 'InstantIngredientsSearchController', ($scope, InstantIngredientsSearchFactory) ->
   
   $scope.selected_ingredients = []
+  $scope.show_recipes = []
 
   $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
     $scope.ingredients = ingredients
@@ -35,9 +36,12 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientsSearchC
         already_in_it = true if ingr == i
 
     $scope.selected_ingredients.push i if already_in_it == false
+    $scope.show_recipes = InstantIngredientsSearchFactory.getRecipesRecommended() if already_in_it == false
 
   $scope.removeIngredient = (index) ->
     $scope.selected_ingredients.splice index, 1
+    #$scope.show_recipes = InstantIngredientsSearchFactory.getRecipesRecommended()
+    $scope.show_recipes = [] if $scope.selected_ingredients.length == 0
 
 
 
@@ -48,4 +52,8 @@ angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFact
     #return the promise directly.
     $http.get("/ingredients.json").then (result) ->
       #resolve the promise as the data
+      result.data
+
+  getRecipesRecommended: ->
+    $http.get("/recipes.json").then (result) ->
       result.data

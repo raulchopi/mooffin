@@ -1,1 +1,4 @@
-%div{ 'ng-controller' => 'InstantRecipesSearchController' }
+#recipesProposals
+  %ul
+    %li{ 'ng-repeat' => 'recipe in show_recipes' }
+      {{recipe}}

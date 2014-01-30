@@ -11,4 +11,17 @@ class RecipesController < ApplicationController
 
 	def show
 	end
+
+	def index
+    @recipes = Recipe.all
+    respond_to do |format|
+      format.json {
+        render json: @recipes
+      }
+      format.html {
+        @recipes
+      }
+    end
+  end
+
 end
