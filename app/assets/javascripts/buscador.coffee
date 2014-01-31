@@ -44,6 +44,18 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientsSearchC
     $scope.show_recipes = [] if $scope.selected_ingredients.length == 0
 
 
+# Controlador to select an ingredient for a new recipe
+angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchForNewRecipeController', ($scope, InstantIngredientsSearchFactory) ->
+
+  $scope.selected_ingredient = []
+
+  $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
+    $scope.ingredients = ingredients
+
+  $scope.setValue = (i) ->
+    $scope.selected_ingredient.push i
+
+
 
 # The factory
 angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFactory', ($http) ->

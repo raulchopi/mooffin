@@ -32,3 +32,10 @@ $(".searcher_bar").focusout(function(){
   this.value='';
   //this.focus();
 });
+
+$("#link_ingredient").focusout(function(){
+  //$('#buscador .bar input').css({'background-image': 'url("magnifier.png")', 'text-indent':'40px'});
+  $(".resultIngForRecipeTable").fadeOut('fast');
+  this.value='';
+  //this.focus();
+});

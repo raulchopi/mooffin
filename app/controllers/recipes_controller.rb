@@ -8,6 +8,16 @@ class RecipesController < ApplicationController
 	def new
 		@recipe = Recipe.new
 		@link = Link.new
+		
+		@ingredients = Ingredient.all
+		respond_to do |format|
+			format.json {
+				render json: @ingredients
+			}
+		format.html {
+			@ingredients
+		}
+		end
 	end
 
 	def show
