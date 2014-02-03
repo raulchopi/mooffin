@@ -5,12 +5,11 @@
 
 #content{ 'ng-controller' => 'InstantIngredientSearchForNewRecipeController' }
 	#anhadirIng
-		= form_for @link do |l|
-			= l.text_field :number
-			= l.collection_select :unit, Unit.all, :id, :desc
-			= l.text_field :ingredient , 'ng-model' => 'searchString', :class => 'searcher_bar', :placeholder => 'Ingrediente'
-			= l.text_field :importance
-
+		#new_link
+			= text_field :link, :number
+			= collection_select(:link, :unit, Unit.all, :id, :desc, :id => 'link_unit')
+			= text_field :link, :ingredient, 'ng-model' => 'searchString' 			
+			= text_field :link, :importance
 
 		%table{ 'ng-show' => 'searchString.length >= 2', :class => 'resultIngForRecipeTable' }
 			%tr{ 'ng-repeat' => 'i in ingredients | searchFor:searchString', 'ng-click' => 'setValue(i)', :class => 'resultIng' }
