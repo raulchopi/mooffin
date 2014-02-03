@@ -83,6 +83,23 @@
 	border-right: solid thin #e8e8e8
 	padding: 75px 0 0 0
 
+	#listaIng
+		width: 100%
+		float: left
+		
+		ul
+			list-style: none
+			width: 100%
+			padding: 0 0 0 25px
+			text-align: left
+
+		li
+			font-size: 0.8em
+
+		span
+			color: #da0404
+			margin: 0 5px 0 0
+
 	#new_link
 		width: 90%
 		margin: 0px auto
@@ -92,23 +109,29 @@
 			@include cajas_texto
 
 		#link_unit
-			width: 30%
+			width: 20%
 			float: left
 			margin: 15px 2px 0 2px
 
 		#link_ingredient
-			width: 40%
+			width: 30%
 			@include cajas_texto
 
 		#link_importance
 			width: 15%
 			@include cajas_texto
 
+		.btn_addIng
+			width: 10px
+			float: left
+
 	.resultIngForRecipeTable
 		margin: 0 0 0 43%
 
 	.resultIng
 		font-size: 0.8em
+
+	
 
 #mainNuevaReceta
 	width: 60%

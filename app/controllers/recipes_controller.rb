@@ -18,6 +18,15 @@ class RecipesController < ApplicationController
 			@ingredients
 		}
 		end
+		@units = Unit.all
+		respond_to do |format|
+			format.json {
+				render json: @units
+			}
+		format.html {
+			@units
+		}
+		end
 	end
 
 	def show

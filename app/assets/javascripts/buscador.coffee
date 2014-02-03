@@ -47,13 +47,36 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientsSearchC
 # Controlador to select an ingredient for a new recipe
 angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchForNewRecipeController', ($scope, InstantIngredientsSearchFactory) ->
 
-  $scope.selected_ingredient = []
+  $scope.selected_ingredient = ''
+  $scope.selected_unit = ''
+  $scope.listLinks = []
+  $scope.newLink = []
+  contador = 0
+
 
   $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
     $scope.ingredients = ingredients
 
+  $scope.units = InstantIngredientsSearchFactory.getUnits().then (units) ->
+    $scope.units = units
+
   $scope.setValue = (i) ->
-    $scope.selected_ingredient.push i
+    $scope.selected_ingredient = i
+
+  $scope.prueba = () ->
+    $scope.selected_unit = $scope.unitOfIng
+
+  $scope.addLink = () ->
+    $scope.newLink.push $scope.numberOfIng
+    $scope.newLink.push $scope.selected_unit
+    $scope.newLink.push $scope.selected_ingredient
+    $scope.newLink.push $scope.importanceOfIng
+    $scope.listLinks.push $scope.newLink
+    $scope.newLink = []
+
+  $scope.removeLink = (index) ->
+    $scope.listLinks.splice index, 1
+
 
 
 
@@ -68,4 +91,11 @@ angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFact
 
   getRecipesRecommended: ->
     $http.get("/recipes.json").then (result) ->
+      result.data
+
+
+  getUnits: ->
+    #return the promise directly.
+    $http.get("/units.json").then (result) ->
+      #resolve the promise as the data
       result.data

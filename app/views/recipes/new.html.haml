@@ -6,14 +6,24 @@
 #content{ 'ng-controller' => 'InstantIngredientSearchForNewRecipeController' }
 	#anhadirIng
 		#new_link
-			= text_field :link, :number
-			= collection_select(:link, :unit, Unit.all, :id, :desc, :id => 'link_unit')
+			= text_field :link, :number, 'ng-model' => 'numberOfIng'
+			= collection_select :link, :unit, Unit.all, :id, :desc, :id => 'link_unit', 'ng-model' => 'unitOfIng', 'ng-change' => 'prueba()'
 			= text_field :link, :ingredient, 'ng-model' => 'searchString' 			
-			= text_field :link, :importance
+			= text_field :link, :importance, 'ng-model' => 'importanceOfIng'
+			= button_tag '+', class: 'btn_addIng', type: :submit, 'ng-click' => 'addLink()'
 
 		%table{ 'ng-show' => 'searchString.length >= 2', :class => 'resultIngForRecipeTable' }
 			%tr{ 'ng-repeat' => 'i in ingredients | searchFor:searchString', 'ng-click' => 'setValue(i)', :class => 'resultIng' }
 				%td.resultIng {{i.name}}
+
+		#listaIng
+			%ul
+				%li{ 'ng-repeat' => 'link in listLinks' }
+					%span{ 'ng-click' => 'removeLink($index)' } x 					
+					{{link.0}} 
+					{{link.1.desc}}
+					{{link.2.name}}
+					{{link.3}}
 		
 	#mainNuevaReceta
 		#nuevaReceta
