@@ -64,6 +64,7 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
 
   $scope.setValue = (i) ->
     $scope.selected_ingredient = i
+    $scope.searchString = i.name
 
   $scope.prueba = (u) ->
     $scope.selected_unit = u
@@ -74,11 +75,16 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
     $scope.newLink.push $scope.selected_ingredient
     $scope.newLink.push $scope.importanceOfIng
     $scope.listLinks.push $scope.newLink
+    $scope.numberOfIng = ''
+    $scope.selected_unit = ''
+    $scope.searchString = ''
+    $scope.importanceOfIng = ''
     $scope.newLink = []
 
   $scope.addStep = () ->
     $scope.newStep.push $scope.textStepRec
-    $scope.newStep.push $scope.timeStepRec
+    $scope.steps.push $scope.newStep 
+    $scope.textStepRec = ''
     $scope.newStep = []
 
   $scope.removeLink = (index) ->
@@ -87,6 +93,7 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
   $scope.removeStep = (index) ->
     $scope.steps.splice index, 1
 
+  
 
 
 

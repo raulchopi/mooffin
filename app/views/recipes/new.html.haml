@@ -9,7 +9,7 @@
 			= text_field :link, :number, 'ng-model' => 'numberOfIng'
 			= collection_select :link, :unit, Unit.all, :id, :desc, :id => 'link_unit', 'ng-model' => 'unitOfIng', 'ng-change' => 'prueba()'
 			= text_field :link, :ingredient, 'ng-model' => 'searchString' 			
-			= text_field :link, :importance, 'ng-model' => 'importanceOfIng'
+			= collection_select :link, :importance, Importance.all, :id, :desc, 'ng-model' => 'importanceOfIng'
 			= button_tag '+', class: 'btn_addIng', type: :submit, 'ng-click' => 'addLink()'
 
 		%table{ 'ng-show' => 'searchString.length >= 2', :class => 'resultIngForRecipeTable' }
@@ -36,15 +36,19 @@
 				= f.text_field :servings
 				= f.label :difficulty, "Dificultad"
 				= f.collection_select :difficulty, Difficulty.all, :id, :desc
-				%ul
+				%ul.stepList
 					%li{ 'ng-repeat' => 'step in steps' }
-						= text_field :step, :description, 'ng-model' => 'textStepRec'
-						= text_field :step, :time, 'ng-model' => 'timeStepRec'
-						%span{'ng-click' => 'removeStep($index)'} x
-					%li
-						%span{'ng-click' => 'steps.push({})', :class => 'newStep' } Nuevo paso
+						%span.step_description
+							{{step.0}}
+						%span.step_time
+							{{step.1}}					
+						%span.remove_step{'ng-click' => 'removeStep($index)'} x
+				#newStep
+					%textarea.newStep_description{'ng-model' => 'textStepRec'}
+					%span.addStep{'ng-click' => 'addStep()'} +
 
-				= f.submit 'Crear', :class => 'signup_btn'				
+				#crearReceta
+					= f.submit 'Crear', :class => 'signup_btn'				
 
 
 		
