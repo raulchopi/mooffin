@@ -51,6 +51,8 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
   $scope.selected_unit = ''
   $scope.listLinks = []
   $scope.newLink = []
+  $scope.steps = []
+  $scope.newStep = []
   contador = 0
 
 
@@ -63,8 +65,8 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
   $scope.setValue = (i) ->
     $scope.selected_ingredient = i
 
-  $scope.prueba = () ->
-    $scope.selected_unit = $scope.unitOfIng
+  $scope.prueba = (u) ->
+    $scope.selected_unit = u
 
   $scope.addLink = () ->
     $scope.newLink.push $scope.numberOfIng
@@ -74,8 +76,16 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
     $scope.listLinks.push $scope.newLink
     $scope.newLink = []
 
+  $scope.addStep = () ->
+    $scope.newStep.push $scope.textStepRec
+    $scope.newStep.push $scope.timeStepRec
+    $scope.newStep = []
+
   $scope.removeLink = (index) ->
     $scope.listLinks.splice index, 1
+
+  $scope.removeStep = (index) ->
+    $scope.steps.splice index, 1
 
 
 
@@ -92,7 +102,6 @@ angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFact
   getRecipesRecommended: ->
     $http.get("/recipes.json").then (result) ->
       result.data
-
 
   getUnits: ->
     #return the promise directly.

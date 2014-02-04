@@ -12,6 +12,11 @@
 	float: left
 	margin: 0 2px 0 2px
 
+@mixin small_boxes_recipe
+	width: 25%
+	float: left
+	margin: 0 10px 0 10px
+
 #receta
 	margin-left: 20px
 
@@ -144,6 +149,33 @@
 	margin: 0 auto
 	margin-top: 50px
 
+	#recipe_time
+		@include small_boxes_recipe
+	#recipe_servings
+		@include small_boxes_recipe
+	#recipe_difficulty
+		@include small_boxes_recipe
+
 	label
 		padding: 0 0 0 10px
 		color: #232
+		width: 20%
+
+	ul
+		margin: 30px 0 0 0
+		width: 100%
+		list-style: none
+
+		li
+			#step_description
+				width: 90%
+				float: left
+			#step_time
+				width: 5%
+				float: left
+			span
+				float: left
+				width: 5%
+			.newStep
+				width: 100%
+

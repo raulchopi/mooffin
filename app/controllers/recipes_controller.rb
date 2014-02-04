@@ -7,40 +7,21 @@ class RecipesController < ApplicationController
 
 	def new
 		@recipe = Recipe.new
-		@link = Link.new
-		
-		@ingredients = Ingredient.all
-		respond_to do |format|
-			format.json {
-				render json: @ingredients
-			}
-		format.html {
-			@ingredients
-		}
-		end
-		@units = Unit.all
-		respond_to do |format|
-			format.json {
-				render json: @units
-			}
-		format.html {
-			@units
-		}
-		end
+		@link = Link.new		
 	end
 
 	def show
 	end
 
 	def index
-	    @recipes = Recipe.all
-	    respond_to do |format|
-	      format.json {
-	        render json: @recipes
-	      }
-	      format.html {
-	        @recipes
-	      }
+		@recipes = Recipe.all
+		respond_to do |format|
+			format.json {
+				render json: @recipes
+			}
+			format.html {
+				@recipes
+			}
     end
   end
 

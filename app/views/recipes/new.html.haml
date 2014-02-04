@@ -19,7 +19,7 @@
 		#listaIng
 			%ul
 				%li{ 'ng-repeat' => 'link in listLinks' }
-					%span{ 'ng-click' => 'removeLink($index)' } x 					
+					%span{ 'ng-click' => 'removeLink($index)' } x
 					{{link.0}} 
 					{{link.1.desc}}
 					{{link.2.name}}
@@ -36,6 +36,16 @@
 				= f.text_field :servings
 				= f.label :difficulty, "Dificultad"
 				= f.collection_select :difficulty, Difficulty.all, :id, :desc
-				= f.submit 'Crear', :class => 'signup_btn'
+				%ul
+					%li{ 'ng-repeat' => 'step in steps' }
+						= text_field :step, :description, 'ng-model' => 'textStepRec'
+						= text_field :step, :time, 'ng-model' => 'timeStepRec'
+						%span{'ng-click' => 'removeStep($index)'} x
+					%li
+						%span{'ng-click' => 'steps.push({})', :class => 'newStep' } Nuevo paso
+
+				= f.submit 'Crear', :class => 'signup_btn'				
+
+
 		
 = render :partial => 'layouts/shared/footer'
