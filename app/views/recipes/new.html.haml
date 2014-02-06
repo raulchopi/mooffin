@@ -39,9 +39,8 @@
 				%ul.stepList
 					%li{ 'ng-repeat' => 'step in steps' }
 						%span.step_description
-							{{step.0}}
-						%span.step_time
-							{{step.1}}					
+							{{step.0}}					
+						%span.remove_step{'ng-click' => 'editStep($index)'} v
 						%span.remove_step{'ng-click' => 'removeStep($index)'} x
 				#newStep
 					%textarea.newStep_description{'ng-model' => 'textStepRec'}
