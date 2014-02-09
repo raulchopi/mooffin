@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_USERNAME = /\A[A-Za-z0-9_]+\z/
@@ -45,8 +48,23 @@ class User < ActiveRecord::Base
       user.surname = auth.info.last_name
       user.username = auth.uid
       user.email = auth.info.email
+      #user.avatar = auth.info.image
       #user.password = Devise.friendly_token[0,20]
     end  
   end 
+
+  #Returns average rate of current user's recipes
+  def average_rate_recipes
+    val = 0
+    if recipes.count > 0
+      rec = recipes
+      rec.each do |r|
+        val += r.rating
+      end
+      val /= recipes.count
+    end
+    val
+  end
+
 
 end

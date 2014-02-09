@@ -13,12 +13,12 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		
+		@recipes = current_user.recipes
 	end
 
 	private
 
 		def user_params
-			params.require(:user).permit(:username, :name, :surname, :email, :password)
+			params.require(:user).permit(:username, :name, :surname, :email, :password, :avatar)
 		end
 end

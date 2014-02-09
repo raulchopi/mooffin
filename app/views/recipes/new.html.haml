@@ -34,8 +34,8 @@
 				= f.text_field :time
 				= f.label :servings, "Comensales"
 				= f.text_field :servings
-				= f.label :difficulty, "Dificultad"
-				= f.collection_select :difficulty, Difficulty.all, :id, :desc
+				= f.label :difficulty_id, "Dificultad"
+				= f.collection_select :difficulty_id, Difficulty.all, :id, :desc
 				%ul.stepList
 					%li{ 'ng-repeat' => 'step in steps' }
 						%span.step_description

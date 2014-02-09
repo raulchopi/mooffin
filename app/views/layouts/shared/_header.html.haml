@@ -34,6 +34,6 @@
 	%ul		
 		%li= link_to 'Qué cocino?', root_path
 		- if current_user 
-			%li= link_to 'Mis recetas', recipes_path
+			%li= link_to 'Mis recetas', "/users/#{current_user.username}"
 			%li='Favoritas'
 			%li= link_to 'Nueva receta', new_recipe_path
