@@ -53,6 +53,7 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
   $scope.newLink = []
   $scope.steps = []
   $scope.newStep = []
+  $scope.recipe = []
   contador = 0
   edit = false
   editIndex = 0
@@ -105,9 +106,11 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
     edit = true
     editIndex = index
 
-
-  
-
+  $scope.createRecipe = () ->
+    $scope.recipe.push $scope.recipeTitle
+    $scope.recipe.push $scope.recipeTime
+    $scope.recipe.push $scope.recipeServings
+    $scope.recipe.push $scope.reciperecipeDifficulty
 
 
 # The factory

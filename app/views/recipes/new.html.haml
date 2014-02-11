@@ -26,28 +26,27 @@
 					{{link.3}}
 		
 	#mainNuevaReceta
-		#nuevaReceta
-			= form_for @recipe, :html => {:id => 'form_recipe'} do |f|
-				= f.label :title, "Título"
-				= f.text_field :title
-				= f.label :time, "Tiempo"
-				= f.text_field :time
-				= f.label :servings, "Comensales"
-				= f.text_field :servings
-				= f.label :difficulty_id, "Dificultad"
-				= f.collection_select :difficulty_id, Difficulty.all, :id, :desc
-				%ul.stepList
-					%li{ 'ng-repeat' => 'step in steps' }
-						%span.step_description
-							{{step.0}}					
-						%span.remove_step{'ng-click' => 'editStep($index)'} v
-						%span.remove_step{'ng-click' => 'removeStep($index)'} x
-				#newStep
-					%textarea.newStep_description{'ng-model' => 'textStepRec'}
-					%span.addStep{'ng-click' => 'addStep()'} +
+		#nuevaReceta			
+			= label :title, "Título"
+			= text_field :recipe, :title, 'ng-model' => 'recipeTitle'
+			= label :time, "Tiempo"
+			= text_field :recipe, :time, 'ng-model' => 'recipeTime'
+			= label :servings, "Comensales"
+			= text_field :recipe, :servings, 'ng-model' => 'recipeServings'
+			= label :difficulty_id, "Dificultad"
+			= collection_select :recipe, :difficulty_id, Difficulty.all, :id, :desc, 'ng-model' => 'recipeDifficulty'
+			%ul.stepList
+				%li{ 'ng-repeat' => 'step in steps' }
+					%span.step_description
+						{{step.0}}					
+					%span.remove_step{'ng-click' => 'editStep($index)'} v
+					%span.remove_step{'ng-click' => 'removeStep($index)'} x
+			#newStep
+				%textarea.newStep_description{'ng-model' => 'textStepRec'}
+				%span.addStep{'ng-click' => 'addStep()'} +
 
-				#crearReceta
-					= f.submit 'Crear', :class => 'signup_btn'				
+			#crearReceta
+				= button_tag 'Crear', class: 'signup_btn', type: :submit, 'ng-click' => 'createRecipe()'			
 
 
 		
