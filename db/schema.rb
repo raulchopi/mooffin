@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20140209124910) do
     t.integer  "difficulty_id", null: false
     t.integer  "time",          null: false
     t.integer  "servings",      null: false
-    t.text     "description"
+    t.text     "description",   null: false
     t.float    "rating",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -125,12 +125,16 @@ ActiveRecord::Schema.define(version: 20140209124910) do
     t.string   "provider"
     t.string   "access_token"
     t.string   "uid"
+    t.string   "activation_state"
+    t.string   "activation_token"
+    t.datetime "activation_token_expires_at"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
   end
 
+  add_index "users", ["activation_token"], name: "index_users_on_activation_token"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at"
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token"

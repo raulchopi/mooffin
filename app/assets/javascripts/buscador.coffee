@@ -48,12 +48,12 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientsSearchC
 angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchForNewRecipeController', ($scope, InstantIngredientsSearchFactory) ->
 
   $scope.selected_ingredient = ''
-  $scope.selected_unit = ''
-  $scope.listLinks = []
-  $scope.newLink = []
+  selected_unit = ''
+  newLink = {}
+  newStep = {}
+  recipe = {}
+  $scope.links = []
   $scope.steps = []
-  $scope.newStep = []
-  $scope.recipe = []
   contador = 0
   edit = false
   editIndex = 0
@@ -73,45 +73,39 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
     $scope.selected_unit = u
 
   $scope.addLink = () ->
-    $scope.newLink.push $scope.numberOfIng
-    $scope.newLink.push $scope.selected_unit
-    $scope.newLink.push $scope.selected_ingredient
-    $scope.newLink.push $scope.importanceOfIng
-    $scope.listLinks.push $scope.newLink
+    newLink = {'number': $scope.numberOfIng, 'unit': $scope.selected_unit, 'ing': $scope.selected_ingredient, 'importance': $scope.importanceOfIng}
+    $scope.links.push newLink
     $scope.numberOfIng = ''
     $scope.selected_unit = ''
     $scope.searchString = ''
     $scope.importanceOfIng = ''
-    $scope.newLink = []
+    newLink = {}
 
   $scope.addStep = () ->
-    $scope.newStep.push $scope.textStepRec
+    newStep = {'desc': $scope.textStepRec}
     
     if !edit
-      $scope.steps.push $scope.newStep       
+      $scope.steps.push newStep       
     else      
-      $scope.steps[editIndex] = $scope.newStep 
+      $scope.steps[editIndex] = newStep 
     
     $scope.textStepRec = ''
-    $scope.newStep = []
+    newStep = {}
 
   $scope.removeLink = (index) ->
-    $scope.listLinks.splice index, 1
+    $scope.links.splice index, 1
 
   $scope.removeStep = (index) ->
-    $scope.steps.splice index, 1
+    steps.splice index, 1
 
   $scope.editStep = (index) ->
-    $scope.textStepRec = $scope.steps[index]
+    $scope.textStepRec = steps[index]
     edit = true
     editIndex = index
 
   $scope.createRecipe = () ->
-    $scope.recipe.push $scope.recipeTitle
-    $scope.recipe.push $scope.recipeTime
-    $scope.recipe.push $scope.recipeServings
-    $scope.recipe.push $scope.reciperecipeDifficulty
-
+    recipe = {'title': $scope.recipeTitle, 'time': $scope.recipeTime, 'servings': $scope.recipeServings, 'difficulty': $scope.recipeDifficulty, 'links': $scope.links, 'steps': $scope.steps}    
+    recipe
 
 # The factory
 angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFactory', ($http) ->
