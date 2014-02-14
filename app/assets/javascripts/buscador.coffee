@@ -60,6 +60,7 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
   contador = 0
   edit = false
   editIndex = 0
+  numSteps = 0;
 
 
   $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
@@ -85,24 +86,32 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
     newLink = {}
 
   $scope.addStep = () ->
-    newStep = {'desc': $scope.textStepRec}
-    
     if !edit
+      newStep = {'desc': $scope.textStepRec, 'orden': ++numSteps}
       $scope.steps.push newStep       
-    else      
+    else
+      newStep = {'desc': $scope.textStepRec, 'orden': editIndex + 1}
       $scope.steps[editIndex] = newStep 
     
     $scope.textStepRec = ''
+    editIndex = 0
+    edit = false
     newStep = {}
 
   $scope.removeLink = (index) ->
     $scope.links.splice index, 1
 
   $scope.removeStep = (index) ->
-    steps.splice index, 1
+    numSteps--
+
+    angular.forEach $scope.steps, (step) ->
+      step.orden-- if step.orden > index + 1
+
+    $scope.steps.splice index, 1
 
   $scope.editStep = (index) ->
-    $scope.textStepRec = steps[index]
+    $scope.textStepRec = $scope.steps[index].desc
+    $scope.ordenStep = index + 1
     edit = true
     editIndex = index
 
