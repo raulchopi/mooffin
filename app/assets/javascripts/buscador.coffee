@@ -1,6 +1,10 @@
 # Define a new module for our app. The array holds the names of dependencies if any.
 app = angular.module("instantIngredientsSearch", [])
 
+recipe = {}
+links = {}
+steps = {}
+
 # Create the instant search filter
 app.filter "searchFor", ->
   
@@ -51,7 +55,6 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
   selected_unit = ''
   newLink = {}
   newStep = {}
-  recipe = {}
   $scope.links = []
   $scope.steps = []
   contador = 0
@@ -104,8 +107,11 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
     editIndex = index
 
   $scope.createRecipe = () ->
-    recipe = {'title': $scope.recipeTitle, 'time': $scope.recipeTime, 'servings': $scope.recipeServings, 'difficulty': $scope.recipeDifficulty, 'links': $scope.links, 'steps': $scope.steps}    
-    recipe
+    recipe = { 'recipe': { 'title': $scope.recipeTitle, 'time': $scope.recipeTime, 
+    'servings': $scope.recipeServings, 'difficulty_id': 1 } }
+    links = $scope.links
+    steps = $scope.steps
+    InstantIngredientsSearchFactory.setRecipe recipe, liks, steps
 
 # The factory
 angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFactory', ($http) ->
@@ -125,3 +131,7 @@ angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFact
     $http.get("/units.json").then (result) ->
       #resolve the promise as the data
       result.data
+
+  setRecipe: ->
+    $http.post("/recipes", recipe, links, steps).then ->
+      true
