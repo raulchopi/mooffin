@@ -27,10 +27,9 @@ class RecipesController < ApplicationController
 	end
 
 	def create
-		@recipe = Recipe.new(recipe_params)
-		@recipe.user_id = current_user.id
+		@recipe = current_user.recipes.new(recipe_params)
 		@recipe.rating = 0
-		@recipe.description = ""
+		@recipe.description = ''
 		if @recipe.save
 			redirect_to root_url
 		else

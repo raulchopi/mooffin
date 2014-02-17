@@ -120,7 +120,7 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
     'servings': $scope.recipeServings, 'difficulty_id': 1 } }
     links = $scope.links
     steps = $scope.steps
-    InstantIngredientsSearchFactory.setRecipe recipe, liks, steps
+    InstantIngredientsSearchFactory.setRecipe recipe, links, steps
 
 # The factory
 angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFactory', ($http) ->
