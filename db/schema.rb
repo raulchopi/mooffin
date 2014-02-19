@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209124910) do
+ActiveRecord::Schema.define(version: 20140219104652) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id",    null: false
@@ -30,13 +30,13 @@ ActiveRecord::Schema.define(version: 20140209124910) do
   end
 
   create_table "difficulties", force: true do |t|
-    t.string   "desc",       null: false
+    t.string   "description", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "importances", force: true do |t|
-    t.string   "desc",       null: false
+    t.string   "description", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140209124910) do
   create_table "links", force: true do |t|
     t.integer  "recipe_id",     null: false
     t.integer  "ingredient_id", null: false
-    t.integer  "importance",    null: false
+    t.integer  "importance_id", null: false
     t.integer  "unit_id",       null: false
     t.float    "number",        null: false
     t.datetime "created_at"
@@ -74,29 +74,33 @@ ActiveRecord::Schema.define(version: 20140209124910) do
   end
 
   create_table "recipes", force: true do |t|
-    t.integer  "user_id",       null: false
-    t.string   "title",         null: false
-    t.integer  "difficulty_id", null: false
-    t.integer  "time",          null: false
-    t.integer  "servings",      null: false
-    t.text     "description",   null: false
-    t.float    "rating",        null: false
+    t.integer  "user_id",            null: false
+    t.string   "title",              null: false
+    t.integer  "difficulty_id",      null: false
+    t.integer  "time",               null: false
+    t.integer  "servings",           null: false
+    t.text     "description"
+    t.float    "rating",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "steps", force: true do |t|
     t.integer  "recipe_id",   null: false
     t.integer  "orden",       null: false
-    t.integer  "time",        null: false
     t.text     "description", null: false
+    t.integer  "time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "units", force: true do |t|
-    t.string   "unit",       null: false
-    t.string   "desc",       null: false
+    t.string   "unit",        null: false
+    t.string   "description", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -122,12 +126,12 @@ ActiveRecord::Schema.define(version: 20140209124910) do
     t.integer  "failed_logins_count",             default: 0
     t.datetime "lock_expires_at"
     t.string   "unlock_token"
-    t.string   "provider"
-    t.string   "access_token"
-    t.string   "uid"
     t.string   "activation_state"
     t.string   "activation_token"
     t.datetime "activation_token_expires_at"
+    t.string   "provider"
+    t.string   "access_token"
+    t.string   "uid"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

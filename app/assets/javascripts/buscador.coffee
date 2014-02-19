@@ -61,6 +61,7 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
   edit = false
   editIndex = 0
   numSteps = 0;
+  photo = ''
 
 
   $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
@@ -87,10 +88,10 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
 
   $scope.addStep = () ->
     if !edit
-      newStep = {'desc': $scope.textStepRec, 'orden': ++numSteps}
+      newStep = {'description': $scope.textStepRec, 'orden': ++numSteps}
       $scope.steps.push newStep       
     else
-      newStep = {'desc': $scope.textStepRec, 'orden': editIndex + 1}
+      newStep = {'description': $scope.textStepRec, 'orden': editIndex + 1}
       $scope.steps[editIndex] = newStep 
     
     $scope.textStepRec = ''
@@ -117,10 +118,14 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
 
   $scope.createRecipe = () ->
     recipe = { 'recipe': { 'title': $scope.recipeTitle, 'time': $scope.recipeTime, 
-    'servings': $scope.recipeServings, 'difficulty_id': 1 } }
+    'servings': $scope.recipeServings, 'difficulty_id': 1, 'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
     links = $scope.links
     steps = $scope.steps
     InstantIngredientsSearchFactory.setRecipe recipe, links, steps
+
+
+  $scope.setFile = (element) ->
+    photo = element.files[0]
 
 # The factory
 angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFactory', ($http) ->

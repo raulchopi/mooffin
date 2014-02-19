@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-	before_action :get_recipe, only: [:show]
+	before_action :get_recipe, only: [:show, :edit, :destroy]
 	wrap_parameters format: [:json, :xml]
 
 	def get_recipe
@@ -26,6 +26,14 @@ class RecipesController < ApplicationController
   	end
 	end
 
+	def edit
+	end
+
+	def destroy 
+		@recipe.destroy
+		redirect_to user_path(current_user.id)
+	end
+
 	def create
 		@recipe = current_user.recipes.new(recipe_params)
 		@recipe.rating = 0
@@ -40,7 +48,7 @@ class RecipesController < ApplicationController
 
 	private
 		def recipe_params
-			params.require(:recipe).permit(:recipe, :title, :time, :servings, :difficulty_id, :description)
+			params.require(:recipe).permit(:recipe, :title, :time, :servings, :difficulty_id, :description, steps_attributes: [:orden, :description], links_attributes: [:ingredient_id, :importance_id, :unit_id, :number])
 		end
 
 end

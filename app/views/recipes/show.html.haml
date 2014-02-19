@@ -13,7 +13,7 @@
 
 			#detallesreceta
 				.dificultad
-					Dificultad: #{@recipe.difficulty.desc} 
+					Dificultad: #{@recipe.difficulty.description} 
 				.tiempoElaboracion
 					#{@recipe.time} minutos
 
@@ -24,7 +24,7 @@
 					- @recipe.links.each do |link|
 						%li
 							= link.number
-							= link.unit.desc
+							= link.unit.description
 							= link.ingredient.name
 
 			#fotoreceta

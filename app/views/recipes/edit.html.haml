@@ -29,7 +29,7 @@
 		#nuevaReceta			
 			= label :title, "Título"
 			= text_field :recipe, :title, 'ng-model' => 'recipeTitle'
-			= file_field :recipe, :photo, 'onchange' => 'angular.element(this).scope().setFile(this)'
+			= file_field :recipe, :photo, 'ng-model' => 'recipePhoto'
 			= label :time, "Tiempo"
 			= text_field :recipe, :time, 'ng-model' => 'recipeTime'
 			= label :servings, "Comensales"
