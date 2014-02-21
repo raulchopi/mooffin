@@ -9,4 +9,15 @@ class Recipe < ActiveRecord::Base
 	accepts_nested_attributes_for :links, :steps
 
 	has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
+	def average_rate
+		val = 0
+		if opinions.count > 0
+			opinions.each do |o|
+				val += o.rating
+			end
+			val /= opinions.count
+		end
+		val
+	end
 end

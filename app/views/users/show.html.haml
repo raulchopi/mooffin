@@ -7,7 +7,7 @@
 	#buscador
 		#datos_usuario
 			.foto
-				=  image_tag current_user.avatar.path
+				= image_tag current_user.avatar.path
 			.nombre
 				= current_user.name
 			.num_recetas
@@ -19,9 +19,9 @@
 		%ul
 			- @recipes.each do |recipe|
 				%li
-					= recipe.title
-					= link_to 'Editar', edit_recipe_path(recipe.id)
-					= link_to 'Eliminar', recipe_path(recipe.id), :method => :delete, data: { confirm: "Seguro?" }
+					= link_to recipe.title, recipe_path(recipe)
+					= link_to 'Editar', edit_recipe_path(recipe)
+					= link_to 'Eliminar', recipe_path(recipe), :method => :delete, data: { confirm: "Seguro?" }
 
 		
 = render :partial => 'layouts/shared/footer'

@@ -57,8 +57,7 @@ class User < ActiveRecord::Base
   def average_rate_recipes
     val = 0
     if recipes.count > 0
-      rec = recipes
-      rec.each do |r|
+      recipes.each do |r|
         val += r.rating
       end
       val /= recipes.count

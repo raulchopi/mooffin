@@ -3,38 +3,55 @@
 
 = render :partial => 'layouts/shared/header'
 
-#content
-	#buscador
-		
-	#main
-		#receta
-			#tituloreceta
-				= @recipe.title
+#content		
+	#receta
+		#tituloreceta
+			= @recipe.title 
+			(#{@recipe.rating})
 
-			#detallesreceta
-				.dificultad
-					Dificultad: #{@recipe.difficulty.description} 
-				.tiempoElaboracion
-					#{@recipe.time} minutos
+		#detallesreceta
+			.dificultad
+				Dificultad: #{@recipe.difficulty.description} 
+			.tiempoElaboracion
+				#{@recipe.time} minutos
 
-			#ingredientesreceta
-				.titulo
-					Ingredientes
-				%ul
-					- @recipe.links.each do |link|
-						%li
-							= link.number
-							= link.unit.description
-							= link.ingredient.name
+		#ingredientesreceta
+			.titulo
+				Ingredientes
+			%ul
+				- @recipe.links.each do |link|
+					%li
+						= link.number
+						= link.unit.description
+						= link.ingredient.name
 
-			#fotoreceta
-				= image_tag("logo.png")
-			#elaboracionreceta
-				.titulo
-					Elaboración
-				%ul
-					- @recipe.steps.each do |step|
-						%li= step.description
+		#fotoreceta
+			= image_tag("logo.png")
+		#elaboracionreceta
+			.titulo
+				Elaboración
+			%ul
+				- @recipe.steps.each do |step|
+					%li= step.description
+
+	#opiniones
+		%ul
+		- @recipe.opinions.each do |op|
+			%li
+				= op.opinion
+				= op.rating
+				= op.user.name
+
+	
+		Deja tu opinión
+		= form_for [@recipe, @opinion], :html => {:id => 'form_opinion'} do |o|
+			= o.label :opinion, "Opinión"
+			= o.text_field :opinion
+			= o.label :rating, "Valoración"
+			= o.text_field :rating
+			= o.submit 'Opinar!', :class => 'new_opinion_btn'
+
+
 
 		
 = render :partial => 'layouts/shared/footer'

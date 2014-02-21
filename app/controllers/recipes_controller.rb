@@ -8,10 +8,11 @@ class RecipesController < ApplicationController
 
 	def new
 		@recipe = Recipe.new
-		@link = Link.new		
+		@link = Link.new
 	end
 
 	def show
+		@opinion = Opinion.new
 	end
 
 	def index
