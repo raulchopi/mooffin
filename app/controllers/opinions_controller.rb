@@ -1,10 +1,15 @@
 class OpinionsController < ApplicationController
 	
 	before_action :get_recipe, only: [:create]
+	before_action :get_opinion, only: [:destroy]
 
 	def get_recipe
 		@recipe = Recipe.find(params[:recipe_id])
 	end
+
+	def get_opinion
+		@opinion = Opinion.find(params[:id])
+	end	
 
 	def new
 		@opinion = Opinion.new
@@ -20,6 +25,13 @@ class OpinionsController < ApplicationController
 		else
 			redirect_to recipe_path(@recipe), :alert => "Error al comentar!"
 		end
+	end
+
+	def destroy 
+		@opinion.destroy
+		@opinion.recipe.rating = @opinion.recipe.average_rate
+		@opinion.recipe.save
+		redirect_to recipe_path(@opinion.recipe)
 	end
 
 	private

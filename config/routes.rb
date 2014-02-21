@@ -17,6 +17,7 @@ Mooffin::Application.routes.draw do
     resources :opinions
   end
   resources :links
+  resources :opinions
 
   
   #OAuth

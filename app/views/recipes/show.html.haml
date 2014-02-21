@@ -3,12 +3,18 @@
 
 = render :partial => 'layouts/shared/header'
 
-#content		
+#content
 	#receta
 		#tituloreceta
 			= @recipe.title 
 			(#{@recipe.rating})
-
+			//- if @like = current_user.likes.find(@recipe)
+			//	= form_for [@recipe, @opinion], :html => {:id => 'form_opinion'} do |f|
+			//	= f.submit 'No me gusta'
+			//- else
+			//	= form_for current_user.likes.build(@recipe) do |l|
+			//	= l.submit 'Me gusta'
+			
 		#detallesreceta
 			.dificultad
 				Dificultad: #{@recipe.difficulty.description} 
@@ -35,12 +41,14 @@
 					%li= step.description
 
 	#opiniones
-		%ul
-		- @recipe.opinions.each do |op|
-			%li
-				= op.opinion
-				= op.rating
-				= op.user.name
+		.titulo
+			Opiniones
+			- @recipe.opinions.each do |op|
+				#opinion
+					= op.opinion
+					= op.rating
+					= op.user.name
+					= link_to 'x', [@recipe, op], :method => :delete, data: { confirm: "Seguro?" }
 
 	
 		Deja tu opinión
