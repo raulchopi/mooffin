@@ -43,7 +43,7 @@
 					%span.remove_step{'ng-click' => 'editStep($index)'} v
 					%span.remove_step{'ng-click' => 'removeStep($index)'} x
 			#newStep
-				%textarea.newStep_description{'ng-model' => 'textStepRec'}
+				%textarea.newStep_description{'ng-model' => 'textStepRec', 'ng-keyup' => 'enterKeyStep($event)'}
 				%span.addStep{'ng-click' => 'addStep()'} +
 
 			#crearReceta

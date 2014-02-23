@@ -48,7 +48,8 @@
 					= op.opinion
 					= op.rating
 					= op.user.name
-					= link_to 'x', [@recipe, op], :method => :delete, data: { confirm: "Seguro?" }
+					- if op.user == current_user
+						= link_to 'x', [@recipe, op], :method => :delete, data: { confirm: "Seguro?" }
 
 	
 		Deja tu opinión

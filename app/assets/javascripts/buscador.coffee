@@ -123,6 +123,10 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
     steps = $scope.steps
     InstantIngredientsSearchFactory.setRecipe recipe, links, steps
 
+  $scope.enterKeyStep = (ev) ->
+    if(ev.which == 13)
+      addStep()
+
 
   $scope.setFile = (element) ->
     photo = element.files[0]
