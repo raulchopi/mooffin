@@ -1,0 +1,11 @@
+#opinion
+	.opUsuario
+		= opinion.user.name		
+	.opHora
+		= opinion.created_at
+	.opVal
+		= opinion.rating
+	.opTexto
+		= opinion.opinion
+	- if opinion.user == current_user
+		= link_to 'x', opinion, :method => :delete, remote: true

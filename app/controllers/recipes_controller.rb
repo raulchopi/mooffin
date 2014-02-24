@@ -13,6 +13,7 @@ class RecipesController < ApplicationController
 
 	def show
 		@opinion = Opinion.new
+		@opinions = @recipe.opinions
 	end
 
 	def index

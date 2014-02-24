@@ -21,9 +21,11 @@ class OpinionsController < ApplicationController
 		if @opinion.save
 			@recipe.rating = @recipe.average_rate
 			@recipe.save
-			redirect_to recipe_path(@recipe)
 		else
 			redirect_to recipe_path(@recipe), :alert => "Error al comentar!"
+		end
+		respond_to do |format|
+			format.js
 		end
 	end
 
@@ -31,7 +33,9 @@ class OpinionsController < ApplicationController
 		@opinion.destroy
 		@opinion.recipe.rating = @opinion.recipe.average_rate
 		@opinion.recipe.save
-		redirect_to recipe_path(@opinion.recipe)
+		respond_to do |format|
+			format.js
+		end
 	end
 
 	private
