@@ -20,11 +20,12 @@ class OpinionsController < ApplicationController
 		@opinion.user = current_user
 		if @opinion.save
 			@recipe.rating = @recipe.average_rate
-			@recipe.save
+			@recipe.save			
 		else
 			redirect_to recipe_path(@recipe), :alert => "Error al comentar!"
 		end
 		respond_to do |format|
+			format.json { render json: @recipe }
 			format.js
 		end
 	end

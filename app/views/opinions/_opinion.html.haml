@@ -1,11 +1,15 @@
-#opinion
-	.opUsuario
-		= opinion.user.name		
-	.opHora
-		= opinion.created_at
-	.opVal
-		= opinion.rating
-	.opTexto
-		= opinion.opinion
-	- if opinion.user == current_user
-		= link_to 'x', opinion, :method => :delete, remote: true
+- if !opinion.opinion.blank?
+	=div_for opinion do
+		#opTop
+			= link_to opinion.user.name, user_path(opinion.user)
+			%span= opinion.created_at
+			.opDelete
+				- if opinion.user == current_user
+					= link_to 'x', opinion, :method => :delete, remote: true
+
+		#opBottom
+			.opVal
+				= opinion.rating
+			.opText
+				= opinion.opinion
+	

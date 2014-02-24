@@ -6,8 +6,8 @@
 #content
 	#receta
 		#tituloreceta
-			= @recipe.title 
-			(#{@recipe.rating})
+			= @recipe.title
+			= render :partial => 'recipes/rating'
 			//- if @like = current_user.likes.find(@recipe)
 			//	= form_for [@recipe, @opinion], :html => {:id => 'form_opinion'} do |f|
 			//	= f.submit 'No me gusta'
