@@ -8,12 +8,10 @@
 		#tituloreceta
 			= @recipe.title
 			= render :partial => 'recipes/rating'
-			//- if @like = current_user.likes.find(@recipe)
-			//	= form_for [@recipe, @opinion], :html => {:id => 'form_opinion'} do |f|
-			//	= f.submit 'No me gusta'
-			//- else
-			//	= form_for current_user.likes.build(@recipe) do |l|
-			//	= l.submit 'Me gusta'
+			- if current_user.likes.find_by_recipe_id(@recipe)
+				[boton no me gusta]
+			- else
+				[boton me gusta]
 			
 		#detallesreceta
 			.dificultad
@@ -46,19 +44,19 @@
 		
 		= render @opinions
 
-		#nuevaOpinion
-			- if !current_user 
-				Debes estar logueado para comentar una receta.
-			- elsif @recipe.user == current_user
-				No puedes comentar tus propias recetas, pillín!
-			- else
-				Deja tu opinión
-				= form_for [@recipe, @opinion], :html => {:id => 'form_opinion'}, remote: true do |o|
-					= o.label :opinion, "Opinión"
-					= o.text_field :opinion
-					= o.label :rating, "Valoración"
-					= o.text_field :rating
-					= o.submit 'Opinar!', :class => 'new_opinion_btn'
+	#nuevaOpinion
+		- if !current_user 
+			Debes estar logueado para comentar una receta.
+		- elsif @recipe.user == current_user
+			No puedes comentar tus propias recetas, pillín!
+		- else
+			Deja tu opinión
+			= form_for [@recipe, @opinion], :html => {:id => 'form_opinion'}, remote: true do |o|
+				= o.label :opinion, "Opinión"
+				= o.text_field :opinion
+				= o.label :rating, "Valoración"
+				= o.text_field :rating
+				= o.submit 'Opinar!', :class => 'new_opinion_btn'
 
 
 

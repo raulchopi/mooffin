@@ -25,7 +25,7 @@ class RecipesController < ApplicationController
 			format.html {
 				@recipes
 			}
-  	end
+  		end
 	end
 
 	def edit
@@ -46,7 +46,6 @@ class RecipesController < ApplicationController
 			redirect_to new_recipe_path
 		end
 	end
-
 
 	private
 		def recipe_params

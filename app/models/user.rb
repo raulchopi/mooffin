@@ -20,9 +20,10 @@ class User < ActiveRecord::Base
   #validates :password, presence: true, confirmation: true, length: {minimum: 3}
 
   has_many :authorizations
-  has_many :opinions
+  has_many :opinions, :dependent => :destroy
   has_many :recipes
-  has_many :likes
+  has_many :likes, :dependent => :destroy
+  has_many :like_recipes, :through => :likes, :source => :recipes
 
   def set_current_language
     self.language = I18n.locale.to_s if self.language.blank?
