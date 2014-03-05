@@ -8,20 +8,20 @@ class LikesController < ApplicationController
 	end
 
 	def get_like
-		@like = Like.find_by_user_id_and_recipe_id(current_user, params[:recipe_id])
+		@like = Like.find(params[:id])
 	end	
 
 	def index
 		@likes = current_user.likes
 	end
 
-	def show
-	end
-
 	def create
-		@like = current_user.likes.create(@recipe)
+		@like = @recipe.likes.new()
+		@like.user = current_user
+		@like.save
 		respond_to do |format|
 			format.js
+				render :show do |page| page["#likeRecipe"].replace_html :partial => "recipes/like" end
 		end
 	end
 
@@ -29,13 +29,9 @@ class LikesController < ApplicationController
 		@like.destroy
 		respond_to do |format|
 			format.js
+				render :show do |page| page["#likeRecipe"].replace_html :partial => "recipes/like" end
 		end
 	end
 
-	private
-
-		def like_params
-			params.require(:user)
-		end
 
 end

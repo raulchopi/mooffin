@@ -13,6 +13,7 @@ class RecipesController < ApplicationController
 
 	def show
 		@opinion = Opinion.new
+		@like = Like.new
 		@opinions = @recipe.opinions
 	end
 

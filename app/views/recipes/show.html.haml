@@ -8,11 +8,9 @@
 		#tituloreceta
 			= @recipe.title
 			= render :partial => 'recipes/rating'
-			- if current_user.likes.find_by_recipe_id(@recipe)
-				[boton no me gusta]
-			- else
-				[boton me gusta]
-			
+			#likeRecipe
+				= render :partial => 'recipes/like'
+
 		#detallesreceta
 			.dificultad
 				Dificultad: #{@recipe.difficulty.description} 

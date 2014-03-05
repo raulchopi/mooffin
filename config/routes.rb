@@ -12,13 +12,16 @@ Mooffin::Application.routes.draw do
   resources :users do 
     resources :likes
   end
+
   resources :sessions
 
   resources :ingredients
   resources :recipes do
     resources :opinions
+    resources :likes
   end
   resources :links
+  resources :likes
   resources :opinions
 
   
