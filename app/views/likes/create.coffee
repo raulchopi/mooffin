@@ -1,0 +1,1 @@
+$("#likeRecipe").html "<%= escape_javascript(render :partial => 'recipes/like') %>"

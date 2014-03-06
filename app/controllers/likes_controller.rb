@@ -21,7 +21,6 @@ class LikesController < ApplicationController
 		@like.save
 		respond_to do |format|
 			format.js
-				render :show do |page| page["#likeRecipe"].replace_html :partial => "recipes/like" end
 		end
 	end
 
@@ -29,7 +28,6 @@ class LikesController < ApplicationController
 		@like.destroy
 		respond_to do |format|
 			format.js
-				render :show do |page| page["#likeRecipe"].replace_html :partial => "recipes/like" end
 		end
 	end
 
