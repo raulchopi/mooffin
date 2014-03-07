@@ -6,8 +6,9 @@
 #content
 	#receta
 		#tituloreceta
-			= @recipe.title
-			= render :partial => 'recipes/rating'
+			#titulo
+				= @recipe.title
+				= render :partial => 'recipes/rating'
 			#likeRecipe
 				= render :partial => 'recipes/like'
 

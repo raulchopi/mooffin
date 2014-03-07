@@ -1,1 +1,1 @@
-$("#likeRecipe").html "<%= escape_javascript(render :partial => 'recipes/like') %>"
+$("#likeRecipe").html("<%= escape_javascript(render :partial => 'recipes/like') %>").fadeIn "slow"
