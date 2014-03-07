@@ -1,5 +1,6 @@
-- if like = current_user.likes.find_by_recipe_id(@recipe)
-	= link_to image_tag('fav_small.png', :border => 0), like, :method => :delete, remote: true
-- else
-	= form_for [@recipe, @like], :remote => true do |f|
-		= image_submit_tag 'nofav_small.png'
+- if current_user
+	- if like = current_user.likes.find_by_recipe_id(@recipe)
+		= link_to image_tag('fav_small.png', :border => 0), like, :method => :delete, remote: true
+	- else
+		= form_for [@recipe, @like], :remote => true do |f|
+			= image_submit_tag 'nofav_small.png'

@@ -1,3 +1,3 @@
 = div_for like do
 	= link_to like.recipe.title, recipe_path(like.recipe)
-	= link_to image_tag('fav_small.png', :border => 0), like, :method => :delete, data: { confirm: "Seguro?" }, remote: true
+	= link_to image_tag('fav_small.png', :border => 0), like, :method => :delete, remote: true
