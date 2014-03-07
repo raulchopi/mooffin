@@ -6,11 +6,11 @@
 
 			%table{ 'ng-show' => 'searchString.length >= 2', :class => 'resultIngTable' }
 				%tr{ 'ng-repeat' => 'i in ingredients | searchFor:searchString', 'ng-click' => 'setValue(i)', :class => 'resultIng' }
-					%td.resultIng {{i.name}}
+					%td.resultIng{'ng-bind' => 'i.name'}
 
 		#ingSel
 			%ul
-				%li{ 'ng-repeat' => 'ing in selected_ingredients' } 
-					%span{ 'ng-click' => 'removeIngredient($index)' } x
-					{{ing.name}} 
+				%li{'ng-repeat' => 'ing in selected_ingredients' } 
+					%span{'ng-click' => 'removeIngredient($index)' } x
+					%span.ing{'ng-bind' => 'ing.name'}
 					

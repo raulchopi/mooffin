@@ -1,0 +1,1 @@
+$('#<%= dom_id(@recipe) %>').fadeOut 500

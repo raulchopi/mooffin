@@ -34,7 +34,6 @@ class RecipesController < ApplicationController
 
 	def destroy 
 		@recipe.destroy
-		redirect_to user_path(current_user.id)
 	end
 
 	def create

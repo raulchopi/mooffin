@@ -1,0 +1,4 @@
+=div_for recipe do
+	= link_to recipe.title, recipe_path(recipe)
+	= link_to 'Editar', edit_recipe_path(recipe)
+	= link_to 'Eliminar', recipe, :method => :delete, data: { confirm: "Seguro?" }, remote: true

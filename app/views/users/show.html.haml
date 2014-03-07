@@ -13,15 +13,9 @@
 			.num_recetas
 				Recetas registradas: #{current_user.recipes.count} 
 			.val_recetas
-				Valoración recetas: #{current_user.average_rate_recipes}
+				Valoración recetas: #{current_user.average_rate_recipes.round(1)}
 		
 	#main
-		%ul
-			- @recipes.each do |recipe|
-				%li
-					= link_to recipe.title, recipe_path(recipe)
-					= link_to 'Editar', edit_recipe_path(recipe)
-					= link_to 'Eliminar', recipe_path(recipe), :method => :delete, data: { confirm: "Seguro?" }
+		= render @recipes
 
-		
 = render :partial => 'layouts/shared/footer'

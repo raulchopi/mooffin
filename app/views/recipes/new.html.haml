@@ -14,16 +14,16 @@
 
 		%table{ 'ng-show' => 'searchString.length >= 2', :class => 'resultIngForRecipeTable' }
 			%tr{ 'ng-repeat' => 'i in ingredients | searchFor:searchString', 'ng-click' => 'setValue(i)', :class => 'resultIng' }
-				%td.resultIng {{i.name}}
+				%td.resultIng{'ng-bind' => 'i.name'}
 
 		#listaIng
 			%ul
 				%li{ 'ng-repeat' => 'link in links' }
 					%span{ 'ng-click' => 'removeLink($index)' } x
-					{{link.number}} 
-					{{link.unit.description}}
-					{{link.ing.name}}
-					{{link.importance}}
+					%span{'ng-bind' => 'link.number'}
+					%span{'ng-bind' => 'link.unit.description'}
+					%span{'ng-bind' => 'link.ing.name'}
+					%span{'ng-bind' => 'link.importance'}
 		
 	#mainNuevaReceta
 		#nuevaReceta			
@@ -38,8 +38,7 @@
 			= collection_select :recipe, :difficulty_id, Difficulty.all, :id, :description, 'ng-model' => 'recipeDifficulty'
 			%ul.stepList
 				%li{ 'ng-repeat' => 'step in steps' }
-					%span.step_description
-						{{step.description}}					
+					%span.step_description{'ng-bind' => 'step.description'}					
 					%span.remove_step{'ng-click' => 'editStep($index)'} v
 					%span.remove_step{'ng-click' => 'removeStep($index)'} x
 			#newStep

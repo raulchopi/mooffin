@@ -1,4 +1,3 @@
 #recipesProposals
-  %ul
-    %li{ 'ng-repeat' => 'recipe in show_recipes' }
-      {{recipe}}
+	#proposal{ 'ng-repeat' => 'recipe in show_recipes' }
+		%span{'ng-bind' => 'recipe.title'}

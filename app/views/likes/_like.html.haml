@@ -1,4 +1,3 @@
-=div_for like do
+= div_for like do
 	= link_to like.recipe.title, recipe_path(like.recipe)
-//= link_to 'Editar', edit_recipe_path(recipe)
-//= link_to 'Eliminar', recipe_path(recipe), :method => :delete, data: { confirm: "Seguro?" }
+	= link_to image_tag('fav_small.png', :border => 0), like, :method => :delete, data: { confirm: "Seguro?" }, remote: true
