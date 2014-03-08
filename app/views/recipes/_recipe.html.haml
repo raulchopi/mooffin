@@ -1,4 +1,9 @@
-=div_for recipe do
-	= link_to recipe.title, recipe_path(recipe)
-	= link_to 'Editar', edit_recipe_path(recipe)
-	= link_to 'Eliminar', recipe, :method => :delete, data: { confirm: "Seguro?" }, remote: true
+#myRecipes
+	=div_for recipe do
+		#title
+			= link_to recipe.title, recipe_path(recipe), {:class => 'text'}
+		#options
+			.edit	
+				= link_to image_tag('edit.png', :border => 0, size: '20'), edit_recipe_path(recipe)
+			.delete
+				= link_to image_tag('delete.png', :border => 0, size: '20'), recipe, :method => :delete, data: { confirm: "Seguro?" }, remote: true
