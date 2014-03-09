@@ -1,3 +1,9 @@
 #recipesProposals
 	#proposal{ 'ng-repeat' => 'recipe in show_recipes' }
-		%span{'ng-bind' => 'recipe.title'}
+		#header
+			#title
+				%span{'ng-bind' => 'recipe.title'}
+			#rating
+				%span{'ng-bind' => 'recipe.rating'}
+
+		%img{:src => 'assets/pantumaca2.JPG'}		

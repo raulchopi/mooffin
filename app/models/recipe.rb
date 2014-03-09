@@ -21,4 +21,8 @@ class Recipe < ActiveRecord::Base
 		end
 		val
 	end
+
+	def rateRounded
+		rating.round(1)
+	end
 end

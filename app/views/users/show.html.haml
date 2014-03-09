@@ -13,7 +13,7 @@
 			.num_recetas
 				Recetas registradas: #{current_user.recipes.count} 
 			.val_recetas
-				Valoración recetas: #{current_user.average_rate_recipes.round(1)}
+				Valoración recetas: #{current_user.average_rate_recipes}
 		
 	#main
 		= render @recipes
