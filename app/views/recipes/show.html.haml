@@ -17,6 +17,9 @@
 				Dificultad: #{@recipe.difficulty.description} 
 			.tiempoElaboracion
 				#{@recipe.time} minutos
+			.autor
+				Autor: 
+				= link_to @recipe.user.name, user_path(@recipe.user)
 
 		#ingredientesreceta
 			.titulo
