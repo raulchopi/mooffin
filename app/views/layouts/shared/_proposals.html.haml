@@ -2,8 +2,10 @@
 	#proposal{ 'ng-repeat' => 'recipe in show_recipes' }
 		#header
 			#title
-				%span{'ng-bind' => 'recipe.title'}
+				%a{href: 'recipes/{{recipe.id}}'} 
+					%span{'ng-bind' => 'recipe.title'}
+
 			#rating
 				%span{'ng-bind' => 'recipe.rating'}
 
-		%img{:src => 'assets/pantumaca2.JPG'}		
+		%img{:src => 'assets/pantumaca2.JPG'}
