@@ -25,4 +25,11 @@ class Recipe < ActiveRecord::Base
 	def rateRounded
 		rating.round(1)
 	end
+
+	def celiacDesease
+		links.each do |l|
+			return true if l.ingredient.celiac
+		end
+		return false
+	end
 end
