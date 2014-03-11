@@ -1,7 +1,7 @@
 @import "compass"
 @import "compass/layout"
 
-@mixin cajas_texto
+=cajas_texto
 	border: 0px solid
 	border-bottom: 1px solid #BAB6BA
 	background-color: transparent
@@ -12,10 +12,23 @@
 	float: left
 	margin: 0 2px 0 2px
 
-@mixin small_boxes_recipe
+=small_boxes_recipe
 	width: 25%
 	float: left
 	margin: 0 10px 0 10px
+
+=scale_effect
+	-webkit-box-shadow: 4px 4px 4px rgba(0,0,0,0.2)
+	-moz-box-shadow: 4px 4px 4px rgba(0,0,0,0.2)
+	box-shadow: 4px 4px 4px rgba(0,0,0,0.2)
+	-webkit-transform: scale(1.05) 
+	-moz-transform: scale(1.05)
+	-o-transform: scale(1.05)	
+
+=effect($time)	
+	-webkit-transition: all $time ease-out
+	-moz-transition: all $time ease
+	-o-transition: all $time ease
 
 #receta
 	float: left
@@ -108,18 +121,10 @@
 		border: 1px solid
 		overflow: hidden
 		position: relative
-
-		-webkit-box-shadow: 4px 4px 4px rgba(0,0,0,0.2)
-		-moz-box-shadow: 4px 4px 4px rgba(0,0,0,0.2)
-		box-shadow: 4px 4px 4px rgba(0,0,0,0.2)
-		-webkit-transition: all 0.5s ease-out
-		-moz-transition: all 0.5s ease
-		-o-transition: all 0.5s ease
-
-		&:hover	
-			-webkit-transform: scale(1.05) 
-			-moz-transform: scale(1.05)
-			-o-transform: scale(1.05)
+		+effect(0.5s)
+		
+		&:hover
+			+scale_effect			
 		
 		img
 			width: auto
@@ -202,7 +207,7 @@
 
 		#link_number
 			width: 10%
-			@include cajas_texto
+			+cajas_texto
 
 		#link_unit
 			width: 20%
@@ -211,7 +216,7 @@
 
 		#link_ingredient
 			width: 30%
-			@include cajas_texto
+			+cajas_texto
 
 		#link_importance
 			width: 15%
@@ -246,11 +251,11 @@
 		width: 90%
 
 	#recipe_time
-		@include small_boxes_recipe
+		+small_boxes_recipe
 	#recipe_servings
-		@include small_boxes_recipe
+		+small_boxes_recipe
 	#recipe_difficulty_id
-		@include small_boxes_recipe
+		+small_boxes_recipe
 
 	label
 		padding: 0 0 0 10px
