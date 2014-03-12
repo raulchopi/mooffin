@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140219104652) do
+ActiveRecord::Schema.define(version: 20140311183136) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id",    null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140219104652) do
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "celiac"
   end
 
   create_table "likes", force: true do |t|

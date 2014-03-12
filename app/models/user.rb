@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
       end
       val /= recipes.count
     end
-    val.round(1)
+    val
   end
 
 

@@ -12,6 +12,9 @@
 			#likeRecipe
 				= render :partial => 'recipes/like'
 
+			- if @recipe.celiacDesease
+				= image_tag('celiac_icon.png', :border => 0, size: '25', :alt => 'Receta no apta para celíacos')
+
 		#detallesreceta
 			.dificultad
 				Dificultad: #{@recipe.difficulty.description} 
