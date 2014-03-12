@@ -111,7 +111,7 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
     $scope.steps.splice index, 1
 
   $scope.editStep = (index) ->
-    $scope.textStepRec = $scope.steps[index].desc
+    $scope.textStepRec = $scope.steps[index].description
     $scope.ordenStep = index + 1
     edit = true
     editIndex = index

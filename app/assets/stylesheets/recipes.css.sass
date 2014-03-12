@@ -13,8 +13,6 @@
 	margin: 0 2px 0 2px
 
 =small_boxes_recipe
-	width: 25%
-	float: left
 	margin: 0 10px 0 10px
 
 =scale_effect
@@ -246,16 +244,45 @@
 	margin: 0 auto
 	margin-top: 50px
 
-	#recipe_title
-		margin: 0 0 0 10px
-		width: 90%
+	#titulo
+		width: 100%
 
-	#recipe_time
-		+small_boxes_recipe
-	#recipe_servings
-		+small_boxes_recipe
-	#recipe_difficulty_id
-		+small_boxes_recipe
+		#recipe_title
+			margin: 0 0 0 10px
+			width: 90%
+
+	#detalles
+		width: 100%
+
+		#tiempo
+			display: inline-block
+			width: 30%
+			padding: 0 10px
+
+			#recipe_time
+				+small_boxes_recipe
+
+		#comensales
+			display: inline-block
+			width: 30%
+			padding: 0 10px
+
+			#recipe_servings
+				+small_boxes_recipe
+
+		#dificultad
+			display: inline-block
+			width: 30%
+			padding: 0 10px
+
+			#recipe_difficulty_id
+				+small_boxes_recipe
+				float: left
+
+	#pasos
+		width: 100%
+		margin: 35px 0 0 0
+
 
 	label
 		padding: 0 0 0 10px
@@ -270,7 +297,6 @@
 	.stepList
 		width: 100%
 		padding: 0 10px
-		margin: 50px 0 0 0	
 		font-size: 0.75em
 
 	#newStep

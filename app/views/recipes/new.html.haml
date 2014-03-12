@@ -26,24 +26,34 @@
 					%span{'ng-bind' => 'link.importance'}
 		
 	#mainNuevaReceta
-		#nuevaReceta			
-			= label :title, "Título"
-			= text_field :recipe, :title, 'ng-model' => 'recipeTitle'
+		#nuevaReceta
+			#titulo			
+				= label :title, "Título"
+				= text_field :recipe, :title, 'ng-model' => 'recipeTitle'
 			= file_field :recipe, :photo, 'onchange' => 'angular.element(this).scope().setFile(this)'
-			= label :time, "Tiempo"
-			= text_field :recipe, :time, 'ng-model' => 'recipeTime'
-			= label :servings, "Comensales"
-			= text_field :recipe, :servings, 'ng-model' => 'recipeServings'
-			= label :difficulty_id, "Dificultad"
-			= collection_select :recipe, :difficulty_id, Difficulty.all, :id, :description, 'ng-model' => 'recipeDifficulty'
-			%ul.stepList
-				%li{ 'ng-repeat' => 'step in steps' }
-					%span.step_description{'ng-bind' => 'step.description'}					
-					%span.remove_step{'ng-click' => 'editStep($index)'} v
-					%span.remove_step{'ng-click' => 'removeStep($index)'} x
-			#newStep
-				%textarea.newStep_description{'ng-model' => 'textStepRec', 'ng-keyup' => 'enterKeyStep($event)'}
-				%span.addStep{'ng-click' => 'addStep()'} +
+			#detalles
+				#tiempo
+					= label :time, "Tiempo"
+					= text_field :recipe, :time, 'ng-model' => 'recipeTime'
+				#comensales
+					= label :servings, "Comensales"
+					= text_field :recipe, :servings, 'ng-model' => 'recipeServings'
+				#dificultad
+					= label :difficulty_id, "Dificultad"
+					= collection_select :recipe, :difficulty_id, Difficulty.all, :id, :description, 'ng-model' => 'recipeDifficulty'
+
+			#pasos
+				Añada los pasos de la receta:
+				%ul.stepList
+					%li{ 'ng-repeat' => 'step in steps' }
+						%span.step_description{'ng-bind' => 'step.description'}					
+						%span.remove_step{'ng-click' => 'editStep($index)'}
+							= image_tag('edit.png', :border => 0, size: '15')
+						%span.remove_step{'ng-click' => 'removeStep($index)'}
+							= image_tag('delete.png', :border => 0, size: '15')
+				#newStep
+					%textarea.newStep_description{'ng-model' => 'textStepRec', 'ng-keyup' => 'enterKeyStep($event)'}
+					%span.addStep{'ng-click' => 'addStep()'} +
 
 			#crearReceta
 				= button_tag 'Crear', class: 'signup_btn', type: :submit, 'ng-click' => 'createRecipe()'			
