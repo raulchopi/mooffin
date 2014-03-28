@@ -4,6 +4,25 @@
 
 $(document).ready(function(){
   $("#login_box").hide();
+
+  // HEADER BEHAVIOUR ON SCROLL
+  $(window).scroll(function () {
+    var y = $(this).scrollTop();
+    var z = $('#menu_principal').offset().top;
+    var header = $('#header');
+    var content = $('#menu_principal');
+
+    if (y >= 1) {
+      header.removeClass('big').addClass('small');
+      content.css('margin-top','50px');
+    }
+    else{
+      header.removeClass('small').addClass('big');
+      content.css('margin-top','120px');
+    }
+  });
+
+
 });
 
 
