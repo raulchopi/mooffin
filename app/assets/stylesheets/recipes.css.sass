@@ -2,15 +2,19 @@
 @import "compass/layout"
 
 =cajas_texto
-	border: 0px solid
 	border-bottom: 1px solid #BAB6BA
 	background-color: transparent
 	margin: 0 5px 0 0
-	padding: 15px 0 0 5px
+	padding: 5px 0 0 5px
 	-webkit-box-shadow: inset 0 -7px 5px 0px rgba(186, 182, 186, 0.1)
 	box-shadow: inset 0 -7px 5px 0px rgba(186, 182, 186, 0.1)
 	float: left
 	margin: 0 2px 0 2px
+	height: 30px
+	-webkit-border-radius: 2px
+	-moz-border-radius: 2px
+	border-radius: 2px
+	font-size: 0.7em
 
 =small_boxes_recipe
 	margin: 0 10px 0 10px
@@ -176,8 +180,9 @@
 
 // NEW
 #anhadirIng
-	width: 40%
+	width: 35%
 	height: 100%
+	min-height: inherit
 	float: left
 	border-right: solid thin #e8e8e8
 	padding: 75px 0 0 0
@@ -185,6 +190,7 @@
 	#listaIng
 		width: 100%
 		float: left
+		margin: 20px 0 0 0
 		
 		ul
 			list-style: none
@@ -195,13 +201,17 @@
 		li
 			font-size: 0.8em
 
-		span
+		span.remove
 			color: #da0404
 			margin: 0 5px 0 0
+
+		span
+			color: black 
 
 	#new_link
 		width: 90%
 		margin: 0px auto
+		padding: 15px 0 0 0
 
 		#link_number
 			width: 10%
@@ -210,7 +220,7 @@
 		#link_unit
 			width: 20%
 			float: left
-			margin: 15px 2px 0 2px
+			margin: 11px 2px 0 2px
 
 		#link_ingredient
 			width: 30%
@@ -219,14 +229,29 @@
 		#link_importance
 			width: 15%
 			float: left
-			margin: 15px 2px 0 2px
+			margin: 11px 2px 0 2px
 
 		.btn_addIng
-			width: 10px
 			float: left
+			width: 30px
+			height: 25px
+			border: 1px solid #666666
+			-webkit-border-radius: 3px
+			-moz-border-radius: 3px
+			border-radius: 3px
+			font-size: 14px
+			font-family: arial, helvetica, sans-serif 
+			text-decoration: none
+			display: inline-block
+			font-weight: bold
+			background-color: #A6A6A6
+			color: #222222
+			margin: 4px 0 0 10px
+			padding: 0px
 
 	.resultIngForRecipeTable
-		margin: 0 0 0 43%
+		position: fixed
+		margin: 30px 0 0 133px
 
 	.resultIng
 		font-size: 0.8em
@@ -234,13 +259,13 @@
 	
 
 #mainNuevaReceta
-	width: 60%
+	width: 65%
 	float: left
 	height: 100%
 
 
 #nuevaReceta
-	width: 100%
+	width: 95%
 	margin: 0 auto
 	margin-top: 50px
 
@@ -293,6 +318,24 @@
 		width: 100%
 		float: left
 		padding: 0 60px 0 0
+
+		.btn_crearReceta
+			float: right
+			width: 60px
+			height: 30px
+			border: 1px solid #666666
+			-webkit-border-radius: 3px
+			-moz-border-radius: 3px
+			border-radius: 3px
+			font-size: 14px
+			font-family: arial, helvetica, sans-serif 
+			text-decoration: none
+			display: inline-block
+			font-weight: bold
+			background-color: #A6A6A6
+			color: #222222
+			margin: 10px 0 0 10px
+			padding: 0px
 	
 	.stepList
 		width: 100%
@@ -305,10 +348,25 @@
 		
 		.newStep_description
 			width: 90%
-			float: left	
-		.addStep
-			width: 10%
 			float: left
+
+		.btn_addStep
+			float: left
+			width: 30px
+			height: 25px
+			border: 1px solid #666666
+			-webkit-border-radius: 3px
+			-moz-border-radius: 3px
+			border-radius: 3px
+			font-size: 14px
+			font-family: arial, helvetica, sans-serif 
+			text-decoration: none
+			display: inline-block
+			font-weight: bold
+			background-color: #A6A6A6
+			color: #222222
+			margin: 0 0 0 5px
+			padding: 0px	
 
 	ul
 		margin: 30px 0 0 0

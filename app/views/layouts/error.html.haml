@@ -1,0 +1,18 @@
+- content_for(:title, 'Mooffin')
+
+%html	
+
+	%head
+		%title yield(:title)
+
+	%body{ 'ng-app' => 'instantIngredientsSearch' }
+
+		= render :partial => 'layouts/shared/header'
+
+		#content
+
+
+			#main
+				= yield
+
+		= render :partial => 'layouts/shared/footer'

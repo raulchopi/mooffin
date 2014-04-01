@@ -5,6 +5,7 @@
 
 #content{ 'ng-controller' => 'InstantIngredientSearchForNewRecipeController' }
 	#anhadirIng
+		Añada los ingredientes:
 		#new_link
 			= text_field :link, :number, 'ng-model' => 'numberOfIng'
 			= collection_select :link, :unit, Unit.all, :id, :description, :id => 'link_unit', 'ng-model' => 'unitOfIng', 'ng-change' => 'prueba()'
@@ -19,7 +20,7 @@
 		#listaIng
 			%ul
 				%li{ 'ng-repeat' => 'link in links' }
-					%span{ 'ng-click' => 'removeLink($index)' } x
+					%span.remove{ 'ng-click' => 'removeLink($index)' } x
 					%span{'ng-bind' => 'link.number'}
 					%span{'ng-bind' => 'link.unit.description'}
 					%span{'ng-bind' => 'link.ing.name'}
@@ -53,10 +54,10 @@
 							= image_tag('delete.png', :border => 0, size: '15')
 				#newStep
 					%textarea.newStep_description{'ng-model' => 'textStepRec', 'ng-keyup' => 'enterKeyStep($event)'}
-					%span.addStep{'ng-click' => 'addStep()'} +
+					= button_tag '+', class: 'btn_addStep', 'ng-click' => 'addStep()'
 
 			#crearReceta
-				= button_tag 'Crear', class: 'signup_btn', type: :submit, 'ng-click' => 'createRecipe()'			
+				= button_tag 'Crear', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'createRecipe()'			
 
 
 		
