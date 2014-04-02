@@ -3,6 +3,10 @@
 
 
 $(document).ready(function(){
+  //pone una imagen al azar en la portada
+  //var images = ['portada1.png'];
+  //$('#imagenInicio').css({'background': 'url(../images/portada/' + images[Math.floor(Math.random() * images.length)] + ') no-repeat'});
+
   $("#login_box").hide();
 
   // HEADER BEHAVIOUR ON SCROLL
