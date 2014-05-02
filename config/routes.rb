@@ -16,6 +16,7 @@ Mooffin::Application.routes.draw do
   resources :sessions
 
   resources :ingredients
+  resources :units
   resources :recipes do
     resources :opinions
     resources :likes

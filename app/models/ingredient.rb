@@ -2,7 +2,7 @@ class Ingredient < ActiveRecord::Base
 	has_many :links
 
 	include ActiveModel::Conversion
-		extend ActiveModel::Naming
+	extend ActiveModel::Naming
 
 	def initialize(ingredient)
 		@ingredient = ingredient
