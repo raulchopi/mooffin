@@ -52,7 +52,6 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientsSearchC
 angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchForNewRecipeController', ($scope, InstantIngredientsSearchFactory) ->
 
   $scope.selected_ingredient = ''
-  selected_unit = ''
   newLink = {}
   newStep = {}
   $scope.links = []
@@ -70,12 +69,15 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
   $scope.units = InstantIngredientsSearchFactory.getUnits().then (units) ->
     $scope.units = units
 
+  $scope.importances = InstantIngredientsSearchFactory.getImportances().then (importances) ->
+    $scope.importances = importances
+
+  $scope.difficulties = InstantIngredientsSearchFactory.getDifficulties().then (difficulties) ->
+    $scope.difficulties = difficulties  
+
   $scope.setValue = (i) ->
     $scope.selected_ingredient = i
     $scope.searchString = i.name
-
-  $scope.prueba = (u) ->
-    $scope.selected_unit = u
 
   $scope.addLink = () ->
     newLink = {'number': $scope.numberOfIng, 'unit': $scope.selected_unit, 'ing': $scope.selected_ingredient, 'importance': $scope.importanceOfIng}
@@ -118,7 +120,7 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
 
   $scope.createRecipe = () ->
     recipe = { 'recipe': { 'title': $scope.recipeTitle, 'time': $scope.recipeTime, 
-    'servings': $scope.recipeServings, 'difficulty_id': 1, 'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
+    'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id, 'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
     links = $scope.links
     steps = $scope.steps
     InstantIngredientsSearchFactory.setRecipe recipe, links, steps
@@ -147,6 +149,18 @@ angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFact
   getUnits: ->
     #return the promise directly.
     $http.get("/units.json").then (result) ->
+      #resolve the promise as the data
+      result.data
+
+  getImportances: ->
+    #return the promise directly.
+    $http.get("/importances.json").then (result) ->
+      #resolve the promise as the data
+      result.data    
+
+  getDifficulties: ->
+    #return the promise directly.
+    $http.get("/difficulties.json").then (result) ->
       #resolve the promise as the data
       result.data
 
