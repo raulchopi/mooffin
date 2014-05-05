@@ -151,7 +151,7 @@
 
 
 // MY RECIPES
-#myRecipes
+#myRecipes_grid
 	margin: 25px 0 0 10px
 
 	.recipe
@@ -160,6 +160,7 @@
 		display: inline-block
 		margin: 12px
 		border: 1px solid
+		float: left
 
 		#title
 			width: 100%
@@ -175,6 +176,81 @@
 				float: right
 				margin: 0 10px 0 0
 			.delete
+				float: right
+				margin: 0 10px 0 0	
+
+#myRecipes_list
+	margin: 25px 0 0 10px
+
+	.recipe
+		width: 50%
+		margin: 1px
+		float: left
+		border-bottom: 1px solid #E8E8E8
+		padding: 2px 0
+
+		#title
+			width: 80%
+			float: left
+
+		#options
+			width: 20%
+			float: left
+
+			.edit
+				float: right
+				margin: 0 10px 0 0
+			.delete
+				float: right
+				margin: 0 10px 0 0	
+
+
+// MY LIKED RECIPES
+#myLikes_grid
+	margin: 25px 0 0 10px
+
+	.like
+		width: 30%
+		height: 150px
+		display: inline-block
+		margin: 12px
+		border: 1px solid
+		float: left
+
+		#title
+			width: 100%
+			height: 80%
+			padding: 5px
+
+		#options
+			width: 100%
+			height: 20%
+			background: rgba(208, 208, 208, 0.4)
+
+			.fav
+				float: right
+				margin: 0 10px 0 0
+
+
+#myLikes_list
+	margin: 25px 0 0 10px
+
+	.like
+		width: 50%
+		margin: 1px
+		float: left
+		border-bottom: 1px solid #E8E8E8
+		padding: 2px 0
+
+		#title
+			width: 80%
+			float: left
+
+		#options
+			width: 20%
+			float: left
+
+			.fav
 				float: right
 				margin: 0 10px 0 0	
 

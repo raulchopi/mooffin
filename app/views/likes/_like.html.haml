@@ -1,3 +1,15 @@
-= div_for like do
-	= link_to like.recipe.title, recipe_path(like.recipe)
-	= link_to image_tag('fav_small.png', :border => 0), like, :method => :delete, remote: true
+#myLikes_grid{'ng-show' => "layout == 'grid'"}
+	= div_for like do
+		#title
+			= link_to like.recipe.title, recipe_path(like.recipe)
+		#options
+			.fav
+				= link_to image_tag('fav_small.png', :border => 0), like, :method => :delete, remote: true
+
+#myLikes_list{'ng-show' => "layout == 'list'"}
+	= div_for like do
+		#title
+			= link_to like.recipe.title, recipe_path(like.recipe)
+		#options
+			.fav
+				= link_to image_tag('fav_small.png', :border => 0), like, :method => :delete, remote: true		

@@ -1,9 +1,9 @@
 %html
-%body
+%body{ 'ng-app' => 'instantIngredientsSearch' }
 
 = render :partial => 'layouts/shared/header'
 
-#content
+#content{ 'ng-controller' => 'InstantIngredientsSearchController' }
 	#buscador
 		#datos_usuario
 			.foto
@@ -16,6 +16,9 @@
 				Valoración recetas: #{current_user.average_rate_recipes}
 		
 	#main
+		%span{'ng-class'=>"{active: layout == 'grid'}", 'ng-click'=>"layout = 'grid'"} grid
+		%span{'ng-class'=>"{active: layout == 'list'}", 'ng-click'=>"layout = 'list'"} list
+					
 		= render @recipes
 
 = render :partial => 'layouts/shared/footer'
