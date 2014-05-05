@@ -9,9 +9,9 @@
 		#new_link
 			= text_field :link, :number, 'ng-model' => 'numberOfIng'
 
-			%select{"ng-model" => "selected_unit", "ng-options" => "u.description for u in units"}
+			%select{:id => 'link_unit', "ng-model" => "selected_unit", "ng-options" => "u.description for u in units"}
 			= text_field :link, :ingredient, 'ng-model' => 'searchString'
-			%select{"ng-model" => "importanceOfIng", "ng-options" => "i.description for i in importances"}			
+			%select{:id => 'link_importance', "ng-model" => "importanceOfIng", "ng-options" => "i.description for i in importances"}			
 			= button_tag '+', class: 'btn_addIng', type: :submit, 'ng-click' => 'addLink()'
 
 		%table{ 'ng-show' => 'searchString.length >= 2', :class => 'resultIngForRecipeTable' }
@@ -25,7 +25,9 @@
 					%span{'ng-bind' => 'link.number'}
 					%span{'ng-bind' => 'link.unit.description'}
 					%span{'ng-bind' => 'link.ing.name'}
-					%span{'ng-bind' => 'link.importance'}
+					(
+					%span{'ng-bind' => 'link.importance.description'}
+					)
 		
 	#mainNuevaReceta
 		#nuevaReceta

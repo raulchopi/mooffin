@@ -29,6 +29,7 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientsSearchC
   
   $scope.selected_ingredients = []
   $scope.show_recipes = []
+  $scope.layout = 'grid';
 
   $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
     $scope.ingredients = ingredients
@@ -80,7 +81,9 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
     $scope.searchString = i.name
 
   $scope.addLink = () ->
-    newLink = {'number': $scope.numberOfIng, 'unit': $scope.selected_unit, 'ing': $scope.selected_ingredient, 'importance': $scope.importanceOfIng}
+    newLink = {'number': $scope.numberOfIng, 'unit': $scope.selected_unit, 'ing': $scope.selected_ingredient, 
+    'importance': $scope.importanceOfIng, 'ingredient_id': $scope.selected_ingredient.id, 
+    'importance_id': $scope.importanceOfIng.id, 'unit_id': $scope.selected_unit.id}
     $scope.links.push newLink
     $scope.numberOfIng = ''
     $scope.selected_unit = ''
