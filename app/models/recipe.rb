@@ -11,6 +11,13 @@ class Recipe < ActiveRecord::Base
 
 	has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
+	logger = Log4r::Logger.new('recipe_model_debug')
+
+	def self.find_proposals(idsIngredients)
+		logger.info('Dentro do find_proposals')
+		@proposals = Recipe.joins(:links).where(links: { ingredient_id: idsIngredients })
+	end
+
 	def average_rate
 		val = 0
 		if opinions.count > 0

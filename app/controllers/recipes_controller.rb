@@ -2,6 +2,8 @@ class RecipesController < ApplicationController
 	before_action :get_recipe, only: [:show, :edit, :destroy]
 	wrap_parameters format: [:json, :xml]
 
+	logger = Log4r::Logger.new('recipes_controller_debug')
+
 	def get_recipe
 		@recipe = Recipe.find(params[:id])
 	end
@@ -29,6 +31,21 @@ class RecipesController < ApplicationController
   		end
 	end
 
+	def proposals
+		logger.info('idsIngredients:' + proposals_params)
+		idsIngredients = []
+		idsIngredients = eval(proposals_params)
+		@proposals = Recipe.find_proposals(idsIngredients)
+		respond_to do |format|
+			format.json {
+				render json: @proposals
+			}
+			format.html {
+				@proposals
+			}
+  	end
+	end
+
 	def edit
 	end
 
@@ -52,6 +69,10 @@ class RecipesController < ApplicationController
 			params.require(:recipe).permit(:recipe, :title, :time, :servings, :difficulty_id, 
 				:description, steps_attributes: [:orden, :description], links_attributes: [:ingredient_id, 
 					:importance_id, :unit_id, :number])
+		end
+
+		def proposals_params
+			params.require(:idsIngredients)
 		end
 
 end

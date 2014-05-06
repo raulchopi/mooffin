@@ -11,6 +11,7 @@ group :development do
 end
 
 group :test, :development do
+  gem "log4r", "~> 1.1.10"
   gem "debugger", "~> 1.6.1"
   gem "database_cleaner", "~> 1.2.0"
   # Cucumber (integration tests)

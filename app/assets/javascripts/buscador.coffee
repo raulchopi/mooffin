@@ -4,6 +4,8 @@ app = angular.module("instantIngredientsSearch", [])
 recipe = {}
 links = {}
 steps = {}
+idsIngredients = []
+paramIngredients = {}
 
 # Create the instant search filter
 app.filter "searchFor", ->
@@ -41,7 +43,12 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientsSearchC
         already_in_it = true if ingr == i
 
     $scope.selected_ingredients.push i if already_in_it == false
-    $scope.show_recipes = InstantIngredientsSearchFactory.getRecipesRecommended() if already_in_it == false
+    # Gardamos os id's dos ingredentes nun array para enviar ao servidor
+    if already_in_it == false
+      idsIngredients.push i.id
+      paramIngredients = { 'idsIngredients' : idsIngredients }
+
+    $scope.show_recipes = InstantIngredientsSearchFactory.getProposals(paramIngredients) if already_in_it == false
 
   $scope.removeIngredient = (index) ->
     $scope.selected_ingredients.splice index, 1
@@ -145,8 +152,8 @@ angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFact
       #resolve the promise as the data
       result.data
 
-  getRecipesRecommended: ->
-    $http.get("/recipes.json").then (result) ->
+  getProposals: ->
+    $http.get("/proposals.json", params: paramIngredients).then (result) ->
       result.data
 
   getUnits: ->
