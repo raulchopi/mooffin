@@ -9,16 +9,16 @@
 
 		= render :partial => 'layouts/shared/header'
 
-		#content{ 'ng-controller' => 'InstantIngredientsSearchController' }
+		#content.row{ 'ng-controller' => 'InstantIngredientsSearchController' }
 			= render :partial => 'layouts/shared/searcher'
 
-			#main		
-				#home{'ng-hide' => 'show_recipes.length > 0'} 
-					#mensajeInicio
+			#main.large-8.columns
+				#home.row{'ng-hide' => 'show_recipes.length > 0'} 
+					#mensajeInicio.large-6.columns
 						¿Qué puedo cocinar hoy?
-					#imagenInicio
+					#imagenInicio.large-6.columns
 
-				#recipes{'ng-show' => 'show_recipes.length > 0'}
+				#recipes.row{'ng-show' => 'show_recipes.length > 0'}
 					%span{'ng-class'=>"{active: layout == 'grid'}", 'ng-click'=>"layout = 'grid'"} grid
 					%span{'ng-class'=>"{active: layout == 'list'}", 'ng-click'=>"layout = 'list'"} list
 
