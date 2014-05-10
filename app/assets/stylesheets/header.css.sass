@@ -55,187 +55,186 @@
 	height: 120px
 	+comunes_cabecera
 
-	#headerWrapper
-		width: 1100px
-		height: 50px
-		margin: 0 auto
-		position: relative
+	#logo
+		display: inline
+		-webkit-transition: opacity .2s ease-in-out
+		-moz-transition: opacity .2s ease-in-out
+		-o-transition: opacity .2s ease-in-out
+		transition: opacity .2s ease-in-out
+		width: auto !important
+		max-width: 200px
+		float: left
 
-		#logo
-			display: inline
-			padding: 20px 0 0 50px
-			-webkit-transition: opacity .2s ease-in-out
-			-moz-transition: opacity .2s ease-in-out
-			-o-transition: opacity .2s ease-in-out
-			transition: opacity .2s ease-in-out
+		a img
+			overflow: hidden
+			position: absolute
+			max-width: 180px
+			margin: 7px 0 0 0
 
-			a img
-				overflow: hidden
-				position: absolute
-				max-width: 180px
-				margin: 7px 0 0 0
+		&:hover
 
-			&:hover
+	#menu_movil
+		position: fixed
+		right: 0 
+		padding: 15px 15px 0 0
 
-		#login
+	#login
+		float: right
+		margin: 30px 0 0 0
+
+		#logout
 			float: right
-			margin: 20px 0 0 0
+			margin: 70px 10px 0 0
 
-			#logout
-				float: right
+			.salir
+				margin: 0 0 0 10px
+				font-size: 0.8em
+
+		#login_box
+			float: right
+			margin: 30px 0 0
+
+			#login_omniauth 
+				width: 100%
+
+			#login_form
+				width: 100%
+
+			.form_login
+				float: left
 				margin: 0 25px 0 0
 
-				.salir
-					margin: 0 0 0 10px
-					font-size: 0.8em
+			.login_text
+				+comunes_login_text
 
-			#login_box
-				float: right
-				margin: 30px 0 0
+			.login_btn
+				+comunes_login_btn
 
-				#login_omniauth 
-					width: 100%
+				&:hover
+					border: 0px solid #ADADAD
+					background-color: #A6A6A6
+					color: #4F4F4F
 
-				#login_form
-					width: 100%
+			.entrarCon				
+				margin: 0 0 0 15px
 
-				.form_login
-					float: left
-					margin: 0 25px 0 0
+			a.btn_close_login
+				color: #64645d
+				float: left
+				padding: 0 15px 0 0
 
-				.login_text
-					+comunes_login_text
+			img
+				margin: 0 0 0 10px
 
-				.login_btn
-					+comunes_login_btn
+	#login_nav
+		margin: 50px 0 0 0
 
-					&:hover
-						border: 0px solid #ADADAD
-						background-color: #A6A6A6
-						color: #4F4F4F
+		ul
+			list-style: none
+			float: right
+			margin: 10px 30px 0 0
 
-				.entrarCon				
-					margin: 0 0 0 15px
+			li
+				display: inline
+				margin-left: 20px
 
-				a.btn_close_login
+				a.btn_login
+					background-image: -webkit-gradient(linear, left top, left bottom, from(#F7F5F6), to(#DDDDDD))
 					color: #64645d
-					float: left
-					padding: 0 15px 0 0
-
-				img
-					margin: 0 0 0 10px
-
-		#login_nav
-			margin: 50px 0 0 0
-
-			ul
-				list-style: none
-				float: right
-				margin: 10px 30px 0 0
-
-				li
-					display: inline
-					margin-left: 20px
-
-					a.btn_login
-						background-image: -webkit-gradient(linear, left top, left bottom, from(#F7F5F6), to(#DDDDDD))
-						color: #64645d
-						padding: 5px 12px
-						border-radius: 3px
+					padding: 5px 12px
+					border-radius: 3px
 
 // HEADER SMALL (after scrolling down)
 #header.small
 	height: 50px
 	+comunes_cabecera
 
-	#headerWrapper
-		width: 1100px
-		height: 50px
-		margin: 0 auto
-		position: relative
-
-		#logo		
-			-webkit-transition: opacity .2s ease-in-out
-			-moz-transition: opacity .2s ease-in-out
-			-o-transition: opacity .2s ease-in-out
-			transition: opacity .2s ease-in-out
-			margin: 5px 0 0 60px
+	#logo		
+		-webkit-transition: opacity .2s ease-in-out
+		-moz-transition: opacity .2s ease-in-out
+		-o-transition: opacity .2s ease-in-out
+		transition: opacity .2s ease-in-out
+		margin: 5px 0 0 60px
 
 
-			a img
-				overflow: hidden
-				position: absolute
-				max-width: 70px
+		a img
+			overflow: hidden
+			position: absolute
+			max-width: 70px
 
-			&:hover	
+		&:hover	
 
-		#login
-			width: 550px
+	#menu_movil
+		position: fixed
+		right: 0 
+		padding: 10px 15px 0 0	
+
+	#login
+		float: right
+		margin: 10px 100px 0 0
+
+		#logout
 			float: right
-			margin: 15px 0 0
+			margin: 0 25px 0 0
 
-			#logout
-				float: right
+			.salir
+				margin: 0 0 0 10px
+				font-size: 0.8em
+
+		#login_box
+			float: right
+			width: inherit
+
+			#login_omniauth 
+				float: left
+				margin: 8px 20px 0 0
+
+			#login_form
+				width: 100%
+
+			.form_login
+				float: left
 				margin: 0 25px 0 0
 
-				.salir
-					margin: 0 0 0 10px
-					font-size: 0.8em
-
-			#login_box
-				float: right
-				width: inherit
-
-				#login_omniauth 
-					float: left
-					margin: 8px 20px 0 0
-
-				#login_form
-					width: 100%
-
-				.form_login
-					float: left
-					margin: 0 25px 0 0
-
-				.login_text
-					+comunes_login_text
+			.login_text
+				+comunes_login_text
 
 
-				.login_btn
-					+comunes_login_btn
+			.login_btn
+				+comunes_login_btn
 
-					&:hover
-						border: 0px solid #ADADAD
-						background-color: #A6A6A6
-						color: #4F4F4F
+				&:hover
+					border: 0px solid #ADADAD
+					background-color: #A6A6A6
+					color: #4F4F4F
 
-				.entrarCon				
-					margin: 0 0 0 15px
+			.entrarCon				
+				margin: 0 0 0 15px
 
-				a.btn_close_login
+			a.btn_close_login
+				color: #64645d
+				float: left
+				padding: 0 15px 0 0
+
+			img
+				margin: 0 0 0 10px
+
+	#login_nav
+
+		ul
+			list-style: none
+			float: right
+			margin: 10px 30px 0 0
+
+			li
+				display: inline
+				margin-left: 20px
+
+				a.btn_login
+					background-image: -webkit-gradient(linear, left top, left bottom, from(#F7F5F6), to(#DDDDDD))
 					color: #64645d
-					float: left
-					padding: 0 15px 0 0
-
-				img
-					margin: 0 0 0 10px
-
-		#login_nav
-
-			ul
-				list-style: none
-				float: right
-				margin: 10px 30px 0 0
-
-				li
-					display: inline
-					margin-left: 20px
-
-					a.btn_login
-						background-image: -webkit-gradient(linear, left top, left bottom, from(#F7F5F6), to(#DDDDDD))
-						color: #64645d
-						padding: 5px 12px
-						border-radius: 3px
+					padding: 5px 12px
+					border-radius: 3px
 
 .alert
 	color: red

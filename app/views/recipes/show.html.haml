@@ -3,7 +3,7 @@
 
 = render :partial => 'layouts/shared/header'
 
-#content
+#content.row
 	#receta
 		#tituloreceta
 			#titulo
@@ -24,18 +24,20 @@
 				Autor: 
 				= link_to @recipe.user.name, user_path(@recipe.user)
 
-		#ingredientesreceta
-			.titulo
-				Ingredientes
-			%ul
-				- @recipe.links.each do |link|
-					%li
-						= link.number
-						= link.unit.description
-						= link.ingredient.name
+		#ingFoto.row
+			#ingredientesreceta.large-6.columns
+				.titulo
+					Ingredientes
+				%ul
+					- @recipe.links.each do |link|
+						%li
+							= link.number
+							= link.unit.description
+							= link.ingredient.name
 
-		#fotoreceta
-			= image_tag("pantumaca2.JPG")
+			#fotoreceta.large-6.columns
+				= image_tag("pantumaca2.JPG")
+
 		#elaboracionreceta
 			.titulo
 				Elaboración

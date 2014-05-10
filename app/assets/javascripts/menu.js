@@ -18,6 +18,7 @@ $(document).ready(function(){
 			desplegado = false;
 		}
 		else{
+			$(window).scrollTop(0);
 			$(".menu").slideDown();
 			desplegado = true;
 		}		
