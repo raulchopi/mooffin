@@ -9,6 +9,19 @@ $(document).ready(function(){
 
   $("#login_box").hide();
 
+  
+  
+
+/*
+  $(window).resize(function(){
+     if($(this).width() >= 658){
+     }
+     else if($(this).width() < 658){
+     }
+  });
+*/
+
+
   // HEADER BEHAVIOUR ON SCROLL
   $(window).scroll(function () {
     var y = $(this).scrollTop();
@@ -19,12 +32,24 @@ $(document).ready(function(){
     if (y >= 1) {
       header.removeClass('big').addClass('small');
       content.css('margin-top','50px');
+      marginLogin('small');
     }
     else{
       header.removeClass('small').addClass('big');
       content.css('margin-top','120px');
+      marginLogin('big');
     }
   });
+
+  //Aplica margen al cuadro de login en la pantalla para movil
+  function marginLogin(size){
+    if($(this).width() >= 658 || size == 'big'){
+      $("#login").css("margin", "10px 0 0 0");
+    }
+    else if($(this).width() < 658){
+      $("#login").css("margin", "10px 100px 0 0");
+    }
+  }
 
 
 });

@@ -31,7 +31,13 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientsSearchC
   
   $scope.selected_ingredients = []
   $scope.show_recipes = []
-  $scope.layout = 'grid';
+
+  # Dependendo do tamanho da ventana, carga en modo lista ou grid
+  if $(window).width() < 658
+    $scope.layout = 'list'
+  else
+    $scope.layout = 'grid'
+
 
   $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
     $scope.ingredients = ingredients
