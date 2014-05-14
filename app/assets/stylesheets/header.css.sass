@@ -2,8 +2,7 @@
 @import "compass/layout"
 
 =comunes_cabecera
-	width: 100%
-	position: fixed
+	width: 100%	
 	color: white !important
 	font-size: 16px
 	background-color: #222
@@ -54,6 +53,8 @@
 #header.big
 	height: 120px
 	+comunes_cabecera
+	a
+		color: white
 
 	#logo
 		display: inline
@@ -77,10 +78,11 @@
 		position: fixed
 		right: 0 
 		padding: 15px 15px 0 0
+		z-index: 100
 
 	#login
-		float: right
-		margin: 30px 0 0 0
+		position: fixed
+		right: 0 
 
 		#logout
 			float: right
@@ -144,9 +146,62 @@
 					padding: 5px 12px
 					border-radius: 3px
 
+	#menu_principal
+		width: 100%
+		margin-top: 90px
+		height: 30px
+		font: bold 13px "DroidSansBold", Verdana, sans-serif
+		text-transform: uppercase
+		letter-spacing: 1px
+
+		ul     
+			float: right
+			margin: 0 0 0 0			
+
+		li
+			display: inline
+			padding: 0px 0px
+			color: #64645d
+
+		a
+			color: white
+
+		:hover
+			color: #754800
+
+
+	#menu_principal.movil
+		width: 100%
+		margin-top: 120px
+		height: 30px
+		font: bold 13px "DroidSansBold", Verdana, sans-serif
+		text-transform: uppercase
+		letter-spacing: 1px
+
+		ul     
+			float: right
+			margin: 0 0 0 0
+			background-color: #222
+			border-top: 2px solid #333
+
+		li
+			display: inline
+			padding: 0px 0px
+			color: #64645d
+
+		a
+			color: white
+
+		:hover
+			color: #754800
+
+
+
+
 // HEADER SMALL (after scrolling down)
 #header.small
 	height: 50px
+	position: fixed
 	+comunes_cabecera
 
 	#logo		
@@ -167,7 +222,8 @@
 	#menu_movil
 		position: fixed
 		right: 0 
-		padding: 10px 15px 0 0	
+		padding: 10px 15px 0 0
+		z-index: 100
 
 	#login
 		float: right
@@ -235,6 +291,8 @@
 					color: #64645d
 					padding: 5px 12px
 					border-radius: 3px
+
+	
 
 .alert
 	color: red

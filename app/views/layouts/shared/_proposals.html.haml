@@ -1,5 +1,5 @@
-#recipesProposals_grid{'ng-show' => "layout == 'grid'"}
-	#proposal{ 'ng-repeat' => 'recipe in show_recipes' }
+#recipesProposals_grid.row{'ng-show' => "layout == 'grid'"}
+	#proposal.large-6.columns{ 'ng-repeat' => 'recipe in show_recipes' }
 		#header
 			#title
 				%a{href: 'recipes/{{recipe.id}}'} 

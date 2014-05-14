@@ -3,6 +3,7 @@ $(document).ready(function(){
 	//CARGA DE PÁGINA EN PANTALLAS PEQUEÑAS
 	if($(this).width() < 658){
 		$(".menu").slideUp();
+		$("#menu_principal").addClass('movil');
 		$(".menu").css("border-bottom", "2px solid black");
 		$(".menu").css("-webkit-box-shadow", "inset 0px 0px 50px 0px rgba(41, 43, 51, 0.25)");	
 	}
@@ -33,12 +34,14 @@ $(document).ready(function(){
 			desplegado = true;
 			$(".menu").css("border-bottom", "none");
 			$(".menu").css("-webkit-box-shadow", "none");
+			$("#menu_principal").removeClass('movil');
 	   }
 	   else if($(this).width() < 658){
 	   		$(".menu").hide();
 			desplegado = false;
 			$(".menu").css("border-bottom", "2px solid black");
 			$(".menu").css("-webkit-box-shadow", "inset 0px 0px 50px 0px rgba(41, 43, 51, 0.25)");
+			$("#menu_principal").addClass('movil');
 	   }
 	});
 

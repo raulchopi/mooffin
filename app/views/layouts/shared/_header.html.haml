@@ -4,7 +4,7 @@
 			= link_to image_tag( 'logos/mooffin2_blanco.png'), root_path
 
 		#menu_movil
-			%a{} Menu
+			%a{} Menu	
 					
 		#login
 			- if current_user
@@ -34,11 +34,12 @@
 
 				= render :partial => 'layouts/shared/flash_message'
 
+		%nav.top-bar-section{:id =>'menu_principal'}
+			%ul.menu		
+				%li= link_to 'Qué cocino?', root_path
+				- if current_user 
+					%li= link_to 'Mis recetas', "/users/#{current_user.username}"
+					%li= link_to 'Favoritas', user_likes_path(current_user)
+					%li= link_to 'Nueva receta', new_recipe_path
 
-%nav.top-bar-section.row{:id =>'menu_principal'}
-	%ul.menu		
-		%li= link_to 'Qué cocino?', root_path
-		- if current_user 
-			%li= link_to 'Mis recetas', "/users/#{current_user.username}"
-			%li= link_to 'Favoritas', user_likes_path(current_user)
-			%li= link_to 'Nueva receta', new_recipe_path
+	

@@ -36,7 +36,7 @@ $(document).ready(function(){
     }
     else{
       header.removeClass('small').addClass('big');
-      content.css('margin-top','120px');
+      content.css('margin-top','90px');
       marginLogin('big');
     }
   });
