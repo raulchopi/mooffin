@@ -32,22 +32,22 @@ $(document).ready(function(){
     if (y >= 1) {
       header.removeClass('big').addClass('small');
       content.css('margin-top','50px');
-      marginLogin('small');
+      marginLogin();
     }
     else{
       header.removeClass('small').addClass('big');
       content.css('margin-top','90px');
-      marginLogin('big');
+      marginLogin();
     }
   });
 
   //Aplica margen al cuadro de login en la pantalla para movil
   function marginLogin(size){
-    if($(this).width() >= 658 || size == 'big'){
-      $("#login").css("margin", "10px 0 0 0");
+    if($(this).width() >= 658){
+      $("#login").removeClass('movil');
     }
     else if($(this).width() < 658){
-      $("#login").css("margin", "10px 100px 0 0");
+      $("#login").addClass('movil');
     }
   }
 
@@ -59,12 +59,17 @@ $(document).ready(function(){
 
 $(".btn_login").click(function(){
   $("#login_nav").hide();
-  $("#login_box").fadeIn('slow');
+  $("#login_form").fadeIn();
+  $("#login_omniauth").fadeIn();
+  $("#login_box").slideDown();
 });
 
-$(".btn_close_login").click(function(){
-  $("#login_box").hide();
-	$("#login_nav").fadeIn('slow');
+$(".btn_close_login").click(function(){  
+  $("#login_form").fadeOut();
+  $("#login_omniauth").fadeOut();
+	$("#login_box").slideUp();
+  $("#login_nav").delay(500).fadeIn();
+  
 });
 
 

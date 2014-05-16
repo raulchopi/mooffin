@@ -4,6 +4,7 @@ $(document).ready(function(){
 	if($(this).width() < 658){
 		$(".menu").slideUp();
 		$("#menu_principal").addClass('movil');
+		$("#login").addClass('movil');
 		$(".menu").css("border-bottom", "2px solid black");
 		$(".menu").css("-webkit-box-shadow", "inset 0px 0px 50px 0px rgba(41, 43, 51, 0.25)");	
 	}
@@ -35,6 +36,7 @@ $(document).ready(function(){
 			$(".menu").css("border-bottom", "none");
 			$(".menu").css("-webkit-box-shadow", "none");
 			$("#menu_principal").removeClass('movil');
+			$("#login").removeClass('movil');
 	   }
 	   else if($(this).width() < 658){
 	   		$(".menu").hide();
@@ -42,6 +44,7 @@ $(document).ready(function(){
 			$(".menu").css("border-bottom", "2px solid black");
 			$(".menu").css("-webkit-box-shadow", "inset 0px 0px 50px 0px rgba(41, 43, 51, 0.25)");
 			$("#menu_principal").addClass('movil');
+			$("#login").addClass('movil');
 	   }
 	});
 
