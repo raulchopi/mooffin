@@ -18,10 +18,10 @@
 						¿Qué puedo cocinar hoy?
 					#imagenInicio.large-6.columns
 
-				#recipes{'ng-show' => 'show_recipes.length > 0'}
-					%span{'ng-class'=>"{active: layout == 'grid'}", 'ng-click'=>"layout = 'grid'"} grid
-					%span{'ng-class'=>"{active: layout == 'list'}", 'ng-click'=>"layout = 'list'"} list
+				#recipes{'ng-show' => 'show_recipes.length > 0'}					
 
 					= render :partial => 'layouts/shared/proposals'
+
+					= render :partial => 'layouts/shared/list_types'
 
 		= render :partial => 'layouts/shared/footer'

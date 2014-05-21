@@ -58,9 +58,9 @@ class RecipesController < ApplicationController
 		@recipe.rating = 0
 		@recipe.description = ''
 		if @recipe.save
-			redirect_to root_url
+			redirect_to new_recipe_path, :notice => "Receta creada!"  
 		else
-			redirect_to new_recipe_path
+			redirect_to new_recipe_path, :notice => "Error al crear la receta!"  
 		end
 	end
 

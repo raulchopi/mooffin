@@ -36,6 +36,7 @@
 	float: left
 	width: 100%
 	padding: 0 20px 0 20px
+	margin: 20px 0 0 0
 
 #tituloreceta
 	margin: 10px 60px 0 0
@@ -55,17 +56,16 @@
 #detallesreceta
 	font-size: 12px
 	color: #64645D
-	margin: 10px 0 35px 30px
+	margin: 10px 0 30px 30px
 	
 	.dificultad
-		display: inline-block
-		width: 20%
+		margin: 5px 0 0 0
+		
 	.tiempoElaboracion
-		display: inline-block
-		width: 20%
+		margin: 5px 0 0 0
+
 	.autor
-		display: inline-block
-		width: 20%
+		margin: 5px 0 0 0
 
 #ingFoto
 	margin: 20px 0 0 0
@@ -92,7 +92,8 @@
 #elaboracionreceta
 	float: left
 	width: 90%
-	margin: 40px 0 0 30px
+	margin: 40px 0 0 20px
+	text-align: justify
 
 	.titulo
 		margin: 0 0 10px 0
@@ -103,8 +104,9 @@
 		list-style: none
 
 		li
-			margin: 0 0 15px 0
-			font-size: 0.9em
+			margin: 0 0 7px 0
+			font-size: 0.75em
+			text-indent: 20px
 
 // PROPOSALS
 #recipesProposals_grid
@@ -119,7 +121,7 @@
 		+effect(0.5s)
 		
 		&:hover
-			+scale_effect			
+			/* +scale_effect */
 		
 		img
 			width: auto
@@ -439,3 +441,9 @@
 			.remove_step
 				float: left
 				width: 5%		
+
+#list_types
+	width: 100%		
+	float: left
+	text-align: centerç
+	margin: 20px 0 0 0		

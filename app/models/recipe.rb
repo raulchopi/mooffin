@@ -33,9 +33,16 @@ class Recipe < ActiveRecord::Base
 		rating.round(1)
 	end
 
-	def celiacDesease
+	def celiac_desease
 		links.each do |l|
 			return true if l.ingredient.celiac
+		end
+		return false
+	end
+
+	def user_already_opined(user_op)
+		opinions.each do |o|
+			return true if o.user == user_op
 		end
 		return false
 	end

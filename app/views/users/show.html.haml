@@ -16,9 +16,8 @@
 				Valoración recetas: #{current_user.average_rate_recipes}
 		
 	#main.large-8.columns
-		%span{'ng-class'=>"{active: layout == 'grid'}", 'ng-click'=>"layout = 'grid'"} grid
-		%span{'ng-class'=>"{active: layout == 'list'}", 'ng-click'=>"layout = 'list'"} list
-					
 		= render @recipes
+
+		= render :partial => 'layouts/shared/list_types'
 
 = render :partial => 'layouts/shared/footer'

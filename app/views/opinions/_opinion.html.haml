@@ -1,6 +1,9 @@
 - if !opinion.opinion.blank?
 	=div_for opinion do
-		#opTop
+		= image_tag('profile_photo.png', size: '50')
+		.opVal
+			= opinion.rating
+		#opTop			
 			= link_to opinion.user.name, user_path(opinion.user)
 			%span= opinion.created_at
 			.opDelete
@@ -8,8 +11,6 @@
 					= link_to 'x', opinion, :method => :delete, remote: true
 
 		#opBottom
-			.opVal
-				= opinion.rating
 			.opText
 				= opinion.opinion
 	

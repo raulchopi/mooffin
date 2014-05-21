@@ -12,15 +12,15 @@
 			#likeRecipe
 				= render :partial => 'recipes/like'
 
-			- if @recipe.celiacDesease
+			- if @recipe.celiac_desease
 				= image_tag('celiac_icon.png', :border => 0, size: '25', :alt => 'Receta no apta para celíacos')
 
-		#detallesreceta
-			.dificultad
+		#detallesreceta.row
+			.dificultad.large-4.columns
 				Dificultad: #{@recipe.difficulty.description} 
-			.tiempoElaboracion
+			.tiempoElaboracion.large-4.columns
 				#{@recipe.time} minutos
-			.autor
+			.autor.large-4.columns
 				Autor: 
 				= link_to @recipe.user.name, user_path(@recipe.user)
 
@@ -56,6 +56,8 @@
 			Debes estar logueado para comentar una receta.
 		- elsif @recipe.user == current_user
 			No puedes comentar tus propias recetas, pillín!
+		-elsif @recipe.user_already_opined(current_user)
+			Ya has comentado esta receta	
 		- else
 			Deja tu opinión
 			= form_for [@recipe, @opinion], :html => {:id => 'form_opinion'}, remote: true do |o|

@@ -7,9 +7,8 @@
 	#buscador
 
 	#main
-		%span{'ng-class'=>"{active: layout == 'grid'}", 'ng-click'=>"layout = 'grid'"} grid
-		%span{'ng-class'=>"{active: layout == 'list'}", 'ng-click'=>"layout = 'list'"} list
-		
 		= render @likes
+
+		= render :partial => 'layouts/shared/list_types'
 
 = render :partial => 'layouts/shared/footer'
