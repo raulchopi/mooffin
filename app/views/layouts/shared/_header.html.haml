@@ -4,7 +4,7 @@
 			= link_to image_tag( 'logos/mooffin2_blanco.png'), root_path
 
 		#menu_movil
-			%a{} Menu	
+			%a{} 
 					
 		#login
 			- if current_user
@@ -14,8 +14,8 @@
 			- else
 				#login_nav				
 					%ul
-						%li 
-							= link_to 'Registro', signup_path, class: 'btn_login'
+						-# %li 
+							-# = link_to 'Registro', signup_path, class: 'btn_login' 
 						%li	
 							%a{ :class => 'btn_login'}= 'Login'				
 							
