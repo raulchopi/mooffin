@@ -36,7 +36,8 @@
 		#nuevaReceta
 			#titulo
 				= text_field :recipe, :title, placeholder: 'Título', 'ng-model' => 'recipeTitle'
-			= file_field :recipe, :photo, 'onchange' => 'angular.element(this).scope().setFile(this)'
+			%input#photoUpload{ :type => 'file', :onchange => 'angular.element(this).scope().readFile()' }
+
 			#detalles.row
 				#tiempo.large-4.columns
 					= text_field :recipe, :time, placeholder: 'Tiempo', 'ng-model' => 'recipeTime'
