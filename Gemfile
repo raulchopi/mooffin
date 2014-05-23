@@ -48,7 +48,7 @@ gem "angularjs-rails", "~> 1.0.8"
 
 gem "json"
 
-gem "paperclip", "~> 3.0"
+gem "paperclip", "~> 4.1.1"
 #gem "rmagick", "~> 2.13.2"
 #gem "cocaine", "~> 0.3.2"
 

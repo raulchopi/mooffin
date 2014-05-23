@@ -6,7 +6,6 @@ links = {}
 steps = {}
 idsIngredients = []
 paramIngredients = {}
-
 # Create the instant search filter
 app.filter "searchFor", ->
   
@@ -74,7 +73,8 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
   edit = false
   editIndex = 0
   numSteps = 0;
-  photo = ''
+  photo = null
+  fr = new FileReader();
 
 
   $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
@@ -136,7 +136,9 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
 
   $scope.createRecipe = () ->
     recipe = { 'recipe': { 'title': $scope.recipeTitle, 'time': $scope.recipeTime, 
-    'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id, 'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
+    'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
+    'photo': photo, 
+    'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
     links = $scope.links
     steps = $scope.steps
     InstantIngredientsSearchFactory.setRecipe recipe, links, steps
@@ -145,9 +147,13 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
     if(ev.which == 13)
       addStep()
 
-
-  $scope.setFile = (element) ->
-    photo = element.files[0]
+  $scope.readFile = () ->
+    photo = document.getElementById('photoUpload').files[0]
+    fr.onloadend = (e) ->
+      data = e.target.result
+      #send you binary data via $http or $resource or do anything else with it
+    
+    fr.readAsArrayBuffer photo
 
 # The factory
 angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFactory', ($http) ->
