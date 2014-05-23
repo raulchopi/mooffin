@@ -1,14 +1,15 @@
 #recipesProposals_grid.row{'ng-show' => "layout == 'grid'"}
 	#proposal.large-6.columns{ 'ng-repeat' => 'recipe in show_recipes' }
-		#header
-			#title
-				%a{href: 'recipes/{{recipe.id}}'} 
-					%span{'ng-bind' => 'recipe.title'}
+		#propposal_container
+			#header
+				#title
+					%a{href: 'recipes/{{recipe.id}}'} 
+						%span{'ng-bind' => 'recipe.title'}
 
-			#rating
-				%span{'ng-bind' => 'recipe.rating'}
+				#rating
+					%span{'ng-bind' => 'recipe.rating'}
 
-		%img{:src => 'assets/pantumaca2.JPG'}
+			%img{:src => 'assets/pantumaca2.JPG'}
 
 
 #recipesProposals_list{'ng-show' => "layout == 'list'"}
