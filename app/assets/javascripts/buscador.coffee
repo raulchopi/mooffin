@@ -148,12 +148,12 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
       addStep()
 
   $scope.readFile = () ->
-    photo = document.getElementById('photoUpload').files[0]
+    photoElement = document.getElementById('photoUpload').files[0]
     fr.onloadend = (e) ->
-      data = e.target.result
+      photo = e.target.result
       #send you binary data via $http or $resource or do anything else with it
     
-    fr.readAsArrayBuffer photo
+    fr.readAsDataURL photoElement
 
 # The factory
 angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFactory', ($http) ->

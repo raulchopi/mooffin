@@ -38,7 +38,7 @@ class RecipesController < ApplicationController
 		@proposals = Recipe.find_proposals(idsIngredients)
 		respond_to do |format|
 			format.json {
-				render json: @proposals
+				render json: @proposals.to_json(:methods => [:photo_url])
 			}
 			format.html {
 				@proposals
