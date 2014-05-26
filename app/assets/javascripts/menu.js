@@ -53,7 +53,7 @@ $(document).ready(function(){
 	$(window).scroll(function () {
 	    var y = $(this).scrollTop();
 
-	    if ($(this).width() <= 820 && $(this).width() >= 658) {
+	    if ($(this).width() >= 658) {
 	    	if (y >= 1){
 		    	$(".menu").fadeOut();
 				desplegado = false;

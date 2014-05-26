@@ -7,6 +7,11 @@ $(document).ready(function(){
   //var images = ['portada1.png'];
   //$('#imagenInicio').css({'background': 'url(../images/portada/' + images[Math.floor(Math.random() * images.length)] + ') no-repeat'});
 
+
+  $("#proposal_container").hover(function(){
+    $(this).children().find('.overlay').css('opacity','0.1');
+  });
+
 });
 
 
