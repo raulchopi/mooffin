@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140311183136) do
+ActiveRecord::Schema.define(version: 20140219104652) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id",    null: false
@@ -43,9 +43,10 @@ ActiveRecord::Schema.define(version: 20140311183136) do
 
   create_table "ingredients", force: true do |t|
     t.string   "name",       null: false
+    t.boolean  "celiac",     null: false
+    t.boolean  "vegetarian", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "celiac"
   end
 
   create_table "likes", force: true do |t|
@@ -75,13 +76,14 @@ ActiveRecord::Schema.define(version: 20140311183136) do
   end
 
   create_table "recipes", force: true do |t|
-    t.integer  "user_id",            null: false
-    t.string   "title",              null: false
-    t.integer  "difficulty_id",      null: false
-    t.integer  "time",               null: false
-    t.integer  "servings",           null: false
-    t.text     "description"
-    t.float    "rating",             null: false
+    t.integer  "user_id",                          null: false
+    t.string   "title",                            null: false
+    t.integer  "difficulty_id",                    null: false
+    t.integer  "time",                             null: false
+    t.integer  "servings",                         null: false
+    t.text     "description",        default: ""
+    t.float    "rating",             default: 0.0
+    t.integer  "views_count",        default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo_file_name"

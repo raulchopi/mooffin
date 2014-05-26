@@ -1,8 +1,9 @@
 #myRecipes_grid{'ng-show' => "layout == 'grid'"}
-	=div_for recipe do
-		#title
-			= link_to recipe.title, recipe_path(recipe), {:class => 'text'}
-		#options
+	= div_for(recipe, :class => 'large-4 columns') do
+		#my_recipe_container
+			= image_tag(recipe.photo_url)
+			#title
+				= link_to recipe.title, recipe_path(recipe), {:class => 'text'}
 			.edit	
 				= link_to image_tag('edit.png', :border => 0, size: '20'), edit_recipe_path(recipe)
 			.delete

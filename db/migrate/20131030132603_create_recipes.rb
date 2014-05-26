@@ -6,8 +6,9 @@ class CreateRecipes < ActiveRecord::Migration
 			t.integer   :difficulty_id,	:null => false
 			t.integer   :time, 			:null => false
 			t.integer   :servings, 		:null => false
-			t.text      :description
-			t.float     :rating, 		:null => false
+			t.text      :description, 	:default => ''
+			t.float     :rating, 		:default => 0
+			t.integer	:views_count, 	:default => 0
 			t.timestamps
 		end
 	end

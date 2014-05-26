@@ -17,6 +17,7 @@ class RecipesController < ApplicationController
 		@opinion = Opinion.new
 		@like = Like.new
 		@opinions = @recipe.opinions
+		@recipe.increment!(:views_count, by = 1)	#-Contador de visitas
 	end
 
 	def index
@@ -55,8 +56,6 @@ class RecipesController < ApplicationController
 
 	def create
 		@recipe = current_user.recipes.new(recipe_params)
-		@recipe.rating = 0
-		@recipe.description = ''
 		if @recipe.save
 			redirect_to new_recipe_path, :notice => "Receta creada!"  
 		else
