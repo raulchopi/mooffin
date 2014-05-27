@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "default_img_user_:style.png"
+  has_attached_file :avatar, :default_url => "default_img_user_:style.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_attachment :avatar, :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }
   
@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
       user.surname = auth.info.last_name
       user.username = auth.uid
       user.email = auth.info.email
-      #user.avatar = auth.info.image
+      user.avatar = auth.info.image
       #user.password = Devise.friendly_token[0,20]
     end  
   end 

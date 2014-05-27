@@ -1,6 +1,6 @@
 - if !opinion.opinion.blank?
 	=div_for opinion do
-		= image_tag('profile_photo.png', size: '50')
+		= image_tag(opinion.user.avatar.url, size: '50')
 		.opVal
 			= opinion.rating
 		#opTop			
