@@ -7,7 +7,7 @@
 	#buscador.large-4.columns
 		#datos_usuario
 			.foto
-				= image_tag current_user.avatar.path
+				= image_tag current_user.avatar.url(:thumb)
 			.nombre
 				= current_user.name
 			.num_recetas

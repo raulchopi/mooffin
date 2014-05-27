@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "default_img_user_:style.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-
+  validates_attachment :avatar, :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_USERNAME = /\A[A-Za-z0-9_]+\z/
