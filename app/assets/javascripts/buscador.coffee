@@ -143,6 +143,15 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
     steps = $scope.steps
     InstantIngredientsSearchFactory.setRecipe recipe, links, steps
 
+  $scope.updateRecipe = () ->
+    recipe = { 'recipe': { 'title': $scope.recipeTitle, 'time': $scope.recipeTime, 
+    'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
+    'photo': photo, 
+    'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
+    links = $scope.links
+    steps = $scope.steps
+    InstantIngredientsSearchFactory.updateRecipe recipe, links, steps
+
   $scope.enterKeyStep = (ev) ->
     if(ev.which == 13)
       addStep()
@@ -188,4 +197,8 @@ angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFact
 
   setRecipe: ->
     $http.post("/recipes", recipe, links, steps).then ->
+      true
+
+  updateRecipe: ->
+    $http.patch("/recipes/:id", recipe, links, steps).then ->
       true

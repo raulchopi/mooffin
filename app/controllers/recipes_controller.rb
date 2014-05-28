@@ -50,6 +50,11 @@ class RecipesController < ApplicationController
 	def edit
 	end
 
+	def edition
+		@recipe = current_user.recipes.update(recipe_params)
+		redirect_to new_recipe_path, :notice => "Receta actualizada!"
+	end
+
 	def destroy 
 		@recipe.destroy
 	end

@@ -25,6 +25,7 @@ Mooffin::Application.routes.draw do
   end
 
   get '/proposals' => 'recipes#proposals'
+  patch '/recipes/:id' => 'recipes#edition'
 
   resources :links
   resources :likes
