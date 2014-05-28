@@ -30,7 +30,7 @@
 	#mainNuevaReceta.large-8.columns
 		#nuevaReceta			
 			#titulo
-				= text_field :recipe, :title, placeholder: 'Título', 'ng-model' => 'recipeTitle'
+				= text_field :recipe, :title, placeholder: 'Título', 'ng-bind' => 'recipeTitle'
 			%input#photoUpload{ :type => 'file', :onchange => 'angular.element(this).scope().readFile()' }
 
 			#detalles.row
@@ -54,7 +54,7 @@
 					= button_tag '+', class: 'btn_addStep', 'ng-click' => 'addStep()'
 
 			#crearReceta
-				= button_tag 'Crear receta', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'createRecipe()'			
+				= button_tag 'Crear receta', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'updateRecipe()'			
 
 
 		
