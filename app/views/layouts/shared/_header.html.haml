@@ -9,6 +9,7 @@
 		#login
 			- if current_user
 				#logout
+					= image_tag current_user.avatar.url
 					= link_to current_user.name, "/users/#{current_user.username}"
 					= link_to 'Salir', logout_path, class: 'salir'
 			- else
