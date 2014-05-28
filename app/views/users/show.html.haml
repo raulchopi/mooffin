@@ -7,16 +7,16 @@
 	#buscador.large-4.columns
 		#datos_usuario
 			.foto
-				= image_tag current_user.avatar.url
+				= image_tag @user.avatar.url
 			.nombre
-				= current_user.name
+				= @user.name
 			.num_recetas
-				Recetas registradas: #{current_user.recipes.count} 
+				Recetas registradas: #{@user.recipes.count} 
 			.val_recetas
-				Valoración recetas: #{current_user.average_rate_recipes}
+				Valoración recetas: #{@user.average_rate_recipes}
 		
 	#main.large-8.columns
-		= render @recipes
+		= render @user.recipes
 
 		= render :partial => 'layouts/shared/list_types'
 

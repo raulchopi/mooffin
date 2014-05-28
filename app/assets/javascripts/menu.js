@@ -55,7 +55,7 @@ $(document).ready(function(){
 
 	    if ($(this).width() >= 658) {
 	    	if (y >= 1){
-		    	$(".menu").fadeOut();
+		    	$(".menu").hide();
 				desplegado = false;
 			}
 	    	else if (y < 1){

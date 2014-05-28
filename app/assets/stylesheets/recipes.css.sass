@@ -19,7 +19,7 @@
 	margin: 0 10px 0 10px
 
 =iconos_mis_recetas
-	background: #FFFFFF
+	background: #F0F0F0
 	border: 1px solid #e1e1e1
 	border-radius: 20px
 	width: 35px
@@ -27,12 +27,14 @@
 	padding: 2px 0 0 6px
 	position: absolute
 	top: 10px
+	+sombra_icono_receta
 	+effect(0.5s)
+	
 
-	&:hover
-		background: #e1e1e1
-		+effect(0.5s)
-
+=sombra_icono_receta
+	-webkit-box-shadow: 3px 3px 5px #000000
+	-moz-box-shadow: 3px 3px 5px #000000
+	box-shadow: 3px 3px 5px #000000
 
 =scale_effect
 	-webkit-box-shadow: 4px 4px 4px rgba(0,0,0,0.2)
@@ -49,9 +51,17 @@
 
 #receta
 	float: left
-	width: 100%
+	width: 95%
 	padding: 0 20px 0 20px
-	margin: 20px 0 0 0
+	margin: 20px 10px 0 10px
+	background: white
+	border-radius: 3px
+	border: 1px solid #E5E5E5
+	-webkit-box-shadow: 1px 2px 3px #222222
+	-moz-box-shadow: 1px 1px 3px #222222
+	box-shadow: 1px 1px 3px #222222
+	
+
 
 #tituloreceta
 	margin: 10px 60px 0 0
@@ -86,23 +96,28 @@
 	margin: 20px 0 0 0
 
 	#ingredientesreceta
-		font-size: 14px
-
+		
 		.titulo
 			margin: 0 0 10px 0
 			padding: 0 0 0 10px
 			border-bottom: solid thin #e8e8e8
 		
 		ul
-			list-style: none
+			list-style: none			
+			padding: 10px
 
 			li
+				font-size: 0.75em
 
 
 #fotoreceta
 	img
-		border: 3px solid #000
-		border-radius: 5px !important
+		border-radius: 3px
+		padding: 9px
+		border: 1px solid #e1e1e1
+		-webkit-box-shadow: 1px 2px 3px #e1e1e1
+		-moz-box-shadow: 1px 1px 3px #e1e1e1
+		box-shadow: 1px 1px 3px #e1e1e1
 
 #elaboracionreceta
 	float: left
@@ -111,12 +126,12 @@
 	text-align: justify
 
 	.titulo
-		margin: 0 0 10px 0
 		padding: 0 0 0 10px
 		border-bottom: solid thin #e8e8e8
 
 	ul
 		list-style: none
+		padding: 10px
 
 		li
 			margin: 0 0 7px 0
@@ -180,6 +195,7 @@
 				width: 35px
 				z-index: 100
 				text-align: center
+				+sombra_icono_receta
 
 			#header
 				width: 100%
@@ -241,17 +257,31 @@
 
 			#title
 				width: 100%
-				height: 80%
+				height: 50px
 				padding: 5px
 				font-size: 0.72em
+				opacity: 1
+				overflow: hidden
+				padding: 15px 5px 5px
+				position: relative
 
 			.edit
 				+iconos_mis_recetas
 				right: 30px
 
+				&:hover
+					background: #C2FFC2
+					border: 1px solid #CCFFCC
+					+effect(0.5s)
+
 			.delete
 				+iconos_mis_recetas
 				right: 75px
+
+				&:hover
+					background: #FFB8B8
+					border: 1px solid #FFADAD
+					+effect(0.5s)
 
 #myRecipes_list
 	margin: 25px 0 0 10px

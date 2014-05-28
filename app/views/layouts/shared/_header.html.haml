@@ -10,8 +10,9 @@
 			- if current_user
 				#logout
 					= image_tag current_user.avatar.url
-					= link_to current_user.name, "/users/#{current_user.username}"
-					= link_to 'Salir', logout_path, class: 'salir'
+					= link_to current_user.name, user_path(current_user)
+					#salir
+						= link_to image_tag('exit.png', :border => 0, size: '15'), logout_path
 			- else
 				#login_nav				
 					%ul
@@ -39,7 +40,7 @@
 			%ul.menu		
 				%li= link_to 'Qué cocino?', root_path
 				- if current_user 
-					%li= link_to 'Mis recetas', "/users/#{current_user.username}"
+					%li= link_to 'Mis recetas', user_path(current_user)
 					%li= link_to 'Favoritas', user_likes_path(current_user)
 					%li= link_to 'Nueva receta', new_recipe_path
 

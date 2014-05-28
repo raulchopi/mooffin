@@ -1,11 +1,14 @@
 @import "compass"
 @import "compass/layout"
 
+=color_cabecera
+	background-color: #222
+
 =comunes_cabecera
 	width: 100%	
 	color: white !important
 	font-size: 16px
-	background-color: #222
+	+color_cabecera
 	top: 0
 	left: 0
 	z-index: 1000
@@ -114,9 +117,14 @@
 					border-radius: 10px
 					margin: 0 10px 0 0 
 
-				.salir
-					margin: 0 0 0 10px
-					font-size: 0.8em
+				#salir
+					float: right
+					margin: 0 15px 0 10px
+					width: 15px
+					
+					img
+						margin: 0 0 0 10px
+						border-radius: 0
 
 			#login_box
 				float: right
@@ -207,14 +215,19 @@
 					border-radius: 10px
 					margin: 0 10px 0 0
 
-				.salir
-					margin: 0 0 0 10px
-					font-size: 0.8em
+				#salir
+					float: right
+					margin: 0 15px 0 10px
+					width: 15px
+					
+					img
+						margin: 0 0 0 10px
+						border-radius: 0
 
 			#login_box
 				float: right
 				margin: 30px 0 0
-				background-color: #222
+				+color_cabecera
 				width: 100%
 				padding: 20px
 
@@ -278,7 +291,7 @@
 			ul     
 				float: right
 				margin: 0 0 0 0
-				background-color: #222
+				+color_cabecera
 				border-top: 2px solid #333
 
 			li
@@ -348,14 +361,19 @@
 				a
 					color: white
 
-				.salir
-					margin: 0 0 0 10px
-					font-size: 0.8em
+				#salir
+					float: right
+					margin: 0 15px 0 10px
+					width: 15px
+					
+					img
+						margin: 0 0 0 10px
+						border-radius: 0
 
 			#login_box
 				float: right
 				width: 550px
-				background-color: #222
+				+color_cabecera
 
 				#login_omniauth 
 					float: left
@@ -426,14 +444,19 @@
 				a
 					color: white	
 
-				.salir
-					margin: 0 0 0 10px
-					font-size: 0.8em
+				#salir
+					float: right
+					margin: 0 15px 0 10px
+					width: 15px
+					
+					img
+						margin: 0 0 0 10px
+						border-radius: 0
 
 			#login_box
 				float: right
 				margin: 30px 0 0
-				background-color: #222
+				+color_cabecera
 				width: 100%
 				padding: 20px
 

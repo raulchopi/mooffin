@@ -44,7 +44,7 @@ class RecipesController < ApplicationController
 			format.html {
 				@proposals
 			}
-  	end
+  		end
 	end
 
 	def edit
@@ -56,10 +56,12 @@ class RecipesController < ApplicationController
 
 	def create
 		@recipe = current_user.recipes.new(recipe_params)
-		if @recipe.save
-			redirect_to new_recipe_path, :notice => "Receta creada!"  
-		else
-			redirect_to new_recipe_path, :notice => "Error al crear la receta!"  
+		respond_to do |format|
+			if @recipe.save
+				format.html { redirect_to user_path(current_user), notice: 'Receta creada!' }
+			else
+				format.html { redirect_to new_recipe_path, :notice => "Error al crear la receta!" }
+			end
 		end
 	end
 
