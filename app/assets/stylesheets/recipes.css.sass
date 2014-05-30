@@ -19,16 +19,19 @@
 	margin: 0 10px 0 10px
 
 =iconos_mis_recetas
-	background: #F0F0F0
-	border: 1px solid #e1e1e1
 	border-radius: 20px
-	width: 35px
-	height: 35px
-	padding: 2px 0 0 6px
+	width: 16px
+	height: 16px
 	position: absolute
-	top: 10px
-	+sombra_icono_receta
-	+effect(0.5s)
+	top: -20px
+	opacity: 0
+	+effect(0.2s)
+
+=borde
+	border-color: #d8d8d8
+	border-style: solid
+	border-radius: 3px
+	border-width: 0px 1px 2px
 	
 
 =sombra_icono_receta
@@ -48,6 +51,11 @@
 	-webkit-transition: all $time ease-out
 	-moz-transition: all $time ease
 	-o-transition: all $time ease
+
+=transicion($time)
+	transition-delay: $time
+	-moz-transition-delay: $time
+	-webkit-transition-delay: $time
 
 #receta
 	float: left
@@ -249,11 +257,22 @@
 
 		#my_recipe_container
 			background-color: white
-			border-radius: 3px
 			color: black !important
 			overflow: hidden
 			height: auto
-			border: 1px solid #e1e1e1
+			+borde
+
+			&:hover .delete
+				top: 10px
+				opacity: 1
+				+effect(0.2s)
+
+			&:hover .edit
+				top: 10px
+				opacity: 1				
+				+effect(0.2s)
+				+transicion(100ms)
+			 
 
 			#title
 				width: 100%
@@ -264,24 +283,22 @@
 				overflow: hidden
 				padding: 15px 5px 5px
 				position: relative
+				white-space: nowrap
+				overflow: hidden
+				text-overflow: ellipsis
 
 			.edit
 				+iconos_mis_recetas
 				right: 30px
+				+transicion(100ms)
 
-				&:hover
-					background: #C2FFC2
-					border: 1px solid #CCFFCC
-					+effect(0.5s)
+				&:hover			
 
 			.delete
 				+iconos_mis_recetas
-				right: 75px
+				right: 60px
 
 				&:hover
-					background: #FFB8B8
-					border: 1px solid #FFADAD
-					+effect(0.5s)
 
 #myRecipes_list
 	margin: 25px 0 0 10px
