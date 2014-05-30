@@ -4,9 +4,10 @@
 			%a{href: 'recipes/{{recipe.id}}'}
 				%span.rating{'ng-bind' => 'recipe.rating'}
 				%span.overlay
-				%img{'ng-src' => '{{recipe.photo_url}}'}
+				#foto
+					%img{'ng-src' => '{{recipe.photo_url}}'}
 
-				#header
+				#titulo
 					%span{'ng-bind' => 'recipe.title'}
 
 
