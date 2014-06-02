@@ -31,7 +31,7 @@
 				%ul
 					- @recipe.links.each do |link|
 						%li
-							= link.number
+							= link.unidadSinCeros
 							= link.unit.description
 							= link.ingredient.name
 
@@ -46,26 +46,11 @@
 					%li= step.description
 
 	#opiniones
-		.titulo
-			Opiniones
-		
+		= render :partial => 'layouts/shared/new_opinion'
+
 		= render @opinions
 
-	#nuevaOpinion
-		- if !current_user 
-			Debes estar logueado para comentar una receta.
-		- elsif @recipe.user == current_user
-			No puedes comentar tus propias recetas, pillín!
-		-elsif @recipe.user_already_opined(current_user)
-			Ya has comentado esta receta	
-		- else
-			Deja tu opinión
-			= form_for [@recipe, @opinion], :html => {:id => 'form_opinion'}, remote: true do |o|
-				= o.label :opinion, "Opinión"
-				= o.text_field :opinion
-				= o.label :rating, "Valoración"
-				= o.text_field :rating
-				= o.submit 'Opinar!', :class => 'new_opinion_btn'
+	
 
 
 

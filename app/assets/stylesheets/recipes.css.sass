@@ -34,6 +34,22 @@
 	opacity: 0
 	+effect(0.2s)
 
+=rating_receta
+	background: none repeat scroll 0 0 #FFFFFF
+	border: 1px solid #e1e1e1
+	border-radius: 3px
+	height: 30px
+	opacity: 1
+	font-size: 0.75em
+	font-weight: bold
+	padding: 5px
+	position: absolute
+	right: 30px
+	top: 10px
+	width: 30px
+	z-index: 100
+	text-align: center
+
 =titulo_receta
 	width: 100%
 	height: 50px
@@ -104,16 +120,19 @@
 
 
 #tituloreceta
-	margin: 10px 60px 0 0
+	margin: 30px 60px 0 0
 	padding: 0 0 2px 25px
 	font-size: 30px
 	border-bottom: solid thin #e8e8e8
+	position: relative
 
 	#titulo
 		display: inline-block
 
 	#likeRecipe
-		display: inline-block
+		position: absolute
+		top: -20px
+		right: -65px
 
 		form
 			margin: 0
@@ -208,27 +227,27 @@
 				+overlay_receta
 
 			span.rating
-				background: none repeat scroll 0 0 #FFFFFF
-				border: 1px solid #e1e1e1
-				border-radius: 3px
-				height: 30px
-				opacity: 1
-				font-size: 0.75em
-				font-weight: bold
-				padding: 5px
-				position: absolute
-				right: 30px
-				top: 10px
-				width: 30px
-				z-index: 100
-				text-align: center
+				+rating_receta
 
-			#foto
-				overflow: hidden
-				position: relative
 
-				img
-					+effect(0.2s)
+			@media (min-width: 658px)
+				#foto
+					overflow: hidden
+					position: relative
+					height: 120px
+
+					img
+						width: 100%
+						height: 100%
+						+effect(0.2s)
+
+			@media (max-width: 657px)
+				#foto
+					overflow: hidden
+					position: relative
+					img
+						width: 100%
+						+effect(0.2s)
 
 			#titulo
 				+titulo_receta
@@ -298,12 +317,24 @@
 			span.overlay
 				+overlay_receta
 				
-			#foto
-				overflow: hidden
-				position: relative
+			@media (min-width: 658px)
+				#foto
+					overflow: hidden
+					position: relative
+					height: 120px
 
-				img
-					+effect(0.2s)
+					img
+						width: 100%
+						height: 100%
+						+effect(0.2s)
+
+			@media (max-width: 657px)
+				#foto
+					overflow: hidden
+					position: relative
+					img
+						width: 100%
+						+effect(0.2s)		
 
 			#titulo
 				+titulo_receta
@@ -352,33 +383,76 @@
 	margin: 25px 0 0 10px
 
 	.like
-		width: 30%
-		height: 150px
-		display: inline-block
-		margin: 12px
-		border: 1px solid
 		float: left
+		display: inline-block
+		margin-bottom: 12px
+		overflow: hidden
+		position: relative
+		+effect(0.5s)
 
-		#title
-			width: 100%
-			height: 80%
-			padding: 5px
+	#my_like_container
+		+contenedor_receta
 
-		#options
-			width: 100%
-			height: 20%
-			background: rgba(208, 208, 208, 0.4)
+		&:hover .delete
+			top: 10px
+			opacity: 1
+			+effect(0.2s)
 
-			.fav
-				float: right
-				margin: 0 10px 0 0
+		&:hover .edit
+			top: 10px
+			opacity: 1				
+			+effect(0.2s)
+			+transicion(100ms)
+
+		&:hover .overlay
+			opacity: 0.1
+			+effect(0.2s)
+
+		&:hover img
+			+scale_effect(1.1)
+			+effect(0.2s)
+
+		span.overlay
+			+overlay_receta
+
+		span.rating
+			+rating_receta
+			
+		@media (min-width: 658px)
+			#foto
+				overflow: hidden
+				position: relative
+				height: 120px
+
+				img
+					width: 100%
+					height: 100%
+					+effect(0.2s)
+
+		@media (max-width: 657px)
+			#foto
+				overflow: hidden
+				position: relative
+				img
+					width: 100%
+					+effect(0.2s)		
+
+		#titulo
+			+titulo_receta
+
+		.edit
+			+iconos_mis_recetas
+			right: 70px
+			+transicion(100ms)
+
+			&:hover
 
 
 #myLikes_list
 	margin: 25px 0 0 10px
 
 	.like
-		width: 50%
+		width: 100%
 		margin: 1px
 		float: left
 		border-bottom: 1px solid #E8E8E8
@@ -388,13 +462,9 @@
 			width: 80%
 			float: left
 
-		#options
-			width: 20%
-			float: left
-
-			.fav
-				float: right
-				margin: 0 10px 0 0	
+		.fav
+			float: right
+			margin: 0 10px 0 0	
 
 // NEW
 

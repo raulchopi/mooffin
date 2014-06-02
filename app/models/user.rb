@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
+
   authenticates_with_sorcery!
 
   has_attached_file :avatar, :default_url => "default_img_user_:style.png"
@@ -54,7 +56,7 @@ class User < ActiveRecord::Base
     end  
   end 
 
-  #Returns average rate of current user's recipes
+  #Returns average rate of user's recipes (only 1 decimal)
   def average_rate_recipes
     val = 0
     if recipes.count > 0
@@ -63,7 +65,19 @@ class User < ActiveRecord::Base
       end
       val /= recipes.count
     end
-    val
+    number_with_precision(val, precision: 1)
+  end
+
+  #Returns average rate of user's liked recipes (only 1 decimal)
+  def average_rate_likes
+    val = 0
+    if likes.count > 0
+      likes.each do |l|
+        val += l.recipe.rating
+      end
+      val /= likes.count
+    end
+    number_with_precision(val, precision: 1)
   end
 
 

@@ -1,0 +1,31 @@
+
+- if !current_user 
+	Debes estar logueado para comentar una receta.
+- elsif @recipe.user == current_user
+	No puedes comentar tus propias recetas, pillín!
+-elsif ((nueva = @recipe.user_already_opined(current_user)) != false)
+	.opinion.mi_opinion.row
+		= image_tag(nueva.user.avatar.url, size: '50')
+		.opVal
+			= nueva.rating
+		#opTop			
+			= link_to nueva.user.name, user_path(nueva.user)
+			%span= nueva.created_at
+			.opDelete
+				- if nueva.user == current_user
+					= link_to 'x', nueva, :method => :delete, remote: true
+		#opBottom
+			.opText
+				= nueva.opinion
+
+- else
+	#nuevaOpinion
+		#op_titulo.row
+			Deja tu opinión
+		= form_for [@recipe, @opinion], :html => {:id => 'form_opinion'}, remote: true do |o|
+			#detalles.row
+				#op_texto.large-10.columns
+					= o.text_field :opinion, placeholder: 'Opinión'
+				#op_puntuacion.large-2.columns
+					= o.text_field :rating, placeholder: 'Puntuación', 'type' => 'number'
+			= o.submit 'Opinar!', :class => 'new_opinion_btn'

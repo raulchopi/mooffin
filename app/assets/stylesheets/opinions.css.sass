@@ -5,19 +5,22 @@
 	#opiniones
 		float: left
 		width: 95%
-		margin: 40px 10px 0 10px
+		margin: 40px 10px 0
 
 		.titulo
 			margin: 0 0 10px 0
 			padding: 0 0 0 10px
 			border-bottom: solid thin #e8e8e8
 
+		.mi_opinion
+			border: solid thin black !important
+
 		.opinion
 			font-size: 14px
 			margin: 15px 0 0 0
 			padding: 10px 0 15px 10px
 			border: solid thin #CCCCCC
-			border-radius: 5pxl
+			border-radius: 5px
 			background-color: white
 			position: relative
 
@@ -53,7 +56,7 @@
 
 				.opDelete
 					float: right
-					margin: 0 20px 0 0
+					margin: 45px 20px 0 0
 
 			#opBottom
 				width: 100%
@@ -61,6 +64,8 @@
 				padding: 0 20px 0 75px
 				
 				.opText
+
+	
 
 // Pantallas móviles
 @media (max-width: 658px)
@@ -74,6 +79,9 @@
 			padding: 0 0 0 10px
 			border-bottom: solid thin #e8e8e8
 
+		.mi_opinion
+			border: solid thin black !important
+
 		.opinion
 			font-size: 14px			
 			margin: 15px 0 0 0
@@ -86,8 +94,8 @@
 			img
 				border-radius: 25px
 				position: absolute
-				top: -6px
-				left: -6px
+				top: -7px
+				left: -7px
 
 			.opVal	
 				position: absolute
@@ -119,7 +127,7 @@
 
 				.opDelete
 					float: right
-					margin: 0 20px 0 0
+					margin: -27px 70px 0 0
 
 			#opBottom
 				width: 100%
@@ -131,8 +139,17 @@
 					text-align: justify
 
 
+	
+
 #nuevaOpinion
 	float: left
-	width: 90%
-	margin: 40px 0 0 30px
-		
+	width: 100%
+	padding: 20px
+	background: white
+	border: solid thin #CCCCCC
+	position: relative
+
+	#op_titulo
+		margin: 0 0 20px 0
+		padding: 0 0 0 20px
+		border-bottom: solid thin #e8e8e8

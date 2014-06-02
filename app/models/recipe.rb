@@ -1,4 +1,6 @@
 class Recipe < ActiveRecord::Base
+	include ActionView::Helpers::NumberHelper
+
 	belongs_to :user
 	belongs_to :difficulty
 	has_many :likes, dependent: :destroy
@@ -28,7 +30,7 @@ class Recipe < ActiveRecord::Base
 			end
 			val /= opinions.count
 		end
-		val
+		number_with_precision(val, precision: 1)
 	end
 
 	def rateRounded
@@ -44,7 +46,7 @@ class Recipe < ActiveRecord::Base
 
 	def user_already_opined(user_op)
 		opinions.each do |o|
-			return true if o.user == user_op
+			return o if o.user == user_op
 		end
 		return false
 	end
