@@ -10,6 +10,11 @@ group :development do
   gem "spork", "~> 1.0.0rc4"
 end
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
 group :test, :development do
   gem "log4r", "~> 1.1.10"
   gem "debugger", "~> 1.6.1"
