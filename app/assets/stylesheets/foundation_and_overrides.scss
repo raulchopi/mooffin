@@ -65,7 +65,7 @@ $default-float: left;
 
  $body-bg: #e5e5e5;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: "mooffinFont", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -299,7 +299,7 @@ $row-width: 56.5em;
 // $form-label-font-weight: 500;
 // $form-label-font-color: lighten(#000, 30%);
 // $form-label-bottom-margin: em-calc(3);
-// $input-font-family: inherit;
+$input-font-family: "mooffinFont";
 // $input-font-color: rgba(0,0,0,0.75);
 // $input-font-size: em-calc(14);
 // $input-bg-color: #fff;

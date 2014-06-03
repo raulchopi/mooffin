@@ -2,8 +2,8 @@
 - if !current_user 
 	Debes estar logueado para comentar una receta.
 - elsif @recipe.user == current_user
-	No puedes comentar tus propias recetas, pillín!
--elsif ((nueva = @recipe.user_already_opined(current_user)) != false)
+	-# un usuario non pode comentar a sua propia receta
+- elsif ((nueva = @recipe.user_already_opined(current_user)) != false)
 	.opinion.mi_opinion.row
 		= image_tag(nueva.user.avatar.url, size: '50')
 		.opVal

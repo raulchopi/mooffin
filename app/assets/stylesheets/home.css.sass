@@ -1,12 +1,17 @@
 @import "compass"
 @import "compass/layout"
 
+@font-face
+  font-family: 'mooffinFont'
+  src: url(font-path('please_write_me_a_song.ttf'))  format('truetype')
+
+
 a
   color: black
 
 body
   margin: 0 auto
-  font: 1.2em "OpenSansBold", Helvetica, Arial, sans-serif
+  font: 1.2em "mooffinFont", "OpenSansBold", Helvetica, Arial, sans-serif
 
 html
 
@@ -45,10 +50,12 @@ html
 
 
 footer
+  background: none repeat scroll 0 0 #CCCCCC
+  border-top: 1px solid #CCCCCC
+  color: #E5E5E5
   height: 50px
-  width: 100%
-  margin: 40px 0 0 0
-  color: #cfcecd
-  font-family: "Sentinel SSm A", "Sentinel SSm B", Georgia, "Times New Roman", serif
+  margin: 40px 0 0
+  padding: 10px 0 0
   text-align: center
+  width: 100%
 
