@@ -1,0 +1,196 @@
+=effect($time)	
+	-webkit-transition: all $time ease-out
+	-moz-transition: all $time ease
+	-o-transition: all $time ease
+
+=scale_effect($size)
+	-webkit-transform: scale($size) 
+	-moz-transform: scale($size)
+	-o-transform: scale($size)
+
+=contenedor_receta
+	background-color: white
+	color: black !important
+	overflow: hidden
+	height: auto
+	+borde
+
+=borde
+	border-color: #d8d8d8
+	border-style: solid
+	border-radius: 3px
+	border-width: 0px 1px 2px	
+
+#recipesProposals_grid
+	margin: 25px 0 0 10px
+
+	#proposal
+		font-family: arial, helvetica, sans-serif 
+		float: left
+		display: inline-block
+		margin-bottom: 12px
+		overflow: hidden
+		position: relative
+		+effect(0.5s)
+		
+		&:hover
+			/* +scale_effect */		
+
+		#proposal_container
+			+contenedor_receta
+
+			&:hover #overlay
+				opacity: 0.9
+				+effect(0.2s)
+
+			&:hover span.rating
+				background: none repeat scroll 0 0 #CCC
+				+effect(0.2s)
+
+			#overlay
+				padding: 10px
+				display: block
+				position: absolute
+				top: 0
+				right: 19px
+				bottom: 32px
+				left: 19px
+				background: white
+				z-index: 50
+				opacity: 0
+				+effect(0.2s)
+
+				#desc
+					height: 65%
+					position: relative
+					overflow: hidden
+					margin: 10px 0 0 0
+					display: block
+					text-overflow: ellipsis
+
+
+					&:after
+						background-color: white
+						bottom: 12px
+						color: black
+						content: '...'
+						font-weight: bold
+						line-height: 14px
+						position: absolute
+						right: 14px
+						text-align: right
+						width: 25px
+						pointer-events: none
+						font-size: 0.7em
+
+					span						
+						overflow: hidden
+						font-size: 0.7em
+						line-height: 1
+
+				span.time
+					font-size: 0.7em
+					background: url('icons/clock_icon.png') no-repeat
+					padding: 0 0 0 15px
+
+				span.dif
+					font-size: 0.7em
+					background: url('icons/diff_icon.png') no-repeat
+					padding: 0 0 0 15px
+
+				ul.counters
+					list-style: none
+					display: block
+					position: absolute
+					bottom: -10px
+					right: 10px
+					font-size: 0.6em
+
+					li
+						display: inline
+						padding: 0 0 0 15px
+						margin: 0 0 0 5px
+
+					li.fav
+						background: url('icons/heart_icon.png') no-repeat
+					li.cmnt
+						background: url('icons/comments_icon.png') no-repeat						
+					li.views
+						padding: 0 0 0 17px 
+						background: url('icons/views_icon.png') no-repeat
+
+
+			span.rating
+				background: none repeat scroll 0 0 #FFFFFF
+				border: 1px solid #e1e1e1
+				border-radius: 3px
+				height: 30px
+				opacity: 1
+				font-size: 0.75em
+				font-weight: bold
+				padding: 5px
+				position: absolute
+				right: 30px
+				top: 10px
+				width: 30px
+				z-index: 100
+				text-align: center
+				+effect(0.2s)
+
+
+			@media (min-width: 658px)
+				#foto
+					overflow: hidden
+					position: relative
+					height: 140px
+					padding: 5px
+
+					img
+						width: 100%
+						height: 100%
+						+effect(0.2s)
+
+			@media (max-width: 657px)
+				#foto
+					overflow: hidden
+					position: relative
+					img
+						width: 100%
+						+effect(0.2s)
+
+			#titulo
+				width: 100%
+				height: 30px
+				padding: 3px 10px 0 10px
+				font: bold 0.72em "OpenSansBold", Helvetica, Arial, sans-serif
+				opacity: 1
+				overflow: hidden
+				position: relative
+				white-space: nowrap
+				text-overflow: ellipsis
+
+				span
+					padding: 10px 0 0 0
+						
+				#rating
+					width: 10%
+					display: inline
+					font-size: 0.85em
+
+#recipesProposals_list
+	margin: 25px 0 0 10px
+
+	#proposal
+		width: 100%
+		margin: 1px
+		float: left
+		border-bottom: 1px solid #E8E8E8
+		padding: 2px 0
+
+		#title
+			width: 80%
+			float: left
+
+		#rating
+			width: 20%
+			float: left

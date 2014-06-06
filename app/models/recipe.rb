@@ -19,7 +19,9 @@ class Recipe < ActiveRecord::Base
 
 	def self.find_proposals(idsIngredients)
 		logger.info('Dentro do find_proposals')
-		@proposals = Recipe.joins(:links).where(links: { ingredient_id: idsIngredients })
+		@proposals = Recipe.joins(:difficulty).joins(:links)
+			.where(links: { ingredient_id: idsIngredients })
+			.select("recipes.*, difficulties.description AS dif_desc")
 	end
 
 	def average_rate
