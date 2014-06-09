@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem "rails", "~> 4.0.0"
+gem "rails", "~> 4.1.0"
 
 group :development do
 	gem "sqlite3", "~> 1.3.9"
@@ -9,11 +9,6 @@ group :development do
   # Preloading environment
   gem "guard-spork", "~> 1.5.1"
   gem "spork", "~> 1.0.0rc4"
-end
-
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
 end
 
 group :test, :development do
