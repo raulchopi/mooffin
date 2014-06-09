@@ -1,12 +1,13 @@
 $(document).ready(function(){
 
-	$("#login_box").hide();
+	//$("#login_box").hide();
 
 	//CARGA DE PÁGINA EN PANTALLAS PEQUEÑAS
 	if($(this).width() < 658){
 		$(".menu").slideUp();
 		$(".menu").css("border-bottom", "2px solid black");
-		$(".menu").css("-webkit-box-shadow", "inset 0px 0px 50px 0px rgba(41, 43, 51, 0.25)");	
+		$(".menu").css("-webkit-box-shadow", "inset 0px 0px 50px 0px rgba(41, 43, 51, 0.25)");
+		$(".login_text").hide();
 	}
 
 	// VARIABLES
@@ -38,6 +39,7 @@ $(document).ready(function(){
 			$(".menu").css("border-bottom", "none");
 			$(".menu").css("-webkit-box-shadow", "none");
 			$('#menu_principal').css('margin-top','90px');	//Se fuerza a que coja este margen
+			$(".login_text").show();
 	   }
 	   else if($(this).width() < 658){
 	   		$(".menu").hide();
@@ -45,6 +47,7 @@ $(document).ready(function(){
 			$(".menu").css("border-bottom", "2px solid black");
 			$(".menu").css("-webkit-box-shadow", "inset 0px 0px 50px 0px rgba(41, 43, 51, 0.25)");
 			$('#menu_principal').css('margin-top','120px'); //Se fuerza a que coja este margen
+			$(".login_text").hide();
 	   }
 	});
 
@@ -99,21 +102,5 @@ $(document).ready(function(){
 			content.css('margin-top','120px');
 		}
 	}
-
-	// ######  HEADER BEHAVIOUR ######
-	$(".btn_login").click(function(){
-		$("#login_nav").hide();
-		$("#login_form").fadeIn();
-		$("#login_omniauth").fadeIn();
-		$("#login_box").slideDown();
-	});
-
-	$(".btn_close_login").click(function(){  
-		$("#login_form").fadeOut();
-		$("#login_omniauth").fadeOut();
-		$("#login_box").slideUp();
-		$("#login_nav").delay(500).fadeIn();
-	});
-
 
 });

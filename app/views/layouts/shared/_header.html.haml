@@ -13,26 +13,12 @@
 					= link_to current_user.name, user_path(current_user)
 					#salir
 						= link_to image_tag('exit.png', :border => 0, size: '15'), logout_path
-			- else
-				#login_nav				
-					%ul
-						-# %li 
-							-# = link_to 'Registro', signup_path, class: 'btn_login' 
-						%li	
-							%a{ :class => 'btn_login'}= 'Login'				
-							
+			- else	
 				#login_box
-					#login_omniauth
-						%span.entrarCon Entra con:
-						= link_to image_tag('google_icon.png'), '/auth/google_oauth2'
-						= link_to image_tag('facebook_icon.png'), '/auth/facebook'
-					#login_form
-						= form_for :sessions, :url => sessions_path, :html => {:class => 'form_login'} do |f|
-							= f.text_field :username, :class => 'login_text'
-							= f.password_field :password, :class => 'login_text'
-							= f.submit 'Login', :class => 'login_btn'
-
-						%a{ :class => 'btn_close_login'}= 'x'
+					%span.login_text Entra con:
+					= link_to '', '/auth/google_oauth2', :class => 'google'
+					= link_to '', '/auth/facebook', :class => 'facebook'
+					= link_to '', '/auth/facebook', :class => 'twitter'
 
 				= render :partial => 'layouts/shared/flash_message'
 
