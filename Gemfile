@@ -12,7 +12,6 @@ group :development do
 end
 
 group :test, :development do
-  gem "log4r", "~> 1.1.10"
   gem "debugger", "~> 1.6.1"
   gem "database_cleaner", "~> 1.2.0"
   # Cucumber (integration tests)
@@ -33,6 +32,8 @@ group :production do
   gem 'pg', '~> 0.17.1'
   gem 'rails_12factor', '0.0.2'
 end
+
+gem "log4r", "~> 1.1.10"
 
 gem "haml", "~> 4.0.3"
 gem "haml-rails"
