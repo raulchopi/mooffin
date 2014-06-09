@@ -1,14 +1,14 @@
 class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_USERNAME = /\A[A-Za-z0-9_]+\z/
+
   authenticates_with_sorcery!
 
   has_attached_file :avatar, :default_url => "default_img_user_:style.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_attachment :avatar, :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }
-  
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_USERNAME = /\A[A-Za-z0-9_]+\z/
 
   before_validation :strip_and_downcase
  # before_validation :set_current_language, on: :create

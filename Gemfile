@@ -19,6 +19,7 @@ group :test, :development do
   gem "cucumber-rails", "~> 1.4.0", require: false
   gem "capybara", "~> 2.1.0"  
   # RSpec (unit tests, some integration tests)
+  gem 'minitest', '~> 5.3.4'
   gem "rspec-rails", "~> 2.14.0"
   gem "shoulda-matchers", "~> 2.4.0"
   # Acceptance test
@@ -38,8 +39,7 @@ gem "haml-rails"
 # CSS
 gem "sass-rails", "~> 4.0.0"
 gem "sprockets"
-gem "compass", "~> 0.12.2"
-gem "compass-rails", github: "Compass/compass-rails", branch: "rails4-hack"
+gem 'compass-rails', '~> 1.1.7'
 gem "zurb-foundation", "~> 4.3.2"
 
 gem "uglifier", "~> 2.2.1"
