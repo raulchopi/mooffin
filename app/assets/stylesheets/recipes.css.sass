@@ -63,6 +63,21 @@
 	overflow: hidden
 	text-overflow: ellipsis
 
+=select_comunes($right, $top)
+	border: 1px solid #CCC
+	line-height: 1.5
+	-webkit-appearance: none
+	-moz-appearance: none
+	text-indent: 0.01px
+	text-overflow: ''
+	appearance: none
+	background: white url("arrow_2.png") no-repeat scroll $right $top
+	padding: 0.5em
+	background-size: 15px
+
+	&:focus
+		box-shadow: 0 0 5px #999999
+		border-color: #999999
 
 =small_boxes_recipe
 	margin: 0 10px 0 10px
@@ -103,6 +118,11 @@
 	transition-delay: $time
 	-moz-transition-delay: $time
 	-webkit-transition-delay: $time
+
+
+
+
+
 
 #receta
 	float: left
@@ -429,6 +449,7 @@
 			float: left
 			margin: 0 2px 0 2px
 			height: 30px
+			+select_comunes(90%, 10px)
 
 		#link_ingredient
 			width: 30%
@@ -439,6 +460,7 @@
 			float: left
 			margin: 0 2px 0 2px
 			height: 30px
+			+select_comunes(84%, 10px)
 
 		.btn_addIng
 			float: left
@@ -497,9 +519,10 @@
 
 
 		#dificultad
-			.selector_dif
-				height: 38px !important
 
+			.selector_dif
+				height: 38px
+				+select_comunes(94%, 15px)
 
 			#recipe_difficulty_id
 
