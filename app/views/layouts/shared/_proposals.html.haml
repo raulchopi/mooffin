@@ -2,13 +2,26 @@
 	#proposal.large-4.columns{ 'ng-repeat' => 'recipe in show_recipes' }
 		#proposal_container
 			%a{href: 'recipes/{{recipe.id}}'}
-				%span.rating{'ng-bind' => 'recipe.rating'}
-				%span.overlay
+
+				%span.rating{'ng-bind' => 'recipe.rating'}	
+				#overlay					
+					%span.time{'ng-bind' => 'recipe.time'}
+					%span.dif{'ng-bind' => 'recipe.dif_desc'}
+					#desc
+						%span{'ng-bind' => 'recipe.description'}
+					%ul.counters
+						%li.fav
+							%span 67
+						%li.cmnt
+							%span 5
+						%li.views
+							%span{'ng-bind' => 'recipe.views_count'}'
+
 				#foto
 					%img{'ng-src' => '{{recipe.photo_url}}'}
-
 				#titulo
 					%span{'ng-bind' => 'recipe.title'}
+				
 
 
 #recipesProposals_list{'ng-show' => "layout == 'list'"}

@@ -1,14 +1,19 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem "rails", "~> 4.1.1"
+gem "rails", "~> 4.0.0"
 
 group :development do
-	gem "sqlite3", "~> 1.3.8"
+	gem "sqlite3", "~> 1.3.9"
 
   # Preloading environment
   gem "guard-spork", "~> 1.5.1"
   gem "spork", "~> 1.0.0rc4"
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :test, :development do
@@ -19,7 +24,6 @@ group :test, :development do
   gem "cucumber-rails", "~> 1.4.0", require: false
   gem "capybara", "~> 2.1.0"  
   # RSpec (unit tests, some integration tests)
-  gem 'minitest', '~> 5.3.4'
   gem "rspec-rails", "~> 2.14.0"
   gem "shoulda-matchers", "~> 2.4.0"
   # Acceptance test
@@ -38,9 +42,9 @@ gem "haml", "~> 4.0.3"
 gem "haml-rails"
 # CSS
 gem "sass-rails", "~> 4.0.0"
-gem 'sprockets', '~> 2.11.0'
-gem "compass", "~> 0.12.6"
-gem 'compass-rails', '~> 1.1.7'
+gem "sprockets"
+gem "compass", "~> 0.12.2"
+gem "compass-rails", github: "Compass/compass-rails", branch: "rails4-hack"
 gem "zurb-foundation", "~> 4.3.2"
 
 gem "uglifier", "~> 2.2.1"
@@ -63,11 +67,10 @@ gem 'sorcery'
 
 
 #Third party authentication
-gem 'omniauth'
-gem 'omniauth-oauth2'
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-gem "omniauth-google-oauth2"
+gem 'devise', '~> 3.2.4'
+gem 'omniauth-facebook', '~> 1.6.0'
+gem 'omniauth-twitter', '~> 1.0.1'
+gem 'omniauth-google-oauth2', '~> 0.2.4'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
