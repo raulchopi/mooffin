@@ -1,9 +1,3 @@
-GIT
-  remote: git://github.com/xrd/ng-rails-csrf.git
-  revision: 93263730e4984502084ac660ac9e79e9a800ced2
-  specs:
-    ng-rails-csrf (0.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -33,7 +27,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    angularjs-rails (1.0.8)
+    angularjs-rails (1.2.16)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
     bcrypt-ruby (3.1.5)
@@ -130,7 +124,7 @@ GEM
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
-    jquery-rails (3.0.4)
+    jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
@@ -155,6 +149,7 @@ GEM
     multi_test (0.1.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    ng-rails-csrf (0.1.0)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     oauth (0.4.7)
@@ -292,9 +287,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  angularjs-rails (~> 1.0.8)
+  angularjs-rails (~> 1.2.16)
   capybara (~> 2.1.0)
-  coffee-rails (~> 4.0.0)
+  coffee-rails (~> 4.0.1)
   compass-rails (~> 1.1.7)
   cucumber-rails (~> 1.4.0)
   database_cleaner (~> 1.2.0)
@@ -303,14 +298,14 @@ DEPENDENCIES
   factory_girl (~> 4.2.0)
   guard-spork (~> 1.5.1)
   haml (~> 4.0.3)
-  haml-rails
+  haml-rails (~> 0.5.3)
   jbuilder (~> 1.2)
-  jquery-rails (~> 3.0.4)
-  json
+  jquery-rails (~> 3.1.0)
+  json (~> 1.8.1)
   log4r (~> 1.1.10)
   minitest (~> 5.3.4)
   mocha (~> 0.14.0)
-  ng-rails-csrf!
+  ng-rails-csrf
   omniauth-facebook (~> 1.6.0)
   omniauth-google-oauth2 (~> 0.2.4)
   omniauth-twitter (~> 1.0.1)
@@ -319,14 +314,14 @@ DEPENDENCIES
   rails (~> 4.1.0)
   rails_12factor (= 0.0.2)
   rspec-rails (~> 2.14.0)
-  sass-rails (~> 4.0.0)
+  sass-rails (~> 4.0.3)
   sdoc
   shoulda-matchers (~> 2.4.0)
-  sorcery
+  sorcery (~> 0.8.5)
   spork (~> 1.0.0rc4)
   sprockets
   sqlite3 (~> 1.3.9)
-  turbolinks
+  turbolinks (~> 2.2.2)
   uglifier (~> 2.2.1)
-  webrat
+  webrat (~> 0.7.3)
   zurb-foundation (~> 4.3.2)

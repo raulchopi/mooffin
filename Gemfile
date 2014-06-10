@@ -22,7 +22,7 @@ group :test, :development do
   gem "rspec-rails", "~> 2.14.0"
   gem "shoulda-matchers", "~> 2.4.0"
   # Acceptance test
-  gem 'webrat'
+  gem 'webrat', '~> 0.7.3'
   # General helpers
   gem "factory_girl", "~> 4.2.0"
   gem "mocha", "~> 0.14.0", require: false
@@ -36,9 +36,9 @@ end
 gem "log4r", "~> 1.1.10"
 
 gem "haml", "~> 4.0.3"
-gem "haml-rails"
+gem 'haml-rails', '~> 0.5.3'
 # CSS
-gem "sass-rails", "~> 4.0.0"
+gem "sass-rails", "~> 4.0.3"
 gem "sprockets"
 gem 'compass-rails', '~> 1.1.7'
 gem "zurb-foundation", "~> 4.3.2"
@@ -46,22 +46,17 @@ gem "zurb-foundation", "~> 4.3.2"
 gem "uglifier", "~> 2.2.1"
 
 # JS
-gem "jquery-rails", "~> 3.0.4"
-gem "coffee-rails", "~> 4.0.0"
+gem "jquery-rails", "~> 3.1.0"
+gem "coffee-rails", "~> 4.0.1"
 # AngularJS related stuff
-gem 'ng-rails-csrf', :git => "git://github.com/xrd/ng-rails-csrf.git"
-gem "angularjs-rails", "~> 1.0.8"
+gem 'ng-rails-csrf'
+gem 'angularjs-rails', '~> 1.2.16'
 
-gem "json"
+gem 'json', '~> 1.8.1'
 
 gem "paperclip", "~> 4.1.1"
-#gem "rmagick", "~> 2.13.2"
-#gem "cocaine", "~> 0.3.2"
 
-#Authentication
-gem 'sorcery'
-
-
+gem 'sorcery', '~> 0.8.5'
 #Third party authentication
 gem 'devise', '~> 3.2.4'
 gem 'omniauth-facebook', '~> 1.6.0'
@@ -69,7 +64,7 @@ gem 'omniauth-twitter', '~> 1.0.1'
 gem 'omniauth-google-oauth2', '~> 0.2.4'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '~> 2.2.2'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
