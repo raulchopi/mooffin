@@ -7,12 +7,14 @@
 
 	%body{ 'ng-app' => 'instantIngredientsSearch' }
 
-		= render :partial => 'layouts/shared/header'
+		#wrapper
 
-		#content
+			= render :partial => 'layouts/shared/header'
+
+			#content
 
 
-			#main
-				= yield
+				#main
+					= yield
 
-		= render :partial => 'layouts/shared/footer'
+			= render :partial => 'layouts/shared/footer'

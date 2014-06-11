@@ -7,21 +7,23 @@
 
 	%body{ 'ng-app' => 'instantIngredientsSearch' }
 
-		= render :partial => 'layouts/shared/header'
+		#wrapper
 
-		#content.row{ 'ng-controller' => 'InstantIngredientsSearchController' }
-			= render :partial => 'layouts/shared/searcher'
+			= render :partial => 'layouts/shared/header'
 
-			#main.large-8.columns
-				#home.row{'ng-hide' => 'show_recipes.length > 0'} 
-					#mensajeInicio.large-6.columns
-						¿Qué puedo cocinar hoy?
-					#imagenInicio.large-6.columns
+			#content.row{ 'ng-controller' => 'InstantIngredientsSearchController' }
+				= render :partial => 'layouts/shared/searcher'
 
-				#recipes{'ng-show' => 'show_recipes.length > 0'}					
+				#main.large-8.columns
+					#home.row{'ng-hide' => 'show_recipes.length > 0'} 
+						#mensajeInicio.large-6.columns
+							¿Qué puedo cocinar hoy?
+						#imagenInicio.large-6.columns
 
-					= render :partial => 'layouts/shared/proposals'
+					#recipes{'ng-show' => 'show_recipes.length > 0'}					
 
-					= render :partial => 'layouts/shared/list_types'
+						= render :partial => 'layouts/shared/proposals'
 
-		= render :partial => 'layouts/shared/footer'
+						= render :partial => 'layouts/shared/list_types'
+
+			= render :partial => 'layouts/shared/footer'

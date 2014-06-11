@@ -1,23 +1,25 @@
 %html
 %body{ 'ng-app' => 'instantIngredientsSearch' }
 
-= render :partial => 'layouts/shared/header'
+#wrapper
 
-#content.row{ 'ng-controller' => 'InstantIngredientsSearchController' }
-	#buscador.large-4.columns
-		#datos_usuario
-			.foto
-				= image_tag @user.avatar.url
-			.nombre
-				= @user.name
-			.num_recetas
-				Recetas favoritas: #{@user.likes.count} 
-			.val_recetas
-				Valoración favoritas: #{@user.average_rate_likes}
+	= render :partial => 'layouts/shared/header'
 
-	#main.large-8.columns
-		= render @likes
+	#content.row{ 'ng-controller' => 'InstantIngredientsSearchController' }
+		#buscador.large-4.columns
+			#datos_usuario
+				.foto
+					= image_tag @user.avatar.url
+				.nombre
+					= @user.name
+				.num_recetas
+					Recetas favoritas: #{@user.likes.count} 
+				.val_recetas
+					Valoración favoritas: #{@user.average_rate_likes}
 
-		= render :partial => 'layouts/shared/list_types'
+		#main.large-8.columns
+			= render @likes
 
-= render :partial => 'layouts/shared/footer'
+			= render :partial => 'layouts/shared/list_types'
+
+	= render :partial => 'layouts/shared/footer'

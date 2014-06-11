@@ -5,6 +5,8 @@
   font-family: 'mooffinFont'
   src: url(font-path('please_write_me_a_song.ttf'))  format('truetype')
 
+html
+  height: 100%
 
 a
   color: black
@@ -12,15 +14,17 @@ a
 body
   margin: 0 auto
   font: 1.2em "mooffinFont", "OpenSansBold", Helvetica, Arial, sans-serif
+  position: relative
+  height: 100%
 
-html
-
-
+#wrapper
+  min-height: 100%
+  position: relative
 
 #content
   width: 100%
-  min-height: 500px
-  height: auto
+  min-height: 100%
+  padding-bottom: 80px
 
 #main
 
@@ -43,9 +47,6 @@ html
       background: url('portadas/portada1.png') no-repeat
       background-size: contain
       min-height: inherit
-      height: 500px
-
-
 
 
 footer
@@ -57,4 +58,5 @@ footer
   padding: 10px 0 0
   text-align: center
   width: 100%
-
+  position: absolute
+  bottom: 0
