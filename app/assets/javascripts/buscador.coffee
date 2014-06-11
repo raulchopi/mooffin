@@ -168,9 +168,7 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
 angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFactory', ($http) ->
   
   getIngredients: ->
-    #return the promise directly.
     $http.get("/ingredients.json").then (result) ->
-      #resolve the promise as the data
       result.data
 
   getProposals: ->
@@ -178,21 +176,15 @@ angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFact
       result.data
 
   getUnits: ->
-    #return the promise directly.
     $http.get("/units.json").then (result) ->
-      #resolve the promise as the data
       result.data
 
   getImportances: ->
-    #return the promise directly.
     $http.get("/importances.json").then (result) ->
-      #resolve the promise as the data
       result.data    
 
   getDifficulties: ->
-    #return the promise directly.
     $http.get("/difficulties.json").then (result) ->
-      #resolve the promise as the data
       result.data
 
   setRecipe: ->
