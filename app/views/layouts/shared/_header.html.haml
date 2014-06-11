@@ -12,7 +12,7 @@
 					= image_tag current_user.avatar.url
 					= link_to current_user.name, user_path(current_user)
 					#salir
-						= link_to image_tag('exit.png', :border => 0, size: '15'), logout_path
+						= link_to image_tag('logout_2.png', :border => 0, size: '15'), logout_path
 			- else	
 				#login_box
 					%span.login_text Entra con:
