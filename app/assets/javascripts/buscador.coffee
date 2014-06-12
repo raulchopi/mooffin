@@ -165,7 +165,7 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
     fr.readAsDataURL photoElement
 
 # The factory
-angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFactory', ($http) ->
+angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFactory', ($http, $window) ->
   
   getIngredients: ->
     $http.get("/ingredients.json").then (result) ->
@@ -189,7 +189,7 @@ angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFact
 
   setRecipe: ->
     $http.post("/recipes", recipe, links, steps).then ->
-      true
+      $window.location.href = '/'
 
   updateRecipe: ->
     $http.patch("/recipes/:id", recipe, links, steps).then ->
