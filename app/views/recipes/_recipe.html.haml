@@ -7,17 +7,21 @@
 					= image_tag(recipe.photo_url)
 				#titulo
 					= link_to recipe.title, recipe_path(recipe), {:class => 'text'}
-				.edit
-					= link_to image_tag('editar.png'), edit_recipe_path(recipe)
-				.delete
-					= link_to image_tag('borrar.png'), recipe, :method => :delete, data: { confirm: "Seguro?" }, remote: true
+
+				- if recipe.user == current_user
+					.edit
+						= link_to image_tag('editar.png'), edit_recipe_path(recipe)
+					.delete
+						= link_to image_tag('borrar.png'), recipe, :method => :delete, data: { confirm: "Seguro?" }, remote: true
 
 #myRecipes_list{'ng-show' => "layout == 'list'"}
 	=div_for recipe do
 		#title
 			= link_to recipe.title, recipe_path(recipe), {:class => 'text'}
-		#options
-			.edit	
-				= link_to image_tag('edit.png', :border => 0, size: '20'), edit_recipe_path(recipe)
-			.delete
-				= link_to image_tag('delete.png', :border => 0, size: '20'), recipe, :method => :delete, data: { confirm: "Seguro?" }, remote: true				
+			
+		- if recipe.user == current_user
+			#options
+				.edit	
+					= link_to image_tag('edit.png', :border => 0, size: '20'), edit_recipe_path(recipe)
+				.delete
+					= link_to image_tag('delete.png', :border => 0, size: '20'), recipe, :method => :delete, data: { confirm: "Seguro?" }, remote: true				
