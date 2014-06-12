@@ -1,4 +1,4 @@
-- if !opinion.opinion.blank? && opinion.user != current_user
+- if !opinion.opinion.blank?
 	=div_for opinion do
 		= image_tag(opinion.user.avatar.url, size: '50')
 		.opVal
