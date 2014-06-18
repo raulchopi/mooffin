@@ -1,6 +1,10 @@
 @import "compass"
 @import "compass/layout"
 
+@font-face
+	font-family: 'mooffinFont'
+	src: url(font-path('please_write_me_a_song.ttf'))  format('truetype')
+
 =cajas_texto
 	border-bottom: 1px solid #BAB6BA
 	margin: 0 5px 0 0
@@ -139,6 +143,7 @@
 	#tituloreceta
 		margin: 30px 60px 0 0
 		padding: 0 0 2px 25px
+		font-family: 'mooffinFont'
 		font-size: 3em
 		border-bottom: solid thin #e8e8e8
 		position: relative
@@ -155,7 +160,7 @@
 			margin: 0
 
 	#detallesreceta
-		font-size: 1em
+		font-size: 0.8em
 		color: #64645D
 		margin: 10px 0 30px 30px
 		
@@ -175,9 +180,10 @@
 		
 		.titulo
 			margin: 0 0 10px 0
-			padding: 0 0 0 10px
+			padding: 0 0 0 25px
 			border-bottom: solid thin #e8e8e8
-			font-size: 1.2em
+			font-size: 1em
+			color: #64645D
 		
 		ul
 			list-style: none			
@@ -204,9 +210,10 @@
 	text-align: justify
 
 	.titulo
-		padding: 0 0 0 10px
+		padding: 0 0 0 25px
 		border-bottom: solid thin #e8e8e8
-		font-size: 1.2em
+		font-size: 1em
+		color: #64645D
 
 	ul
 		list-style: none
