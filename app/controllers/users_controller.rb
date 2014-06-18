@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@recipes = current_user.recipes
+		@recipes = @user.recipes
 	end
 
 	private

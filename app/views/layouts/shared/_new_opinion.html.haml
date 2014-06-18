@@ -1,6 +1,6 @@
 
 - if !current_user 
-	Debes estar logueado para comentar una receta.
+	-#Debes estar logueado para comentar una receta.
 - elsif @recipe.user == current_user
 	-# un usuario non pode comentar a sua propia receta
 - elsif ((nueva = @recipe.user_already_opined(current_user)) != false)

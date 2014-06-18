@@ -1,6 +1,9 @@
 @import "compass"
 @import "compass/layout"
 
+@font-face
+	font-family: 'mooffinFont'
+	src: url(font-path('please_write_me_a_song.ttf'))  format('truetype')
 
 =color_cabecera
 	background-color: #222
@@ -148,22 +151,25 @@
 			margin-top: 88px
 			height: 30px
 
-			ul     
+			ul
+				font-family: 'mooffinFont'     
 				float: right
 				margin: 0 10px 0 0	
 				font-weight: bold 
-				font-size: 1.3em
+				font-size: 1.5em
 
-			li
-				display: inline
-				padding: 0px 0px
-				color: white
+				li
+					display: inline
+					padding: 0px 0px
+					color: white
 
-			a
-				color: white
+				a
+					color: white
+					+effect(0.5s)
 
-			:hover
-				color: #754800
+				:hover
+					color: #E5E5E5
+					+effect(0.5s)
 
 	// Pantallas móviles
 	@media (max-width: 658px)
@@ -228,23 +234,26 @@
 			text-transform: uppercase
 
 			ul
+				font-family: 'mooffinFont'
 				font-weight: bold 
-				font-size: 1.3em
+				font-size: 1.5em
 				float: right
 				margin: 0 0 0 0
 				+color_cabecera
 				border-top: 2px solid #333
 
-			li
-				display: inline
-				padding: 0px 0px
-				color: white
+				li
+					display: inline
+					padding: 0px 0px
+					color: white
 
-			a
-				color: white
+				a
+					color: white
+					+effect(0.5s)
 
-			:hover
-				color: #754800
+				:hover
+					color: #E5E5E5
+					+effect(0.5s)
 
 
 
@@ -402,6 +411,34 @@
 
 				a
 					margin: 0 0 0 10px
+
+		#menu_principal
+			width: 100%
+			margin-top: 120px
+			height: 30px			
+			text-transform: uppercase
+
+			ul
+				font-family: 'mooffinFont'
+				font-weight: bold 
+				font-size: 1.5em
+				float: right
+				margin: 0 0 0 0
+				+color_cabecera
+				border-top: 2px solid #333
+
+				li
+					display: inline
+					padding: 0px 0px
+					color: white
+
+				a
+					color: white
+					+effect(0.5s)
+
+				:hover
+					color: #E5E5E5
+					+effect(0.5s)
 
 	
 
