@@ -56,7 +56,7 @@
 							%span.remove_step{'ng-click' => 'removeStep($index)'}
 								= image_tag('delete.png', :border => 0, size: '15')
 					#newStep
-						%textarea.newStep_description{ placeholder: 'Añada los pasos de la receta aquí', 'ng-model' => 'textStepRec', 'ng-keyup' => 'enterKeyStep($event)'}
+						%textarea.newStep_description{ placeholder: 'Añada los pasos, uno a uno, con el botón [+]', 'ng-model' => 'textStepRec', 'ng-keyup' => 'enterKeyStep($event)'}
 						= button_tag '+', class: 'btn_addStep', 'ng-click' => 'addStep()'
 
 				#crearReceta
