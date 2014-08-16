@@ -147,4 +147,9 @@ angular.module('mooffin.controllers', [])
       #send you binary data via $http or $resource or do anything else with it
     
     fr.readAsDataURL photoElement
+
+  $scope.editInit = () ->
+    $scope.recipeTitle = angular.element("#recipe_title").val();
+    $scope.recipeTime = angular.element("#recipe_time").val();
+    $scope.recipeServings = angular.element("#recipe_servings").val();
 ]

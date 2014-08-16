@@ -5,7 +5,7 @@
 
 	= render :partial => 'layouts/shared/header'
 
-	#content.row{ 'ng-controller' => 'InstantIngredientSearchForNewRecipeController' }
+	#content.row{ 'ng-controller' => 'InstantIngredientSearchForNewRecipeController', 'ng-init' => "editInit()" }
 		#anhadirIng.large-4.columns
 			#new_link
 				= text_field :link, :number, 'ng-model' => 'numberOfIng', placeholder: 'Nº'
@@ -32,7 +32,7 @@
 		#mainNuevaReceta.large-8.columns
 			#nuevaReceta			
 				#titulo
-					= text_field :recipe, :title, placeholder: 'Título', 'ng-bind' => 'recipeTitle'
+					= text_field :recipe, :title, placeholder: 'Título', 'ng-model' => 'recipeTitle'
 				%input#photoUpload{ :type => 'file', :onchange => 'angular.element(this).scope().readFile()' }
 
 				#detalles.row
@@ -56,7 +56,7 @@
 						= button_tag '+', class: 'btn_addStep', 'ng-click' => 'addStep()'
 
 				#crearReceta
-					= button_tag 'Crear receta', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'updateRecipe()'			
+					= button_tag 'Modificar receta', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'updateRecipe()'			
 
 
 			
