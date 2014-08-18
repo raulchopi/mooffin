@@ -1,11 +1,11 @@
 - content_for(:title, 'Mooffin')
 
-%html	
+%html{ 'ng-app' => 'mooffin' }
 
 	%head
 		%title yield(:title)
 
-	%body{ 'ng-app' => 'instantIngredientsSearch' }
+	%body
 
 		#wrapper
 

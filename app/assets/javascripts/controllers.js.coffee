@@ -1,33 +1,17 @@
-# Define a new module for our app. The array holds the names of dependencies if any.
-app = angular.module("instantIngredientsSearch", [])
+'use strict';
 
-recipe = {}
-links = {}
-steps = {}
-idsIngredients = []
-paramIngredients = {}
-# Create the instant search filter
-app.filter "searchFor", ->
-  
-  # All filters must return a function. The first parameter
-  # is the data that is to be filtered, and the second is an
-  # argument that may be passed with a colon (searchFor:searchString)
-  (arr, searchString) ->
-    return arr unless searchString
-    
-    result = []
-    searchString = searchString.toLowerCase()
-    
-    # Using the forEach helper method to loop through the array
-    angular.forEach arr, (ingredient) ->
-      result.push ingredient  if ingredient.name.toLowerCase().indexOf(searchString) isnt -1
+#Controllers
 
-    result
+angular.module('mooffin.controllers', [])
+.controller 'InstantIngredientsSearchController', ['$scope', 
+'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
 
+  recipe = {}
+  links = {}
+  steps = {}
+  idsIngredients = []
+  paramIngredients = {}
 
-# The controller
-angular.module('instantIngredientsSearch').controller 'InstantIngredientsSearchController', ($scope, InstantIngredientsSearchFactory) ->
-  
   $scope.selected_ingredients = []
   $scope.show_recipes = []
 
@@ -59,10 +43,10 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientsSearchC
     $scope.selected_ingredients.splice index, 1
     #$scope.show_recipes = InstantIngredientsSearchFactory.getRecipesRecommended()
     $scope.show_recipes = [] if $scope.selected_ingredients.length == 0
+]
 
-
-# Controlador to select an ingredient for a new recipe
-angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchForNewRecipeController', ($scope, InstantIngredientsSearchFactory) ->
+.controller 'InstantIngredientSearchForNewRecipeController', ['$scope', 
+'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
 
   $scope.selected_ingredient = ''
   newLink = {}
@@ -164,33 +148,8 @@ angular.module('instantIngredientsSearch').controller 'InstantIngredientSearchFo
     
     fr.readAsDataURL photoElement
 
-# The factory
-angular.module('instantIngredientsSearch').factory 'InstantIngredientsSearchFactory', ($http, $window) ->
-  
-  getIngredients: ->
-    $http.get("/ingredients.json").then (result) ->
-      result.data
-
-  getProposals: ->
-    $http.get("/proposals.json", params: paramIngredients).then (result) ->
-      result.data
-
-  getUnits: ->
-    $http.get("/units.json").then (result) ->
-      result.data
-
-  getImportances: ->
-    $http.get("/importances.json").then (result) ->
-      result.data    
-
-  getDifficulties: ->
-    $http.get("/difficulties.json").then (result) ->
-      result.data
-
-  setRecipe: ->
-    $http.post("/recipes", recipe, links, steps).then ->
-      $window.location.href = '/'
-
-  updateRecipe: ->
-    $http.patch("/recipes/:id", recipe, links, steps).then ->
-      true
+  $scope.editInit = () ->
+    $scope.recipeTitle = angular.element("#recipe_title").val();
+    $scope.recipeTime = angular.element("#recipe_time").val();
+    $scope.recipeServings = angular.element("#recipe_servings").val();
+]
