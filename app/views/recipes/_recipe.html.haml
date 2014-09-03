@@ -1,4 +1,4 @@
-#myRecipes_grid{'ng-show' => "layout == 'grid'"}
+#myRecipes_grid{'ng-show' => "layout == 'grid'", 'ng-cloak' => ''}
 	= div_for(recipe, :class => 'large-4 columns') do		
 		#my_recipe_container
 			%a{href: recipe_path(recipe)}
@@ -14,7 +14,7 @@
 					.delete
 						= link_to image_tag('borrar.png'), recipe, :method => :delete, data: { confirm: "Seguro?" }, remote: true
 
-#myRecipes_list{'ng-show' => "layout == 'list'"}
+#myRecipes_list{'ng-show' => "layout == 'list'", 'ng-cloak' => ''}
 	=div_for recipe do
 		#title
 			= link_to recipe.title, recipe_path(recipe), {:class => 'text'}

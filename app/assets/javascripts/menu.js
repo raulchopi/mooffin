@@ -5,6 +5,7 @@ $(document).ready(function(){
 	var ancho = $(window).width();
 	var header = $('#header');
 	var content = $('#menu_principal');
+	var margen_menu_ppal = '86px';
 
 	//$("#login_box").hide();
 
@@ -44,7 +45,7 @@ $(document).ready(function(){
 			desplegado = true;
 			$(".menu").css("border-bottom", "none");
 			$(".menu").css("-webkit-box-shadow", "none");
-			$('#menu_principal').css('margin-top','90px');	//Se fuerza a que coja este margen
+			$('#menu_principal').css('margin-top', margen_menu_ppal);	//Se fuerza a que coja este margen
 			$(".login_text").show();
 		}
 		else if($(this).width() < 658){
@@ -97,7 +98,7 @@ $(document).ready(function(){
 	//Aplica margen al cuadro de login en la pantalla para movil
 	function marginLogin(){
 		if($(this).width() >= 658){
-			content.css('margin-top','90px');
+			content.css('margin-top', margen_menu_ppal);
 		}
 		else if($(this).width() < 658){
 			content.css('margin-top','120px');
