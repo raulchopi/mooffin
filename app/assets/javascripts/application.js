@@ -17,6 +17,7 @@
 //= require ng-rails-csrf
 //= require foundation
 //= require turbolinks
+//= require pin_it
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

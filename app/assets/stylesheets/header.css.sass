@@ -49,8 +49,14 @@
 =comunes_boton_login_hover()
 	background-position: 0px -35px
 
+=effect($time)
+	transition: all $time ease-out
+	-webkit-transition: all $time ease-out
+	-moz-transition: all $time ease
+	-o-transition: all $time ease
+
 =comunes_barra_progreso
-	background: #29d
+	background: #108CFF
 	position: fixed
 	z-index: 2000
 	left: 0
@@ -60,13 +66,6 @@
 	-moz-transition: width 1s
 	-o-transition: width 1s
 	transition: width 1s
-
-
-=effect($time)
-	transition: all $time ease-out
-	-webkit-transition: all $time ease-out
-	-moz-transition: all $time ease
-	-o-transition: all $time ease
 
 //Barra de progreso
 .pace-inactive

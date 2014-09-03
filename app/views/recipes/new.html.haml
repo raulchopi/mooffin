@@ -30,35 +30,40 @@
 						%span{'ng-bind' => 'link.importance.description'}
 						)
 
+		%form{:name => 'newRecipeForm', :novalidate => '', 'ng-submit' => 'form.submit(newRecipeForm.$valid)'}
+			#mainNuevaReceta.large-8.columns
+				#nuevaReceta
+					#titulo
+						= text_field :recipe, :title, placeholder: 'Título', 'ng-model' => 'recipeTitle'
+					
+					#descripcion
+						%input{ :name => 'descripcion', :minlength => '10', :required => '' }
+						%p{ 'ng-show' => 'newRecipeForm.descripcion.$invalid' } Debe especificar una descripcion
 
-		#mainNuevaReceta.large-8.columns
-			#nuevaReceta
-				#titulo
-					= text_field :recipe, :title, placeholder: 'Título', 'ng-model' => 'recipeTitle'
-				%input#photoUpload{ :type => 'file', :onchange => 'angular.element(this).scope().readFile()' }
+					%input#photoUpload{ :type => 'file', :onchange => 'angular.element(this).scope().readFile()' }
 
-				#detalles.row
-					#tiempo.large-4.columns
-						= text_field :recipe, :time, placeholder: 'Tiempo', 'ng-model' => 'recipeTime'
-					#comensales.large-4.columns
-						= text_field :recipe, :servings, placeholder: 'Comensales', 'ng-model' => 'recipeServings'
-					#dificultad.large-4.columns
-						%select.selector_dif{ placeholder: 'Dificultad',"ng-model" => "recipeDifficulty", "ng-options" => "d.description for d in difficulties"}
+					#detalles.row
+						#tiempo.large-4.columns
+							= text_field :recipe, :time, placeholder: 'Tiempo', 'ng-model' => 'recipeTime'
+						#comensales.large-4.columns
+							= text_field :recipe, :servings, placeholder: 'Comensales', 'ng-model' => 'recipeServings'
+						#dificultad.large-4.columns
+							%select.selector_dif{ placeholder: 'Dificultad',"ng-model" => "recipeDifficulty", "ng-options" => "d.description for d in difficulties"}
 
-				#pasos				
-					%ul.stepList
-						%li{ 'ng-repeat' => 'step in steps' }
-							%span.step_description{'ng-bind' => 'step.description'}					
-							%span.remove_step{'ng-click' => 'editStep($index)'}
-								= image_tag('edit.png', :border => 0, size: '15')
-							%span.remove_step{'ng-click' => 'removeStep($index)'}
-								= image_tag('delete.png', :border => 0, size: '15')
-					#newStep
-						%textarea.newStep_description{ placeholder: 'Añada los pasos, uno a uno, con el botón [+]', 'ng-model' => 'textStepRec', 'ng-keyup' => 'enterKeyStep($event)'}
-						= button_tag '+', class: 'btn_addStep', 'ng-click' => 'addStep()'
+					#pasos				
+						%ul.stepList
+							%li{ 'ng-repeat' => 'step in steps' }
+								%span.step_description{'ng-bind' => 'step.description'}					
+								%span.remove_step{'ng-click' => 'editStep($index)'}
+									= image_tag('edit.png', :border => 0, size: '15')
+								%span.remove_step{'ng-click' => 'removeStep($index)'}
+									= image_tag('delete.png', :border => 0, size: '15')
+						#newStep
+							%textarea.newStep_description{ placeholder: 'Añada los pasos, uno a uno, con el botón [+]', 'ng-model' => 'textStepRec', 'ng-keyup' => 'enterKeyStep($event)'}
+							= button_tag '+', class: 'btn_addStep', 'ng-click' => 'addStep()'
 
-				#crearReceta
-					= button_tag 'Crear receta', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'createRecipe()'			
+					#crearReceta
+						= button_tag 'Crear receta', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'createRecipe()'			
 
 
 
