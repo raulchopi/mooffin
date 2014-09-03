@@ -25,10 +25,10 @@ angular.module('mooffin.services', [])
     $http.get("/difficulties.json").then (result) ->
       result.data
 
-  setRecipe: ->
+  setRecipe: (recipe, links, steps) ->
     $http.post("/recipes", recipe, links, steps).then ->
       $window.location.href = '/'
 
-  updateRecipe: ->
+  updateRecipe: (recipe, links, steps) ->
     $http.patch("/recipes/:id", recipe, links, steps).then ->
       true

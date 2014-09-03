@@ -56,10 +56,9 @@ angular.module('mooffin.controllers', [])
   contador = 0
   edit = false
   editIndex = 0
-  numSteps = 0;
+  numSteps = 0
   photo = null
-  fr = new FileReader();
-
+  fr = new FileReader()
 
   $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
     $scope.ingredients = ingredients
