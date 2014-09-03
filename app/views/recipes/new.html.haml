@@ -15,13 +15,13 @@
 				%select{:id => 'link_importance', "ng-model" => "importanceOfIng", "ng-options" => "i.description for i in importances"}			
 				= button_tag '+', class: 'btn_addIng', type: :submit, 'ng-click' => 'addLink()'
 
-			%table{ 'ng-show' => 'searchString.length >= 2', :class => 'resultIngForRecipeTable' }
+			%table{ 'ng-show' => 'searchString.length >= 2', :class => 'resultIngForRecipeTable', 'ng-cloak' => '' }
 				%tr{ 'ng-repeat' => 'i in ingredients | searchFor:searchString', 'ng-click' => 'setValue(i)', :class => 'resultIng' }
 					%td.resultIng{'ng-bind' => 'i.name'}
 
 			#listaIng
 				%ul
-					%li{ 'ng-repeat' => 'link in links' }
+					%li{ 'ng-repeat' => 'link in links', 'ng-cloak' => '' }
 						%span.remove{ 'ng-click' => 'removeLink($index)' } x
 						%span{'ng-bind' => 'link.number'}
 						%span{'ng-bind' => 'link.unit.description'}
@@ -52,7 +52,7 @@
 
 					#pasos				
 						%ul.stepList
-							%li{ 'ng-repeat' => 'step in steps' }
+							%li{ 'ng-repeat' => 'step in steps', 'ng-cloak' => '' }
 								%span.step_description{'ng-bind' => 'step.description'}					
 								%span.remove_step{'ng-click' => 'editStep($index)'}
 									= image_tag('edit.png', :border => 0, size: '15')

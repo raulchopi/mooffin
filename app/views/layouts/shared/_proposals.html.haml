@@ -1,4 +1,4 @@
-#recipesProposals_grid.row{'ng-show' => "layout == 'grid'"}
+#recipesProposals_grid.row{'ng-show' => "layout == 'grid'", 'ng-cloak' => ''}
 	#proposal.large-4.columns{ 'ng-repeat' => 'recipe in show_recipes' }
 		#proposal_container
 			%a{href: 'recipes/{{recipe.id}}'}
@@ -24,7 +24,7 @@
 				
 
 
-#recipesProposals_list{'ng-show' => "layout == 'list'"}
+#recipesProposals_list{'ng-show' => "layout == 'list'", 'ng-cloak' => ''}
 	#proposal{ 'ng-repeat' => 'recipe in show_recipes' }
 		#title
 			%a{href: 'recipes/{{recipe.id}}'} 
