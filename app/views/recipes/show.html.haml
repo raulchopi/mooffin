@@ -11,6 +11,9 @@
 				#titulo
 					= @recipe.title
 					= render :partial => 'recipes/rating'
+
+				= pin_it_button(media: image_url(@recipe.photo_url), description: @recipe.title, url: @recipe.photo_url)
+
 				#likeRecipe
 					= render :partial => 'recipes/like'
 
