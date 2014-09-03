@@ -8,6 +8,12 @@
 =color_cabecera
 	background-color: #222
 
+=cabecera_big
+	height: 120px
+
+=cabecera_small
+	height: 50px
+
 =comunes_cabecera
 	width: 100%	
 	color: white !important
@@ -43,16 +49,42 @@
 =comunes_boton_login_hover()
 	background-position: 0px -35px
 
+=comunes_barra_progreso
+	background: #29d
+	position: fixed
+	z-index: 2000
+	left: 0
+	height: 2px
+
+	-webkit-transition: width 1s
+	-moz-transition: width 1s
+	-o-transition: width 1s
+	transition: width 1s
+
+
 =effect($time)
 	transition: all $time ease-out
 	-webkit-transition: all $time ease-out
 	-moz-transition: all $time ease
 	-o-transition: all $time ease
 
+//Barra de progreso
+.pace-inactive
+	display: none
+
+@media (max-width: 658px)	
+	.pace .pace-progress
+		+comunes_barra_progreso
+		top: 50px
+
+@media (min-width: 659px)
+	.pace .pace-progress
+		+comunes_barra_progreso
+		top: 120px
 
 // topBar after scroll
 #header.big
-	height: 120px
+	+cabecera_big
 	+comunes_cabecera
 	a
 		color: white
@@ -260,7 +292,7 @@
 
 // HEADER SMALL (after scrolling down)
 #header.small
-	height: 50px
+	+cabecera_small
 	position: fixed
 	+comunes_cabecera
 
