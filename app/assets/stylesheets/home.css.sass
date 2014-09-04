@@ -5,6 +5,13 @@
   font-family: 'mooffinFont'
   src: url(font-path('please_write_me_a_song.ttf'))  format('truetype')
 
+@font-face
+  font-family: 'brandon_grotesquelight'
+  src: url('brandon_light-webfont.eot')
+  src: url('brandon_light-webfont.eot?#iefix') format('embedded-opentype'), url('brandon_light-webfont.woff') format('woff'), url('brandon_light-webfont.ttf') format('truetype'), url('brandon_light-webfont.svg#brandon_grotesquelight') format('svg')
+  font-weight: normal
+  font-style: normal
+
 html
   height: 100%
 
@@ -13,7 +20,7 @@ a
 
 body
   margin: 0 auto
-  font: 1.2em "OpenSansBold", Helvetica, Arial, sans-serif
+  font: 1.2em 'brandon_grotesquelight', 'OpenSansBold', Helvetica, Arial, sans-serif
   position: relative
   height: 100%
 
@@ -32,7 +39,6 @@ body
     min-height: inherit
 
     #mensajeInicio
-      font-family: 'mooffinFont'
       font-size: 95px
       line-height: 110px
       color: #333
@@ -60,4 +66,3 @@ footer
   width: 100%
   position: absolute
   bottom: 0
-  font-family: 'mooffinFont'
