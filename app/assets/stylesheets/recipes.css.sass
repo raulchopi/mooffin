@@ -130,25 +130,40 @@
 
 #receta
 	float: left
-	width: 95%
-	padding: 0 20px 0 20px
+	width: 100%	
 	margin: 20px 10px 0 10px
 	background: white
 	border-radius: 3px
 	border: 1px solid #E5E5E5
-	-webkit-box-shadow: 1px 2px 3px #222222
-	-moz-box-shadow: 1px 1px 3px #222222
-	box-shadow: 1px 1px 3px #222222
+
+	#cabeceraReceta
+
+		#fotoReceta
+			overflow: hidden
+			max-height: 500px
+
+			img
+				height: auto
+				width: 100%
+
+	#autor
+		text-align: center
+		margin: 25px 0 0 0
+
+		img
+			width: 60px
+			border-radius: 30px
 
 	#tituloreceta
-		margin: 30px 60px 0 0
+		margin: 20px 0 0 0
 		padding: 0 0 2px 25px
 		font-size: 3em
-		border-bottom: solid thin #e8e8e8
 		position: relative
+		text-align: center
 
 		#titulo
 			display: inline-block
+
 
 		#likeRecipe
 			position: absolute
@@ -158,70 +173,66 @@
 			form
 			margin: 0
 
-	#detallesreceta
-		font-size: 0.8em
-		color: #64645D
-		margin: 10px 0 30px 30px
+#descripcion
+	text-align: center
+	margin: 0 20% 25px
+	padding: 20px 0
+	border-bottom: solid thin #e8e8e8
+	border-top: solid thin #e8e8e8
+	font-size: 1em
+	color: #64645D
+
+#cuerporeceta
+
+	#datos
+		#detallesreceta
+
+			font-size: 0.8em
+			color: #64645D
+			margin: 10px 0 30px 30px
 		
-		.dificultad
-			margin: 5px 0 0 0
+			.dificultad
+				margin: 5px 0 0 0
+				
+			.tiempoElaboracion
+				margin: 5px 0 0 0
+
+			.autor
+				margin: 5px 0 0 0
+
+		#ingredientesreceta
+				
+			.titulo
+				margin: 0 0 10px 0
+				padding: 0 0 0 25px
+				border-bottom: solid thin #e8e8e8
+				font-size: 1em
+				color: #64645D
 			
-		.tiempoElaboracion
-			margin: 5px 0 0 0
+			ul
+				list-style: none			
+				padding: 10px
 
-		.autor
-			margin: 5px 0 0 0
+				li
+					font-size: 1em
+					text-indent: 20px
 
-#ingFoto
-	margin: 20px 0 0 0
+	#elaboracionreceta
 
-	#ingredientesreceta
-		
 		.titulo
-			margin: 0 0 10px 0
 			padding: 0 0 0 25px
 			border-bottom: solid thin #e8e8e8
 			font-size: 1em
 			color: #64645D
-		
+
 		ul
-			list-style: none			
+			list-style: none
 			padding: 10px
 
 			li
+				margin: 0 0 7px 0
 				font-size: 1em
 				text-indent: 20px
-
-
-#fotoreceta
-	img
-		border-radius: 3px
-		padding: 9px
-		border: 1px solid #e1e1e1
-		-webkit-box-shadow: 1px 2px 3px #e1e1e1
-		-moz-box-shadow: 1px 1px 3px #e1e1e1
-		box-shadow: 1px 1px 3px #e1e1e1
-
-#elaboracionreceta
-	float: left
-	width: 95%
-	margin: 40px 0 0 20px
-	text-align: justify
-
-	.titulo
-		padding: 0 0 0 25px
-		border-bottom: solid thin #e8e8e8
-		font-size: 1em
-		color: #64645D
-
-	ul
-		list-style: none
-		padding: 10px
-
-		li
-			margin: 0 0 7px 0
-			font-size: 1em
-			text-indent: 20px
 
 
 // MY RECIPES
