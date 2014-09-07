@@ -3,7 +3,7 @@
 #Controllers
 
 angular.module('mooffin.controllers', [])
-.controller 'InstantIngredientsSearchController', ['$scope', 
+.controller 'InstantIngredientsSearchController', ['$scope',
 'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
 
   recipe = {}
@@ -45,7 +45,7 @@ angular.module('mooffin.controllers', [])
     $scope.show_recipes = [] if $scope.selected_ingredients.length == 0
 ]
 
-.controller 'InstantIngredientSearchForNewRecipeController', ['$scope', 
+.controller 'InstantIngredientSearchForNewRecipeController', ['$scope',
 'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
 
   $scope.selected_ingredient = ''
@@ -59,6 +59,9 @@ angular.module('mooffin.controllers', [])
   numSteps = 0
   photo = null
   fr = new FileReader()
+  linksH = []
+  stepsH = []
+  diffH = []
 
   $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
     $scope.ingredients = ingredients
@@ -70,15 +73,16 @@ angular.module('mooffin.controllers', [])
     $scope.importances = importances
 
   $scope.difficulties = InstantIngredientsSearchFactory.getDifficulties().then (difficulties) ->
-    $scope.difficulties = difficulties  
+    $scope.difficulties = difficulties
+    lateEdit()
 
   $scope.setValue = (i) ->
     $scope.selected_ingredient = i
     $scope.searchString = i.name
 
   $scope.addLink = () ->
-    newLink = {'number': $scope.numberOfIng, 'unit': $scope.selected_unit, 'ing': $scope.selected_ingredient, 
-    'importance': $scope.importanceOfIng, 'ingredient_id': $scope.selected_ingredient.id, 
+    newLink = {'number': $scope.numberOfIng, 'unit': $scope.selected_unit, 'ing': $scope.selected_ingredient,
+    'importance': $scope.importanceOfIng, 'ingredient_id': $scope.selected_ingredient.id,
     'importance_id': $scope.importanceOfIng.id, 'unit_id': $scope.selected_unit.id}
     $scope.links.push newLink
     $scope.numberOfIng = ''
@@ -90,11 +94,11 @@ angular.module('mooffin.controllers', [])
   $scope.addStep = () ->
     if !edit
       newStep = {'description': $scope.textStepRec, 'orden': ++numSteps}
-      $scope.steps.push newStep       
+      $scope.steps.push newStep
     else
       newStep = {'description': $scope.textStepRec, 'orden': editIndex + 1}
-      $scope.steps[editIndex] = newStep 
-    
+      $scope.steps[editIndex] = newStep
+
     $scope.textStepRec = ''
     editIndex = 0
     edit = false
@@ -118,18 +122,18 @@ angular.module('mooffin.controllers', [])
     editIndex = index
 
   $scope.createRecipe = () ->
-    recipe = { 'recipe': { 'title': $scope.recipeTitle, 'time': $scope.recipeTime, 
+    recipe = { 'recipe': { 'title': $scope.recipeTitle, 'time': $scope.recipeTime,
     'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
-    'photo': photo, 
+    'photo': photo,
     'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
     links = $scope.links
     steps = $scope.steps
     InstantIngredientsSearchFactory.setRecipe recipe, links, steps
 
   $scope.updateRecipe = () ->
-    recipe = { 'recipe': { 'title': $scope.recipeTitle, 'time': $scope.recipeTime, 
+    recipe = { 'recipe': { 'title': $scope.recipeTitle, 'time': $scope.recipeTime,
     'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
-    'photo': photo, 
+    'photo': photo,
     'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
     links = $scope.links
     steps = $scope.steps
@@ -140,15 +144,37 @@ angular.module('mooffin.controllers', [])
       addStep()
 
   $scope.readFile = () ->
-    photoElement = document.getElementById('photoUpload').files[0]
+    photoElement = angular.element('#photoUpload').files[0]
     fr.onloadend = (e) ->
       photo = e.target.result
-      #send you binary data via $http or $resource or do anything else with it
-    
+
     fr.readAsDataURL photoElement
 
   $scope.editInit = () ->
-    $scope.recipeTitle = angular.element("#recipe_title").val();
-    $scope.recipeTime = angular.element("#recipe_time").val();
-    $scope.recipeServings = angular.element("#recipe_servings").val();
+    $scope.recipeTitle = angular.element("#recipe_title").val()
+    $scope.recipeTime = angular.element("#recipe_time").val()
+    $scope.recipeServings = angular.element("#recipe_servings").val()
+    linksH = JSON.parse(angular.element("#linksHidden").val())
+    stepsH = JSON.parse(angular.element("#stepsHidden").val())
+    diffH = JSON.parse(angular.element("#difficultyHidden").val())
+    foto = angular.element("#recipe_photo").val()
+
+  lateEdit = () ->
+    addingEditLinks linksH
+    addingEditSteps stepsH
+    $scope.recipeDifficulty = $scope.difficulties[diffH.id - 1]
+
+  addingEditLinks = (linkes) ->
+    angular.forEach linkes, (link) ->
+      newLink = {'number': link.number, 'unit': $scope.units[link.unit_id  - 1], 'ing': $scope.ingredients[link.ingredient_id - 1],
+      'importance': $scope.importances[link.importance_id - 1], 'ingredient_id': link.ingredient_id,
+      'importance_id': link.importance_id, 'unit_id': link.unit_id}
+      $scope.links.push newLink
+      newLink = {}
+
+  addingEditSteps = (stepes) ->
+    angular.forEach stepes, (step) ->
+      newStep = { 'description': step.description, 'orden': step.orden }
+      $scope.steps.push newStep
+      newStep = {}
 ]

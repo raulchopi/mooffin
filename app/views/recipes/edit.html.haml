@@ -11,7 +11,7 @@
 				= text_field :link, :number, 'ng-model' => 'numberOfIng', placeholder: 'Nº'
 				%select{:id => 'link_unit', "ng-model" => "selected_unit", "ng-options" => "u.unit for u in units"}
 				= text_field :link, :ingredient, 'ng-model' => 'searchString', placeholder: 'Nombre'
-				%select{:id => 'link_importance', "ng-model" => "importanceOfIng", "ng-options" => "i.description for i in importances"}			
+				%select{:id => 'link_importance', "ng-model" => "importanceOfIng", "ng-options" => "i.description for i in importances"}
 				= button_tag '+', class: 'btn_addIng', type: :submit, 'ng-click' => 'addLink()'
 
 			%table{ 'ng-show' => 'searchString.length >= 2', :class => 'resultIngForRecipeTable' }
@@ -28,11 +28,12 @@
 						(
 						%span{'ng-bind' => 'link.importance.description'}
 						)
-			
+
 		#mainNuevaReceta.large-8.columns
-			#nuevaReceta			
+			#nuevaReceta
 				#titulo
 					= text_field :recipe, :title, placeholder: 'Título', 'ng-model' => 'recipeTitle'
+
 				%input#photoUpload{ :type => 'file', :onchange => 'angular.element(this).scope().readFile()' }
 
 				#detalles.row
@@ -41,12 +42,12 @@
 					#comensales.large-4.columns
 						= text_field :recipe, :servings, placeholder: 'Comensales', 'ng-model' => 'recipeServings'
 					#dificultad.large-4.columns
-						%select.selector_dif{ placeholder: 'Dificultad',"ng-model" => "recipeDifficulty", "ng-options" => "d.description for d in difficulties"}
+						%select.selector_dif{ placeholder: 'Dificultad', "ng-model" => "recipeDifficulty", "ng-options" => "d.description for d in difficulties"}
 
-				#pasos				
+				#pasos
 					%ul.stepList
 						%li{ 'ng-repeat' => 'step in steps' }
-							%span.step_description{'ng-bind' => 'step.description'}					
+							%span.step_description{'ng-bind' => 'step.description'}
 							%span.remove_step{'ng-click' => 'editStep($index)'}
 								= image_tag('edit.png', :border => 0, size: '15')
 							%span.remove_step{'ng-click' => 'removeStep($index)'}
@@ -56,8 +57,12 @@
 						= button_tag '+', class: 'btn_addStep', 'ng-click' => 'addStep()'
 
 				#crearReceta
-					= button_tag 'Modificar receta', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'updateRecipe()'			
+					= button_tag 'Modificar receta', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'updateRecipe()'
+
+				= hidden_field_tag 'linksHidden', @recipe.links.to_json, id: 'linksHidden'
+				= hidden_field_tag 'stepsHidden', @recipe.steps.to_json, id: 'stepsHidden'
+				= hidden_field_tag 'difficultyHidden', @recipe.difficulty.to_json, id: 'difficultyHidden'
+				= hidden_field :recipe, :photo
 
 
-			
 	= render :partial => 'layouts/shared/footer'
