@@ -16,16 +16,16 @@
 
   	<title><%= content_for?(:title) ? yield(:title) : "Mooffin" %></title>
 
-  	<%= stylesheet_link_tag    "application" %>
+    <%= favicon_link_tag "favicon.ico" %>
+  	<%= stylesheet_link_tag "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <body ng-app = "mooffin">
 
-    <%= yield %>
+    <%= yield %>  
 
-    
     <%= javascript_include_tag "application" %>
   </body>
 </html>
