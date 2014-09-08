@@ -34,6 +34,9 @@
 				#titulo
 					= text_field :recipe, :title, placeholder: 'Título', 'ng-model' => 'recipeTitle'
 
+				#descripcion
+					= text_field :recipe, :description, placeholder: 'Descripción', 'ng-model' => 'recipeDescription'
+
 				%input#photoUpload{ :type => 'file', :onchange => 'angular.element(this).scope().readFile()' }
 
 				#detalles.row
