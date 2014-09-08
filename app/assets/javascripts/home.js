@@ -31,7 +31,7 @@ $("#link_ingredient").focusout(function(){
   //this.focus();
 });
 
-$(".searcher_bar").keypress(function(e) {
+/*$(".searcher_bar").keypress(function(e) {
   var $items = $('tr');  
   
   var $viejo = $items.filter('.selected');
@@ -54,4 +54,4 @@ $(".searcher_bar").keypress(function(e) {
       $viejo.removeClass('selected');
       $nuevo.addClass('selected');  
   }
-});
+});*/

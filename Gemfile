@@ -50,7 +50,7 @@ gem "jquery-rails", "~> 3.1.0"
 gem "coffee-rails", "~> 4.0.1"
 # AngularJS related stuff
 gem 'ng-rails-csrf'
-gem 'angularjs-rails', '~> 1.0.8'
+gem 'angularjs-rails', '~> 1.2.22'
 
 gem 'json', '~> 1.8.1'
 

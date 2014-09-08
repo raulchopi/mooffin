@@ -1,29 +1,20 @@
-- content_for(:title, 'Mooffin')
+#wrapper
 
-%html{ 'ng-app' => 'mooffin' }
+	= render :partial => 'layouts/shared/header'
 
-	%head
-		%title yield(:title)
+	#content.row{ 'ng-controller' => 'InstantIngredientsSearchController' }
+		= render :partial => 'layouts/shared/searcher'
 
-	%body
+		#main.large-8.columns
+			#home.row{'ng-hide' => 'show_recipes.length > 0'} 
+				#mensajeInicio.large-6.columns
+					¿Qué puedo cocinar hoy?
+				#imagenInicio.large-6.columns
 
-		#wrapper
+			#recipes{'ng-show' => 'show_recipes.length > 0'}					
 
-			= render :partial => 'layouts/shared/header'
+				= render :partial => 'layouts/shared/proposals'
 
-			#content.row{ 'ng-controller' => 'InstantIngredientsSearchController' }
-				= render :partial => 'layouts/shared/searcher'
+				= render :partial => 'layouts/shared/list_types'
 
-				#main.large-8.columns
-					#home.row{'ng-hide' => 'show_recipes.length > 0'} 
-						#mensajeInicio.large-6.columns
-							¿Qué puedo cocinar hoy?
-						#imagenInicio.large-6.columns
-
-					#recipes{'ng-show' => 'show_recipes.length > 0'}					
-
-						= render :partial => 'layouts/shared/proposals'
-
-						= render :partial => 'layouts/shared/list_types'
-
-			= render :partial => 'layouts/shared/footer'
+	= render :partial => 'layouts/shared/footer'
