@@ -34,8 +34,7 @@
 						= text_field :recipe, :title, placeholder: 'Título', 'ng-model' => 'recipeTitle'
 					
 					#descripcion
-						%input{ :name => 'descripcion', :minlength => '10', :required => '' }
-						%p{ 'ng-show' => 'newRecipeForm.descripcion.$invalid' } Debe especificar una descripcion
+						= text_field :recipe, :description, placeholder: 'Descripción', 'ng-model' => 'recipeDescription'
 
 					%input#photoUpload{ :type => 'file', :onchange => 'angular.element(this).scope().readFile()' }
 

@@ -122,16 +122,15 @@ angular.module('mooffin.controllers', [])
     $scope.editIndex = index
 
   $scope.createRecipe = () ->
-    recipe = { 'recipe': { 'title': $scope.recipeTitle, 'time': $scope.recipeTime,
+    recipe = { 'recipe': { 'title': $scope.recipeTitle, 'description': $scope.recipeDescription, 'time': $scope.recipeTime,
     'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
-    'photo': photo,
-    'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
+    'photo': photo, 'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
     links = $scope.links
     steps = $scope.steps
     InstantIngredientsSearchFactory.setRecipe recipe, links, steps
 
   $scope.updateRecipe = () ->
-    recipe = { 'recipe': { 'title': $scope.recipeTitle, 'time': $scope.recipeTime,
+    recipe = { 'recipe': { 'title': $scope.recipeTitle, 'description': $scope.recipeDescription, 'time': $scope.recipeTime,
     'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
     'photo': photo,
     'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
@@ -152,6 +151,7 @@ angular.module('mooffin.controllers', [])
 
   $scope.editInit = () ->
     $scope.recipeTitle = angular.element("#recipe_title").val()
+    $scope.recipeDescription = angular.element("#recipe_description").val()
     $scope.recipeTime = angular.element("#recipe_time").val()
     $scope.recipeServings = angular.element("#recipe_servings").val()
     linksH = JSON.parse(angular.element("#linksHidden").val())
