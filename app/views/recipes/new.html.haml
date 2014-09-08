@@ -53,7 +53,7 @@
 					#pasos				
 						%ul.stepList
 							%li{ 'ng-repeat' => 'step in steps', 'ng-cloak' => '' }
-								%span.step_description{'ng-bind' => 'step.description'}					
+								%span.step_description{'ng-bind' => 'step.description', 'ng-class' => "{ 'step_edit': $index == editIndex }"}
 								%span.remove_step{'ng-click' => 'editStep($index)'}
 									= image_tag('edit.png', :border => 0, size: '15')
 								%span.remove_step{'ng-click' => 'removeStep($index)'}

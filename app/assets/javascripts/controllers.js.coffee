@@ -55,7 +55,7 @@ angular.module('mooffin.controllers', [])
   $scope.steps = []
   contador = 0
   edit = false
-  editIndex = 0
+  $scope.editIndex = -1
   numSteps = 0
   photo = null
   fr = new FileReader()
@@ -96,11 +96,11 @@ angular.module('mooffin.controllers', [])
       newStep = {'description': $scope.textStepRec, 'orden': ++numSteps}
       $scope.steps.push newStep
     else
-      newStep = {'description': $scope.textStepRec, 'orden': editIndex + 1}
-      $scope.steps[editIndex] = newStep
+      newStep = {'description': $scope.textStepRec, 'orden': $scope.editIndex + 1}
+      $scope.steps[$scope.editIndex] = newStep
 
     $scope.textStepRec = ''
-    editIndex = 0
+    $scope.editIndex = -1
     edit = false
     newStep = {}
 
@@ -119,7 +119,7 @@ angular.module('mooffin.controllers', [])
     $scope.textStepRec = $scope.steps[index].description
     $scope.ordenStep = index + 1
     edit = true
-    editIndex = index
+    $scope.editIndex = index
 
   $scope.createRecipe = () ->
     recipe = { 'recipe': { 'title': $scope.recipeTitle, 'time': $scope.recipeTime,
