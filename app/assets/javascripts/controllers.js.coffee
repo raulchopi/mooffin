@@ -107,13 +107,16 @@ angular.module('mooffin.controllers', [])
   $scope.removeLink = (index) ->
     $scope.links.splice index, 1
 
-  $scope.removeStep = (index) ->
+  $scope.removeStep = () ->
     numSteps--
 
     angular.forEach $scope.steps, (step) ->
-      step.orden-- if step.orden > index + 1
+      step.orden-- if step.orden > $scope.editIndex + 1
 
-    $scope.steps.splice index, 1
+    $scope.steps.splice $scope.editIndex, 1
+    
+    $scope.textStepRec = ''
+    $scope.editIndex = -1
 
   $scope.editStep = (index) ->
     $scope.textStepRec = $scope.steps[index].description

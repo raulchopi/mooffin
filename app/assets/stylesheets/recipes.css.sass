@@ -477,20 +477,9 @@
 
 		.btn_addIng
 			float: left
-			width: 30px
-			height: 30px
-			border: 1px solid #666666
-			-webkit-border-radius: 3px
-			-moz-border-radius: 3px
-			border-radius: 3px
-			font-size: 14px
-			text-decoration: none
-			display: inline-block
-			font-weight: bold
-			background-color: #A6A6A6
-			color: #222222
 			margin: 0 0 0 10px
-			padding: 0px
+			cursor: pointer
+			cursor: hand
 
 	.resultIngForRecipeTable
 		position: fixed
@@ -568,50 +557,42 @@
 			margin: 10px 0 0 10px
 			padding: 0 10px
 	
-	.stepList
+	ul.stepList
 		padding: 0 10px
 		font-size: 0.75em
-
-	#newStep
-		
-		.newStep_description
-			float: left
-
-
-		.btn_addStep
-			float: left
-			width: 30px
-			height: 25px
-			border: 1px solid #666666
-			-webkit-border-radius: 3px
-			-moz-border-radius: 3px
-			border-radius: 3px
-			font-size: 14px
-			text-decoration: none
-			display: inline-block
-			font-weight: bold
-			background-color: #A6A6A6
-			color: #222222
-			padding: 0px	
-
-	ul
 		margin: 30px 0 0 0
 		width: 100%
 		list-style: none
 
 		li
+			margin: 0 0 20px 0
+
 			.step_description
-				width: 90%
 				float: left
+				margin: 0 0 10px
+				padding: 0 10px 0 0
+				width: 100%
+				text-align: justify
 			.step_edit
-				color: black !important
 				font-weight: bold !important
 			.step_time
-				width: 5%
+				margin: 0 0 0 5px
 				float: left
-			.remove_step
-				float: left
-				width: 5%		
+
+	#newStep
+		
+		.newStep_description
+			float: left
+			width: 94%
+			height: 150px
+
+		.btn_removeStep
+			cursor: pointer
+			cursor: hand
+
+		.btn_addStep
+			cursor: pointer
+			cursor: hand	
 
 #list_types
 	width: 100%		
