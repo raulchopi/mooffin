@@ -11,23 +11,14 @@
     position: relative
 
     input
-      -webkit-border-radius: 5px
-      -moz-border-radius: 5px
-      border-radius: 5px
-      background: #fff no-repeat 10px 8px
+      background: transparent no-repeat 10px 8px
       background-image: url('magnifier.png')
       background-size: 16px 16px
-
-      -webkit-transition: opacity .2s ease-in-out
-      -moz-transition: opacity .2s ease-in-out
-      -o-transition: opacity .2s ease-in-out
-      transition: opacity .2s ease-in-out
-
+      border-bottom: 1px solid #CCCCCC
       width: 100%
       line-height: 30px
       padding: 5px 0 0 0
 
-      box-shadow: 0 2px 5px #c4c4c4 inset
       text-align: left
       font-size: 14px
       font-family: inherit
@@ -35,6 +26,9 @@
       font-weight: bold
       outline: none
       text-indent: 40px
+
+      &:focus
+        box-shadow: 0 6px 8px -8px #808080 !important
 
     ul
       list-style: none
