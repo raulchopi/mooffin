@@ -6,18 +6,10 @@
 	src: url(font-path('please_write_me_a_song.ttf'))  format('truetype')
 
 =cajas_texto
-	border-bottom: 1px solid #BAB6BA
 	margin: 0 5px 0 0
 	padding: 5px 0 0 5px
-	-webkit-box-shadow: inset 0 -7px 5px 0px rgba(186, 182, 186, 0.1)
-	box-shadow: inset 0 -7px 5px 0px rgba(186, 182, 186, 0.1)
 	float: left
 	margin: 0 2px 0 2px
-	height: 30px
-	-webkit-border-radius: 2px
-	-moz-border-radius: 2px
-	border-radius: 2px
-	font-size: 0.7em
 
 =contenedor_receta
 	background-color: white
@@ -67,21 +59,23 @@
 	text-overflow: ellipsis
 
 =select_comunes($right, $top)
-	border: 1px solid #CCC
+	font: 0.875em 'brandon_grotesquelight', 'OpenSansBold', Helvetica, Arial, sans-serif
+	border: none
+	border-bottom: 1px solid #CCC
 	line-height: 1.5
 	-webkit-appearance: none
 	-moz-appearance: none
 	text-indent: 0.01px
 	text-overflow: ''
 	appearance: none
-	background: white url("arrow_2.png") no-repeat scroll $right $top
-	padding: 7px 5px 0 0
+	background: transparent url("arrow_2.png") no-repeat scroll $right $top
+	padding: 14px 5px 0 0
 	background-size: 15px
-	font-size: 0.7em
+	height: 39px
+	color: rgba(0, 0, 0, 0.75)
 
 	&:focus
-		box-shadow: 0 0 5px #999999
-		border-color: #999999
+		box-shadow: 0 6px 8px -8px #808080 !important
 
 =small_boxes_recipe
 	margin: 0 10px 0 10px
@@ -454,37 +448,41 @@
 		padding: 15px 0 0 0
 
 		#link_number
-			width: 10%
+			width: 25%
 			+cajas_texto
 
 		#link_unit
-			width: 20%
+			width: 70%
 			float: left
 			margin: 0 2px 0 2px
-			height: 30px
-			+select_comunes(90%, 10px)
+			+select_comunes(94%, 22px)
 
 		#link_ingredient
-			width: 30%
+			width: 50%
 			+cajas_texto
 
 		#link_importance
-			width: 15%
+			width: 30%
 			float: left
 			margin: 0 2px 0 2px
 			height: 30px
-			+select_comunes(84%, 10px)
+			+select_comunes(84%, 22px)
 
 		.btn_addIng
 			float: left
-			margin: 0 0 0 10px
+			margin: 10px 0 0 10px
 			cursor: pointer
 			cursor: hand
 
 	.resultIngForRecipeTable
-		position: fixed
-		margin: 30px 0 0 133px
-		z-index: 1000
+		max-height: 200px
+		overflow-x: hidden
+		overflow-y: auto
+		padding: 0
+		width: auto
+		position: relative
+		left: 20px
+		z-index: 100
 
 	.resultIng
 		font-size: 0.8em
@@ -521,9 +519,8 @@
 
 		#dificultad
 
-			.selector_dif
-				height: 38px
-				+select_comunes(94%, 15px)
+			.selector_dif				
+				+select_comunes(94%, 22px)
 
 			#recipe_difficulty_id
 
@@ -585,6 +582,10 @@
 			float: left
 			width: 94%
 			height: 150px
+			border: 1px solid #CCC
+			
+			&:focus
+				box-shadow: 0 6px 8px -8px #808080 !important
 
 		.btn_removeStep
 			cursor: pointer

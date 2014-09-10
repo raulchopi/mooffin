@@ -5,7 +5,6 @@
 			%input{ :type => 'text', 'ng-model' => 'searchString', :class => 'searcher_bar', :placeholder => 'Ingrediéntame...' }
 
 			#resultadosBuscador
-
 				%table{ 'ng-show' => 'searchString.length >= 2', :class => 'resultIngTable', 'ng-cloak' => '' }
 					%tr{ 'ng-repeat' => 'i in ingredients | searchFor:searchString', 'ng-click' => 'setValue(i)', :class => 'resultIng' }
 						%td{'ng-bind' => 'i.name'}
