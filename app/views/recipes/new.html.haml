@@ -47,17 +47,19 @@
 						#dificultad.large-4.columns
 							%select.selector_dif{ placeholder: 'Dificultad',"ng-model" => "recipeDifficulty", "ng-options" => "d.description for d in difficulties"}
 
-					#pasos				
-						%ul.stepList
-							%li{ 'ng-repeat' => 'step in steps', 'ng-cloak' => '' }
-								%span.step_description{'ng-bind' => 'step.description', 'ng-class' => "{ 'step_edit': $index == editIndex }", 'ng-click' => 'editStep($index)'}
-
+					#pasos
 						#newStep
 							%textarea.newStep_description{ placeholder: 'Añada los pasos, uno a uno, con el botón [+]', 'ng-model' => 'textStepRec', 'ng-keyup' => 'enterKeyStep($event)'}
 							%span.btn_removeStep{'ng-click' => 'removeStep($index)', 'ng-show' => 'editIndex >= 0'}
 								= image_tag('borrar_step.png', :border => 0, size: '27')
 							%span.btn_addStep{'ng-click' => 'addStep()'}
 								= image_tag('anhadir.png', :border => 0, size: '27')
+								
+						%ul.stepList
+							%li{ 'ng-repeat' => 'step in steps', 'ng-cloak' => '' }
+								%span.step_description{'ng-bind' => 'step.description', 'ng-class' => "{ 'step_edit': $index == editIndex }", 'ng-click' => 'editStep($index)'}
+
+						
 
 					#crearReceta
 						= button_tag 'Crear receta', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'createRecipe()'			
