@@ -19,7 +19,7 @@
 
 			#listaIng
 				%ul
-					%li{ 'ng-repeat' => 'link in links', 'ng-cloak' => '' }
+					%li{ 'ng-repeat' => 'link in links', :class => 'linkList', 'ng-cloak' => '' }
 						%span.remove{ 'ng-click' => 'removeLink($index)' } x
 						%span{'ng-bind' => 'link.number'}
 						%span{'ng-bind' => 'link.unit.description'}
@@ -28,11 +28,11 @@
 						%span{'ng-bind' => 'link.importance.description'}
 						)
 
-		%form{:name => 'newRecipeForm', :novalidate => '', 'ng-submit' => 'form.submit(newRecipeForm.$valid)'}
+		%form.nuevaRecetaForm{:name => 'newRecipeForm', :novalidate => '', 'ng-submit' => 'form.submit(newRecipeForm.$valid)'}
 			#mainNuevaReceta.large-8.columns
 				#nuevaReceta
 					#titulo
-						= text_field :recipe, :title, placeholder: 'Título', 'ng-model' => 'recipeTitle'
+						= text_field :recipe, :title, placeholder: 'Título', :required => '', 'ng-model' => 'recipeTitle'
 					
 					#descripcion
 						= text_field :recipe, :description, placeholder: 'Descripción', 'ng-model' => 'recipeDescription'
@@ -41,11 +41,11 @@
 
 					#detalles.row
 						#tiempo.large-4.columns
-							= text_field :recipe, :time, placeholder: 'Tiempo', 'ng-model' => 'recipeTime'
+							= text_field :recipe, :time, placeholder: 'Tiempo', :required => '', :type => 'number', 'ng-model' => 'recipeTime'
 						#comensales.large-4.columns
-							= text_field :recipe, :servings, placeholder: 'Comensales', 'ng-model' => 'recipeServings'
+							= text_field :recipe, :servings, placeholder: 'Comensales', :required => '', :type => 'number', 'ng-model' => 'recipeServings'
 						#dificultad.large-4.columns
-							%select.selector_dif{ placeholder: 'Dificultad',"ng-model" => "recipeDifficulty", "ng-options" => "d.description for d in difficulties"}
+							%select.selector_dif{ placeholder: 'Dificultad',"ng-model" => "recipeDifficulty", :required => '', "ng-options" => "d.description for d in difficulties"}
 
 					#pasos
 						#newStep
@@ -56,7 +56,7 @@
 								= image_tag('anhadir.png', :border => 0, size: '27')
 								
 						%ul.stepList
-							%li{ 'ng-repeat' => 'step in steps', 'ng-cloak' => '' }
+							%li{ 'ng-repeat' => 'step in steps', :class => 'stepList', 'ng-cloak' => '' }
 								%span.step_description{'ng-bind' => 'step.description', 'ng-class' => "{ 'step_edit': $index == editIndex }", 'ng-click' => 'editStep($index)'}
 
 						

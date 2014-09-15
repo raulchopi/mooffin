@@ -45,6 +45,25 @@ angular.module('mooffin.controllers', [])
     $scope.show_recipes = [] if $scope.selected_ingredients.length == 0
 ]
 
+
+.controller 'UserRecipesController', ['$scope', '$timeout',
+'InstantIngredientsSearchFactory', ($scope, $timeout, InstantIngredientsSearchFactory) ->
+
+  # Dependendo do tamanho da ventana, carga en modo lista ou grid
+  if $(window).width() < 658
+    $scope.layout = 'list'
+  else
+    $scope.layout = 'grid'
+
+  $scope.show_avatar = false
+
+  $timeout (->
+    $scope.show_avatar = true
+    return
+  ), 1
+]
+
+
 .controller 'InstantIngredientSearchForNewRecipeController', ['$scope',
 'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
 
