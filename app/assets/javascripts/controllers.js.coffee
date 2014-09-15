@@ -108,6 +108,7 @@ angular.module('mooffin.controllers', [])
     $scope.links.splice index, 1
 
   $scope.removeStep = () ->
+    edit = false
     numSteps--
 
     angular.forEach $scope.steps, (step) ->
