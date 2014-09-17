@@ -149,10 +149,15 @@
 			border-radius: 30px
 
 	#titulo
-		margin: 20px 0 0 0
-		font-size: 3em
+		margin: 20px 0 0 0		
 		position: relative
 		text-align: center
+		
+		@media (min-width: 658px)
+			font-size: 3em
+
+		@media (max-width: 657px)
+			font-size: 2em
 
 		#texto
 			display: inline-block
