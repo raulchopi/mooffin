@@ -1,3 +1,3 @@
 #list_types{ 'ng-cloak' => '' }
-	= image_tag('grid.png', size: '20', 'ng-class'=>"{active: layout == 'grid'}", 'ng-click'=>"layout = 'grid'")
-	= image_tag('list.png', size: '20', 'ng-class'=>"{active: layout == 'list'}", 'ng-click'=>"layout = 'list'")
+	%span.ion-grid{'ng-class'=>"{active: layout == 'grid'}", 'ng-click'=>"layout = 'grid'"}
+	%span.ion-navicon{'ng-class'=>"{active: layout == 'list'}", 'ng-click'=>"layout = 'list'"}

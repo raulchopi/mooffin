@@ -82,9 +82,8 @@
 
 =iconos_mis_recetas
 	border-radius: 20px
-	width: 16px
-	height: 16px
 	position: absolute
+	font-size: 6px
 	top: -20px
 	opacity: 0
 	z-index: 100
@@ -248,11 +247,13 @@
 			&:hover .delete
 				top: 10px
 				opacity: 1
+				font-size: 21px
 				+effect(0.2s)
 
 			&:hover .edit
 				top: 10px
-				opacity: 1				
+				opacity: 1
+				font-size: 21px
 				+effect(0.2s)
 				+transicion(100ms)
 
@@ -291,16 +292,27 @@
 
 			.edit
 				+iconos_mis_recetas
-				right: 30px
+				right: 30px				
+				color: white
 				+transicion(100ms)
+				+effect(0.2s)
 
-				&:hover			
+				&:hover
+					color: #3ebaff
+					opacity: 0.5
+					+effect(0.2s)
 
 			.delete
 				+iconos_mis_recetas
 				right: 60px
+				color: white
+				+transicion(100ms)
+				+effect(0.2s)
 
 				&:hover
+					color: red
+					opacity: 0.5
+					+effect(0.2s)
 
 #myRecipes_list
 	margin: 25px 0 0 10px
@@ -323,9 +335,20 @@
 			.edit
 				float: right
 				margin: 0 10px 0 0
+
+				&:hover
+					color: #3ebaff
+					opacity: 0.5
+					+effect(0.2s)
+
 			.delete
 				float: right
 				margin: 0 10px 0 0	
+
+				&:hover
+					color: red
+					opacity: 0.5
+					+effect(0.2s)
 
 
 // MY LIKED RECIPES
@@ -474,10 +497,16 @@
 			+select_comunes(84%, 22px)
 
 		.btn_addIng
+			font-size: 27px
 			float: left
 			margin: 10px 0 0 10px
 			cursor: pointer
 			cursor: hand
+			+effect(300ms)
+
+			&:hover
+				color: #3ebaff
+				+effect(300ms)
 
 	.resultIngForRecipeTable
 		max-height: 200px
@@ -594,18 +623,30 @@
 				box-shadow: 0 6px 8px -8px #808080 !important
 
 		.btn_removeStep
+			font-size: 27px
 			position: absolute
 			right: 5px
 			top: 85px
 			cursor: pointer
 			cursor: hand
+			+effect(300ms)
+
+			&:hover
+				color: red
+				+effect(300ms)
 
 		.btn_addStep
+			font-size: 27px
 			position: absolute
 			right: 5px
 			top: 120px
 			cursor: pointer
-			cursor: hand	
+			cursor: hand			
+			+effect(300ms)
+
+			&:hover
+				color: #3ebaff
+				+effect(300ms)
 
 #list_types
 	width: 100%		
@@ -615,7 +656,13 @@
 	border-top: 1px solid #e1e1e1
 	padding-top: 5px
 
-	img
+	span
+		font-size: 25px
 		margin: 0 5px
 		cursor: pointer
 		cursor: hand
+		+effect(300ms)
+
+		&:hover
+			color: #3ebaff
+			+effect(300ms)
