@@ -4,18 +4,20 @@
 			%a{href: 'recipes/{{recipe.id}}'}
 
 				%span.rating{'ng-bind' => 'recipe.rating'}	
-				#overlay					
-					%span.time{'ng-bind' => 'recipe.time'}
+				#overlay	
+					%span.ion-ios7-timer-outline
+					%span.time{'ng-bind' => 'recipe.time'}						
+					%span.icono.ion-ios7-gear-outline
 					%span.dif{'ng-bind' => 'recipe.dif_desc'}
 					#desc
 						%span{'ng-bind' => 'recipe.description'}
-					%ul.counters
-						%li.fav
-							%span 67
-						%li.cmnt
-							%span 5
-						%li.views
-							%span{'ng-bind' => 'recipe.views_count'}'
+					#counters
+						%span.icono.ion-ios7-heart-outline
+						%span.texto 67
+						%span.icono.ion-ios7-chatbubble-outline
+						%span.texto 5
+						%span.icono.ion-ios7-eye-outline
+						%span.texto{'ng-bind' => 'recipe.views_count'}
 
 				#foto
 					%img{'ng-src' => '{{recipe.photo_url}}'}
