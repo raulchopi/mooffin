@@ -50,7 +50,7 @@ gem "jquery-rails", "~> 3.1.0"
 gem "coffee-rails", "~> 4.0.1"
 # AngularJS related stuff
 gem 'ng-rails-csrf'
-gem 'angularjs-rails', '~> 1.2.22'
+gem 'angularjs-rails', '~> 1.0.08'
 
 gem 'json', '~> 1.8.1'
 
@@ -70,6 +70,8 @@ gem 'turbolinks', '~> 2.2.2'
 gem 'jbuilder', '~> 1.2'
 
 gem 'pin_it', '~> 0.0.7'
+
+gem 'ionicons-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

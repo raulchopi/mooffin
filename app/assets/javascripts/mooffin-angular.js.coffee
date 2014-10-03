@@ -7,6 +7,5 @@ app = angular.module('mooffin', [
   'mooffin.directives',
   'mooffin.controllers',
   'mooffin.filters',
-  'ng-rails-csrf',
-  'ngAnimate'
+  'ng-rails-csrf'
 ])
