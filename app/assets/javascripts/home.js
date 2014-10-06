@@ -31,7 +31,16 @@ $("#link_ingredient").focusout(function(){
   //this.focus();
 });
 
-/*$(".searcher_bar").keypress(function(e) {
+/*
+$(".ion-ios7-heart").hover(function () {
+  $(this).toggleClass("ion-ios7-heart-outline");
+  });
+
+$(".ion-ios7-heart-outline").hover(function () {
+  $(this).toggleClass("ion-ios7-heart");
+  });
+
+$(".searcher_bar").keypress(function(e) {
   var $items = $('tr');  
   
   var $viejo = $items.filter('.selected');

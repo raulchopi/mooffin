@@ -4,7 +4,7 @@
 			= link_to image_tag( 'logos/mooffin2_blanco.png'), root_path
 
 		#menu_movil
-			%a{} 
+			%a.ion-navicon{} 
 					
 		#login
 			- if current_user
@@ -15,9 +15,9 @@
 			- else	
 				#login_box
 					%span.login_text Entra con:
-					= link_to '', '/auth/google_oauth2', :class => 'google'
-					= link_to '', '/auth/facebook', :class => 'facebook'
-					= link_to '', '/auth/twitter', :class => 'twitter'
+					%a.google.ion-social-googleplus{:href => '/auth/google_oauth2'}
+					%a.facebook.ion-social-facebook{:href => '/auth/facebook'}
+					%a.twitter.ion-social-twitter{:href => '/auth/twitter'}
 
 				= render :partial => 'layouts/shared/flash_message'
 

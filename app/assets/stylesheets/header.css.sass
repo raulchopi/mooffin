@@ -38,16 +38,14 @@
 	height: 0
 	box-shadow: 0 10px 0 1px white, 0 16px 0 1px white, 0 22px 0 1px white
 
-=comunes_boton_login($ruta)
-	display: inline-block
-	width: 25px
-	height: 25px
-	background: url($ruta)
-	background-position: 0px 0px
-	background-size: 25px
+=comunes_boton_login()
+	font-size: 1.5em
+	color: #F5F5F5
+	margin: 0 0 0 10px
+	+effect(300ms)
 
 =comunes_boton_login_hover()
-	background-position: 0px -35px
+	+effect(300ms)
 
 =effect($time)
 	transition: all $time ease-out
@@ -108,18 +106,18 @@
 
 	#menu_movil
 		position: fixed
-		margin: 5px 0 0 0
-		right: 0 
-		padding: 15px 15px 0 0
-		z-index: 100
-		width: 40px
-		height: 40px
+		top: 3px
+		right: 15px
+		font-size: 2.3em
 
 		a
 			color: white
+			+effect(300ms)
 
-			&::after
-				+comunes_lineas_menu
+			&:hover
+				color: green
+				+effect(300ms)
+				
 
 	// Pantallas grandes
 	@media (min-width: 659px)
@@ -157,25 +155,25 @@
 					vertical-align: super
 
 				.google
-					+comunes_boton_login('icons/google_sprite.png')
-
+					+comunes_boton_login()
 					&:hover
 						+comunes_boton_login_hover()
+						color: #4385F5
 
 				.facebook
-					+comunes_boton_login('icons/facebook_sprite.png')
-
+					+comunes_boton_login()
 					&:hover
 						+comunes_boton_login_hover()
+						color: #3D62B3
 
 				.twitter
-					+comunes_boton_login('icons/twitter_sprite.png')
-
+					+comunes_boton_login()
+					margin: 0 0 0 15px !important
+					margin-left: 5px
 					&:hover
 						+comunes_boton_login_hover()
+						color: #4099FF
 
-				a
-					margin: 0 0 0 10px
 
 
 		#menu_principal
@@ -239,31 +237,29 @@
 					margin: 0 0 0 15px
 
 				.google
-					+comunes_boton_login('icons/google_sprite.png')
-
+					+comunes_boton_login()
 					&:hover
 						+comunes_boton_login_hover()
+						color: #4385F5
 
 				.facebook
-					+comunes_boton_login('icons/facebook_sprite.png')
-
+					+comunes_boton_login()
 					&:hover
 						+comunes_boton_login_hover()
+						color: #3D62B3
 
 				.twitter
-					+comunes_boton_login('icons/twitter_sprite.png')
-
+					+comunes_boton_login()
+					margin: 0 0 0 15px !important
 					&:hover
 						+comunes_boton_login_hover()
+						color: #4099FF
 
-				a
-					margin: 0 0 0 10px
 
 		#menu_principal
 			width: 100%
 			margin-top: 120px
-			height: 30px			
-			text-transform: uppercase
+			height: 30px
 
 			ul
 				font-weight: bold 
@@ -312,17 +308,18 @@
 
 	#menu_movil
 		position: fixed
-		right: 0 
-		padding: 10px 15px 0 0
-		z-index: 100
-		width: 40px
-		height: 40px
+		top: 3px
+		right: 15px
+		font-size: 2.3em 
 
 		a
-			color: white			
+			color: white
+			+effect(300ms)			
 
-			&::after
-				+comunes_lineas_menu	
+			&:hover
+				color: #3EBAFF
+				+effect(300ms)
+				
 
 
 	// Pantallas grandes
@@ -365,26 +362,23 @@
 					vertical-align: super
 
 				.google
-					+comunes_boton_login('icons/google_sprite.png')
-
+					+comunes_boton_login()
 					&:hover
 						+comunes_boton_login_hover()
+						color: #4385F5
 
 				.facebook
-					+comunes_boton_login('icons/facebook_sprite.png')
-
+					+comunes_boton_login()
 					&:hover
 						+comunes_boton_login_hover()
+						color: #3D62B3
 
 				.twitter
-					+comunes_boton_login('icons/twitter_sprite.png')
-
+					+comunes_boton_login()
+					margin: 0 0 0 15px !important
 					&:hover
 						+comunes_boton_login_hover()
-
-				a
-					margin: 0 0 0 10px
-
+						color: #4099FF
 
 
 	// Pantallas móviles
@@ -425,31 +419,28 @@
 					margin: 0 0 0 15px
 
 				.google
-					+comunes_boton_login('icons/google_sprite.png')
-
+					+comunes_boton_login()
 					&:hover
 						+comunes_boton_login_hover()
+						color: #4385F5
 
 				.facebook
-					+comunes_boton_login('icons/facebook_sprite.png')
-
+					+comunes_boton_login()
 					&:hover
 						+comunes_boton_login_hover()
+						color: #3D62B3
 
 				.twitter
-					+comunes_boton_login('icons/twitter_sprite.png')
-
+					+comunes_boton_login()
+					margin: 0 0 0 15px !important
 					&:hover
 						+comunes_boton_login_hover()
-
-				a
-					margin: 0 0 0 10px
+						color: #4099FF
 
 		#menu_principal
 			width: 100%
 			margin-top: 120px
-			height: 30px			
-			text-transform: uppercase
+			height: 30px
 
 			ul
 				font-weight: bold 
