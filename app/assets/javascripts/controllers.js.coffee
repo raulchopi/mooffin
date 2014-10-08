@@ -134,7 +134,7 @@ angular.module('mooffin.controllers', [])
       step.orden-- if step.orden > $scope.editIndex + 1
 
     $scope.steps.splice $scope.editIndex, 1
-    
+
     $scope.textStepRec = ''
     $scope.editIndex = -1
 
@@ -153,7 +153,8 @@ angular.module('mooffin.controllers', [])
     InstantIngredientsSearchFactory.setRecipe recipe, links, steps
 
   $scope.updateRecipe = () ->
-    recipe = { 'recipe': { 'title': $scope.recipeTitle, 'description': $scope.recipeDescription, 'time': $scope.recipeTime,
+    recipe = { 'id': $scope.recipeId, 'recipe': { 'title': $scope.recipeTitle,
+    'description': $scope.recipeDescription, 'time': $scope.recipeTime,
     'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
     'photo': photo,
     'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
@@ -173,6 +174,7 @@ angular.module('mooffin.controllers', [])
     fr.readAsDataURL photoElement
 
   $scope.editInit = () ->
+    $scope.recipeId = angular.element("#idRecipeHidden").val()
     $scope.recipeTitle = angular.element("#recipe_title").val()
     $scope.recipeDescription = angular.element("#recipe_description").val()
     $scope.recipeTime = angular.element("#recipe_time").val()
@@ -189,7 +191,7 @@ angular.module('mooffin.controllers', [])
 
   addingEditLinks = (linkes) ->
     angular.forEach linkes, (link) ->
-      newLink = {'number': link.number, 'unit': $scope.units[link.unit_id  - 1], 'ing': $scope.ingredients[link.ingredient_id - 1],
+      newLink = {'id': link.id, 'number': link.number, 'unit': $scope.units[link.unit_id  - 1], 'ing': $scope.ingredients[link.ingredient_id - 1],
       'importance': $scope.importances[link.importance_id - 1], 'ingredient_id': link.ingredient_id,
       'importance_id': link.importance_id, 'unit_id': link.unit_id}
       $scope.links.push newLink
@@ -197,7 +199,7 @@ angular.module('mooffin.controllers', [])
 
   addingEditSteps = (stepes) ->
     angular.forEach stepes, (step) ->
-      newStep = { 'description': step.description, 'orden': step.orden }
+      newStep = { 'id': step.id, 'description': step.description, 'orden': step.orden }
       $scope.steps.push newStep
       newStep = {}
 ]

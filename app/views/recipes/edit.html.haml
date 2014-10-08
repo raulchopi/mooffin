@@ -44,7 +44,7 @@
 					#dificultad.large-4.columns
 						%select.selector_dif{ placeholder: 'Dificultad', "ng-model" => "recipeDifficulty", "ng-options" => "d.description for d in difficulties"}
 
-				#pasos					
+				#pasos
 					#newStep
 						%textarea.newStep_description{ placeholder: 'Añada los pasos de la receta aquí', 'ng-model' => 'textStepRec', 'ng-keyup' => 'enterKeyStep($event)'}
 						%span.btn_removeStep.ion-ios7-close-outline{'ng-click' => 'removeStep($index)', 'ng-show' => 'editIndex >= 0'}
@@ -53,11 +53,12 @@
 					%ul.stepList
 						%li{ 'ng-repeat' => 'step in steps' }
 							%span.step_description{'ng-bind' => 'step.description', 'ng-class' => "{ 'step_edit': $index == editIndex }", 'ng-click' => 'editStep($index)'}
-							
+
 
 				#crearReceta
 					= button_tag 'Modificar receta', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'updateRecipe()'
 
+				= hidden_field_tag 'idRecipeHidden', @recipe.id, id: 'idRecipeHidden'
 				= hidden_field_tag 'linksHidden', @recipe.links.to_json, id: 'linksHidden'
 				= hidden_field_tag 'stepsHidden', @recipe.steps.to_json, id: 'stepsHidden'
 				= hidden_field_tag 'difficultyHidden', @recipe.difficulty.to_json, id: 'difficultyHidden'

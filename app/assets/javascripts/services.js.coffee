@@ -3,7 +3,7 @@
 # Services
 
 angular.module('mooffin.services', [])
-.factory 'InstantIngredientsSearchFactory', ($http, $window) ->
+.factory 'InstantIngredientsSearchFactory', ['$http', '$window', ($http, $window) ->
 
   getIngredients: ->
     $http.get("/ingredients.json").then (result) ->
@@ -19,7 +19,7 @@ angular.module('mooffin.services', [])
 
   getImportances: ->
     $http.get("/importances.json").then (result) ->
-      result.data    
+      result.data
 
   getDifficulties: ->
     $http.get("/difficulties.json").then (result) ->
@@ -30,5 +30,6 @@ angular.module('mooffin.services', [])
       $window.location.href = '/'
 
   updateRecipe: (recipe, links, steps) ->
-    $http.patch("/recipes/:id", recipe, links, steps).then ->
-      true
+    $http.put("/recipes/#{ recipe.id }", recipe, links, steps).then ->
+      $window.location.href = '/'
+]

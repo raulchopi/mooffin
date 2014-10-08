@@ -19,6 +19,9 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def update
+	end
+
 	def show
 		@recipes = @user.recipes
 	end

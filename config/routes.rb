@@ -9,7 +9,7 @@ Mooffin::Application.routes.draw do
   get 'sign_in', :to => 'devise/sessions#new', :as => :new_user_session
   get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
 
-  resources :users do 
+  resources :users do
     resources :likes
   end
 
@@ -25,13 +25,12 @@ Mooffin::Application.routes.draw do
   end
 
   get '/proposals' => 'recipes#proposals'
-  patch '/recipes/:id' => 'recipes#edition'
 
   resources :links
   resources :likes
   resources :opinions
 
-  
+
   #OAuth
   get '/auth/:provider/callback', :to => 'sessions#create'
 end

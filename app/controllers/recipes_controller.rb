@@ -50,12 +50,12 @@ class RecipesController < ApplicationController
 	def edit
 	end
 
-	def edition
-		@recipe = current_user.recipes.update(recipe_params)
-		redirect_to new_recipe_path, :notice => "Receta actualizada!"
+	def update
+		@recipe = current_user.recipes.update(params[:id], recipe_update_params)
+		render :nothing => true, :status => 202
 	end
 
-	def destroy 
+	def destroy
 		@recipe.destroy
 	end
 
@@ -72,9 +72,15 @@ class RecipesController < ApplicationController
 
 	private
 		def recipe_params
-			params.require(:recipe).permit(:recipe, :description, :title, :time, :servings, :difficulty_id, 
-				:photo, :description, steps_attributes: [:orden, :description], 
+			params.require(:recipe).permit(:recipe, :description, :title, :time, :servings, :difficulty_id,
+				:photo, steps_attributes: [:orden, :description],
 				links_attributes: [:ingredient_id, :importance_id, :unit_id, :number])
+		end
+
+		def recipe_update_params
+			params.require(:recipe).permit(:recipe, :description, :title, :time, :servings, :difficulty_id,
+				:photo, steps_attributes: [:id, :orden, :description],
+				links_attributes: [:id, :ingredient_id, :importance_id, :unit_id, :number])
 		end
 
 		def proposals_params
