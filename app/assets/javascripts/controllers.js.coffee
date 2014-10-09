@@ -115,7 +115,8 @@ angular.module('mooffin.controllers', [])
       newStep = {'description': $scope.textStepRec, 'orden': ++numSteps}
       $scope.steps.push newStep
     else
-      newStep = {'description': $scope.textStepRec, 'orden': $scope.editIndex + 1}
+      newStep = { 'id': $scope.idStep, 'description': $scope.textStepRec,
+      'orden': $scope.editIndex + 1}
       $scope.steps[$scope.editIndex] = newStep
 
     $scope.textStepRec = ''
@@ -139,6 +140,7 @@ angular.module('mooffin.controllers', [])
     $scope.editIndex = -1
 
   $scope.editStep = (index) ->
+    $scope.idStep = $scope.steps[index].id
     $scope.textStepRec = $scope.steps[index].description
     $scope.ordenStep = index + 1
     edit = true

@@ -46,6 +46,7 @@
 
 				#pasos
 					#newStep
+						= hidden_field :step, :id, 'ng-model' => 'idStep'
 						%textarea.newStep_description{ placeholder: 'Añada los pasos de la receta aquí', 'ng-model' => 'textStepRec', 'ng-keyup' => 'enterKeyStep($event)'}
 						%span.btn_removeStep.ion-ios7-close-outline{'ng-click' => 'removeStep($index)', 'ng-show' => 'editIndex >= 0'}
 						%span.btn_addStep.ion-ios7-plus-outline{'ng-click' => 'addStep()'}
