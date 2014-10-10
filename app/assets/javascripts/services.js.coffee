@@ -31,5 +31,5 @@ angular.module('mooffin.services', [])
 
   updateRecipe: (recipe, links, steps) ->
     $http.put("/recipes/#{ recipe.id }", recipe, links, steps).then ->
-      $window.location.href = '/'
+      $window.location.href = "/recipes/#{ recipe.id }"
 ]

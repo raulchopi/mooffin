@@ -124,6 +124,9 @@ angular.module('mooffin.controllers', [])
     edit = false
     newStep = {}
 
+  $scope.removeSavedLink = (index) ->
+    $scope.links[index].destroy = 1
+
   $scope.removeLink = (index) ->
     $scope.links.splice index, 1
 

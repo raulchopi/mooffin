@@ -9,7 +9,8 @@ class Recipe < ActiveRecord::Base
 	has_many :opinions, dependent: :destroy
 	has_many :liked, :through => :likes, :source => :user
 
-	accepts_nested_attributes_for :links, :steps
+	accepts_nested_attributes_for :links, :allow_destroy => true
+	accepts_nested_attributes_for :steps, :allow_destroy => true
 
 	has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "default_img_recipe_:style.png"
 	validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
