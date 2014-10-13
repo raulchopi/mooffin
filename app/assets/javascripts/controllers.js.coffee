@@ -172,7 +172,7 @@ angular.module('mooffin.controllers', [])
       addStep()
 
   $scope.readFile = () ->
-    photoElement = angular.element('#photoUpload').files[0]
+    photoElement = angular.element('#photoUpload')[0].files[0]
     fr.onloadend = (e) ->
       photo = e.target.result
 
