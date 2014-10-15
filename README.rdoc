@@ -1,3 +1,8 @@
 == MOOFFIN DOCUMENTATION
 
-Mooffin aims to be an open source app to offer you the better recipes of the world, dynamically.
+Upgrade to ruby 2.1.1:
+
+rvm install ruby-2.1.1
+rvm use 2.1.1
+bundle install
+gem install rails

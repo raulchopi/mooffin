@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.1'
 
 gem "rails", "~> 4.1.0"
 
@@ -16,7 +16,7 @@ group :test, :development do
   gem "database_cleaner", "~> 1.2.0"
   # Cucumber (integration tests)
   gem "cucumber-rails", "~> 1.4.0", require: false
-  gem "capybara", "~> 2.1.0"  
+  gem "capybara", "~> 2.1.0"
   # RSpec (unit tests, some integration tests)
   gem 'minitest', '~> 5.3.4'
   gem "rspec-rails", "~> 2.14.0"
