@@ -316,7 +316,7 @@ DEPENDENCIES
   paperclip (~> 4.1.1)
   pg (~> 0.17.1)
   pin_it (~> 0.0.7)
-  rails (~> 4.1.0)
+  rails (~> 4.1.1)
   rails_12factor (= 0.0.2)
   rspec-rails (~> 2.14.0)
   sass-rails (~> 4.0.3)

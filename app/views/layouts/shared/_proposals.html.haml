@@ -20,7 +20,7 @@
 						%span.texto{'ng-bind' => 'recipe.views_count'}
 
 				#foto
-					%img{'ng-src' => 'assets/{{recipe.photo_url}}'}
+					%img{'ng-src' => '{{recipe.photo_url}}'}
 				#titulo
 					%span{'ng-bind' => 'recipe.title'}
 
@@ -29,7 +29,7 @@
 #recipesProposals_list{'ng-show' => "layout == 'list'", 'ng-cloak' => ''}
 	#proposal{ 'ng-repeat' => 'recipe in show_recipes' }
 		#title
-			%a{href: 'recipes/{{recipe.id}}'}
+			%a{href: '{{recipe.id}}'}
 				%span{'ng-bind' => 'recipe.title'}
 
 		#rating
