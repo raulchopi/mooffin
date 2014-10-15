@@ -1,10 +1,10 @@
-=effect($time)	
+=effect($time)
 	-webkit-transition: all $time ease-out
 	-moz-transition: all $time ease
 	-o-transition: all $time ease
 
 =scale_effect($size)
-	-webkit-transform: scale($size) 
+	-webkit-transform: scale($size)
 	-moz-transform: scale($size)
 	-o-transform: scale($size)
 
@@ -19,7 +19,7 @@
 	border-color: #d8d8d8
 	border-style: solid
 	border-radius: 3px
-	border-width: 0px 1px 2px	
+	border-width: 0px 1px 2px
 
 #recipesProposals_grid
 	margin: 25px 0 0 10px
@@ -31,9 +31,9 @@
 		overflow: hidden
 		position: relative
 		+effect(0.5s)
-		
+
 		&:hover
-			/* +scale_effect */		
+			/* +scale_effect */
 
 		#proposal_container
 			+contenedor_receta
@@ -82,7 +82,7 @@
 						pointer-events: none
 						font-size: 0.7em
 
-					span						
+					span
 						overflow: hidden
 						font-size: 0.7em
 						line-height: 1
@@ -144,6 +144,7 @@
 				#foto
 					overflow: hidden
 					position: relative
+					padding: 10px
 					img
 						width: 100%
 						+effect(0.2s)
@@ -162,7 +163,7 @@
 
 				span
 					padding: 10px 0 0 0
-						
+
 				#rating
 					width: 10%
 					display: inline

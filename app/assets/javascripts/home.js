@@ -25,8 +25,8 @@ $(".searcher_bar").focusout(function(){
   //this.focus();
 });
 
-$("#link_ingredient").focusout(function(){  
-  $(".resultIngForRecipeTable").fadeOut('fast');
+$("#link_ingredient").focusout(function(){
+  $(".resultIngTable").fadeOut('fast');
   this.value='';
   //this.focus();
 });
@@ -41,26 +41,26 @@ $(".ion-ios7-heart-outline").hover(function () {
   });
 
 $(".searcher_bar").keypress(function(e) {
-  var $items = $('tr');  
-  
+  var $items = $('tr');
+
   var $viejo = $items.filter('.selected');
   var $nuevo;
-  
+
   switch ( e.keyCode ) {
   case 38:
       $nuevo = $viejo.prev();
       break;
   case 40:
       $nuevo = $viejo.next();
-      break; 
+      break;
   case 13:
       // location.href = $old.find('a').attr('href');
   default:
     $items.first().addClass('selected');
-  } 
-  
+  }
+
   if ( $nuevo.is('tr') ) {
       $viejo.removeClass('selected');
-      $nuevo.addClass('selected');  
+      $nuevo.addClass('selected');
   }
 });*/
