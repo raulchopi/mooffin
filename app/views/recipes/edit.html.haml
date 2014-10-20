@@ -17,14 +17,16 @@
 
 			#listaIng
 				%ul
-					%li{ 'ng-repeat' => 'link in links', 'ng-hide' => 'link.destroy' }
-						%span.remove.ion-ios7-close-empty{ 'ng-click' => 'removeSavedLink($index)' }
+					%li{ 'ng-repeat' => 'link in links', 'ng-hide' => 'link._destroy' }
+						%span.remove.ion-ios7-close-empty{ 'ng-click' => 'removeLink($index)' }
 						%span{'ng-bind' => 'link.number'}
 						%span{'ng-bind' => 'link.unit.description'}
 						%span{'ng-bind' => 'link.ing.name'}
 						(
 						%span{'ng-bind' => 'link.importance.description'}
 						)
+						%span.hidden{'ng-bind' => 'link._destroy'}
+						%span.hidden{'ng-bind' => 'link.id'}
 
 		#mainNuevaReceta.large-8.columns
 			#nuevaReceta
@@ -52,8 +54,10 @@
 						%span.btn_addStep.ion-ios7-plus-outline{'ng-click' => 'addStep()'}
 
 					%ul.stepList
-						%li{ 'ng-repeat' => 'step in steps' }
+						%li{ 'ng-repeat' => 'step in steps', 'ng-hide' => 'step._destroy' }
 							%span.step_description{'ng-bind' => 'step.description', 'ng-class' => "{ 'step_edit': $index == editIndex }", 'ng-click' => 'editStep($index)'}
+							%span.hidden{'ng-bind' => 'step.id'}
+							%span.hidden{'ng-bind' => 'step._destroy'}
 
 
 				#crearReceta
