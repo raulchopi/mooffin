@@ -13,9 +13,9 @@ class User < ActiveRecord::Base
   before_validation :strip_and_downcase
  # before_validation :set_current_language, on: :create
 
-  validates :username, presence: true, uniqueness: true, 
+  validates :username, presence: true, uniqueness: true,
     format: { with: VALID_USERNAME }
-  validates :email, presence: true, uniqueness: true, 
+  validates :email, presence: true, uniqueness: true,
     format: { with: VALID_EMAIL_REGEX }
   validates_length_of :username, maximum: 32
   validates_length_of :email, in: 6..100
@@ -43,8 +43,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.create_with_omniauth(auth)  
-    create! do |user|  
+  def self.create_with_omniauth(auth)
+    create! do |user|
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.first_name
@@ -53,8 +53,8 @@ class User < ActiveRecord::Base
       user.email = auth.info.email
       user.avatar = auth.info.image
       #user.password = Devise.friendly_token[0,20]
-    end  
-  end 
+    end
+  end
 
   #Returns average rate of user's recipes (only 1 decimal)
   def average_rate_recipes

@@ -54,7 +54,7 @@ gem 'angularjs-rails', '~> 1.0.08'
 
 gem 'json', '~> 1.8.1'
 
-gem "paperclip", "~> 4.1.1"
+gem "paperclip", "~> 4.2"
 
 gem 'sorcery', '~> 0.8.5'
 #Third party authentication
