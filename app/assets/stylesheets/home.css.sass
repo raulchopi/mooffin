@@ -12,57 +12,117 @@
   font-weight: normal
   font-style: normal
 
-html
-  height: 100%
 
-a
-  color: black
+@media (min-width: 658px)
+  html
+    height: 100%
 
-body
-  margin: 0 auto
-  font: 1.2em 'brandon_grotesquelight', 'OpenSansBold', Helvetica, Arial, sans-serif
-  position: relative
-  height: 100%
+  a
+    color: black
 
-#wrapper
-  min-height: 100%
-  position: relative
+  body
+    margin: 0 auto
+    font: 1.2em 'brandon_grotesquelight', 'OpenSansBold', Helvetica, Arial, sans-serif
+    position: relative
+    height: 100%
 
-#content
-  width: 100%
-  min-height: 100%
-  padding-bottom: 80px
+  #wrapper
+    min-height: 100%
+    position: relative
 
-#main
+  #content
+    width: 100%
+    min-height: 100%
+    padding-bottom: 80px
 
-  #home
-    min-height: inherit
+  #main
 
-    #mensajeInicio
-      font-size: 95px
-      line-height: 110px
-      color: #333
+    #home
       min-height: inherit
-      margin: 30px 0 0
-      padding: 0 0 0 75px
+
+      #mensajeInicio
+        font-size: 95px
+        line-height: 110px
+        color: #333
+        min-height: inherit
+        margin: 30px 0 0
+        padding: 0 20px
+        text-align: center
+
+
+      #submensajeInicio
+        font-size: 30px
+        margin: 50px 0 0 30px
+        padding: 0 20px
+        text-align: center
+
+
+
+
+  footer
+    background: none repeat scroll 0 0 #CCCCCC
+    border-top: 1px solid #CCCCCC
+    color: black
+    height: 50px
+    margin: 40px 0 0
+    padding: 10px 0 0
+    text-align: center
+    width: 100%
+    position: absolute
+    bottom: 0
+
+
+/**********************************/
+/*ESTILO PARA DISPOSITIVOS MOVILES*/
+/**********************************/
+
+@media (max-width: 657px)
+  html
+    height: 100%
+
+  a
+    color: black
+
+  body
+    margin: 0 auto
+    font: 1.2em 'brandon_grotesquelight', 'OpenSansBold', Helvetica, Arial, sans-serif
+    position: relative
+    height: 100%
+
+  #wrapper
+    min-height: 100%
+    position: relative
+
+  #content
+    width: 100%
+    min-height: 100%
+    padding-bottom: 80px
+
+  #main
+
+    #home
+      min-height: inherit
+      color: #333
+      padding: 0 10px
       text-align: center
 
+      #mensajeInicio
+        font-size: 55px
+        min-height: inherit
 
-    #imagenInicio
-      margin: 20px 0 0 0
-      background: url('portadas/portada1.png') no-repeat
-      background-size: contain
-      min-height: inherit
+      #submensajeInicio
+        font-size: 23px
+        margin: 20px 0 0 0
 
 
-footer
-  background: none repeat scroll 0 0 #CCCCCC
-  border-top: 1px solid #CCCCCC
-  color: black
-  height: 50px
-  margin: 40px 0 0
-  padding: 10px 0 0
-  text-align: center
-  width: 100%
-  position: absolute
-  bottom: 0
+  footer
+    background: none repeat scroll 0 0 #CCCCCC
+    border-top: 1px solid #CCCCCC
+    color: black
+    height: 50px
+    margin: 40px 0 0
+    padding: 10px 0 0
+    text-align: center
+    width: 100%
+    position: absolute
+    bottom: 0

@@ -6,12 +6,13 @@
 		= render :partial => 'layouts/shared/searcher'
 
 		#main.large-8.columns
-			#home.row{'ng-hide' => 'show_recipes.length > 0'} 
-				#mensajeInicio.large-6.columns
+			#home.row{'ng-hide' => 'show_recipes.length > 0'}
+				#mensajeInicio
 					¿Qué puedo cocinar hoy?
-				#imagenInicio.large-6.columns
+				#submensajeInicio
+					Introduzca los ingredientes deseados en el buscador y te propondremos las mejores recetas
 
-			#recipes{'ng-show' => 'show_recipes.length > 0'}					
+			#recipes{'ng-show' => 'show_recipes.length > 0'}
 
 				= render :partial => 'layouts/shared/proposals'
 
