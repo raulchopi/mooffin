@@ -52,6 +52,8 @@
 						- @recipe.steps.each do |step|
 							%li= step.description
 
+		= hidden_field_tag 'idRecipeHidden', @recipe.id, id: 'idRecipeHidden'
+		
 		#opiniones
 			= render :partial => 'layouts/shared/new_opinion'
 

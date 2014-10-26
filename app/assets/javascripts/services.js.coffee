@@ -29,6 +29,13 @@ angular.module('mooffin.services', [])
     $http.post("/recipes", recipe, links, steps).then ->
       $window.location.href = '/'
 
+  setOpinion: (recipe, opinion) ->
+    $http.post("/recipes/#{ recipe.id }/opinions", opinion).then ->
+
+  getRecipeOpinions: (recipeId) ->
+    $http.get("/recipeOpinions.json", params: recipeId).then (result) ->
+      result.data
+
   updateRecipe: (recipe, links, steps) ->
     $http.put("/recipes/#{ recipe.id }", recipe, links, steps).then ->
       $window.location.href = "/recipes/#{ recipe.id }"

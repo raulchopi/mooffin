@@ -135,7 +135,7 @@ angular.module('mooffin.controllers', [])
     numSteps--
 
     if($scope.steps[$scope.editIndex].id)
-      $scope.steps[$scope.editIndex]._destroy = 1      
+      $scope.steps[$scope.editIndex]._destroy = 1
 
     else
       $scope.steps.splice $scope.editIndex, 1
@@ -160,6 +160,13 @@ angular.module('mooffin.controllers', [])
     links = $scope.links
     steps = $scope.steps
     InstantIngredientsSearchFactory.setRecipe recipe, links, steps
+
+  $scope.createOpinion = () ->
+    $scope.recipeId = angular.element("#idRecipeHidden").val()
+    opinion = { 'opinion': { 'opinion': $scope.op_opinion, 'rating': $scope.op_rating}}
+    recipe = { 'id': $scope.recipeId }
+    InstantIngredientsSearchFactory.setOpinion recipe, opinion
+    $scope.recipeOpinions = InstantIngredientsSearchFactory.getRecipeOpinions($scope.recipeId)
 
   $scope.updateRecipe = () ->
     recipe = { 'id': $scope.recipeId, 'recipe': { 'title': $scope.recipeTitle,

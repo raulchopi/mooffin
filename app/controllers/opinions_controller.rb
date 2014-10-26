@@ -35,9 +35,28 @@ class OpinionsController < ApplicationController
 		end
 	end
 
+	def recipeOpinions
+		idRecipe = eval(recipeOpinions_params)
+		@recipe = Recipe.find_by id: idRecipe
+		@opinions = @recipe.opinions
+		respond_to do |format|
+			format.json {
+				render json: @opinions
+			}
+			format.html {
+				@opinions
+			}
+			end
+	end
+
+
 	private
 
 		def opinion_params
 			params.require(:opinion).permit(:opinion, :rating)
+		end
+
+		def recipeOpinions_params
+			params.require(:recipeId)
 		end
 end
