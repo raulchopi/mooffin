@@ -32,8 +32,8 @@ angular.module('mooffin.services', [])
   setOpinion: (recipe, opinion) ->
     $http.post("/recipes/#{ recipe.id }/opinions", opinion).then ->
 
-  getRecipeOpinions: (recipeId) ->
-    $http.get("/recipeOpinions.json", params: recipeId).then (result) ->
+  getRecipeOpinions: (recipeIdentifier) ->
+    $http.get("/recipeopinions.json", params: recipeIdentifier).then (result) ->
       result.data
 
   updateRecipe: (recipe, links, steps) ->

@@ -64,6 +64,21 @@ angular.module('mooffin.controllers', [])
 ]
 
 
+.controller 'RecipeOpinionsController', ['$scope',
+'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
+  $scope.recipeId = angular.element("#idRecipeHidden").val()
+  recipeIdentifier = { 'recipeId' : $scope.recipeId }
+  $scope.recipeOpinions = InstantIngredientsSearchFactory.getRecipeOpinions(recipeIdentifier)
+
+  $scope.createOpinion = () ->
+    opinion = { 'opinion': { 'opinion': $scope.op_opinion, 'rating': $scope.op_rating}}
+    recipe = { 'id': $scope.recipeId }
+    recipeIdentifier = { 'recipeId' : $scope.recipeId }
+    InstantIngredientsSearchFactory.setOpinion recipe, opinion
+    $scope.recipeOpinions = InstantIngredientsSearchFactory.getRecipeOpinions(recipeIdentifier)
+]
+
+
 .controller 'InstantIngredientSearchForNewRecipeController', ['$scope',
 'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
 
@@ -161,12 +176,7 @@ angular.module('mooffin.controllers', [])
     steps = $scope.steps
     InstantIngredientsSearchFactory.setRecipe recipe, links, steps
 
-  $scope.createOpinion = () ->
-    $scope.recipeId = angular.element("#idRecipeHidden").val()
-    opinion = { 'opinion': { 'opinion': $scope.op_opinion, 'rating': $scope.op_rating}}
-    recipe = { 'id': $scope.recipeId }
-    InstantIngredientsSearchFactory.setOpinion recipe, opinion
-    $scope.recipeOpinions = InstantIngredientsSearchFactory.getRecipeOpinions($scope.recipeId)
+
 
   $scope.updateRecipe = () ->
     recipe = { 'id': $scope.recipeId, 'recipe': { 'title': $scope.recipeTitle,

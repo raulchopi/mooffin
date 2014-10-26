@@ -53,11 +53,12 @@
 							%li= step.description
 
 		= hidden_field_tag 'idRecipeHidden', @recipe.id, id: 'idRecipeHidden'
-		
-		#opiniones
+
+		#opiniones{ 'ng-controller' => 'RecipeOpinionsController' }
 			= render :partial => 'layouts/shared/new_opinion'
 
-			= render @opinions
+			#opinions
+				= render :partial => 'opinions/opinion'
 
 
 	= render :partial => 'layouts/shared/footer'

@@ -11,6 +11,18 @@ class OpinionsController < ApplicationController
 		@opinion = Opinion.find(params[:id])
 	end
 
+	def index
+		@opinions = Opinion.all
+		respond_to do |format|
+			format.json {
+				render json: @opinions
+			}
+			format.html {
+				@opinions
+			}
+			end
+	end
+
 	def create
 		@opinion = @recipe.opinions.new(opinion_params)
 		@opinion.user = current_user
@@ -35,9 +47,9 @@ class OpinionsController < ApplicationController
 		end
 	end
 
-	def recipeOpinions
-		idRecipe = eval(recipeOpinions_params)
-		@recipe = Recipe.find_by id: idRecipe
+	def recipeopinions
+		logger.info('opinions_params:' + recipeopinions_params)
+		@recipe = Recipe.find(recipeopinions_params)
 		@opinions = @recipe.opinions
 		respond_to do |format|
 			format.json {
@@ -56,7 +68,7 @@ class OpinionsController < ApplicationController
 			params.require(:opinion).permit(:opinion, :rating)
 		end
 
-		def recipeOpinions_params
+		def recipeopinions_params
 			params.require(:recipeId)
 		end
 end
