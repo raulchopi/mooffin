@@ -1,13 +1,17 @@
-.opinion{ 'ng-repeat' => 'opinion in recipeOpinions' }
-	%img{'ng-src' => '{{opinion.user.avatar.url}}'}
+.opinion{ 'ng-repeat' => 'opinion in recipeOpinions', 'ng-hide' => 'opinion._deleted' }
+	%img{'ng-src' => '{{opinion.opinion_user_avatar_url}}'}
 	.opVal{'ng-bind' => 'opinion.rating'}
 	#opTop
-		%span{'ng-bind' => 'opinion.user.name'}
+		%a{'ng-bind' => 'opinion.name'}
 		%span{'ng-bind' => 'opinion.created_at'}
+		- if current_user
+			.opDelete{'ng-show' => "isAuthor(opinion.user_id, '#{current_user.id}')"}
+				%span.ion-ios7-trash-outline{'ng-click' => 'removeOpinion($index, opinion.id)' }
 
 	#opBottom
 		.opText
 			%span{'ng-bind' => 'opinion.opinion'}
+
 
 -#- if !opinion.opinion.blank?
 -#	=div_for opinion do

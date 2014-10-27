@@ -80,5 +80,9 @@ class User < ActiveRecord::Base
     number_with_precision(val, precision: 1)
   end
 
+  def avatar_url
+    avatar.url(:medium)
+  end
+
 
 end

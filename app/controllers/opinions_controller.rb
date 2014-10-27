@@ -48,12 +48,10 @@ class OpinionsController < ApplicationController
 	end
 
 	def recipeopinions
-		logger.info('opinions_params:' + recipeopinions_params)
-		@recipe = Recipe.find(recipeopinions_params)
-		@opinions = @recipe.opinions
+		@opinions = Opinion.find_recipeopinions(recipeopinions_params)
 		respond_to do |format|
 			format.json {
-				render json: @opinions
+				render json: @opinions.to_json(:methods => [:opinion_user_avatar_url])
 			}
 			format.html {
 				@opinions

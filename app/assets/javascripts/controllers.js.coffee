@@ -76,6 +76,16 @@ angular.module('mooffin.controllers', [])
     recipeIdentifier = { 'recipeId' : $scope.recipeId }
     InstantIngredientsSearchFactory.setOpinion recipe, opinion
     $scope.recipeOpinions = InstantIngredientsSearchFactory.getRecipeOpinions(recipeIdentifier)
+    angular.element("#nuevaOpinion").fadeOut 500
+
+  $scope.removeOpinion = (index, idOpinion) ->
+    $scope.recipeOpinions.$$v[index]._deleted = 1
+    InstantIngredientsSearchFactory.deleteOpinion idOpinion
+    angular.element("#nuevaOpinion").fadeIn 500
+
+  $scope.isAuthor = (userId, currentUserId) ->
+    angular.equals(userId, parseInt(currentUserId))
+
 ]
 
 
