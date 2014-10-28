@@ -32,6 +32,12 @@ angular.module('mooffin.controllers', [])
         already_in_it = true if ingr == i
 
     $scope.selected_ingredients.push i if already_in_it == false
+
+    if $scope.selected_ingredients.length > 0
+      angular.element("#home").fadeOut 100
+      angular.element("#recipes").fadeIn 100
+
+
     # Gardamos os id's dos ingredentes nun array para enviar ao servidor
     if already_in_it == false
       idsIngredients.push i.id
@@ -42,7 +48,10 @@ angular.module('mooffin.controllers', [])
   $scope.removeIngredient = (index) ->
     $scope.selected_ingredients.splice index, 1
     #$scope.show_recipes = InstantIngredientsSearchFactory.getRecipesRecommended()
-    $scope.show_recipes = [] if $scope.selected_ingredients.length == 0
+    if $scope.selected_ingredients.length == 0
+      $scope.show_recipes = []
+      angular.element("#home").fadeIn 100
+      angular.element("#recipes").fadeOut 100
 ]
 
 
@@ -61,6 +70,31 @@ angular.module('mooffin.controllers', [])
     $scope.show_avatar = true
     return
   ), 1
+]
+
+
+.controller 'RecipeOpinionsController', ['$scope',
+'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
+  $scope.recipeId = angular.element("#idRecipeHidden").val()
+  recipeIdentifier = { 'recipeId' : $scope.recipeId }
+  $scope.recipeOpinions = InstantIngredientsSearchFactory.getRecipeOpinions(recipeIdentifier)
+
+  $scope.createOpinion = () ->
+    opinion = { 'opinion': { 'opinion': $scope.op_opinion, 'rating': $scope.op_rating}}
+    recipe = { 'id': $scope.recipeId }
+    recipeIdentifier = { 'recipeId' : $scope.recipeId }
+    InstantIngredientsSearchFactory.setOpinion recipe, opinion
+    $scope.recipeOpinions = InstantIngredientsSearchFactory.getRecipeOpinions(recipeIdentifier)
+    angular.element("#nuevaOpinion").fadeOut 250
+
+  $scope.removeOpinion = (index, idOpinion) ->
+    $scope.recipeOpinions.$$v[index]._deleted = 1
+    InstantIngredientsSearchFactory.deleteOpinion idOpinion
+    angular.element("#nuevaOpinion").fadeIn 250
+
+  $scope.isAuthor = (userId, currentUserId) ->
+    angular.equals(userId, parseInt(currentUserId))
+
 ]
 
 
@@ -124,20 +158,24 @@ angular.module('mooffin.controllers', [])
     edit = false
     newStep = {}
 
-  $scope.removeSavedLink = (index) ->
-    $scope.links[index].destroy = 1
-
   $scope.removeLink = (index) ->
-    $scope.links.splice index, 1
+    if($scope.links[index].id)
+      $scope.links[index]._destroy = 1
+    else
+      $scope.links.splice index, 1
 
   $scope.removeStep = () ->
     edit = false
     numSteps--
 
+    if($scope.steps[$scope.editIndex].id)
+      $scope.steps[$scope.editIndex]._destroy = 1
+
+    else
+      $scope.steps.splice $scope.editIndex, 1
+
     angular.forEach $scope.steps, (step) ->
       step.orden-- if step.orden > $scope.editIndex + 1
-
-    $scope.steps.splice $scope.editIndex, 1
 
     $scope.textStepRec = ''
     $scope.editIndex = -1
@@ -156,6 +194,8 @@ angular.module('mooffin.controllers', [])
     links = $scope.links
     steps = $scope.steps
     InstantIngredientsSearchFactory.setRecipe recipe, links, steps
+
+
 
   $scope.updateRecipe = () ->
     recipe = { 'id': $scope.recipeId, 'recipe': { 'title': $scope.recipeTitle,

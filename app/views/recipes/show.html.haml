@@ -5,11 +5,10 @@
 	#content.row
 		#receta.large-12.columns
 			#cabecera.row
-				#foto.large-12.columns
+				#foto
 					= image_tag(@recipe.photo.url(:original))
 			#autor.row
-				= image_tag @recipe.user.avatar.url
-				//= link_to @recipe.user.name, user_path(@recipe.user)
+				= link_to image_tag(@recipe.user.avatar.url), user_path(@recipe.user)
 
 			#titulo.row
 				#texto.large-12.columns
@@ -28,16 +27,16 @@
 				#texto.large-12.columns
 					= @recipe.description
 
-				
+
 			#contenido.row
 				#datos.large-4.columns
 					#detalles
 						.dificultad
-							Dificultad: #{@recipe.difficulty.description} 
+							Dificultad: #{@recipe.difficulty.description}
 						.tiempoElaboracion
 							#{@recipe.time} minutos
 						.autor
-							Autor: 
+							Autor:
 							= link_to @recipe.user.name, user_path(@recipe.user)
 
 					#ingredientes
@@ -53,10 +52,12 @@
 						- @recipe.steps.each do |step|
 							%li= step.description
 
-		#opiniones
+		= hidden_field_tag 'idRecipeHidden', @recipe.id, id: 'idRecipeHidden'
+
+		#opiniones{ 'ng-controller' => 'RecipeOpinionsController' }
 			= render :partial => 'layouts/shared/new_opinion'
 
-			= render @opinions
+			= render :partial => 'opinions/opinion'
 
-			
+
 	= render :partial => 'layouts/shared/footer'

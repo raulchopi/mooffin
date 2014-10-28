@@ -20,8 +20,8 @@ test: &test
 
 production:
   adapter: postgresql
-  encoding: unicode
-  database: db/mooffinbetadb
+  encoding: utf8
+  database: mooffindb
   pool: 5
 
 cucumber:

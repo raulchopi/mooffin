@@ -1,16 +1,30 @@
-- if !opinion.opinion.blank?
-	=div_for opinion do
-		= image_tag(opinion.user.avatar.url, size: '50')
-		.opVal
-			= opinion.rating
-		#opTop			
-			= link_to opinion.user.name, user_path(opinion.user)
-			%span= opinion.created_at
-			.opDelete
-				- if opinion.user == current_user
-					= link_to 'x', opinion, :method => :delete, remote: true
+.opinion{ 'ng-repeat' => 'opinion in recipeOpinions', 'ng-hide' => 'opinion._deleted' }
+	%img{'ng-src' => '{{opinion.opinion_user_avatar_url}}'}
+	.opVal{'ng-bind' => 'opinion.rating'}
+	#opTop
+		%a{'ng-bind' => 'opinion.name'}
+		%span{'ng-bind' => 'opinion.created_at'}
+		- if current_user
+			.opDelete{'ng-show' => "isAuthor(opinion.user_id, '#{current_user.id}')"}
+				%span.ion-ios7-trash-outline{'ng-click' => 'removeOpinion($index, opinion.id)' }
 
-		#opBottom
-			.opText
-				= opinion.opinion
-	
+	#opBottom
+		.opText
+			%span{'ng-bind' => 'opinion.opinion'}
+
+
+-#- if !opinion.opinion.blank?
+-#	=div_for opinion do
+-#		= image_tag(opinion.user.avatar.url, size: '50')
+-#		.opVal
+-#			= opinion.rating
+-#		#opTop
+-#			= link_to opinion.user.name, user_path(opinion.user)
+-#			%span= opinion.created_at
+-#			.opDelete
+-#				- if opinion.user == current_user
+-#					= link_to 'x', opinion, :method => :delete, remote: true
+
+-#		#opBottom
+-#			.opText
+-#				= opinion.opinion

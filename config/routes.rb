@@ -25,6 +25,7 @@ Mooffin::Application.routes.draw do
   end
 
   get '/proposals' => 'recipes#proposals'
+  get '/recipeopinions' => 'opinions#recipeopinions'
 
   resources :links
   resources :likes
