@@ -12,6 +12,17 @@
   font-weight: normal
   font-style: normal
 
+.fade
+  opacity: 0
+  -webkit-transition: opacity 0.25s ease-in
+  -moz-transition: opacity 0.25s ease-in
+  -o-transition: opacity 0.25s ease-in
+  -ms-transition: opacity 0.25s ease-in
+  transition: opacity 0.25s ease-in
+
+.fade.in
+  opacity: 1
+
 
 @media (min-width: 658px)
   html
@@ -57,18 +68,16 @@
         text-align: center
 
     #recipes
-      margin-top: -30px
-
 
 
 
   footer
-    background: none repeat scroll 0 0 #CCCCCC
-    border-top: 1px solid #CCCCCC
-    color: black
-    height: 50px
+    background: none repeat scroll 0 0 #3EBAFF
+    border-top: 1px solid #67caff
+    color: white
+    height: 40px
     margin: 40px 0 0
-    padding: 10px 0 0
+    padding: 7px 0 0
     text-align: center
     width: 100%
     position: absolute
@@ -119,12 +128,12 @@
 
 
   footer
-    background: none repeat scroll 0 0 #CCCCCC
-    border-top: 1px solid #CCCCCC
-    color: black
-    height: 50px
+    background: none repeat scroll 0 0 #3EBAFF
+    border-top: 1px solid #67caff
+    color: white
+    height: 40px
     margin: 40px 0 0
-    padding: 10px 0 0
+    padding: 7px 0 0
     text-align: center
     width: 100%
     position: absolute

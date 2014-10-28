@@ -32,6 +32,12 @@ angular.module('mooffin.controllers', [])
         already_in_it = true if ingr == i
 
     $scope.selected_ingredients.push i if already_in_it == false
+
+    if $scope.selected_ingredients.length > 0
+      angular.element("#home").fadeOut 100
+      angular.element("#recipes").fadeIn 100
+
+
     # Gardamos os id's dos ingredentes nun array para enviar ao servidor
     if already_in_it == false
       idsIngredients.push i.id
@@ -42,7 +48,10 @@ angular.module('mooffin.controllers', [])
   $scope.removeIngredient = (index) ->
     $scope.selected_ingredients.splice index, 1
     #$scope.show_recipes = InstantIngredientsSearchFactory.getRecipesRecommended()
-    $scope.show_recipes = [] if $scope.selected_ingredients.length == 0
+    if $scope.selected_ingredients.length == 0
+      $scope.show_recipes = []
+      angular.element("#home").fadeIn 100
+      angular.element("#recipes").fadeOut 100
 ]
 
 
@@ -76,12 +85,12 @@ angular.module('mooffin.controllers', [])
     recipeIdentifier = { 'recipeId' : $scope.recipeId }
     InstantIngredientsSearchFactory.setOpinion recipe, opinion
     $scope.recipeOpinions = InstantIngredientsSearchFactory.getRecipeOpinions(recipeIdentifier)
-    angular.element("#nuevaOpinion").fadeOut 500
+    angular.element("#nuevaOpinion").fadeOut 250
 
   $scope.removeOpinion = (index, idOpinion) ->
     $scope.recipeOpinions.$$v[index]._deleted = 1
     InstantIngredientsSearchFactory.deleteOpinion idOpinion
-    angular.element("#nuevaOpinion").fadeIn 500
+    angular.element("#nuevaOpinion").fadeIn 250
 
   $scope.isAuthor = (userId, currentUserId) ->
     angular.equals(userId, parseInt(currentUserId))
