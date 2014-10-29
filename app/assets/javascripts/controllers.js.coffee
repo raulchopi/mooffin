@@ -188,6 +188,8 @@ angular.module('mooffin.controllers', [])
     $scope.editIndex = index
 
   $scope.createRecipe = () ->
+    angular.element(".btn_crearReceta")[0].textContent = "Guardando receta..."
+    angular.element(".btn_crearReceta")[0].disabled = true
     recipe = { 'recipe': { 'title': $scope.recipeTitle, 'description': $scope.recipeDescription, 'time': $scope.recipeTime,
     'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
     'photo': photo, 'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
@@ -198,11 +200,21 @@ angular.module('mooffin.controllers', [])
 
 
   $scope.updateRecipe = () ->
-    recipe = { 'id': $scope.recipeId, 'recipe': { 'title': $scope.recipeTitle,
-    'description': $scope.recipeDescription, 'time': $scope.recipeTime,
-    'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
-    'photo': photo,
-    'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
+    angular.element(".btn_crearReceta")[0].textContent = "Editando receta..."
+    angular.element(".btn_crearReceta")[0].disabled = true
+
+    if photo == null #If the user did not change the photo, do not save it
+      recipe = { 'id': $scope.recipeId, 'recipe': { 'title': $scope.recipeTitle,
+      'description': $scope.recipeDescription, 'time': $scope.recipeTime,
+      'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
+      'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
+    else
+      recipe = { 'id': $scope.recipeId, 'recipe': { 'title': $scope.recipeTitle,
+      'description': $scope.recipeDescription, 'time': $scope.recipeTime,
+      'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
+      'photo': photo,
+      'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
+
     links = $scope.links
     steps = $scope.steps
     InstantIngredientsSearchFactory.updateRecipe recipe, links, steps
@@ -227,7 +239,6 @@ angular.module('mooffin.controllers', [])
     linksH = JSON.parse(angular.element("#linksHidden").val())
     stepsH = JSON.parse(angular.element("#stepsHidden").val())
     diffH = JSON.parse(angular.element("#difficultyHidden").val())
-    foto = angular.element("#recipe_photo").val()
 
   lateEdit = () ->
     addingEditLinks linksH

@@ -19,7 +19,7 @@ $(document).ready(function(){
 		$(".login_text").hide();
 	}
 
-	
+
 
 	// Boton para (des)plegar el menu para dispositivos moviles
 	$("#menu_movil").click(function() {
@@ -31,11 +31,11 @@ $(document).ready(function(){
 			$(window).scrollTop(0);
 			$(".menu").slideDown();
 			desplegado = true;
-		}		
+		}
 	});
 
 
-	//Evalua si se amplia la ventana y el menu estaba plegado, que lo 
+	//Evalua si se amplia la ventana y el menu estaba plegado, que lo
 	// vuelva a desplegar para que se muestre en su nueva disposicion
 	$(window).resize(function(){
 		if($(this).width() >= 658 && !desplegado){
@@ -62,7 +62,7 @@ $(document).ready(function(){
 
 
 	// COMPORTAMIENTO AL HACER SCROLL
-	$(window).scroll(function () {
+	/*$(window).scroll(function () {
 		var y = $(this).scrollTop();
 
 		//Comportamiento del menu
@@ -93,7 +93,7 @@ $(document).ready(function(){
 			}
 		}
 	});
-
+*/
 
 	//Aplica margen al cuadro de login en la pantalla para movil
 	function marginLogin(){
