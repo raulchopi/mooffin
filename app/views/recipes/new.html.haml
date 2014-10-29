@@ -41,7 +41,7 @@
 
 					#detalles.row
 						#tiempo.large-4.columns
-							= text_field :recipe, :time, placeholder: 'Tiempo', :required => '', :type => 'number', 'ng-model' => 'recipeTime'
+							= text_field :recipe, :time, placeholder: 'Tiempo (en minutos)', :required => '', :type => 'number', 'ng-model' => 'recipeTime'
 						#comensales.large-4.columns
 							= text_field :recipe, :servings, placeholder: 'Comensales', :required => '', :type => 'number', 'ng-model' => 'recipeServings'
 						#dificultad.large-4.columns
@@ -60,7 +60,7 @@
 
 
 					#crearReceta
-						= button_tag 'Crear receta', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'createRecipe()'
+						= button_tag 'Crear receta', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'createRecipe()', 'ng-disabled' => "newRecipeForm.$invalid"
 
 
 

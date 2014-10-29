@@ -79,48 +79,47 @@
 		+comunes_barra_progreso
 		top: 120px
 
-// topBar after scroll
-#header.big
-	+cabecera_big
-	+comunes_cabecera
-	a
-		color: white
-
-	#logo
-		display: inline
-		-webkit-transition: opacity .2s ease-in-out
-		-moz-transition: opacity .2s ease-in-out
-		-o-transition: opacity .2s ease-in-out
-		transition: opacity .2s ease-in-out
-		width: auto !important
-		max-width: 200px
-		float: left
-
-		a img
-			overflow: hidden
-			position: absolute
-			max-width: 180px
-			margin: 7px 0 0 7px
-
-		&:hover
-
-	#menu_movil
-		position: fixed
-		top: 3px
-		right: 15px
-		font-size: 2.3em
-
-		a
-			color: white
-			+effect(300ms)
-
-			&:hover
-				color: green
-				+effect(300ms)
-
 
 	// Pantallas grandes
 	@media (min-width: 659px)
+		#header
+			+cabecera_big
+			+comunes_cabecera
+			a
+				color: white
+
+			#logo
+				display: inline
+				-webkit-transition: opacity .2s ease-in-out
+				-moz-transition: opacity .2s ease-in-out
+				-o-transition: opacity .2s ease-in-out
+				transition: opacity .2s ease-in-out
+				width: auto !important
+				max-width: 200px
+				float: left
+
+				a img
+					overflow: hidden
+					position: absolute
+					max-width: 180px
+					margin: 7px 0 0 7px
+
+				&:hover
+
+			#menu_movil
+				position: absolute
+				top: 3px
+				right: 15px
+				font-size: 2.3em
+
+				a
+					color: white
+					+effect(300ms)
+
+					&:hover
+						color: green
+						+effect(300ms)
+
 		#login
 
 			#logout
@@ -202,6 +201,40 @@
 
 	// Pantallas móviles
 	@media (max-width: 658px)
+		#header
+			+cabecera_small
+			position: fixed
+			+comunes_cabecera
+
+			#logo
+				-webkit-transition: opacity .2s ease-in-out
+				-moz-transition: opacity .2s ease-in-out
+				-o-transition: opacity .2s ease-in-out
+				transition: opacity .2s ease-in-out
+				margin: 5px 0 0 25px
+
+
+				a img
+					overflow: hidden
+					position: absolute
+					max-width: 70px
+
+				&:hover
+
+			#menu_movil
+				position: absolute
+				top: 3px
+				right: 15px
+				font-size: 2.3em
+
+				a
+					color: white
+					+effect(300ms)
+
+					&:hover
+						color: #3EBAFF
+						+effect(300ms)
+
 		#login
 			right: 0
 			margin: 90px 0 0 0
@@ -285,6 +318,46 @@
 
 
 
+// topBar after scroll
+#header.big
+	+cabecera_big
+	+comunes_cabecera
+	a
+		color: white
+
+	#logo
+		display: inline
+		-webkit-transition: opacity .2s ease-in-out
+		-moz-transition: opacity .2s ease-in-out
+		-o-transition: opacity .2s ease-in-out
+		transition: opacity .2s ease-in-out
+		width: auto !important
+		max-width: 200px
+		float: left
+
+		a img
+			overflow: hidden
+			position: absolute
+			max-width: 180px
+			margin: 7px 0 0 7px
+
+		&:hover
+
+	#menu_movil
+		position: absolute
+		top: 3px
+		right: 15px
+		font-size: 2.3em
+
+		a
+			color: white
+			+effect(300ms)
+
+			&:hover
+				color: green
+				+effect(300ms)
+
+
 // HEADER SMALL (after scrolling down)
 #header.small
 	+cabecera_small
@@ -307,7 +380,7 @@
 		&:hover
 
 	#menu_movil
-		position: fixed
+		position: absolute
 		top: 3px
 		right: 15px
 		font-size: 2.3em

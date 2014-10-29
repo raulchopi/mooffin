@@ -36,11 +36,11 @@
 				#descripcion
 					= text_field :recipe, :description, placeholder: 'Descripción', 'ng-model' => 'recipeDescription'
 
-				%input#photoUpload{ :type => 'file', :onchange => 'angular.element(this).scope().readFile()' }
+				%input#photoUpload{ :type => 'file', :onchange => 'angular.element(this).scope().readFile()', 'ng-model' => 'recipePhoto' }
 
 				#detalles.row
 					#tiempo.large-4.columns
-						= text_field :recipe, :time, placeholder: 'Tiempo', 'ng-model' => 'recipeTime'
+						= text_field :recipe, :time, placeholder: 'Tiempo (en minutos)', 'ng-model' => 'recipeTime'
 					#comensales.large-4.columns
 						= text_field :recipe, :servings, placeholder: 'Comensales', 'ng-model' => 'recipeServings'
 					#dificultad.large-4.columns
@@ -67,7 +67,7 @@
 				= hidden_field_tag 'linksHidden', @recipe.links.to_json, id: 'linksHidden'
 				= hidden_field_tag 'stepsHidden', @recipe.steps.to_json, id: 'stepsHidden'
 				= hidden_field_tag 'difficultyHidden', @recipe.difficulty.to_json, id: 'difficultyHidden'
-				= hidden_field :recipe, :photo
+				= hidden_field_tag 'photoHidden', @recipe.photo.to_json, id: 'photoHidden'
 
 
 	= render :partial => 'layouts/shared/footer'
