@@ -143,6 +143,7 @@ angular.module('mooffin.controllers', [])
     $scope.searchString = ''
     $scope.importanceOfIng = ''
     newLink = {}
+    angular.element(".desc").fadeOut 500
 
   $scope.addStep = () ->
     if !edit
@@ -163,6 +164,9 @@ angular.module('mooffin.controllers', [])
       $scope.links[index]._destroy = 1
     else
       $scope.links.splice index, 1
+
+    if($scope.links.length == 0)
+      angular.element(".desc").fadeIn 500
 
   $scope.removeStep = () ->
     edit = false

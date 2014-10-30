@@ -45,7 +45,10 @@
 								%li
 									= link.unidadSinCeros
 									= link.unit.description
-									= link.ingredient.name
+									- if link.unidadSinCeros.to_i > 1
+										= link.ingredient.name.downcase.pluralize(:es)
+									- else
+										= link.ingredient.name.downcase
 
 				#elaboracion.large-8.columns
 					%ul

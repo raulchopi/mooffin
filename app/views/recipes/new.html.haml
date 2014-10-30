@@ -4,7 +4,8 @@
 
 	#content.row{ 'ng-controller' => 'InstantIngredientSearchForNewRecipeController' }
 		#anhadirIng.large-4.columns
-			%span.titulo Añada los ingredientes...
+			%span.titulo Añada los ingredientes
+			%span.desc Introduce la cantidad, selecciona la unidad, el ingrediente en cuestión y su importancia en las 4 cajas siguientes:
 			#new_link
 				= text_field :link, :number, 'ng-model' => 'numberOfIng', placeholder: 'Cantidad'
 				%select{:id => 'link_unit', "ng-model" => "selected_unit", "ng-options" => "u.unit for u in units"}
@@ -49,15 +50,13 @@
 
 					#pasos
 						#newStep
-							%textarea.newStep_description{ placeholder: 'Añada los pasos, uno a uno, con el botón [+]', 'ng-model' => 'textStepRec', 'ng-keyup' => 'enterKeyStep($event)'}
+							%textarea.newStep_description{ placeholder: 'Añada los pasos, uno a uno, con el botón (+). Una vez añadido, puedes editarlo haciendo clic sobre él.', 'ng-model' => 'textStepRec', 'ng-keyup' => 'enterKeyStep($event)'}
 							%span.btn_removeStep.ion-ios7-close-outline{'ng-click' => 'removeStep($index)', 'ng-show' => 'editIndex >= 0'}
 							%span.btn_addStep.ion-ios7-plus-outline{'ng-click' => 'addStep()'}
 
 						%ul.stepList
 							%li{ 'ng-repeat' => 'step in steps', :class => 'stepList', 'ng-cloak' => '' }
-								%span.step_description{'ng-bind' => 'step.description', 'ng-class' => "{ 'step_edit': $index == editIndex }", 'ng-click' => 'editStep($index)'}
-
-
+								%span.step_description.has-tip{"data-tooltip" => "", "data-options" => "disable_for_touch:true", :title => "Haz click para editar este paso!", 'ng-bind' => 'step.description', 'ng-class' => "{ 'step_edit': $index == editIndex }", 'ng-click' => 'editStep($index)'}
 
 					#crearReceta
 						= button_tag 'Crear receta', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'createRecipe()', 'ng-disabled' => "newRecipeForm.$invalid"
