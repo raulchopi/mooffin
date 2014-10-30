@@ -12,7 +12,7 @@ class Recipe < ActiveRecord::Base
 	accepts_nested_attributes_for :links, :allow_destroy => true
 	accepts_nested_attributes_for :steps, :allow_destroy => true
 
-	has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "default_img_recipe_:style.png"
+	has_attached_file :photo, :styles => { :original => "1000x1000", :medium => "400x400>", :thumb => "100x100>" }, :default_url => "default_img_recipe_:style.png"
 	validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 	validates_attachment :photo, :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }
 

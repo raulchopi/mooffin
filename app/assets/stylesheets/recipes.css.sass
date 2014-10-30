@@ -458,6 +458,13 @@
 
 	.titulo
 		margin: 0 0 0 7%
+		float: left
+		width: 100%
+	.desc
+		margin: 0 0 0 7%
+		width: 100%
+		font-size: 0.8em
+
 
 	#listaIng
 		float: left
@@ -486,15 +493,16 @@
 		width: 90%
 		margin: 0px auto
 		padding: 15px 0 0 0
+		+effect(0.5s)
 
 		#link_number
 			width: 25%
 			+cajas_texto
 
 		#link_unit
-			width: 70%
+			width: 65%
 			float: left
-			margin: 0 2px 0 2px
+			margin: 0 2px 0 20px
 			+select_comunes(94%, 22px)
 
 		#link_ingredient
@@ -504,7 +512,7 @@
 		#link_importance
 			width: 30%
 			float: left
-			margin: 0 2px 0 2px
+			margin: 0 2px 0 20px
 			height: 30px
 			+select_comunes(84%, 22px)
 
@@ -640,7 +648,7 @@
 		.newStep_description
 			float: left
 			width: 94%
-			height: 150px
+			height: 120px
 			border: 1px solid #CCC
 
 			&:focus
@@ -650,7 +658,7 @@
 			font-size: 27px
 			position: absolute
 			right: 5px
-			top: 85px
+			top: 55px
 			cursor: pointer
 			cursor: hand
 			+effect(300ms)
@@ -662,11 +670,16 @@
 		.btn_addStep
 			font-size: 27px
 			position: absolute
-			right: 5px
-			top: 120px
+			top: 90px
 			cursor: pointer
 			cursor: hand
 			+effect(300ms)
+
+			@media (min-width: 658px)
+				right: 5px
+
+			@media (max-width: 657px)
+				right: -10px
 
 			&:hover
 				color: #3ebaff

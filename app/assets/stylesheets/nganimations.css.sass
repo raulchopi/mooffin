@@ -1,4 +1,4 @@
-.resultIng 
+.resultIng
 	&.ng-move, &.ng-enter, &.ng-leave
 		-webkit-transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all
 		-moz-transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all
@@ -40,9 +40,15 @@
 
 
 
-.nuevaRecetaForm 
-	input.ng-invalid.ng-dirty, input.ng-pristine
-		box-shadow: 0 6px 8px -8px #FA787E !important
+.nuevaRecetaForm
+	input.ng-invalid
+		box-shadow: 0 7px 10px -7px #FA787E !important
 
 	input.ng-valid.ng-dirty
-		box-shadow: 0 6px 8px -8px #78FA89 !important
+		box-shadow: 0 7px 10px -7px #78FA89 !important
+
+	select.ng-invalid
+		box-shadow: 0 7px 10px -7px #FA787E !important
+
+	select.ng-valid.ng-dirty
+		box-shadow: 0 7px 10px -7px #78FA89 !important
