@@ -44,7 +44,8 @@
 							- @recipe.links.each do |link|
 								%li
 									= link.unidadSinCeros
-									= link.unit.description
+									- if link.unit != nil
+										= link.unit.description
 									- if link.unidadSinCeros.to_i > 1
 										= link.ingredient.name.downcase.pluralize(:es)
 									- else
