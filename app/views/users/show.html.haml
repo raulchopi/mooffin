@@ -10,12 +10,14 @@
 				.nombre
 					= @user.name
 				.num_recetas
-					Recetas registradas: #{@user.recipes.count} 
+					Recetas registradas: #{@user.recipes.count}
 				.val_recetas
 					Valoración recetas: #{@user.average_rate_recipes}
-			
+
+				= hidden_field_tag 'idUserHidden', @user.id, id: 'idUserHidden'
+
 		#main.large-8.columns
-			= render @user.recipes
+			= render :partial => 'recipes/recipe'
 
 			= render :partial => 'layouts/shared/list_types'
 

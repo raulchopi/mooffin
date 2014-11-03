@@ -1,0 +1,21 @@
+#wrapper
+
+  = render :partial => 'layouts/shared/header'
+
+  #content.row{ 'ng-controller' => 'InstantIngredientsSearchController' }
+    = render :partial => 'layouts/shared/searcher'
+
+    #main.large-8.columns
+      #home.fade{'ng-class' => '{in:show_recipes.length == 0, out:show_recipes.length > 0}'}
+        #mensajeInicio
+          La página a la que estás intentando acceder no existe
+        #submensajeInicio
+          Si considera que no debería estar viendo esta pantalla de error, por favor, póngase en contacto con nosotros (soporte@mooffin.es)
+
+      #recipes.fade{'ng-class' => '{in:show_recipes.length > 0, out:show_recipes.length == 0}'}
+
+        = render :partial => 'layouts/shared/proposals'
+
+        = render :partial => 'layouts/shared/list_types'
+
+  = render :partial => 'layouts/shared/footer'

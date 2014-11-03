@@ -47,16 +47,29 @@ angular.module('mooffin.controllers', [])
 
   $scope.removeIngredient = (index) ->
     $scope.selected_ingredients.splice index, 1
+    paramIngredients.idsIngredients.splice index, 1
     #$scope.show_recipes = InstantIngredientsSearchFactory.getRecipesRecommended()
     if $scope.selected_ingredients.length == 0
       $scope.show_recipes = []
       angular.element("#home").fadeIn 100
       angular.element("#recipes").fadeOut 100
+    else
+      $scope.show_recipes = InstantIngredientsSearchFactory.getProposals(paramIngredients)
 ]
 
 
 .controller 'UserRecipesController', ['$scope', '$timeout',
 'InstantIngredientsSearchFactory', ($scope, $timeout, InstantIngredientsSearchFactory) ->
+  $scope.userId = angular.element("#idUserHidden").val()
+  userIdentifier = { 'id' : $scope.userId }
+  $scope.userRecipes = InstantIngredientsSearchFactory.getUserRecipes(userIdentifier)
+
+  $scope.deleteRecipe = (recipeId) ->
+    recipe = {'id': recipeId}
+    InstantIngredientsSearchFactory.deleteRecipe recipe, userIdentifier
+
+  $scope.isAuthor = (userId, currentUserId) ->
+    angular.equals(userId, parseInt(currentUserId))
 
   # Dependendo do tamanho da ventana, carga en modo lista ou grid
   if $(window).width() < 658
@@ -129,21 +142,47 @@ angular.module('mooffin.controllers', [])
     $scope.difficulties = difficulties
     lateEdit()
 
+
   $scope.setValue = (i) ->
     $scope.selected_ingredient = i
     $scope.searchString = i.name
 
+
   $scope.addLink = () ->
+    importance = null
+    unit = null
+
+    if $scope.importanceOfIng == undefined
+      importance = 2
+    else
+      importance = $scope.importanceOfIng.id
+
+    unit = $scope.selected_unit.id if $scope.selected_unit != undefined
+
     newLink = {'number': $scope.numberOfIng, 'unit': $scope.selected_unit, 'ing': $scope.selected_ingredient,
     'importance': $scope.importanceOfIng, 'ingredient_id': $scope.selected_ingredient.id,
-    'importance_id': $scope.importanceOfIng.id, 'unit_id': $scope.selected_unit.id}
-    $scope.links.push newLink
-    $scope.numberOfIng = ''
-    $scope.selected_unit = ''
-    $scope.searchString = ''
-    $scope.importanceOfIng = ''
-    newLink = {}
-    angular.element(".desc").fadeOut 500
+    'importance_id': importance, 'unit_id': unit}
+
+    if $scope.selected_ingredient != ''
+      $scope.links.push newLink
+      $scope.numberOfIng = ''
+      $scope.selected_unit = ''
+      $scope.searchString = ''
+      $scope.importanceOfIng = ''
+      $scope.selected_ingredient = null
+      newLink = {}
+      angular.element(".desc").fadeOut 500
+
+
+  $scope.removeLink = (index) ->
+    if($scope.links[index].id)
+      $scope.links[index]._destroy = 1
+    else
+      $scope.links.splice index, 1
+
+    if($scope.links.length == 0)
+      angular.element(".desc").fadeIn 500
+
 
   $scope.addStep = () ->
     if !edit
@@ -159,14 +198,6 @@ angular.module('mooffin.controllers', [])
     edit = false
     newStep = {}
 
-  $scope.removeLink = (index) ->
-    if($scope.links[index].id)
-      $scope.links[index]._destroy = 1
-    else
-      $scope.links.splice index, 1
-
-    if($scope.links.length == 0)
-      angular.element(".desc").fadeIn 500
 
   $scope.removeStep = () ->
     edit = false
@@ -184,12 +215,14 @@ angular.module('mooffin.controllers', [])
     $scope.textStepRec = ''
     $scope.editIndex = -1
 
+
   $scope.editStep = (index) ->
     $scope.idStep = $scope.steps[index].id
     $scope.textStepRec = $scope.steps[index].description
     $scope.ordenStep = index + 1
     edit = true
     $scope.editIndex = index
+
 
   $scope.createRecipe = () ->
     angular.element(".btn_crearReceta")[0].textContent = "Guardando receta..."
@@ -200,7 +233,6 @@ angular.module('mooffin.controllers', [])
     links = $scope.links
     steps = $scope.steps
     InstantIngredientsSearchFactory.setRecipe recipe, links, steps
-
 
 
   $scope.updateRecipe = () ->
@@ -223,9 +255,11 @@ angular.module('mooffin.controllers', [])
     steps = $scope.steps
     InstantIngredientsSearchFactory.updateRecipe recipe, links, steps
 
+
   $scope.enterKeyStep = (ev) ->
     if(ev.which == 13)
       addStep()
+
 
   $scope.readFile = () ->
     photoElement = angular.element('#photoUpload')[0].files[0]
@@ -233,6 +267,7 @@ angular.module('mooffin.controllers', [])
       photo = e.target.result
 
     fr.readAsDataURL photoElement
+
 
   $scope.editInit = () ->
     $scope.recipeId = angular.element("#idRecipeHidden").val()
@@ -244,10 +279,12 @@ angular.module('mooffin.controllers', [])
     stepsH = JSON.parse(angular.element("#stepsHidden").val())
     diffH = JSON.parse(angular.element("#difficultyHidden").val())
 
+
   lateEdit = () ->
     addingEditLinks linksH
     addingEditSteps stepsH
     $scope.recipeDifficulty = $scope.difficulties[diffH.id - 1]
+
 
   addingEditLinks = (linkes) ->
     angular.forEach linkes, (link) ->
@@ -256,6 +293,7 @@ angular.module('mooffin.controllers', [])
       'importance_id': link.importance_id, 'unit_id': link.unit_id}
       $scope.links.push newLink
       newLink = {}
+
 
   addingEditSteps = (stepes) ->
     angular.forEach stepes, (step) ->
