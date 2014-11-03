@@ -11,7 +11,6 @@
 
 		#ingSel
 			%ul
-				%li{'ng-repeat' => 'ing in selected_ingredients', 'ng-cloak' => '' } 
+				%li{'ng-repeat' => 'ing in selected_ingredients', 'ng-cloak' => '' }
 					%span.ion-ios7-close-empty{'ng-click' => 'removeIngredient($index)' }
 					%span.ing{'ng-bind' => 'ing.name'}
-					

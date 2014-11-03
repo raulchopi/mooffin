@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :get_user, only: [:show]
+	before_action :get_user, only: [:show, :userrecipes]
 
 	def get_user
 		@user = User.find(params[:id])
@@ -19,6 +19,19 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def userrecipes
+		@user = User.find(userrecipes_params)
+		@recipes = @user.recipes
+		respond_to do |format|
+			format.json {
+				render json: @recipes.to_json(:methods => [:photo_url])
+			}
+			format.html {
+				@recipes
+			}
+			end
+	end
+
 	def update
 	end
 
@@ -30,5 +43,9 @@ class UsersController < ApplicationController
 
 		def user_params
 			params.require(:user).permit(:username, :name, :surname, :email, :password, :avatar)
+		end
+
+		def userrecipes_params
+			params.require(:id)
 		end
 end

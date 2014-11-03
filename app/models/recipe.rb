@@ -22,7 +22,7 @@ class Recipe < ActiveRecord::Base
 		logger.info('Dentro do find_proposals')
 		@proposals = Recipe.joins(:difficulty).joins(:links)
 			.where(links: { ingredient_id: idsIngredients })
-			.select("recipes.*, difficulties.description AS dif_desc")
+			.select("recipes.*, difficulties.description AS dif_desc").distinct
 	end
 
 	def average_rate

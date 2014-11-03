@@ -1,25 +1,24 @@
 #myRecipes_grid{'ng-show' => "layout == 'grid'", 'ng-cloak' => ''}
-	= div_for(recipe, :class => 'large-4 columns') do		
+	.recipe.large-4.columns{ 'ng-repeat' => 'recipe in userRecipes' }
 		#my_recipe_container
-			%a{href: recipe_path(recipe)}
+			%a{href: '/recipes/{{recipe.id}}'}
 				%span.overlay
 				#foto
-					= image_tag(recipe.photo_url)
+					%img{'ng-src' => '{{recipe.photo_url}}'}
 				#titulo
-					= link_to recipe.title, recipe_path(recipe), {:class => 'text'}
+					%span{'ng-bind' => 'recipe.title'}
+				- if current_user
+					#operaciones{'ng-show' => "isAuthor(recipe.user_id, '#{current_user.id}')"}
+						%a.edit.ion-ios7-refresh{href: '/recipes/{{recipe.id}}/edit'}
+						%a.delete.ion-ios7-close{'confirmed-click-action' => "deleteRecipe(recipe.id)", 'ng-confirm-click'=>'En serio, quieres borrarla??'}
 
-				- if recipe.user == current_user
-					%a.edit.ion-ios7-refresh{:href => edit_recipe_path(recipe)}
-					%a.delete.ion-ios7-close{:href => recipe, :method => :delete, data: { confirm: "Seguro?" }, remote: true}
 
 #myRecipes_list{'ng-show' => "layout == 'list'", 'ng-cloak' => ''}
-	=div_for recipe do
+	.recipe{ 'ng-repeat' => 'recipe in userRecipes' }
 		#title
-			= link_to recipe.title, recipe_path(recipe), {:class => 'text'}
-			
-		- if recipe.user == current_user
-			#options
-				%a.edit.ion-ios7-refresh{:href => edit_recipe_path(recipe)}
-				%a.delete.ion-ios7-close{:href => recipe, :method => :delete, data: { confirm: "Seguro?" }, remote: true}
-
-								
+			%a{href: '/recipes/{{recipe.id}}'}
+				%span{'ng-bind' => 'recipe.title'}
+		- if current_user
+			#options{'ng-show' => "isAuthor(recipe.user_id, '#{current_user.id}')"}
+				%a.edit.ion-ios7-refresh{href: '/recipes/{{recipe.id}}/edit'}
+				%a.delete.ion-ios7-close{'ng-click' => "deleteRecipe(recipe.id)"}

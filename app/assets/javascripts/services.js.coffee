@@ -34,13 +34,21 @@ angular.module('mooffin.services', [])
 
   deleteOpinion: (opinion) ->
     $http.delete("/opinions/#{ opinion }").then ->
-      
+
 
   getRecipeOpinions: (recipeIdentifier) ->
     $http.get("/recipeopinions.json", params: recipeIdentifier).then (result) ->
       result.data
 
+  getUserRecipes: (userIdentifier) ->
+    $http.get("/userrecipes.json", params: userIdentifier).then (result) ->
+      result.data
+
   updateRecipe: (recipe, links, steps) ->
     $http.put("/recipes/#{ recipe.id }", recipe, links, steps).then ->
       $window.location.href = "/recipes/#{ recipe.id }"
+
+  deleteRecipe: (recipe, user) ->
+    $http.delete("/recipes/#{ recipe.id }").then ->
+      $window.location.href = "/users/#{ user.id }"
 ]
