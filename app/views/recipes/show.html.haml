@@ -53,7 +53,7 @@
 
 				#elaboracion.large-8.columns
 					%ul
-						- @recipe.steps.order("orden desc").each do |step|
+						- @recipe.steps.order("orden asc").each do |step|
 							%li= step.description
 
 		= hidden_field_tag 'idRecipeHidden', @recipe.id, id: 'idRecipeHidden'
