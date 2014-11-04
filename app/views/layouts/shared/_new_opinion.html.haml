@@ -8,15 +8,15 @@
 - else
 	#nuevaOpinion
 		#op_titulo.row
-			Deja tu opinión
+			Valora esta receta
 
-		%form#form_opinion
+		%form#form_opinion{:name => 'newOpinionForm', :novalidate => '', 'ng-submit' => 'form.submit(newOpinionForm.$valid)'}
 			#detalles.row
 				#op_texto.large-10.columns
-					= text_field :opinion, :opinion, placeholder: 'Opinión', 'ng-model' => 'op_opinion'
+					= text_field :opinion, :opinion, placeholder: 'Opinión', 'ng-model' => 'op_opinion', :required => ''
 				#op_puntuacion.large-2.columns
-					= text_field :opinion, :rating, placeholder: 'Puntuación', 'type' => 'number', 'ng-model' => 'op_rating'
-			= button_tag 'Opinar!', :class => 'new_opinion_btn', type: :submit, 'ng-click' => 'createOpinion()'
+					%select.selector_puntuacion{ placeholder: 'Puntuación',"ng-model" => "op_rating", :required => '', "ng-options" => "obj.value as obj.text for obj in array"}
+			= button_tag 'Opinar!', :class => 'new_opinion_btn', type: :submit, 'ng-click' => 'createOpinion()', 'ng-disabled' => "newOpinionForm.$invalid"
 
 -# - elsif ((nueva = @recipe.user_already_opined(current_user)) != false)
 -#	.opinion.mi_opinion.row
