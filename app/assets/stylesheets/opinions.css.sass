@@ -29,6 +29,7 @@
 			img
 				border-radius: 3px
 				position: absolute
+				width: 60px
 
 			.opVal
 				position: absolute
@@ -62,6 +63,7 @@
 					font-size: 2em
 					span
 						color: red
+						cursor: pointer
 
 			#opBottom
 				width: 100%
@@ -102,7 +104,8 @@
 				border-radius: 25px
 				position: absolute
 				top: -7px
-				left: -7px
+				left: -5px
+				width: 55px
 
 			.opVal
 				position: absolute
@@ -138,6 +141,7 @@
 					font-size: 2em
 					span
 						color: red
+						cursor: pointer
 
 			#opBottom
 				width: 100%
@@ -171,6 +175,25 @@
 	#opinion_rating
 		border-bottom: solid thin #e8e8e8
 		padding: 16px 0 0 10px !important
+
+	.selector_puntuacion
+		font: 0.875em 'brandon_grotesquelight', 'OpenSansBold', Helvetica, Arial, sans-serif
+		border: none
+		border-bottom: 1px solid #e8e8e8
+		line-height: 1.5
+		-webkit-appearance: none
+		-moz-appearance: none
+		text-indent: 0.01px
+		text-overflow: ''
+		appearance: none
+		background: transparent url("arrow_2.png") no-repeat scroll 94% 22px
+		padding: 14px 5px 0 0
+		background-size: 15px
+		height: 39px
+		color: rgba(0, 0, 0, 0.75)
+
+		&:focus
+			box-shadow: 0 6px 8px -8px #808080 !important
 
 	.new_opinion_btn
 		height: 30px
