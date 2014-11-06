@@ -3,7 +3,7 @@
 	.opVal{'ng-bind' => 'opinion.rating'}
 	#opTop
 		%a{'ng-bind' => 'opinion.name'}
-		%span{'ng-bind' => 'opinion.created_at'}
+		%span{'ng-bind' => "opinion.created_at | date: 'dd/MM/yyyy - h:mma'"}
 		- if current_user
 			.opDelete{'ng-show' => "isAuthor(opinion.user_id, '#{current_user.id}')"}
 				%span.ion-ios7-trash-outline{'ng-click' => 'removeOpinion($index, opinion.id)' }
