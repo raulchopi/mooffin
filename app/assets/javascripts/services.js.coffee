@@ -35,6 +35,15 @@ angular.module('mooffin.services', [])
   deleteOpinion: (opinion) ->
     $http.delete("/opinions/#{ opinion }").then ->
 
+  getUserRecipeLike: (recipeIdentifier) ->
+    $http.get("/userRecipeLike.json", params: recipeIdentifier).then (result) ->
+      result.data
+
+  setLike: (recipe) ->
+    $http.post("/recipes/#{ recipe.id }/likes").then ->
+
+  deleteLike: (like) ->
+    $http.delete("/likes/#{ like }").then ->
 
   getRecipeOpinions: (recipeIdentifier) ->
     $http.get("/recipeopinions.json", params: recipeIdentifier).then (result) ->

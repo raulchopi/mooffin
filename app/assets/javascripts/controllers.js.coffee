@@ -86,6 +86,26 @@ angular.module('mooffin.controllers', [])
 ]
 
 
+.controller 'RecipeLikesController', ['$scope',
+'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
+  $scope.recipeId = angular.element("#idRecipeHidden").val()
+  recipe = { 'id': $scope.recipeId }
+  recipeIdentifier = { 'recipeId' : $scope.recipeId }
+  $scope.likeRecipe = InstantIngredientsSearchFactory.getUserRecipeLike(recipeIdentifier)
+
+  $scope.createLike = () ->
+    InstantIngredientsSearchFactory.setLike recipe
+    angular.element(".megusta").hide 1
+    angular.element(".nomegusta").fadeIn 500
+    $scope.likeRecipe = InstantIngredientsSearchFactory.getUserRecipeLike(recipeIdentifier)
+
+  $scope.removeLike = () ->
+    InstantIngredientsSearchFactory.deleteLike $scope.likeRecipe.$$v.id
+    angular.element(".nomegusta").hide 1
+    angular.element(".megusta").fadeIn 500
+]
+
+
 .controller 'RecipeOpinionsController', ['$scope',
 'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
   $scope.recipeId = angular.element("#idRecipeHidden").val()

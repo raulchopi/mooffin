@@ -1,6 +1,6 @@
-- if current_user
-	- if like = current_user.likes.find_by_recipe_id(@recipe)
-		%a.edit.ion-ios7-heart-outline{:href => like, :method => :delete, remote: true}
-	- else
-		= form_for [@recipe, @like], :remote => true do |f|
-			= image_submit_tag 'nofav.png'
+#likeRecipe.row{ 'ng-controller' => 'RecipeLikesController' }
+	- if current_user
+		.nomegusta.large-12.columns{'ng-show' => 'likeRecipe.$$v.id'}
+			%a.edit.ion-ios7-heart{'ng-click' => "removeLike(recipe.id)"}
+		.megusta.large-12.columns{'ng-hide' => 'likeRecipe.$$v.id'}
+			%a.edit.ion-ios7-heart-outline{'ng-click' => "createLike()"}
