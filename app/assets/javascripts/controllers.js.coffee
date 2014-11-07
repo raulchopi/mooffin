@@ -304,4 +304,5 @@ angular.module('mooffin.controllers', [])
       newStep = { 'id': step.id, 'description': step.description, 'orden': step.orden }
       $scope.steps.push newStep
       newStep = {}
+      numSteps = $scope.steps.length
 ]
