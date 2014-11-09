@@ -1,6 +1,5 @@
 #likeRecipe.row{ 'ng-controller' => 'RecipeLikesController' }
-	- if current_user
-		.nomegusta.large-12.columns{'ng-show' => 'likeRecipe.$$v.id'}
-			%a.edit.ion-ios7-heart{'ng-click' => "removeLike(recipe.id)"}
-		.megusta.large-12.columns{'ng-hide' => 'likeRecipe.$$v.id'}
-			%a.edit.ion-ios7-heart-outline{'ng-click' => "createLike()"}
+	.nomegusta.large-12.columns{"ng-hide" => "likeRecipe == 'null'"}
+		%a.edit.ion-ios7-heart{'ng-click' => "removeLike()"}
+	.megusta.large-12.columns{"ng-show" => "likeRecipe == 'null'"}
+		%a.edit.ion-ios7-heart-outline{'ng-click' => "createLike()"}
