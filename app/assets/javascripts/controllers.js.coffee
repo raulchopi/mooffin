@@ -91,7 +91,8 @@ angular.module('mooffin.controllers', [])
   $scope.recipeId = angular.element("#idRecipeHidden").val()
   recipe = { 'id': $scope.recipeId }
   recipeIdentifier = { 'recipeId' : $scope.recipeId }
-  $scope.likeRecipe = InstantIngredientsSearchFactory.getUserRecipeLike(recipeIdentifier)
+  $scope.likeRecipe = InstantIngredientsSearchFactory.getUserRecipeLike(recipeIdentifier).then (likeRecipe) ->
+    $scope.likeRecipe = likeRecipe
 
   $scope.createLike = () ->
     InstantIngredientsSearchFactory.setLike recipe
