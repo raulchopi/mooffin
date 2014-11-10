@@ -4,7 +4,8 @@
 			%a{href: '/recipes/{{recipe.id}}'}
 				%span.overlay
 				#foto
-					%img{'ng-src' => '{{recipe.photo_url}}'}
+					%img{'ng-show' => 'recipe.photo_file_name', 'ng-src' => '{{recipe.photo_url}}'}
+					%img{'ng-show' => 'recipe.photo_file_name == null', 'ng-src' => '/assets/{{recipe.photo_url}}'}
 				#titulo
 					%span{'ng-bind' => 'recipe.title'}
 				- if current_user
