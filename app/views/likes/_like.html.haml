@@ -10,10 +10,10 @@
 				#titulo
 					= link_to like.recipe.title, recipe_path(like.recipe)
 
-				%a.edit.ion-ios7-heart-outline{:href => like, :method => :delete, remote: true}
+				//%a.edit.ion-ios7-heart-outline{:href => like, :method => :delete, remote: true}
 
 #myLikes_list{'ng-show' => "layout == 'list'", 'ng-cloak' => ''}
 	= div_for like do
 		#title
 			= link_to like.recipe.title, recipe_path(like.recipe)
-		%a.fav.ion-ios7-heart-outline{:href => like, :method => :delete, remote: true}	
+		//%a.fav.ion-ios7-heart-outline{:href => like, :method => :delete, remote: true}

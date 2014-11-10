@@ -17,6 +17,7 @@ Mooffin::Application.routes.draw do
 
   resources :ingredients
   resources :difficulties
+  resources :courses
   resources :units
   resources :importances
   resources :recipes do

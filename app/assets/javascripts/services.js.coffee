@@ -25,6 +25,10 @@ angular.module('mooffin.services', [])
     $http.get("/difficulties.json").then (result) ->
       result.data
 
+  getCourses: ->
+    $http.get("/courses.json").then (result) ->
+      result.data
+
   setRecipe: (recipe, links, steps) ->
     $http.post("/recipes", recipe, links, steps).then ->
       $window.location.href = '/'
