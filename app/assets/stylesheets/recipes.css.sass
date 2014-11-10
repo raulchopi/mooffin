@@ -160,15 +160,6 @@
 		#texto
 			display: inline-block
 
-
-		#likeRecipe
-			position: absolute
-			top: -20px
-			right: -65px
-
-			form
-			margin: 0
-
 	#descripcion
 		text-align: center
 		margin: 0 20% 25px
@@ -177,6 +168,21 @@
 		border-top: solid thin #e8e8e8
 		font-size: 1em
 		color: #64645D
+
+	#likeRecipe
+		text-align: center
+		a
+			color: #3ebaff
+
+		@media (min-width: 658px)
+			top: 200px
+			right: 50px
+			font-size: 3em
+
+		@media (max-width: 657px)
+			top: 200px
+			right: 50px
+			font-size: 2em
 
 	#contenido
 		color: #64645D
@@ -569,6 +575,11 @@
 		#recipe_title
 
 	#detalles
+
+		#plato
+
+			.selector_plato
+				+select_comunes(94%, 22px)
 
 		#tiempo
 

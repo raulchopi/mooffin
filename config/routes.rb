@@ -17,6 +17,7 @@ Mooffin::Application.routes.draw do
 
   resources :ingredients
   resources :difficulties
+  resources :courses
   resources :units
   resources :importances
   resources :recipes do
@@ -27,6 +28,7 @@ Mooffin::Application.routes.draw do
   get '/proposals' => 'recipes#proposals'
   get '/recipeopinions' => 'opinions#recipeopinions'
   get '/userrecipes' => 'users#userrecipes'
+  get '/userRecipeLike' => 'likes#getUserRecipeLike'
 
   resources :links
   resources :likes

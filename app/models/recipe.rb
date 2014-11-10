@@ -3,6 +3,7 @@ class Recipe < ActiveRecord::Base
 
 	belongs_to :user
 	belongs_to :difficulty
+	belongs_to :course
 	has_many :likes, dependent: :destroy
 	has_many :links, dependent: :destroy
 	has_many :steps, dependent: :destroy

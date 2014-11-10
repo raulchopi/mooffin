@@ -17,20 +17,21 @@
 
 				//= pin_it_button(media: image_url(@recipe.photo_url), description: @recipe.title, url: @recipe.photo_url)
 
-				#likeRecipe
-					//= render :partial => 'recipes/like'
-
 				- if @recipe.celiac_desease
-					= image_tag('celiac_icon.png', :border => 0, size: '25', :alt => 'Receta no apta para celíacos')
+					= image_tag('celiac_icon.png', :border => 0, size: '25', :title => "Esta receta puede no ser apta para celíacos.")
 
 			#descripcion.row
 				#texto.large-12.columns
 					= @recipe.description
 
+			= render :partial => 'recipes/like'
 
 			#contenido.row
 				#datos.large-4.columns
 					#detalles
+						.plato
+							- if @recipe.course
+								#{@recipe.course.description}
 						.dificultad
 							Dificultad: #{@recipe.difficulty.description}
 						.tiempoElaboracion
