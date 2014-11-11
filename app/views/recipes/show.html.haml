@@ -24,7 +24,8 @@
 				#texto.large-12.columns
 					= @recipe.description
 
-			= render :partial => 'recipes/like'
+			- if current_user
+				= render :partial => 'recipes/like'
 
 			#contenido.row
 				#datos.large-4.columns
