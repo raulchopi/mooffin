@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101083719) do
+ActiveRecord::Schema.define(version: 20141110092159) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id",    null: false
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 20141101083719) do
     t.string   "provider",   null: false
     t.string   "uid",        null: false
     t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "courses", force: true do |t|
+    t.string   "description", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -90,6 +96,7 @@ ActiveRecord::Schema.define(version: 20141101083719) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "course_id"
   end
 
   create_table "steps", force: true do |t|

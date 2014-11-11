@@ -41,11 +41,13 @@
 					%input#photoUpload{ :type => 'file', :onchange => 'angular.element(this).scope().readFile()' }
 
 					#detalles.row
-						#tiempo.large-4.columns
+						#plato.large-3.columns
+							%select.selector_plato{ placeholder: 'Plato',"ng-model" => "recipeCourse", :required => '', "ng-options" => "c.description for c in courses"}
+						#tiempo.large-3.columns
 							= text_field :recipe, :time, placeholder: 'Tiempo (en minutos)', :required => '', :type => 'number', 'ng-model' => 'recipeTime'
-						#comensales.large-4.columns
+						#comensales.large-3.columns
 							= text_field :recipe, :servings, placeholder: 'Comensales', :required => '', :type => 'number', 'ng-model' => 'recipeServings'
-						#dificultad.large-4.columns
+						#dificultad.large-3.columns
 							%select.selector_dif{ placeholder: 'Dificultad',"ng-model" => "recipeDifficulty", :required => '', "ng-options" => "d.description for d in difficulties"}
 
 					#pasos

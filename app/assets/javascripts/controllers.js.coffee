@@ -43,7 +43,9 @@ angular.module('mooffin.controllers', [])
       idsIngredients.push i.id
       paramIngredients = { 'idsIngredients' : idsIngredients }
 
-    $scope.show_recipes = InstantIngredientsSearchFactory.getProposals(paramIngredients) if already_in_it == false
+    if already_in_it == false
+      $scope.show_recipes = InstantIngredientsSearchFactory.getProposals(paramIngredients).then (prop) ->
+        $scope.show_recipes = prop
 
   $scope.removeIngredient = (index) ->
     $scope.selected_ingredients.splice index, 1
@@ -54,7 +56,8 @@ angular.module('mooffin.controllers', [])
       angular.element("#home").fadeIn 100
       angular.element("#recipes").fadeOut 100
     else
-      $scope.show_recipes = InstantIngredientsSearchFactory.getProposals(paramIngredients)
+      $scope.show_recipes = InstantIngredientsSearchFactory.getProposals(paramIngredients).then (prop) ->
+        $scope.show_recipes = prop
 ]
 
 
@@ -62,7 +65,8 @@ angular.module('mooffin.controllers', [])
 'InstantIngredientsSearchFactory', ($scope, $timeout, InstantIngredientsSearchFactory) ->
   $scope.userId = angular.element("#idUserHidden").val()
   userIdentifier = { 'id' : $scope.userId }
-  $scope.userRecipes = InstantIngredientsSearchFactory.getUserRecipes(userIdentifier)
+  $scope.userRecipes = InstantIngredientsSearchFactory.getUserRecipes(userIdentifier).then (likeRecipes) ->
+    $scope.userRecipes = likeRecipes
 
   $scope.deleteRecipe = (recipeId) ->
     recipe = {'id': recipeId}
@@ -91,14 +95,15 @@ angular.module('mooffin.controllers', [])
   $scope.recipeId = angular.element("#idRecipeHidden").val()
   recipe = { 'id': $scope.recipeId }
   recipeIdentifier = { 'recipeId' : $scope.recipeId }
-  InstantIngredientsSearchFactory.getUserRecipeLike(recipeIdentifier).then (likeRecipe) ->
+
+  $scope.likeRecipe = InstantIngredientsSearchFactory.getUserRecipeLike(recipeIdentifier).then (likeRecipe) ->
     $scope.likeRecipe = likeRecipe
 
   $scope.createLike = () ->
     InstantIngredientsSearchFactory.setLike recipe
     angular.element(".megusta").hide 1
     angular.element(".nomegusta").fadeIn 500
-    InstantIngredientsSearchFactory.getUserRecipeLike(recipeIdentifier).then (likeRecipe) ->
+    $scope.likeRecipe = InstantIngredientsSearchFactory.getUserRecipeLike(recipeIdentifier).then (likeRecipe) ->
       $scope.likeRecipe = likeRecipe
 
   $scope.removeLike = () ->
@@ -112,7 +117,8 @@ angular.module('mooffin.controllers', [])
 'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
   $scope.recipeId = angular.element("#idRecipeHidden").val()
   recipeIdentifier = { 'recipeId' : $scope.recipeId }
-  $scope.recipeOpinions = InstantIngredientsSearchFactory.getRecipeOpinions(recipeIdentifier)
+  $scope.recipeOpinions = InstantIngredientsSearchFactory.getRecipeOpinions(recipeIdentifier).then (recipeOpinions) ->
+    $scope.recipeOpinions = recipeOpinions
 
   $scope.array = [{ "value": 1, "text": "1" }, { "value": 2, "text": "2" }, { "value": 3, "text": "3" },
     { "value": 4, "text": "4" }, { "value": 5, "text": "5" }, { "value": 6, "text": "6" }, { "value": 7, "text": "7" },
@@ -123,11 +129,12 @@ angular.module('mooffin.controllers', [])
     recipe = { 'id': $scope.recipeId }
     recipeIdentifier = { 'recipeId' : $scope.recipeId }
     InstantIngredientsSearchFactory.setOpinion recipe, opinion
-    $scope.recipeOpinions = InstantIngredientsSearchFactory.getRecipeOpinions(recipeIdentifier)
+    $scope.recipeOpinions = InstantIngredientsSearchFactory.getRecipeOpinions(recipeIdentifier).then (recipeOpinions) ->
+      $scope.recipeOpinions = recipeOpinions
     angular.element("#nuevaOpinion").fadeOut 250
 
   $scope.removeOpinion = (index, idOpinion) ->
-    $scope.recipeOpinions.$$v[index]._deleted = 1
+    $scope.recipeOpinions[index]._deleted = 1
     InstantIngredientsSearchFactory.deleteOpinion idOpinion
     angular.element("#nuevaOpinion").fadeIn 250
 
@@ -154,6 +161,7 @@ angular.module('mooffin.controllers', [])
   linksH = []
   stepsH = []
   diffH = []
+  courseH = []
 
   $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
     $scope.ingredients = ingredients
@@ -163,6 +171,9 @@ angular.module('mooffin.controllers', [])
 
   $scope.importances = InstantIngredientsSearchFactory.getImportances().then (importances) ->
     $scope.importances = importances
+
+  $scope.courses = InstantIngredientsSearchFactory.getCourses().then (courses) ->
+    $scope.courses = courses
 
   $scope.difficulties = InstantIngredientsSearchFactory.getDifficulties().then (difficulties) ->
     $scope.difficulties = difficulties
@@ -254,7 +265,7 @@ angular.module('mooffin.controllers', [])
     angular.element(".btn_crearReceta")[0].textContent = "Guardando receta..."
     angular.element(".btn_crearReceta")[0].disabled = true
     recipe = { 'recipe': { 'title': $scope.recipeTitle, 'description': $scope.recipeDescription, 'time': $scope.recipeTime,
-    'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
+    'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id, 'course_id': $scope.recipeCourse.id,
     'photo': photo, 'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
     links = $scope.links
     steps = $scope.steps
@@ -269,12 +280,13 @@ angular.module('mooffin.controllers', [])
       recipe = { 'id': $scope.recipeId, 'recipe': { 'title': $scope.recipeTitle,
       'description': $scope.recipeDescription, 'time': $scope.recipeTime,
       'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
+      'course_id': $scope.recipeCourse.id,
       'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
     else
       recipe = { 'id': $scope.recipeId, 'recipe': { 'title': $scope.recipeTitle,
       'description': $scope.recipeDescription, 'time': $scope.recipeTime,
       'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
-      'photo': photo,
+      'photo': photo, 'course_id': $scope.recipeCourse.id,
       'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
 
     links = $scope.links
@@ -304,12 +316,14 @@ angular.module('mooffin.controllers', [])
     linksH = JSON.parse(angular.element("#linksHidden").val())
     stepsH = JSON.parse(angular.element("#stepsHidden").val())
     diffH = JSON.parse(angular.element("#difficultyHidden").val())
+    courseH = JSON.parse(angular.element("#courseHidden").val())
 
 
   lateEdit = () ->
     addingEditLinks linksH
     addingEditSteps stepsH
     $scope.recipeDifficulty = $scope.difficulties[diffH.id - 1]
+    $scope.recipeCourse = $scope.courses[courseH.id - 1]
 
 
   addingEditLinks = (linkes) ->

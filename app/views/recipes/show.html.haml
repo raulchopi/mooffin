@@ -29,6 +29,9 @@
 			#contenido.row
 				#datos.large-4.columns
 					#detalles
+						.plato
+							- if @recipe.course
+								#{@recipe.course.description}
 						.dificultad
 							Dificultad: #{@recipe.difficulty.description}
 						.tiempoElaboracion
