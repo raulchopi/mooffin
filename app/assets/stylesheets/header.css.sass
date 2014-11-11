@@ -53,267 +53,242 @@
 	-moz-transition: all $time ease
 	-o-transition: all $time ease
 
-=comunes_barra_progreso
-	background: #108CFF
-	position: fixed
-	z-index: 2000
-	left: 0
-	height: 2px
 
-	-webkit-transition: width 1s
-	-moz-transition: width 1s
-	-o-transition: width 1s
-	transition: width 1s
 
-//Barra de progreso
-.pace-inactive
-	display: none
-
-@media (max-width: 658px)
-	.pace .pace-progress
-		+comunes_barra_progreso
-		top: 50px
-
+// Pantallas grandes
 @media (min-width: 659px)
-	.pace .pace-progress
-		+comunes_barra_progreso
-		top: 120px
+	#header
+		+cabecera_big
+		+comunes_cabecera
+		a
+			color: white
 
+		#logo
+			display: inline
+			-webkit-transition: opacity .2s ease-in-out
+			-moz-transition: opacity .2s ease-in-out
+			-o-transition: opacity .2s ease-in-out
+			transition: opacity .2s ease-in-out
+			width: auto !important
+			max-width: 200px
+			float: left
 
-	// Pantallas grandes
-	@media (min-width: 659px)
-		#header
-			+cabecera_big
-			+comunes_cabecera
+			a img
+				overflow: hidden
+				position: absolute
+				max-width: 180px
+				margin: 7px 0 0 7px
+
+			&:hover
+
+		#menu_movil
+			position: absolute
+			top: 3px
+			right: 15px
+			font-size: 2.3em
+
 			a
 				color: white
+				+effect(300ms)
 
-			#logo
+				&:hover
+					color: green
+					+effect(300ms)
+
+	#login
+
+		#logout
+			float: right
+			margin: 15px 10px 0 0
+			font-weight: bold
+			font-size: 1em
+			width: 120px
+
+			img
+				width: 25px
+				border-radius: 10px
+				margin: 0 10px 0 0
+
+			#salir
+				float: right
+				margin: 3px 15px 0 10px
+				width: 15px
+				+effect(300ms)
+
+				&:hover
+					color: red
+					+effect(300ms)
+
+		#login_box
+			float: right
+			margin: 10px 10px 0 0
+
+
+			.login_text
+				margin: 0 0 0 15px
+				vertical-align: super
+
+			.google
+				+comunes_boton_login()
+				&:hover
+					+comunes_boton_login_hover()
+					color: #4385F5
+
+			.facebook
+				+comunes_boton_login()
+				&:hover
+					+comunes_boton_login_hover()
+					color: #3D62B3
+
+			.twitter
+				+comunes_boton_login()
+				margin: 0 0 0 15px !important
+				margin-left: 5px
+				&:hover
+					+comunes_boton_login_hover()
+					color: #4099FF
+
+
+
+	#menu_principal
+		width: 100%
+		margin-top: 88px
+		height: 30px
+
+		ul
+			float: right
+			margin: 0 10px 0 0
+			font-weight: bold
+			font-size: 1.5em
+
+			li
 				display: inline
-				-webkit-transition: opacity .2s ease-in-out
-				-moz-transition: opacity .2s ease-in-out
-				-o-transition: opacity .2s ease-in-out
-				transition: opacity .2s ease-in-out
-				width: auto !important
-				max-width: 200px
-				float: left
+				padding: 0px 0px
+				color: white
 
-				a img
-					overflow: hidden
-					position: absolute
-					max-width: 180px
-					margin: 7px 0 0 7px
+			a
+				color: white
+				+effect(0.5s)
+
+			:hover
+				color: #3EBAFF
+				+effect(0.5s)
+
+// Pantallas móviles
+@media (max-width: 658px)
+	#header
+		+cabecera_small
+		position: fixed
+		+comunes_cabecera
+
+		#logo
+			-webkit-transition: opacity .2s ease-in-out
+			-moz-transition: opacity .2s ease-in-out
+			-o-transition: opacity .2s ease-in-out
+			transition: opacity .2s ease-in-out
+			margin: 5px 0 0 25px
+
+
+			a img
+				overflow: hidden
+				position: absolute
+				max-width: 70px
+
+			&:hover
+
+		#menu_movil
+			position: absolute
+			top: 3px
+			right: 15px
+			font-size: 2.3em
+
+			a
+				color: white
+				+effect(300ms)
 
 				&:hover
-
-			#menu_movil
-				position: absolute
-				top: 3px
-				right: 15px
-				font-size: 2.3em
-
-				a
-					color: white
-					+effect(300ms)
-
-					&:hover
-						color: green
-						+effect(300ms)
-
-		#login
-
-			#logout
-				float: right
-				margin: 15px 10px 0 0
-				font-weight: bold
-				font-size: 1em
-				width: 120px
-
-				img
-					width: 25px
-					border-radius: 10px
-					margin: 0 10px 0 0
-
-				#salir
-					float: right
-					margin: 3px 15px 0 10px
-					width: 15px
-					+effect(300ms)
-
-					&:hover
-						color: red
-						+effect(300ms)
-
-			#login_box
-				float: right
-				margin: 10px 10px 0 0
-
-
-				.login_text
-					margin: 0 0 0 15px
-					vertical-align: super
-
-				.google
-					+comunes_boton_login()
-					&:hover
-						+comunes_boton_login_hover()
-						color: #4385F5
-
-				.facebook
-					+comunes_boton_login()
-					&:hover
-						+comunes_boton_login_hover()
-						color: #3D62B3
-
-				.twitter
-					+comunes_boton_login()
-					margin: 0 0 0 15px !important
-					margin-left: 5px
-					&:hover
-						+comunes_boton_login_hover()
-						color: #4099FF
-
-
-
-		#menu_principal
-			width: 100%
-			margin-top: 88px
-			height: 30px
-
-			ul
-				float: right
-				margin: 0 10px 0 0
-				font-weight: bold
-				font-size: 1.5em
-
-				li
-					display: inline
-					padding: 0px 0px
-					color: white
-
-				a
-					color: white
-					+effect(0.5s)
-
-				:hover
 					color: #3EBAFF
-					+effect(0.5s)
+					+effect(300ms)
 
-	// Pantallas móviles
-	@media (max-width: 658px)
-		#header
-			+cabecera_small
-			position: fixed
-			+comunes_cabecera
+	#login
+		right: 0
+		margin: 90px 0 0 0
 
-			#logo
-				-webkit-transition: opacity .2s ease-in-out
-				-moz-transition: opacity .2s ease-in-out
-				-o-transition: opacity .2s ease-in-out
-				transition: opacity .2s ease-in-out
-				margin: 5px 0 0 25px
+		#logout
+			float: right
+			margin: 0 10px 0 0
+			font-weight: bold
+			font-size: 1em
+			width: 120px
 
+			img
+				width: 25px
+				border-radius: 10px
+				margin: 0 10px 0 0
 
-				a img
-					overflow: hidden
-					position: absolute
-					max-width: 70px
+			#salir
+				float: right
+				margin: 3px 15px 0 10px
+				width: 15px
+				+effect(300ms)
 
 				&:hover
-
-			#menu_movil
-				position: absolute
-				top: 3px
-				right: 15px
-				font-size: 2.3em
-
-				a
-					color: white
+					color: red
 					+effect(300ms)
 
-					&:hover
-						color: #3EBAFF
-						+effect(300ms)
+		#login_box
+			float: right
+			margin: 0 20px 0 0
+			+color_cabecera
 
-		#login
-			right: 0
-			margin: 90px 0 0 0
+			.login_text
+				margin: 0 0 0 15px
 
-			#logout
-				float: right
-				margin: 0 10px 0 0
-				font-weight: bold
-				font-size: 1em
-				width: 120px
+			.google
+				+comunes_boton_login()
+				&:hover
+					+comunes_boton_login_hover()
+					color: #4385F5
 
-				img
-					width: 25px
-					border-radius: 10px
-					margin: 0 10px 0 0
+			.facebook
+				+comunes_boton_login()
+				&:hover
+					+comunes_boton_login_hover()
+					color: #3D62B3
 
-				#salir
-					float: right
-					margin: 3px 15px 0 10px
-					width: 15px
-					+effect(300ms)
-
-					&:hover
-						color: red
-						+effect(300ms)
-
-			#login_box
-				float: right
-				margin: 0 20px 0 0
-				+color_cabecera
-
-				.login_text
-					margin: 0 0 0 15px
-
-				.google
-					+comunes_boton_login()
-					&:hover
-						+comunes_boton_login_hover()
-						color: #4385F5
-
-				.facebook
-					+comunes_boton_login()
-					&:hover
-						+comunes_boton_login_hover()
-						color: #3D62B3
-
-				.twitter
-					+comunes_boton_login()
-					margin: 0 0 0 15px !important
-					&:hover
-						+comunes_boton_login_hover()
-						color: #4099FF
+			.twitter
+				+comunes_boton_login()
+				margin: 0 0 0 15px !important
+				&:hover
+					+comunes_boton_login_hover()
+					color: #4099FF
 
 
-		#menu_principal
-			width: 100%
-			margin-top: 120px
-			height: 30px
+	#menu_principal
+		width: 100%
+		margin-top: 120px
+		height: 30px
 
-			ul
-				font-weight: bold
-				font-size: 1.5em
-				float: right
-				margin: 0 0 0 0
-				+color_cabecera
-				border-top: 2px solid #333
+		ul
+			font-weight: bold
+			font-size: 1.5em
+			float: right
+			margin: 0 0 0 0
+			+color_cabecera
+			border-top: 2px solid #333
 
-				li
-					display: inline
-					padding: 0px 0px
-					color: white
+			li
+				display: inline
+				padding: 0px 0px
+				color: white
 
-				a
-					color: white
-					+effect(0.5s)
+			a
+				color: white
+				+effect(0.5s)
 
-				:hover
-					color: #3EBAFF
-					+effect(0.5s)
+			:hover
+				color: #3EBAFF
+				+effect(0.5s)
 
 
 
