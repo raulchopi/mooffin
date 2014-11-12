@@ -6,7 +6,7 @@
 
 			#resultadosBuscador
 				%table{ 'ng-show' => 'searchString.length >= 2', :class => 'resultIngTable', 'ng-cloak' => '' }
-					%tr{ 'ng-repeat' => 'i in ingredients | searchFor:searchString', 'ng-click' => 'setValue(i)', :class => 'resultIng' }
+					%tr{ 'ng-repeat' => "i in ingredients | searchFor:searchString | limitTo: 10 | orderBy:'name'", 'ng-click' => 'setValue(i)', :class => 'resultIng' }
 						%td{'ng-bind' => 'i.name'}
 
 		#ingSel
