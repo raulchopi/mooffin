@@ -21,19 +21,10 @@ class Recipe < ActiveRecord::Base
 
 	def self.find_proposals(idsIngredients)
 		logger.info('Dentro do find_proposals')
-		@proposals = Recipe.joins(:difficulty).joins(:links)
+		@proposals = Recipe.joins(:difficulty).joins(:links).joins("join importances on links.importance_id = importances.id")
 			.where(links: { ingredient_id: idsIngredients })
-			.select("recipes.*, difficulties.description AS dif_desc").distinct
-
-			#select r.id receta, r.title titulo, l.ingredient_id ingrediente, temp.peso
-			#from
-			#(select l.id, l.ingredient_id ingredient_id, sum(l.importance_id) peso
-			#from links l
-			#where l.ingredient_id in (348)
-			#group by l.id, l.ingredient_id) temp
-			#join links l on l.id = temp.id
-			#join recipes r on r.id = l.recipe_id
-			#order by 3 desc;
+			.select("recipes.*, difficulties.description AS dif_desc, sum(importances.weight) as weight")
+			.group("recipes.id").order("weight desc")
 	end
 
 	def average_rate
