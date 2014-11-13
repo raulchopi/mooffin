@@ -22,4 +22,4 @@
 		- if current_user
 			#options{'ng-show' => "isAuthor(recipe.user_id, '#{current_user.id}')"}
 				%a.edit.ion-ios7-refresh{href: '/recipes/{{recipe.id}}/edit'}
-				%a.delete.ion-ios7-close{'ng-click' => "deleteRecipe(recipe.id)"}
+				%a.delete.ion-ios7-close{'confirmed-click-action' => "deleteRecipe(recipe.id)", 'ng-confirm-click'=>'En serio, quieres borrarla??'}
