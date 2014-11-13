@@ -147,27 +147,34 @@
 			border-radius: 30px
 
 	#titulo
-		margin: 20px 0 0 0
+		margin: 20px 0 20px 0
 		position: relative
 		text-align: center
 
 		@media (min-width: 658px)
-			font-size: 3em
+			font-size: 2.2em
 
 		@media (max-width: 657px)
-			font-size: 2em
+			font-size: 1.5em
 
 		#texto
 			display: inline-block
 
 	#descripcion
 		text-align: center
-		margin: 0 20% 25px
-		padding: 20px 0
 		border-bottom: solid thin #e8e8e8
 		border-top: solid thin #e8e8e8
 		font-size: 1em
 		color: #64645D
+
+		@media (min-width: 658px)
+			margin: 0 20% 25px
+			padding: 20px 0
+
+		@media (max-width: 657px)
+			margin: 0 5% 15px
+			padding: 10px 0
+
 
 	#likeRecipe
 		text-align: center
@@ -186,13 +193,20 @@
 
 	#contenido
 		color: #64645D
+		@media (min-width: 658px)
+			margin-top: 20px
 
 		#datos
+
 			#detalles
 
 				font-size: 0.8em
 				color: #64645D
-				margin: 10px 0 30px 30px
+
+				@media (min-width: 658px)
+					margin: 10px 0 30px 30px
+				@media (max-width: 657px)
+					text-align: center
 
 				.dificultad
 					margin: 5px 0 0 0
@@ -204,6 +218,8 @@
 					margin: 5px 0 0 0
 
 			#ingredientes
+				@media (max-width: 657px)
+					margin: 20px 5%
 
 				.titulo
 					margin: 0 0 10px 0
@@ -214,15 +230,25 @@
 
 				ul
 					list-style: none
-					padding: 10px
+					@media (min-width: 658px)
+						padding: 10px
+					@media (max-width: 657px)
+						padding-top: 25px
+						border-top: solid thin #e8e8e8
 
 					li
 						font-size: 1em
-						text-indent: 20px
+						@media (min-width: 658px)
+							text-indent: 20px
+						@media (max-width: 657px)
+							text-indent: 5px
 
 		#elaboracion
-			padding: 0 10px 0 10px
 			text-align: justify
+			@media (min-width: 658px)
+				padding: 0 45px 0 10px
+			@media (max-width: 657px)
+				padding: 0 10px 0 10px
 
 			ul
 				list-style: none
@@ -304,7 +330,7 @@
 
 				&:hover
 					color: #3ebaff
-					opacity: 0.5
+					opacity: 0.8
 					+effect(0.2s)
 
 			.delete
@@ -316,7 +342,7 @@
 
 				&:hover
 					color: red
-					opacity: 0.5
+					opacity: 0.8
 					+effect(0.2s)
 
 #myRecipes_list
@@ -340,21 +366,21 @@
 			.edit
 				float: right
 				margin: 0 10px 0 0
-				color: #3ebaff
+				color: #464646
 
 				&:hover
 					color: #3ebaff
-					opacity: 0.5
+					opacity: 0.8
 					+effect(0.2s)
 
 			.delete
 				float: right
 				margin: 0 10px 0 0
-				color: #3ebaff
+				color: #464646
 
 				&:hover
 					color: red
-					opacity: 0.5
+					opacity: 0.8
 					+effect(0.2s)
 
 
