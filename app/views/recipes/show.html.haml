@@ -43,7 +43,7 @@
 
 					#ingredientes
 						%ul
-							- @recipe.links.each do |link|
+							- @recipe.links.order("importance_id desc").each do |link|
 								%li
 									= link.unidadSinCeros
 									- if link.unit != nil
