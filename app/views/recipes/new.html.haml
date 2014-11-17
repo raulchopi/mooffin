@@ -63,7 +63,7 @@
 					#crearReceta
 						= button_tag 'Crear receta', class: 'btn_crearReceta', type: :submit, 'ng-click' => 'createRecipe()', 'ng-disabled' => "newRecipeForm.$invalid"
 
-
+		= hidden_field_tag 'idUserHidden', current_user.id, id: 'idUserHidden'
 
 
 	= render :partial => 'layouts/shared/footer'

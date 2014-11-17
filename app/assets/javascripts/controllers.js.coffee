@@ -262,6 +262,7 @@ angular.module('mooffin.controllers', [])
 
 
   $scope.createRecipe = () ->
+    userId = angular.element("#idUserHidden").val()
     angular.element(".btn_crearReceta")[0].textContent = "Guardando receta..."
     angular.element(".btn_crearReceta")[0].disabled = true
     recipe = { 'recipe': { 'title': $scope.recipeTitle, 'description': $scope.recipeDescription, 'time': $scope.recipeTime,
@@ -269,7 +270,7 @@ angular.module('mooffin.controllers', [])
     'photo': photo, 'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
     links = $scope.links
     steps = $scope.steps
-    InstantIngredientsSearchFactory.setRecipe recipe, links, steps
+    InstantIngredientsSearchFactory.setRecipe recipe, links, steps, userId
 
 
   $scope.updateRecipe = () ->
