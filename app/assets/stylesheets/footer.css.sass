@@ -1,0 +1,57 @@
+=effect($time)
+  -webkit-transition: all $time ease-out
+  -moz-transition: all $time ease
+  -o-transition: all $time ease
+
+
+footer
+  background: none repeat scroll 0 0 #3EBAFF
+  border-top: 1px solid #67caff
+  color: whitesmoke
+  margin: 40px 0 0
+  padding: 7px 0 0
+  width: 100%
+  position: absolute
+  bottom: 0
+
+  #partners
+    font-size: 1.2em
+    float: left
+    @media (max-width: 657px)
+      text-align: center
+      margin-bottom: 10px
+    a
+      color: whitesmoke
+      font-size: 0.6em
+
+      &:hover
+        font-weight: bold
+
+
+  #social
+    font-weight: bold
+    font-size: 1em
+    padding: 0 30px 0 0
+    @media (max-width: 657px)
+      text-align: center
+    @media (min-width: 658px)
+      text-align: right
+
+    span
+      margin: 0 5px 0 0
+      font-size: 0.85em
+
+    a
+      color: whitesmoke
+      margin: 0 0 7px 0
+      border: 1px solid #3EBAFF
+      border-radius: 15px
+      padding: 5px
+      width: 30px
+      text-align: center
+      +effect(0.5s)
+
+      &:hover
+        +effect(0.5s)
+        color: white
+        border: 1px solid white

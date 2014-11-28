@@ -1,0 +1,27 @@
+#wrapper
+
+  = render :partial => 'layouts/shared/header'
+
+  #partnerswrapper.row
+    .partner.large-6.columns
+      .photo_partner
+        = image_tag('partners/unamesaporfavor.png', :border => 0, size: '25')
+      .titulo
+        %a{:href => 'http://www.unamesaporfavor.com'}
+          Unamesaporfavor.com
+      .subtitulo
+        Bares de tapas y reservas de restaurantes gratis
+      %p
+        ¿Te ayudamos a buscar un restaurante? Reserva mesa en el restaurante italiano más de moda en Madrid, o disfruta del restaurante japonés más recomendado de Barcelona. Todo es posible en Unamesaporfavor porque contamos con más de 7000 restaurantes en toda España con las mejores promociones y descuentos en carta y menús. Podrás filtrar tus restaurantes por barrios como Chueca, La Latina, La Barceloneta o cualquiera que tu desees... ¿quieres más? Navega y descubre los restaurantes con los mejores descuentos de toda España!
+    .partner.large-6.columns
+      .photo_partner
+        = image_tag('partners/recetasyacocinar.png', :border => 0, size: '25')
+      .titulo
+        %a{:href => 'http://bizcochela.blogspot.com.es'}
+          Bizcochela
+      .subtitulo
+        Recetas y a cocinar se ha dicho!!
+      %p
+        Blog personal de 'Chela' en el que nos da a conocer deliciosas e innovadoras recetas, además de no dejar caer en el olvido las recetas tradicionales. Como bien nos recuerda en su blog: 'Cocinar no es difícil, sólo es ponerse.'
+
+  = render :partial => 'layouts/shared/footer'

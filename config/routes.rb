@@ -33,7 +33,7 @@ Mooffin::Application.routes.draw do
   resources :links
   resources :likes
   resources :opinions
-
+  resources :partners
 
   #OAuth
   get '/auth/:provider/callback', :to => 'sessions#create'
