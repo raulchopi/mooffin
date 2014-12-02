@@ -59,11 +59,19 @@ class User < ActiveRecord::Base
   #Returns average rate of user's recipes (only 1 decimal)
   def average_rate_recipes
     val = 0
+    cont = 0
     if recipes.count > 0
       recipes.each do |r|
-        val += r.rating
+        if r.opinions.count > 0
+          val += r.rating
+          cont += 1
+        end
       end
-      val /= recipes.count
+      if cont > 0
+        val /= cont
+      else
+        val = -1
+      end
     end
     number_with_precision(val, precision: 1)
   end
