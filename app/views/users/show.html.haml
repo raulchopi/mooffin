@@ -12,7 +12,10 @@
 				.num_recetas
 					Recetas registradas: #{@user.recipes.count}
 				.val_recetas
-					Valoración recetas: #{@user.average_rate_recipes}
+					- if @user.average_rate_recipes < '0'
+						No tiene recetas valoradas
+					- else
+						Valoración recetas: #{@user.average_rate_recipes}
 
 				= hidden_field_tag 'idUserHidden', @user.id, id: 'idUserHidden'
 

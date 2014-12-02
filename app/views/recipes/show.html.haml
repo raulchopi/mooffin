@@ -18,7 +18,10 @@
 				//= pin_it_button(media: image_url(@recipe.photo_url), description: @recipe.title, url: @recipe.photo_url)
 
 				- if @recipe.celiac_desease
-					= image_tag('celiac_icon.png', :border => 0, size: '25', :title => "Esta receta puede no ser apta para celíacos.")
+					= image_tag('celiac_icon.png', :class => 'celiacs', :border => 0, size: '33', :title => "Esta receta puede no ser apta para celíacos.")
+
+				- if @recipe.suitable_for_vegs
+					%span.ion-leaf.vegs{:title => "Receta apta para vegetarianos."}
 
 			- if @recipe.description != ''
 				#descripcion.row

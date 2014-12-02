@@ -21,9 +21,12 @@ class Recipe < ActiveRecord::Base
 
 	def self.find_proposals(idsIngredients)
 		logger.info('Dentro do find_proposals')
-		@proposals = Recipe.joins(:difficulty).joins(:links).joins("join importances on links.importance_id = importances.id")
+		@proposals = Recipe.joins(:difficulty).joins(:links)
+			.joins("join importances on links.importance_id = importances.id")
+			.joins("left join likes on likes.recipe_id = recipes.id")
+			.joins("left join opinions on opinions.recipe_id = recipes.id")
 			.where(links: { ingredient_id: idsIngredients })
-			.select("recipes.*, difficulties.description AS dif_desc, sum(importances.weight) as weight")
+			.select("recipes.*, difficulties.description AS dif_desc, sum(importances.weight) as weight, count(likes.id) as numLikes, count(opinions.id) as numOpinions")
 			.group("recipes.id, difficulties.id").order("weight desc")
 	end
 
@@ -47,6 +50,13 @@ class Recipe < ActiveRecord::Base
 			return true if l.ingredient.celiac
 		end
 		return false
+	end
+	
+	def suitable_for_vegs
+		links.each do |l|
+			return false if l.ingredient.vegetarian
+		end
+		return true
 	end
 
 	def user_already_opined(user_op)
