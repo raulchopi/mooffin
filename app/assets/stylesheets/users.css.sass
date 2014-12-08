@@ -1,61 +1,41 @@
-#form_signup
-	width: 400px
-	margin: 0 auto
-	margin-top: 50px
+@media (min-width: 658px)
+	#datos_usuario
+		margin: 50px 0 0 0
 
-	label
-		padding: 0 0 0 10px
-		color: #232
+		.foto
+			text-align: center
 
+			img
+				width: 50%
+				border: 2px solid #e1e1e1
+				border-radius: 100px
 
-	.signup_text
-		border: 0px solid
-		border-bottom: 1px solid #BAB6BA
-		background-color: transparent
-		margin: 5px 0
-		padding: 0 6px 0 6px
-		-webkit-box-shadow: inset 0 -7px 5px 0px rgba(186, 182, 186, 0.1)
-		box-shadow: inset 0 -7px 5px 0px rgba(186, 182, 186, 0.1)
-		background-image: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#F0F0F0))
-		background-image: -webkit-linear-gradient(top, #FFFFFF, #F0F0F0)
-		background-image: -moz-linear-gradient(top, #FFFFFF, #F0F0F0)
-		background-image: -ms-linear-gradient(top, #FFFFFF, #F0F0F0)
-		background-image: -o-linear-gradient(top, #FFFFFF, #F0F0F0)
-		background-image: linear-gradient(to bottom, #FFFFFF, #F0F0F0)
+		.nombre
+
+		.num_recetas
+
+		.val_recetas
 
 
-.signup_btn
-	float: right
-	width: 65px
-	height: 33px
-	border: 0px solid #CCCCCC
-	-webkit-border-radius: 3px
-	-moz-border-radius: 3px
-	border-radius: 3px
-	font-size: 14px
-	font-family: arial, helvetica, sans-serif 
-	text-decoration: none
-	display: inline-block
-	font-weight: bold
-	background-color: #A6A6A6
-	color: #4F4F4F
-	height: 26px
-	margin: 4px 0 0 0
+/**********************************/
+/*ESTILO PARA DISPOSITIVOS MOVILES*/
+/**********************************/
 
-
-#datos_usuario
-	margin: 50px 0 0 0
+@media (max-width: 657px)
+	#datos_usuario
+		margin: 20px 0 0 0
+		text-align: center
 
 	.foto
-		text-align: center
-		
+
 		img
-			width: 50%
+			width: 25%
 			border: 2px solid #e1e1e1
 			border-radius: 100px
 
 	.nombre
+		margin-top: 10px
 
 	.num_recetas
 
-	.val_recetas	
+	.val_recetas
