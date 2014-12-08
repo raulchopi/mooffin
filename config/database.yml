@@ -24,6 +24,5 @@ production:
   database: mooffindb
   pool: 5
 
-
 cucumber:
   <<: *test
