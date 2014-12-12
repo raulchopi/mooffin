@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141110092159) do
+ActiveRecord::Schema.define(version: 20141212072520) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id",    null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20141110092159) do
     t.string   "description", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "weight"
   end
 
   create_table "ingredients", force: true do |t|
@@ -53,6 +54,7 @@ ActiveRecord::Schema.define(version: 20141110092159) do
     t.boolean  "vegetarian", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
   end
 
   create_table "likes", force: true do |t|
