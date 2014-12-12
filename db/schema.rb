@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20141112174605) do
     t.boolean  "vegetarian", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
   end
 
   create_table "likes", force: true do |t|
