@@ -29,6 +29,10 @@ angular.module('mooffin.services', [])
     $http.get("/courses.json").then (result) ->
       result.data
 
+  getReasons: ->
+    $http.get("/reasons.json").then (result) ->
+      result.data
+
   setRecipe: (recipe, links, steps, userId) ->
     $http.post("/recipes", recipe, links, steps).then ->
       $window.location.href = "/users/#{ userId }"
@@ -64,4 +68,7 @@ angular.module('mooffin.services', [])
   deleteRecipe: (recipe, user) ->
     $http.delete("/recipes/#{ recipe.id }").then ->
       $window.location.href = "/users/#{ user.id }"
+
+  setReport: (recipe, report) ->
+    $http.post("/recipes/#{ recipe.id }/reports", report).then ->
 ]

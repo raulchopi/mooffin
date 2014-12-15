@@ -8,6 +8,7 @@ class Recipe < ActiveRecord::Base
 	has_many :links, dependent: :destroy
 	has_many :steps, dependent: :destroy
 	has_many :opinions, dependent: :destroy
+	has_many :reports, dependent: :destroy
 	has_many :liked, :through => :likes, :source => :user
 
 	accepts_nested_attributes_for :links, :allow_destroy => true
@@ -51,7 +52,7 @@ class Recipe < ActiveRecord::Base
 		end
 		return false
 	end
-	
+
 	def suitable_for_vegs
 		links.each do |l|
 			return false if l.ingredient.vegetarian
@@ -62,6 +63,13 @@ class Recipe < ActiveRecord::Base
 	def user_already_opined(user_op)
 		opinions.each do |o|
 			return o if o.user == user_op
+		end
+		return false
+	end
+
+	def user_already_reported(user_report)
+		reports.each do |r|
+			return true if r.user == user_report
 		end
 		return false
 	end

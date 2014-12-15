@@ -62,6 +62,10 @@
 						- @recipe.steps.order("orden asc").each do |step|
 							%li= step.description
 
+				= render :partial => 'layouts/shared/new_report'
+
+
+
 		= hidden_field_tag 'idRecipeHidden', @recipe.id, id: 'idRecipeHidden'
 
 		#opiniones{ 'ng-controller' => 'RecipeOpinionsController' }

@@ -1,8 +1,13 @@
 class RecipesController < ApplicationController
 	before_action :get_recipe, only: [:show, :edit, :destroy]
+	before_action :get_reasons, only: [:show]
 	wrap_parameters format: [:json, :xml]
 
 	logger = Log4r::Logger.new('recipes_controller_debug')
+
+	def get_reasons
+		@reasons = Reason.all
+	end
 
 	def get_recipe
 		@recipe = Recipe.find(params[:id])
