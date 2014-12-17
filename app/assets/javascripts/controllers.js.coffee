@@ -157,6 +157,7 @@ angular.module('mooffin.controllers', [])
     report = {'report': {'reason_id': $scope.formData.reason_id, 'description': $scope.report_desc}}
     InstantIngredientsSearchFactory.setReport recipe, report
 
+    angular.element("#reportModal").foundation('reveal', 'close')
 ]
 
 

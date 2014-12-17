@@ -62,8 +62,8 @@
 						- @recipe.steps.order("orden asc").each do |step|
 							%li= step.description
 
+			#opciones.row
 				= render :partial => 'layouts/shared/new_report'
-
 
 
 		= hidden_field_tag 'idRecipeHidden', @recipe.id, id: 'idRecipeHidden'
