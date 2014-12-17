@@ -1,6 +1,6 @@
 class CreateViewRecipeTotals < ActiveRecord::Migration
   def up
-    self.connection.execute %Q( create view vw_recipe_totals
+    self.connection.execute %Q( create or replace view vw_recipe_totals
     as
     select recipe_id, sum(likes) likes, sum(opinions) opinions
     from (
