@@ -144,6 +144,23 @@ angular.module('mooffin.controllers', [])
 ]
 
 
+.controller 'RecipeReportsController', ['$scope',
+'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
+  $scope.recipeId = angular.element("#idRecipeHidden").val()
+  $scope.formData = {}
+
+  $scope.reasonsAll = InstantIngredientsSearchFactory.getReasons().then (reasons) ->
+    $scope.reasonsAll = reasons
+
+  $scope.createReport = () ->
+    recipe = { 'id': $scope.recipeId }
+    report = {'report': {'reason_id': $scope.formData.reason_id, 'description': $scope.report_desc}}
+    InstantIngredientsSearchFactory.setReport recipe, report
+
+    angular.element("#reportModal").foundation('reveal', 'close')
+]
+
+
 .controller 'InstantIngredientSearchForNewRecipeController', ['$scope',
 'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
 

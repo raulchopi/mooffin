@@ -8,6 +8,7 @@ class Recipe < ActiveRecord::Base
 	has_many :links, dependent: :destroy
 	has_many :steps, dependent: :destroy
 	has_many :opinions, dependent: :destroy
+	has_many :reports, dependent: :destroy
 	has_many :liked, :through => :likes, :source => :user
 
 	accepts_nested_attributes_for :links, :allow_destroy => true
@@ -21,13 +22,37 @@ class Recipe < ActiveRecord::Base
 
 	def self.find_proposals(idsIngredients)
 		logger.info('Dentro do find_proposals')
-		@proposals = Recipe.joins(:difficulty).joins(:links)
-			.joins("join importances on links.importance_id = importances.id")
-			.joins("left join likes on likes.recipe_id = recipes.id")
-			.joins("left join opinions on opinions.recipe_id = recipes.id")
-			.where(links: { ingredient_id: idsIngredients })
-			.select("recipes.*, difficulties.description AS dif_desc, sum(importances.weight) as weight, count(likes.id) as numLikes, count(opinions.id) as numOpinions")
-			.group("recipes.id, difficulties.id").order("weight desc")
+
+		@proposals = Recipe.find_by_sql ["SELECT recipes.*,
+			difficulties.description AS dif_desc,
+			sum(importances.weight) as weight,
+			rt.likes as num_likes,
+			rt.opinions as num_opinions
+			FROM recipes
+			INNER JOIN difficulties ON difficulties.id = recipes.difficulty_id
+			INNER JOIN links ON links.recipe_id = recipes.id
+			inner join ingredients ON ingredients.id = links.ingredient_id
+			join importances on links.importance_id = importances.id
+			join vw_recipe_totals rt on rt.recipe_id = recipes.id
+			WHERE ingredients.id IN (?)
+			GROUP BY recipes.id, difficulties.id, rt.likes, rt.opinions
+			UNION
+			SELECT recipes.*,
+			difficulties.description AS dif_desc,
+			sum(importances.weight*0.75) as weight,
+			rt.likes as num_likes,
+			rt.opinions as num_opinions
+			FROM recipes
+			INNER JOIN difficulties ON difficulties.id = recipes.difficulty_id
+			INNER JOIN links ON links.recipe_id = recipes.id
+			inner join ingredients ON ingredients.id = links.ingredient_id
+			join importances on links.importance_id = importances.id
+			join vw_recipe_totals rt on rt.recipe_id = recipes.id
+			WHERE ingredients.id NOT IN (?)
+			AND ingredients.parent_id IN (select parent_id from ingredients WHERE id in (?))
+			GROUP BY recipes.id, difficulties.id, rt.likes, rt.opinions
+			ORDER BY weight desc, num_likes desc, views_count desc",
+			idsIngredients, idsIngredients, idsIngredients]
 	end
 
 	def average_rate
@@ -51,7 +76,7 @@ class Recipe < ActiveRecord::Base
 		end
 		return false
 	end
-	
+
 	def suitable_for_vegs
 		links.each do |l|
 			return false if l.ingredient.vegetarian
@@ -62,6 +87,13 @@ class Recipe < ActiveRecord::Base
 	def user_already_opined(user_op)
 		opinions.each do |o|
 			return o if o.user == user_op
+		end
+		return false
+	end
+
+	def user_already_reported(user_report)
+		reports.each do |r|
+			return true if r.user == user_report
 		end
 		return false
 	end

@@ -1,0 +1,51 @@
+=effect($time)
+  -webkit-transition: all $time ease-out
+  -moz-transition: all $time ease
+  -o-transition: all $time ease
+
+
+
+.report
+  color: #9e9e9e
+  border: 1px solid white
+  border-radius: 15px
+  padding: 5px
+  width: 30px
+  text-align: center
+  +effect(0.5s)
+  @media (min-width: 658px)
+    margin: 0 0 20px 45px
+
+  @media (max-width: 657px)
+    float: right
+    margin: 10px 15px 10px 0
+
+  &:hover
+    +effect(0.5s)
+    color: #DF0000
+    border: 1px solid #DF0000
+
+
+
+
+#reportModal
+  ul
+    list-style: none
+
+  .btn_reportReceta
+    height: 30px
+    padding: 0 10px
+    float: right
+    margin: 10px 0 0 10px
+    background-color: #3EBAFF
+    border: 1px solid #67caff
+    -webkit-border-radius: 3px
+    -moz-border-radius: 3px
+    border-radius: 3px
+    font-size: 0.875em
+    text-decoration: none
+    font-weight: bold
+    color: white
+
+  .newReport_desc
+    border: 1px solid #cccccc
