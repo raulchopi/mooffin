@@ -12,7 +12,7 @@
           %li{ 'ng-repeat' => 'reason in reasonsAll' }
             %input{:name => "reason_id", :type => "radio", "ng-model" => "formData.reason_id", :required => '', :value => '{{reason.id}}'}
             %span{'ng-bind' => 'reason.description'}
-        %textarea.newReport_desc{ placeholder: '', 'ng-model' => 'report_desc'}
+        %textarea.newReport_desc{ placeholder: 'Añade, si lo deseas, un comentario a la denuncia', 'ng-model' => 'report_desc'}
         = button_tag 'Reportar receta', class: 'btn_reportReceta', type: :submit, 'ng-click' => 'createReport()', 'ng-disabled' => "newReportForm.$invalid"
 
     - else
