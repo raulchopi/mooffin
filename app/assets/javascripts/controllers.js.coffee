@@ -33,11 +33,6 @@ angular.module('mooffin.controllers', [])
 
     $scope.selected_ingredients.push i if already_in_it == false
 
-    if $scope.selected_ingredients.length > 0
-      angular.element("#home").fadeOut 100
-      angular.element("#recipes").fadeIn 100
-
-
     # Gardamos os id's dos ingredentes nun array para enviar ao servidor
     if already_in_it == false
       idsIngredients.push i.id
@@ -53,8 +48,6 @@ angular.module('mooffin.controllers', [])
     #$scope.show_recipes = InstantIngredientsSearchFactory.getRecipesRecommended()
     if $scope.selected_ingredients.length == 0
       $scope.show_recipes = []
-      angular.element("#home").fadeIn 100
-      angular.element("#recipes").fadeOut 100
     else
       $scope.show_recipes = InstantIngredientsSearchFactory.getProposals(paramIngredients).then (prop) ->
         $scope.show_recipes = prop

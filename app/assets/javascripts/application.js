@@ -14,9 +14,11 @@
 //= require jquery_ujs
 //= require angular
 //= require angular-resource
+//= require angular-sanitize
+//= require angular-ui-bootstrap
+//= require angular-ui-select2
 //= require ng-rails-csrf
 //= require foundation
-//= require turbolinks
 //= require pin_it
 //= require_tree .
 

@@ -1,12 +1,9 @@
 #buscador.large-4.columns
 	%div.bar
-		<!-- Create a binding between the searchString model and the text field -->
-		%input{ :type => 'text', 'ng-model' => 'searchString', :class => 'searcher_bar', :placeholder => 'Ingrediéntame...' }
-
-		#resultadosBuscador
-			%table{ 'ng-show' => 'searchString.length >= 2', :class => 'resultIngTable', 'ng-cloak' => '' }
-				%tr{ 'ng-repeat' => "i in ingredients | searchFor:searchString | limitTo: 10 | orderBy:'name'", 'ng-click' => 'setValue(i)', :class => 'resultIng' }
-					%td{'ng-bind' => 'i.name'}
+		%ui-select{:multiple => "", "ng-model" => "selected_ingredients", :theme => "select2"}
+			%ui-select-match{:placeholder => "Ingrediéntame..."} {{$item.name}}
+			%ui-select-choices{:repeat => "ingredient in ingredients | filter: {name: $select.search}"}
+				%div{"ng-bind-html" => "ingredient.name | highlight: $select.search"}
 
 	#ingSel
 		%ul
