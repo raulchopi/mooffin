@@ -283,6 +283,9 @@
 		overflow: hidden
 		position: relative
 		+effect(0.5s)
+		@media (min-width: 481px)
+			max-width: 50%
+
 
 		#my_recipe_container
 			+contenedor_receta
@@ -314,7 +317,7 @@
 			span.overlay
 				+overlay_receta
 
-			@media (min-width: 658px)
+			@media (min-width: 768px)
 				#foto
 					overflow: hidden
 					position: relative
@@ -326,10 +329,11 @@
 						height: 100%
 						+effect(0.2s)
 
-			@media (max-width: 657px)
+			@media (max-width: 767px)
 				#foto
 					overflow: hidden
 					position: relative
+					margin: 5px
 					img
 						width: 100%
 						+effect(0.2s)
@@ -411,6 +415,8 @@
 		overflow: hidden
 		position: relative
 		+effect(0.5s)
+		@media (min-width: 481px)
+			max-width: 50%
 
 	#my_like_container
 		+contenedor_receta
@@ -445,6 +451,7 @@
 				overflow: hidden
 				position: relative
 				height: 120px
+				margin: 5px
 
 				img
 					width: 100%
@@ -455,6 +462,7 @@
 			#foto
 				overflow: hidden
 				position: relative
+				margin: 5px
 				img
 					width: 100%
 					+effect(0.2s)
