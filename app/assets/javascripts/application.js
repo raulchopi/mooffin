@@ -13,13 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular
-//= require angular-resource
+//= require angular-animate
+//= require angular-ui-router
+//= require angular-ui-select
 //= require angular-sanitize
-//= require angular-ui-bootstrap
-//= require angular-ui-select2
-//= require ng-rails-csrf
+//= require select2
 //= require foundation
 //= require pin_it
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function () { $(document).foundation(); });

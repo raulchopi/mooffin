@@ -6,13 +6,9 @@ angular.module('mooffin.controllers', [])
 .controller 'InstantIngredientsSearchController', ['$scope',
 'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
 
-  recipe = {}
-  links = {}
-  steps = {}
-  idsIngredients = []
   paramIngredients = {}
 
-  $scope.selected_ingredients = []
+  $scope.ingredients = []
   $scope.show_recipes = []
 
   # Dependendo do tamanho da ventana, carga en modo lista ou grid
@@ -22,35 +18,21 @@ angular.module('mooffin.controllers', [])
     $scope.layout = 'grid'
 
 
-  $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
+  InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
     $scope.ingredients = ingredients
 
-  $scope.setValue = (i) ->
-    already_in_it = false
-    if $scope.selected_ingredients.length > 0
-      angular.forEach $scope.selected_ingredients, (ingr, index) ->
-        already_in_it = true if ingr == i
+  $scope.ingredientsChange = ->
+    idsIngredients = []
+    angular.forEach $scope.ingredients.selected, (ingr, index) ->
+      idsIngredients.push ingr.id
 
-    $scope.selected_ingredients.push i if already_in_it == false
+    paramIngredients = { 'idsIngredients' : idsIngredients }
+    getProposals()
 
-    # Gardamos os id's dos ingredentes nun array para enviar ao servidor
-    if already_in_it == false
-      idsIngredients.push i.id
-      paramIngredients = { 'idsIngredients' : idsIngredients }
 
-    if already_in_it == false
-      $scope.show_recipes = InstantIngredientsSearchFactory.getProposals(paramIngredients).then (prop) ->
-        $scope.show_recipes = prop
-
-  $scope.removeIngredient = (index) ->
-    $scope.selected_ingredients.splice index, 1
-    paramIngredients.idsIngredients.splice index, 1
-    #$scope.show_recipes = InstantIngredientsSearchFactory.getRecipesRecommended()
-    if $scope.selected_ingredients.length == 0
-      $scope.show_recipes = []
-    else
-      $scope.show_recipes = InstantIngredientsSearchFactory.getProposals(paramIngredients).then (prop) ->
-        $scope.show_recipes = prop
+  getProposals = ->
+    $scope.show_recipes = InstantIngredientsSearchFactory.getProposals(paramIngredients).then (prop) ->
+      $scope.show_recipes = prop
 ]
 
 
