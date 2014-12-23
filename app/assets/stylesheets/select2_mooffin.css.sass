@@ -1,0 +1,43 @@
+// Changes the styles of the select2 theme of the searcher
+
+.select2-container-multi
+  .select2-choices
+    background: whitesmoke !important
+    border: none !important
+    .ui-select-match
+
+      .ui-select-match-item
+        padding: 5px 5px 5px 20px !important
+
+    .select2-search-field
+      padding: 10px 5px 10px 20px
+      overflow: hidden
+      input
+        width: 300px !important
+        background: transparent no-repeat 10px 8px !important
+        background-image: url('magnifier.png') !important
+        background-size: 16px 16px !important
+        padding: 10px 0 0 20px !important
+
+.select2-container-multi.select2-container-active
+  .select2-choices
+    border: 1px solid #3ebaff !important
+    background: white !important
+
+.select2-results
+  .select2-result-label
+    padding: 3px 18px 4px
+
+  .select2-highlighted
+    background: #3ebaff
+
+.select2-drop
+  .ui-select-choices
+    .ui-select-choices-group
+      .select2-result-single
+        .ui-select-choices-row
+          padding: 0 !important
+
+.select2-drop-active
+  border: 1px solid #3ebaff
+  border-top: none

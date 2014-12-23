@@ -27,7 +27,15 @@ angular.module('mooffin.controllers', [])
       idsIngredients.push ingr.id
 
     paramIngredients = { 'idsIngredients' : idsIngredients }
-    getProposals()
+
+    if paramIngredients.idsIngredients.length > 0
+      angular.element("#home").fadeOut 100
+      angular.element("#recipes").fadeIn 100
+    else
+      angular.element("#home").fadeIn 100
+      angular.element("#recipes").fadeOut 100
+
+    getProposals() if paramIngredients.idsIngredients.length > 0
 
 
   getProposals = ->
