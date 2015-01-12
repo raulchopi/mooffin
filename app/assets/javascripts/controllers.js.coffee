@@ -6,7 +6,7 @@ angular.module('mooffin.controllers', [])
 .controller 'InstantIngredientsSearchController', ['$scope',
 'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
 
-  paramIngredients = {}
+  idsIngredients = []
 
   $scope.ingredients = []
   $scope.show_recipes = []
@@ -26,20 +26,18 @@ angular.module('mooffin.controllers', [])
     angular.forEach $scope.ingredients.selected, (ingr, index) ->
       idsIngredients.push ingr.id
 
-    paramIngredients = { 'idsIngredients' : idsIngredients }
-
-    if paramIngredients.idsIngredients.length > 0
+    if idsIngredients.length > 0
       angular.element("#home").fadeOut 100
       angular.element("#recipes").fadeIn 100
     else
       angular.element("#home").fadeIn 100
       angular.element("#recipes").fadeOut 100
 
-    getProposals() if paramIngredients.idsIngredients.length > 0
+    getProposals() if idsIngredients.length > 0
 
 
   getProposals = ->
-    $scope.show_recipes = InstantIngredientsSearchFactory.getProposals(paramIngredients).then (prop) ->
+    $scope.show_recipes = InstantIngredientsSearchFactory.getProposals(idsIngredients).then (prop) ->
       $scope.show_recipes = prop
 ]
 

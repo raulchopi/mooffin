@@ -38,9 +38,8 @@ class RecipesController < ApplicationController
 	end
 
 	def proposals
-		logger.info('idsIngredients:' + proposals_params)
 		idsIngredients = []
-		idsIngredients = eval(proposals_params)
+		idsIngredients = proposals_params
 		@proposals = Recipe.find_proposals(idsIngredients)
 		respond_to do |format|
 			format.json {
