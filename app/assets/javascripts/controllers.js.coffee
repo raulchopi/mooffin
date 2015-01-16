@@ -145,7 +145,6 @@ angular.module('mooffin.controllers', [])
 .controller 'InstantIngredientSearchForNewRecipeController', ['$scope',
 'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
 
-  $scope.selected_ingredient = ''
   newLink = {}
   newStep = {}
   $scope.links = []
@@ -178,11 +177,6 @@ angular.module('mooffin.controllers', [])
     lateEdit()
 
 
-  $scope.setValue = (i) ->
-    $scope.selected_ingredient = i
-    $scope.searchString = i.name
-
-
   $scope.addLink = () ->
     importance = null
     unit = null
@@ -194,17 +188,17 @@ angular.module('mooffin.controllers', [])
 
     unit = $scope.selected_unit.id if $scope.selected_unit != undefined
 
-    newLink = {'number': $scope.numberOfIng, 'unit': $scope.selected_unit, 'ing': $scope.selected_ingredient,
-    'importance': $scope.importanceOfIng, 'ingredient_id': $scope.selected_ingredient.id,
+    newLink = {'number': $scope.numberOfIng, 'unit': $scope.selected_unit, 'ing': $scope.ingredients.selected,
+    'importance': $scope.importanceOfIng, 'ingredient_id': $scope.ingredients.selected.id,
     'importance_id': importance, 'unit_id': unit}
 
-    if $scope.selected_ingredient != ''
+    if $scope.ingredients.selected.id != ''
       $scope.links.push newLink
       $scope.numberOfIng = ''
       $scope.selected_unit = ''
       $scope.searchString = ''
       $scope.importanceOfIng = ''
-      $scope.selected_ingredient = null
+      $scope.ingredients.selected = null
       newLink = {}
       angular.element(".desc").fadeOut 500
 
