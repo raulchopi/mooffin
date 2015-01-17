@@ -9,8 +9,8 @@ angular.module('mooffin.services', [])
     $http.get("/ingredients.json").then (result) ->
       result.data
 
-  getProposals: (paramIngredients) ->
-    $http.get("/proposals.json", params: paramIngredients).then (result) ->
+  getProposals: (idsIngredients) ->
+    $http.get("/proposals.json", params: { "idsIngredients[]": idsIngredients }).then (result) ->
       result.data
 
   getUnits: ->
@@ -27,6 +27,10 @@ angular.module('mooffin.services', [])
 
   getCourses: ->
     $http.get("/courses.json").then (result) ->
+      result.data
+
+  getReasons: ->
+    $http.get("/reasons.json").then (result) ->
       result.data
 
   setRecipe: (recipe, links, steps, userId) ->
@@ -64,4 +68,7 @@ angular.module('mooffin.services', [])
   deleteRecipe: (recipe, user) ->
     $http.delete("/recipes/#{ recipe.id }").then ->
       $window.location.href = "/users/#{ user.id }"
+
+  setReport: (recipe, report) ->
+    $http.post("/recipes/#{ recipe.id }/reports", report).then ->
 ]

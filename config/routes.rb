@@ -23,6 +23,7 @@ Mooffin::Application.routes.draw do
   resources :recipes do
     resources :opinions
     resources :likes
+    resources :reports
   end
 
   get '/proposals' => 'recipes#proposals'
@@ -34,6 +35,7 @@ Mooffin::Application.routes.draw do
   resources :likes
   resources :opinions
   resources :partners
+  resources :reasons
 
   #OAuth
   get '/auth/:provider/callback', :to => 'sessions#create'

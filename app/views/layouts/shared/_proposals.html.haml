@@ -1,5 +1,5 @@
 #recipesProposals_grid.row{'ng-show' => "layout == 'grid'", 'ng-cloak' => ''}
-	#proposal.large-4.columns{ 'ng-repeat' => 'recipe in show_recipes' }
+	.proposal.large-4.columns{ 'ng-repeat' => 'recipe in show_recipes' }
 		#proposal_container
 			%a{href: 'recipes/{{recipe.id}}'}
 
@@ -13,9 +13,9 @@
 						%span{'ng-bind' => 'recipe.description'}
 					#counters
 						%span.icono.ion-ios7-heart-outline
-						%span.texto{'ng-bind' => 'recipe.numLikes'}
+						%span.texto{'ng-bind' => 'recipe.num_likes'}
 						%span.icono.ion-ios7-chatbubble-outline
-						%span.texto{'ng-bind' => 'recipe.numOpinions'}
+						%span.texto{'ng-bind' => 'recipe.num_opinions'}
 						%span.icono.ion-ios7-eye-outline
 						%span.texto{'ng-bind' => 'recipe.views_count'}
 
@@ -28,7 +28,7 @@
 
 
 #recipesProposals_list{'ng-show' => "layout == 'list'", 'ng-cloak' => ''}
-	#proposal{ 'ng-repeat' => 'recipe in show_recipes' }
+	.proposal{ 'ng-repeat' => 'recipe in show_recipes' }
 		#title
 			%a{href: 'recipes/{{recipe.id}}'}
 				%span{'ng-bind' => 'recipe.title'}

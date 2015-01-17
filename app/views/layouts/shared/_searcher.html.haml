@@ -1,18 +1,9 @@
 #buscador.large-4.columns
-	%div.bar
-		<!-- Create a binding between the searchString model and the text field -->
-		%input{ :type => 'text', 'ng-model' => 'searchString', :class => 'searcher_bar', :placeholder => 'Ingrediéntame...' }
-
-		#resultadosBuscador
-			%table{ 'ng-show' => 'searchString.length >= 2', :class => 'resultIngTable', 'ng-cloak' => '' }
-				%tr{ 'ng-repeat' => "i in ingredients | searchFor:searchString | limitTo: 10 | orderBy:'name'", 'ng-click' => 'setValue(i)', :class => 'resultIng' }
-					%td{'ng-bind' => 'i.name'}
-
-	#ingSel
-		%ul
-			%li{'ng-repeat' => 'ing in selected_ingredients', 'ng-cloak' => '' }
-				%span.ion-ios7-close-empty{'ng-click' => 'removeIngredient($index)' }
-				%span.ing{'ng-bind' => 'ing.name'}
+	.form-inline
+		%ui-select.bar{:multiple => "", "theme" => "select2", "ng-model" => "ingredients.selected", "ng-change" => "ingredientsChange()"}
+			%ui-select-match{:placeholder => "Ingrediéntame..."} {{$item.name}}
+			%ui-select-choices{:repeat => "ingredient in ingredients | filter: {name: $select.search}"}
+				%span{"ng-bind-html" => "ingredient.name | highlight: $select.search"}
 
 	#nuevosIng
 		Si echas en falta algún ingrediente envíanos un correo a <b>ingredientes@mooffin.es</b>. Intentaremos meterlo lo más rápido posible!

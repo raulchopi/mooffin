@@ -24,13 +24,16 @@
 #recipesProposals_grid
 	margin: 25px 0 0 10px
 
-	#proposal
+	.proposal
 		float: left
 		display: inline-block
 		margin-bottom: 12px
 		overflow: hidden
 		position: relative
-		+effect(0.5s)
+		bottom: 0
+		//+effect(0.5s)
+		@media (min-width: 481px)
+			max-width: 50%
 
 		&:hover
 			/* +scale_effect */
@@ -172,7 +175,7 @@
 #recipesProposals_list
 	margin: 25px 0 0 10px
 
-	#proposal
+	.proposal
 		width: 100%
 		margin: 1px
 		float: left

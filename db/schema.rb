@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20141112174605) do
     t.boolean  "vegetarian", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
   end
 
   create_table "likes", force: true do |t|
@@ -82,6 +83,10 @@ ActiveRecord::Schema.define(version: 20141112174605) do
     t.datetime "updated_at"
   end
 
+  create_table "reasons", force: true do |t|
+    t.string "description", null: false
+  end
+
   create_table "recipes", force: true do |t|
     t.integer  "user_id",                          null: false
     t.string   "title",                            null: false
@@ -98,6 +103,15 @@ ActiveRecord::Schema.define(version: 20141112174605) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.integer  "course_id"
+  end
+
+  create_table "reports", force: true do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "recipe_id",   null: false
+    t.integer  "reason_id",   null: false
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "steps", force: true do |t|

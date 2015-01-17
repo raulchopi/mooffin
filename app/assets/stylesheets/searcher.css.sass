@@ -1,3 +1,9 @@
+=effect($time)
+  -webkit-transition: all $time ease-out
+  -moz-transition: all $time ease
+  -o-transition: all $time ease
+
+
 #buscador
   border-right: solid thin #cccccc
 
@@ -7,8 +13,9 @@
     background-image:linear-gradient(top, #5c9bb7, #5392ad)
 
     border-radius: 2px
-    padding: 14px
+    padding: 14px 0 0 0
     position: relative
+    width: 100%
 
     input
       background: transparent no-repeat 10px 8px
@@ -17,7 +24,7 @@
       border-bottom: 1px solid #CCCCCC
       width: 100%
       line-height: 30px
-      padding: 5px 0 0 0
+      padding: 20px 0 0 0
 
       text-align: left
       font-size: 14px
@@ -25,20 +32,18 @@
       color: #738289
       font-weight: bold
       outline: none
-      text-indent: 40px
+      text-indent: 20px
 
       &:focus
         box-shadow: 0 6px 8px -8px #808080 !important
 
     ul
       list-style: none
-      width: 428px
       margin: 0 auto
       text-align: left
 
       li
-        border-bottom: 1px solid #ddd
-        padding: 10px
+        padding: 10px 5px 10px 20px
         overflow: hidden
 
         img
@@ -84,23 +89,40 @@
     ul
       list-style: none
       width: 100%
-      padding: 0 0 0 25px
+      padding: 0 0 0 15px
       text-align: left
 
       li
-        font-size: 1em
+        font-size: 0.85em
+        background-color: white
+        margin: 0 0 5px 0
+        border-radius: 20px
+        border: 1px solid #ccc
 
-        span
+        span.removeIng
+          float: right
           color: #da0404
-          margin: 0 5px 0 0
+          font-size: 25px
+          padding: 0 10px 0 7px
+          border-left: 1px solid #ccc
+          border-top-right-radius: 10px 10px
+          border-bottom-right-radius: 10px 10px
+          cursor: pointer
+          cursor: hand
+          +effect(0.5s)
+
+          &:hover
+            background-color: #da0404
+            color: white
+            +effect(0.5s)
 
         span.ing
           color: black
+          margin: 0 0 0 17px
 
 
   #nuevosIng
     @media (min-width: 658px)
-      font-size: 0.8em
       margin: 90px 10px 0 0
 
     @media (max-width: 657px)
