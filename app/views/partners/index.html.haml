@@ -2,26 +2,54 @@
 
   = render :partial => 'layouts/shared/header'
 
-  #partnerswrapper.row
-    .partner.large-6.columns
-      .photo_partner
-        = image_tag('partners/unamesaporfavor.png', :border => 0, size: '25')
-      .titulo
-        %a{:href => 'http://www.unamesaporfavor.com'}
-          Unamesaporfavor.com
-      .subtitulo
-        Bares de tapas y reservas de restaurantes gratis
-      %p
-        ¿Te ayudamos a buscar un restaurante? Reserva mesa en el restaurante italiano más de moda en Madrid, o disfruta del restaurante japonés más recomendado de Barcelona. Todo es posible en Unamesaporfavor porque contamos con más de 7000 restaurantes en toda España con las mejores promociones y descuentos en carta y menús. Podrás filtrar tus restaurantes por barrios como Chueca, La Latina, La Barceloneta o cualquiera que tu desees... ¿quieres más? Navega y descubre los restaurantes con los mejores descuentos de toda España!
-    .partner.large-6.columns
-      .photo_partner
-        = image_tag('partners/recetasyacocinar.png', :border => 0, size: '25')
-      .titulo
-        %a{:href => 'http://bizcochela.blogspot.com.es'}
-          Bizcochela
-      .subtitulo
-        Recetas y a cocinar se ha dicho!!
-      %p
-        Blog personal de 'Chela' en el que nos da a conocer deliciosas e innovadoras recetas, además de no dejar caer en el olvido las recetas tradicionales. Como bien nos recuerda en su blog: 'Cocinar no es difícil, sólo es ponerse.'
+  #partnerswrapper
+    .row
+      .partner.large-6.columns
+        .photo_partner
+          = image_tag('partners/unamesaporfavor.png', :border => 0, size: '25')
+        .titulo
+          %a{:href => 'http://www.unamesaporfavor.com'}
+            Unamesaporfavor.com
+        .subtitulo
+          Bares de tapas y reservas de restaurantes gratis
+        %p
+          ¿Te ayudamos a buscar un restaurante? Reserva mesa en el restaurante italiano más de moda en Madrid, o disfruta del restaurante japonés más recomendado de Barcelona. Todo es posible en Unamesaporfavor porque contamos con más de 7000 restaurantes en toda España con las mejores promociones y descuentos en carta y menús. Podrás filtrar tus restaurantes por barrios como Chueca, La Latina, La Barceloneta o cualquiera que tu desees... ¿quieres más? Navega y descubre los restaurantes con los mejores descuentos de toda España!
+
+      .partner.large-6.columns
+        .photo_partner
+          = image_tag('partners/recetasyacocinar.png', :border => 0, size: '25')
+        .titulo
+          %a{:href => 'http://bizcochela.blogspot.com.es'}
+            Bizcochela
+        .subtitulo
+          Recetas y a cocinar se ha dicho!!
+        %p
+          Blog personal de 'Chela' en el que nos da a conocer deliciosas e innovadoras recetas, además de no dejar caer en el olvido las recetas tradicionales. Como bien nos recuerda en su blog: 'Cocinar no es difícil, sólo es ponerse.'
+
+    .row
+      .partner.large-6.columns
+        .photo_partner
+          = image_tag('partners/lacocinadelabuelo.jpg', :border => 0, size: '25')
+        .titulo
+          %a{:href => 'http://www.cocinadelabuelo.blogspot.com.es'}
+            La cocina del abuelo
+        .subtitulo
+          Recetas de cocina de un abuelo donostiarra
+        %p
+          Recetas sencillas y económicas como corresponde a una familia que no ha nadado en la abundancia y ha tenido que mirar precios sin por ello dejar de valorar la calidad de los productos. Si alguno cree que las lentejas tienen que ser con cebolla, la tortilla de patatas no puede llevarla y solo hay una manera de preparar paella, este blog no es para él.
+
+      .partner.large-6.columns
+        .photo_partner
+          = image_tag('', :border => 0, size: '25')
+        .titulo
+          %a{:href => 'http://cocinadevanguardiaencasa.blogspot.com.es'}
+            Cocina de vanguardia en casa
+        .subtitulo
+          Recetas vanguardistas para cocinar en casa
+        %p
+          Blog personal de Javier, estudiante de cocina en el prestigioso 'Basque culinary center'.
+
+
+
 
   = render :partial => 'layouts/shared/footer'

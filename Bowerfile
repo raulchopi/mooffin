@@ -1,0 +1,7 @@
+asset 'angular', 'latest'
+asset 'angular-ui-router', 'latest'
+asset 'angular-ui-select', 'latest'
+asset 'angular-sanitize', 'latest'
+asset 'angular-animate', 'latest'
+asset 'bootstrap-sass-official', 'latest'
+asset 'ionicons', 'latest'

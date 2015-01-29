@@ -11,6 +11,7 @@ class ReportsController < ApplicationController
     @report.user = current_user
     if @report.save
       #accion al guardar
+      RecipeMailer.reportRecipe(@report).deliver
     else
       redirect_to recipe_path(@recipe), :alert => "Error al comentar!"
     end
