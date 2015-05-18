@@ -13,6 +13,9 @@ Mooffin::Application.routes.draw do
     resources :likes
   end
 
+  path_names_fem = { new: 'nueva', edit: 'editar' }
+  path_names_masc = { new: 'nuevo', edit: 'editar' }
+
   resources :sessions
 
   resources :ingredients
@@ -20,7 +23,7 @@ Mooffin::Application.routes.draw do
   resources :courses
   resources :units
   resources :importances
-  resources :recipes, path: 'recetas' do
+  resources :recipes, path: 'recetas', path_names: path_names_fem do
     resources :opinions
     resources :likes
     resources :reports

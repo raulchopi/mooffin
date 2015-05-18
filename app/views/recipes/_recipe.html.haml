@@ -11,7 +11,7 @@
 					%span{'ng-bind' => 'recipe.title'}
 				- if current_user
 					#operaciones{'ng-show' => "isAuthor(recipe.user_id, '#{current_user.id}')"}
-						%a.edit.ion-ios7-refresh{href: '/recetas/{{recipe.slug}}/edit'}
+						%a.edit.ion-ios7-refresh{href: '/recetas/{{recipe.slug}}/editar'}
 						%a.delete.ion-ios7-close{'confirmed-click-action' => "deleteRecipe(recipe.id)", 'ng-confirm-click'=>'En serio, quieres borrarla??'}
 
 
@@ -22,5 +22,5 @@
 				%span{'ng-bind' => 'recipe.title'}
 		- if current_user
 			#options{'ng-show' => "isAuthor(recipe.user_id, '#{current_user.id}')"}
-				%a.edit.ion-ios7-refresh{href: '/recetas/{{recipe.slug}}/edit'}
+				%a.edit.ion-ios7-refresh{href: '/recetas/{{recipe.slug}}/editar'}
 				%a.delete.ion-ios7-close{'confirmed-click-action' => "deleteRecipe(recipe.id)", 'ng-confirm-click'=>'En serio, quieres borrarla??'}
