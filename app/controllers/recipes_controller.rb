@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
 	end
 
 	def get_recipe
-		@recipe = Recipe.find(params[:id])
+		@recipe = Recipe.friendly.find(params[:id])
 	end
 
 	def new

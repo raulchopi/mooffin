@@ -1,5 +1,8 @@
 class Recipe < ActiveRecord::Base
 	include ActionView::Helpers::NumberHelper
+	extend FriendlyId
+
+	friendly_id :slug_candidates, use: :slugged
 
 	belongs_to :user
 	belongs_to :difficulty
@@ -19,6 +22,15 @@ class Recipe < ActiveRecord::Base
 	validates_attachment :photo, :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }
 
 	logger = Log4r::Logger.new('recipe_model_debug')
+
+	# Try building a slug based on the following fields in
+  # increasing order of specificity.
+  def slug_candidates
+    [
+      :title,
+      [:title, :user_id]
+    ]
+  end
 
 	def self.find_proposals(idsIngredients)
 		logger.info('Dentro do find_proposals')

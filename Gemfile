@@ -64,6 +64,8 @@ gem 'omniauth-facebook', '~> 1.6.0'
 gem 'omniauth-twitter', '~> 1.0.1'
 gem 'omniauth-google-oauth2', '~> 0.2.4'
 
+gem 'friendly_id', '~> 5.1.0'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
