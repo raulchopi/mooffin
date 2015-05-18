@@ -9,8 +9,8 @@ Mooffin::Application.routes.draw do
   get 'sign_in', :to => 'devise/sessions#new', :as => :new_user_session
   get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
 
-  resources :users do
-    resources :likes
+  resources :users, path: 'usuarios' do
+    resources :likes, path: 'favoritas'
   end
 
   path_names_fem = { new: 'nueva', edit: 'editar' }
