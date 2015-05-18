@@ -6,7 +6,11 @@ Mooffin aims to be an open source app to offer you the better recipes of the wor
 For developers:
 
 Upgrading ruby version:
-rvm install ruby-2.1.1
-rvm use 2.1.1
-bundle install
-gem install rails
+rvm install ruby-2.1.1,
+rvm use 2.1.1,
+brew install postgresql, 
+bundle install,
+gem install rails,
+gem install bundler,
+rake db:migrate,
+rake bower:install
