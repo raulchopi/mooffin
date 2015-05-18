@@ -20,7 +20,7 @@ Mooffin::Application.routes.draw do
   resources :courses
   resources :units
   resources :importances
-  resources :recipes do
+  resources :recipes, path: 'recetas' do
     resources :opinions
     resources :likes
     resources :reports

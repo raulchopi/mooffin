@@ -1,7 +1,7 @@
 #myRecipes_grid{'ng-show' => "layout == 'grid'", 'ng-cloak' => ''}
 	.recipe.large-4.columns{ 'ng-repeat' => 'recipe in userRecipes' }
 		#my_recipe_container
-			%a{href: '/recipes/{{recipe.id}}'}
+			%a{href: '/recetas/{{recipe.id}}'}
 				%span.rating{'ng-bind' => 'recipe.rating'}
 				%span.overlay
 				#foto
@@ -11,16 +11,16 @@
 					%span{'ng-bind' => 'recipe.title'}
 				- if current_user
 					#operaciones{'ng-show' => "isAuthor(recipe.user_id, '#{current_user.id}')"}
-						%a.edit.ion-ios7-refresh{href: '/recipes/{{recipe.id}}/edit'}
+						%a.edit.ion-ios7-refresh{href: '/recetas/{{recipe.id}}/edit'}
 						%a.delete.ion-ios7-close{'confirmed-click-action' => "deleteRecipe(recipe.id)", 'ng-confirm-click'=>'En serio, quieres borrarla??'}
 
 
 #myRecipes_list{'ng-show' => "layout == 'list'", 'ng-cloak' => ''}
 	.recipe{ 'ng-repeat' => 'recipe in userRecipes' }
 		#title
-			%a{href: '/recipes/{{recipe.id}}'}
+			%a{href: '/recetas/{{recipe.id}}'}
 				%span{'ng-bind' => 'recipe.title'}
 		- if current_user
 			#options{'ng-show' => "isAuthor(recipe.user_id, '#{current_user.id}')"}
-				%a.edit.ion-ios7-refresh{href: '/recipes/{{recipe.id}}/edit'}
+				%a.edit.ion-ios7-refresh{href: '/recetas/{{recipe.id}}/edit'}
 				%a.delete.ion-ios7-close{'confirmed-click-action' => "deleteRecipe(recipe.id)", 'ng-confirm-click'=>'En serio, quieres borrarla??'}

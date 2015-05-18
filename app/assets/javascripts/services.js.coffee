@@ -34,11 +34,11 @@ angular.module('mooffin.services', [])
       result.data
 
   setRecipe: (recipe, links, steps, userId) ->
-    $http.post("/recipes", recipe, links, steps).then ->
+    $http.post("/recetas", recipe, links, steps).then ->
       $window.location.href = "/users/#{ userId }"
 
   setOpinion: (recipe, opinion) ->
-    $http.post("/recipes/#{ recipe.id }/opinions", opinion).then ->
+    $http.post("/recetas/#{ recipe.id }/opinions", opinion).then ->
 
   deleteOpinion: (opinion) ->
     $http.delete("/opinions/#{ opinion }").then ->
@@ -48,7 +48,7 @@ angular.module('mooffin.services', [])
       result.data
 
   setLike: (recipe) ->
-    $http.post("/recipes/#{ recipe.id }/likes").then ->
+    $http.post("/recetas/#{ recipe.id }/likes").then ->
 
   deleteLike: (like) ->
     $http.delete("/likes/#{ like }").then ->
@@ -62,13 +62,13 @@ angular.module('mooffin.services', [])
       result.data
 
   updateRecipe: (recipe, links, steps) ->
-    $http.put("/recipes/#{ recipe.id }", recipe, links, steps).then ->
-      $window.location.href = "/recipes/#{ recipe.id }"
+    $http.put("/recetas/#{ recipe.id }", recipe, links, steps).then ->
+      $window.location.href = "/recetas/#{ recipe.id }"
 
   deleteRecipe: (recipe, user) ->
-    $http.delete("/recipes/#{ recipe.id }").then ->
+    $http.delete("/recetas/#{ recipe.id }").then ->
       $window.location.href = "/users/#{ user.id }"
 
   setReport: (recipe, report) ->
-    $http.post("/recipes/#{ recipe.id }/reports", report).then ->
+    $http.post("/recetas/#{ recipe.id }/reports", report).then ->
 ]
