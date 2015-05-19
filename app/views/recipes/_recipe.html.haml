@@ -5,8 +5,8 @@
 				%span.rating{'ng-bind' => 'recipe.rating'}
 				%span.overlay
 				#foto
-					%img{'ng-show' => 'recipe.photo_file_name', 'ng-src' => '{{recipe.photo_url}}', 'alt' => '{{recipe.title}}'}
-					%img{'ng-show' => 'recipe.photo_file_name == null', 'ng-src' => '/assets/{{recipe.photo_url}}', 'alt' => '{{recipe.title}}'}
+					%img{'ng-show' => 'recipe.photo_file_name', 'ng-src' => '{{recipe.photo_url}}', 'alt' => '{{recipe.title}}', 'title' => '{{recipe.title}}'}
+					%img{'ng-show' => 'recipe.photo_file_name == null', 'ng-src' => '/assets/{{recipe.photo_url}}', 'alt' => '{{recipe.title}}', 'title' => '{{recipe.title}}'}
 				#titulo
 					%span{'ng-bind' => 'recipe.title'}
 				- if current_user
