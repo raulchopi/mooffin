@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   has_many :opinions, :dependent => :destroy
   has_many :recipes
   has_many :likes, :dependent => :destroy
-  has_many :like_recipes, :through => :likes, :source => :recipes
+  # has_many :like_recipes, :through => :likes, :source => :recipes
 
   # The role will be saved as a String
   # => user.set_role(:user) and user.set_role('user')
