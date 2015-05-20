@@ -73,6 +73,11 @@ gem 'pin_it', '~> 0.0.7'
 
 gem 'ionicons-rails'
 
+# panel de administracion
+gem 'rails_admin'
+
+gem "easy_roles", "~> 1.2.0"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

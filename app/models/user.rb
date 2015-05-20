@@ -4,6 +4,15 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_USERNAME = /\A[A-Za-z0-9_]+\z/
 
+  before_create :initialize_roles
+
+  @allowed_roles = %w(admin user)
+  class << self
+    attr_reader :allowed_roles
+  end
+
+  easy_roles :roles
+
   authenticates_with_sorcery!
 
   has_attached_file :avatar, :default_url => "default_img_user_:style.png"
@@ -26,6 +35,18 @@ class User < ActiveRecord::Base
   has_many :recipes
   has_many :likes, :dependent => :destroy
   has_many :like_recipes, :through => :likes, :source => :recipes
+
+  # The role will be saved as a String
+  # => user.set_role(:user) and user.set_role('user')
+  # => will both save the role as 'user'
+  def set_role(role)
+    return false unless self.class.allowed_roles.include?(role.to_s)
+    add_role role.to_s
+  end
+
+  def default_role
+    'user'
+  end
 
   def set_current_language
     self.language = I18n.locale.to_s if self.language.blank?
@@ -91,6 +112,15 @@ class User < ActiveRecord::Base
   def avatar_url
     avatar.url(:medium)
   end
+
+
+  private
+
+    # Important to check this condition.
+    # => If this callback returns false the record will not be saved.
+    def initialize_roles
+      set_role default_role unless is_user?
+    end
 
 
 end

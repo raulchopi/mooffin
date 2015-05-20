@@ -9,12 +9,9 @@ class Ingredient < ActiveRecord::Base
 	include ActiveModel::Conversion
 	extend ActiveModel::Naming
 
-	def initialize(ingredient)
-		@ingredient = ingredient
-	end
 
 	def self.search(name)
-		if ing 
+		if ing
 			where('name LIKE ?', "%#{name}%")
 		end
 	end
