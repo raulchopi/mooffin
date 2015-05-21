@@ -1,7 +1,7 @@
 Mooffin::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  
+
   root :to => 'home#index'
 
   get '/signup' 	=> 'users#new', 		:as => 'signup'
@@ -45,4 +45,14 @@ Mooffin::Application.routes.draw do
 
   #OAuth
   get '/auth/:provider/callback', :to => 'sessions#create'
+
+  # API
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :recipes, only: [:index, :show]
+      resources :ingredients, only: [:index]
+    end
+  end
+
+
 end
