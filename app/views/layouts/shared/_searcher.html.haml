@@ -1,9 +1,8 @@
 #buscador.large-4.columns
 	.form-inline
 		%ui-select.bar{:multiple => "", "theme" => "select2", "ng-model" => "ingredients.selected", "ng-change" => "ingredientsChange()"}
-			%ui-select-match{:placeholder => "Ingrediéntame..."} {{$item.name}}
+			%ui-select-match{:placeholder => "Ingredientes"} {{$item.name}}
 			%ui-select-choices{:repeat => "ingredient in ingredients | filter: {name: $select.search}"}
 				%span{"ng-bind-html" => "ingredient.name | highlight: $select.search"}
 
 	#nuevosIng
-		Si echas en falta algún ingrediente envíanos un correo a <b>ingredientes@mooffin.es</b>. Intentaremos meterlo lo más rápido posible!
