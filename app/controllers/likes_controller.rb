@@ -40,6 +40,12 @@ class LikesController < ApplicationController
 		@like.save
 		respond_to do |format|
 			format.js
+			format.json {
+				render json: @like
+			}
+			format.html {
+				@like
+			}
 		end
 	end
 
@@ -47,6 +53,12 @@ class LikesController < ApplicationController
 		@like.destroy
 		respond_to do |format|
 			format.js
+			format.json {
+				render json: @like
+			}
+			format.html {
+				@like
+			}
 		end
 	end
 

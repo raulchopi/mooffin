@@ -28,7 +28,7 @@ Mooffin::Application.routes.draw do
   resources :importances
   resources :recipes, path: 'recetas', path_names: path_names_fem do
     resources :opinions
-    resources :likes
+    resources :likes, path: 'favoritas'
     resources :reports
   end
 
@@ -38,7 +38,7 @@ Mooffin::Application.routes.draw do
   get '/userRecipeLike' => 'likes#getUserRecipeLike'
 
   resources :links
-  resources :likes
+  resources :likes, path: 'favoritas'
   resources :opinions
   resources :partners
   resources :reasons
