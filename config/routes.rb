@@ -52,6 +52,7 @@ Mooffin::Application.routes.draw do
       resources :recipes, only: [:index, :show]
       resources :ingredients, only: [:index]
       resources :proposals, only: [:index]
+      resources :likes, only: [:show]
     end
   end
 
