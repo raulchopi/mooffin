@@ -4,7 +4,7 @@ module Api
     class RecipesController < ApiControllerBase
 
       def show
-    		@recipe = Recipe.friendly.find(params[:id])
+    		@recipe = Recipe.find(params[:id])
     	end
 
     end
