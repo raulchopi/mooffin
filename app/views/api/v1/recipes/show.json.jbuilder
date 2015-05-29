@@ -29,3 +29,12 @@ json.pasos(@recipe.steps) do |step|
   json.orden step.orden
   json.desc step.description
 end
+
+json.opiniones(@recipe.opinions) do |op|
+  json.id op.id
+  json.id_usuario op.user_id
+  json.nombre op.user.name
+  json.apellidos op.user.surname
+  json.puntuacion op.rating
+  json.opinion op.opinion
+end
