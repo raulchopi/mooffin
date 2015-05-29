@@ -51,6 +51,7 @@ Mooffin::Application.routes.draw do
     namespace :v1 do
       resources :recipes, only: [:index, :show]
       resources :ingredients, only: [:index]
+      resources :proposals, only: [:index]
     end
   end
 
