@@ -1,8 +1,8 @@
 #buscador.large-4.columns
 	.form-inline
-		%ui-select.bar{:multiple => "", "theme" => "select2", "ng-model" => "ingredients.selected", "ng-change" => "ingredientsChange()"}
+		%ui-select.bar{:multiple => "", "reset-search-input" => "true", "theme" => "select2", "ng-model" => "ingredients.selected", "ng-change" => "ingredientsChange()"}
 			%ui-select-match{:placeholder => "Ingredientes"} {{$item.name}}
-			%ui-select-choices{:repeat => "ingredient in ingredients | filter: {name: $select.search}"}
+			%ui-select-choices{:repeat => "ingredient in ingredients | filter: {name: $select.search} | limitTo: 15"}
 				%span{"ng-bind-html" => "ingredient.name | highlight: $select.search"}
 
 	#nuevosIng

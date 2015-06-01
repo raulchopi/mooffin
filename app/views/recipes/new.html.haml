@@ -13,7 +13,7 @@
 
 				%ui-select{"ng-disabled" => "", "ng-model" => "ingredients.selected", :theme => "select2", "ng-change" => "setValue(ingredients.selected)"}
 					%ui-select-match{:placeholder => "Escoja un ingrediente..."} {{$select.selected.name}}
-					%ui-select-choices{:repeat => "ingredient in ingredients | filter: {name: $select.search}"}
+					%ui-select-choices{:repeat => "ingredient in ingredients | filter: {name: $select.search} | limitTo: 15"}
 						%span{"ng-bind-html" => "ingredient.name | highlight: $select.search"}
 
 				%select{:id => 'link_importance', "ng-model" => "importanceOfIng", "ng-options" => "i.description for i in importances"}
