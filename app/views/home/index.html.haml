@@ -3,16 +3,25 @@
 	= render :partial => 'layouts/shared/header'
 
 	#content.row{ 'ng-controller' => 'InstantIngredientsSearchController' }
-		= render :partial => 'layouts/shared/searcher'
 
-		#main.large-8.columns
+		#main.large-12.columns
+
+			= render :partial => 'layouts/shared/searcher'
+
 			#home.fade{'ng-class' => '{in:show_recipes.length == 0, out:show_recipes.length > 0}'}
+
 				#mensajeInicio
 					%h1
 						Tu buscador de recetas por ingredientes
 				#submensajeInicio
 					%h2
 						<strong>Buscar recetas por ingredientes</strong> nunca fue tan sencillo, introduce los <strong>ingredientes</strong> deseados en el buscador y te propondremos las mejores recetas
+
+				#ultimasRecetas{ 'ng-controller' => 'LastRecipesController' }
+					%h3
+						Recetas de cocina más recientes
+					= render partial: 'layouts/shared/ultimas_recetas'
+
 				#subSubMensajeInicio
 					%p
 						<b>Regístrate</b> con google o facebook en la cabecera de la web para sacar el máximo partido a <strong>Mooffin</strong>: Crea recetas, guarda tus favoritas, valora y comparte en redes sociales...

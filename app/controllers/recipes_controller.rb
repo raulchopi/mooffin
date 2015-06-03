@@ -51,6 +51,18 @@ class RecipesController < ApplicationController
   		end
 	end
 
+	def getLastRecipes
+		@ultimasRecetas = Recipe.last(3).reverse
+		respond_to do |format|
+			format.json {
+				render json: @ultimasRecetas.to_json(:methods => [:photo_url])
+			}
+			format.html {
+				@ultimasRecetas
+			}
+		end
+	end
+
 	def edit
 	end
 

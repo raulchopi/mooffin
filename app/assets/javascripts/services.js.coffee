@@ -13,6 +13,10 @@ angular.module('mooffin.services', [])
     $http.get("/proposals.json", params: { "idsIngredients[]": idsIngredients }).then (result) ->
       result.data
 
+  getLastRecipes: ->
+      $http.get("/lastRecipes.json").then (result) ->
+        result.data
+
   getUnits: ->
     $http.get("/units.json").then (result) ->
       result.data

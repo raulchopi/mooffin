@@ -42,6 +42,14 @@ angular.module('mooffin.controllers', [])
 ]
 
 
+.controller 'LastRecipesController', ['$scope',
+'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
+
+  $scope.lastRecipes = InstantIngredientsSearchFactory.getLastRecipes().then (last) ->
+    $scope.lastRecipes = last
+]
+
+
 .controller 'UserRecipesController', ['$scope', '$timeout',
 'InstantIngredientsSearchFactory', ($scope, $timeout, InstantIngredientsSearchFactory) ->
   $scope.userId = angular.element("#idUserHidden").val()

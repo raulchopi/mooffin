@@ -36,6 +36,7 @@ Mooffin::Application.routes.draw do
   get '/recipeopinions' => 'opinions#recipeopinions'
   get '/userrecipes' => 'users#userrecipes'
   get '/userRecipeLike' => 'likes#getUserRecipeLike'
+  get '/lastRecipes' => 'recipes#getLastRecipes'
 
   resources :links
   resources :likes, path: 'favoritas'
