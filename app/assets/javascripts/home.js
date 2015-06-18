@@ -34,18 +34,18 @@ $("#link_ingredient").focusout(function(){
 
 //Evalua si se amplia la ventana y el menu estaba plegado, que lo
 // vuelva a desplegar para que se muestre en su nueva disposicion
-$(window).resize(function(){
-  if($(this).width() > 1024){
-    $('.recipe').removeClass('large-6').addClass('large-4');
-    $('.proposal').removeClass('large-6').addClass('large-4');
-    $('.like').removeClass('large-6').addClass('large-4');
-  }
-  else if($(this).width() >= 768 && $(this).width() <= 1024){
-    $('.recipe').removeClass('large-4').addClass('large-6');
-    $('.proposal').removeClass('large-4').addClass('large-6');
-    $('.like').removeClass('large-4').addClass('large-6');
-  }
-});
+// $(window).resize(function(){
+//   if($(this).width() > 1024){
+//     $('.recipe').removeClass('large-6').addClass('large-4');
+//     $('.proposal').removeClass('large-6').addClass('large-4');
+//     $('.like').removeClass('large-6').addClass('large-4');
+//   }
+//   else if($(this).width() >= 768 && $(this).width() <= 1024){
+//     $('.recipe').removeClass('large-4').addClass('large-6');
+//     $('.proposal').removeClass('large-4').addClass('large-6');
+//     $('.like').removeClass('large-4').addClass('large-6');
+//   }
+// });
 
 
 
