@@ -33,7 +33,10 @@ angular.module('mooffin.controllers', [])
       angular.element("#home").fadeIn 100
       angular.element("#recipes").fadeOut 100
 
-    getProposals() if idsIngredients.length > 0
+    if idsIngredients.length > 0
+      getProposals()
+    else
+      $scope.show_recipes = []
 
 
   getProposals = ->
