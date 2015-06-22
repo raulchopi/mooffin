@@ -1,12 +1,12 @@
-#wrapper
+#wrapper{ 'ng-controller' => 'InstantIngredientsSearchController' }
 
 	= render :partial => 'layouts/shared/header'
 
-	#content.row{ 'ng-controller' => 'InstantIngredientsSearchController' }
+	= render :partial => 'layouts/shared/searcher'
+
+	#content.row
 
 		#main.large-12.columns
-
-			= render :partial => 'layouts/shared/searcher'
 
 			#home.fade{'ng-class' => '{in:show_recipes.length == 0, out:show_recipes.length > 0}'}
 
