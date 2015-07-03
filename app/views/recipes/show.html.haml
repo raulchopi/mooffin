@@ -1,5 +1,5 @@
 - title @recipe.title
-	
+
 #wrapper
 
 	= render :partial => 'layouts/shared/header'
@@ -14,7 +14,8 @@
 
 			#titulo.row
 				#texto.large-12.columns
-					= @recipe.title.upcase
+					%h1.title
+						= @recipe.title.upcase
 					//= render :partial => 'recipes/rating'
 
 				//= pin_it_button(media: image_url(@recipe.photo_url), description: @recipe.title, url: @recipe.photo_url)
@@ -28,7 +29,8 @@
 			- if @recipe.description != ''
 				#descripcion.row
 					#texto.large-12.columns
-						= @recipe.description
+						%h2
+							= @recipe.description
 
 			- if current_user
 				= render :partial => 'recipes/like'
