@@ -73,6 +73,7 @@ class RecipesController < ApplicationController
 
 	def destroy
 		@recipe.destroy
+		Recipe.update_sitemap
 	end
 
 	def create
