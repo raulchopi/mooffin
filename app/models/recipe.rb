@@ -113,4 +113,10 @@ class Recipe < ActiveRecord::Base
 	def photo_url
 		photo.url(:medium)
 	end
+
+	def self.update_sitemap
+		system("RAILS_ENV=#{Rails.env} bundle exec rake sitemap:generate")
+		system("RAILS_ENV=#{Rails.env} bundle exec rake sitemap:symlink")
+	end
+
 end

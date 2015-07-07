@@ -79,6 +79,7 @@ class RecipesController < ApplicationController
 		@recipe = current_user.recipes.new(recipe_params)
 		respond_to do |format|
 			if @recipe.save
+				Recipe.update_sitemap
 				format.html { redirect_to "/usuarios/#{current_user.id}", notice: 'Receta creada!' }
 			else
 				format.html { redirect_to new_recipe_path, :notice => "Error al crear la receta!" }

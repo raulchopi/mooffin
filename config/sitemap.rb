@@ -8,7 +8,7 @@ sitemap :site do
 
   Recipe.all.each do |rec|
     url rec, last_mod: rec.updated_at, priority: 1.0
- end
+  end
 
 end
 
