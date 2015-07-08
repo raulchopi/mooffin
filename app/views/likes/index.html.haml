@@ -1,6 +1,8 @@
 %html
 %body{ 'ng-app' => 'instantIngredientsSearch' }
 
+- title 'Mis recetas favoritas'
+
 #wrapper
 
 	= render :partial => 'layouts/shared/header'
@@ -13,7 +15,7 @@
 				.nombre
 					= @user.name
 				.num_recetas
-					Recetas favoritas: #{@user.likes.count} 
+					Recetas favoritas: #{@user.likes.count}
 				.val_recetas
 					Valoración favoritas: #{@user.average_rate_likes}
 
