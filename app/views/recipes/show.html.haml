@@ -1,4 +1,4 @@
-- title @recipe.title
+- title 'Receta de ' + @recipe.title[0, 1].downcase + @recipe.title[1..-1]
 
 #wrapper
 
