@@ -92,13 +92,13 @@ class RecipesController < ApplicationController
 		def recipe_params
 			params.require(:recipe).permit(:recipe, :description, :title, :time, :servings, :difficulty_id, :course_id,
 				:photo, steps_attributes: [:orden, :description],
-				links_attributes: [:ingredient_id, :importance_id, :unit_id, :number])
+				links_attributes: [:ingredient_id, :importance_id, :text_link])
 		end
 
 		def recipe_update_params
 			params.require(:recipe).permit(:recipe, :description, :title, :time, :servings, :difficulty_id, :course_id,
 				:photo, steps_attributes: [:id, :orden, :description, :_destroy],
-				links_attributes: [:id, :ingredient_id, :importance_id, :unit_id, :number, :_destroy])
+				links_attributes: [:id, :ingredient_id, :importance_id, :text_link, :_destroy])
 		end
 
 		def proposals_params

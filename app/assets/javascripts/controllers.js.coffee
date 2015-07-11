@@ -174,9 +174,6 @@ angular.module('mooffin.controllers', [])
   $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
     $scope.ingredients = ingredients
 
-  $scope.units = InstantIngredientsSearchFactory.getUnits().then (units) ->
-    $scope.units = units
-
   $scope.importances = InstantIngredientsSearchFactory.getImportances().then (importances) ->
     $scope.importances = importances
 
@@ -190,23 +187,19 @@ angular.module('mooffin.controllers', [])
 
   $scope.addLink = () ->
     importance = null
-    unit = null
 
     if $scope.importanceOfIng == undefined
       importance = 2
     else
       importance = $scope.importanceOfIng.id
 
-    unit = $scope.selected_unit.id if $scope.selected_unit != undefined
-
-    newLink = {'number': $scope.numberOfIng, 'unit': $scope.selected_unit, 'ing': $scope.ingredients.selected,
+    newLink = {'text_link': $scope.text_link, 'ing': $scope.ingredients.selected,
     'importance': $scope.importanceOfIng, 'ingredient_id': $scope.ingredients.selected.id,
-    'importance_id': importance, 'unit_id': unit}
+    'importance_id': importance}
 
     if $scope.ingredients.selected.id != ''
       $scope.links.push newLink
-      $scope.numberOfIng = ''
-      $scope.selected_unit = ''
+      $scope.text_link = ''
       $scope.searchString = ''
       $scope.importanceOfIng = ''
       $scope.ingredients.selected = null
@@ -332,9 +325,9 @@ angular.module('mooffin.controllers', [])
 
   addingEditLinks = (linkes) ->
     angular.forEach linkes, (link) ->
-      newLink = {'id': link.id, 'number': link.number, 'unit': $scope.units[link.unit_id  - 1], 'ing': $scope.ingredients[link.ingredient_id - 1],
+      newLink = {'id': link.id, 'text_link': link.text_link, 'ing': $scope.ingredients[link.ingredient_id - 1],
       'importance': $scope.importances[link.importance_id - 1], 'ingredient_id': link.ingredient_id,
-      'importance_id': link.importance_id, 'unit_id': link.unit_id}
+      'importance_id': link.importance_id}
       $scope.links.push newLink
       newLink = {}
 
