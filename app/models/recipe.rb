@@ -48,6 +48,7 @@ class Recipe < ActiveRecord::Base
 			join vw_recipe_totals rt on rt.recipe_id = recipes.id
 			WHERE ingredients.id IN (?)
 			GROUP BY recipes.id, difficulties.id, rt.likes, rt.opinions
+
 			UNION
 			SELECT recipes.*,
 			difficulties.description AS dif_desc,
@@ -63,8 +64,41 @@ class Recipe < ActiveRecord::Base
 			WHERE ingredients.id NOT IN (?)
 			AND ingredients.parent_id IN (select parent_id from ingredients WHERE id in (?))
 			GROUP BY recipes.id, difficulties.id, rt.likes, rt.opinions
+
+			UNION
+			SELECT recipes.*,
+			difficulties.description AS dif_desc,
+			sum(importances.weight*0.75) as weight,
+			rt.likes as num_likes,
+			rt.opinions as num_opinions
+			FROM recipes
+			INNER JOIN difficulties ON difficulties.id = recipes.difficulty_id
+			INNER JOIN links ON links.recipe_id = recipes.id
+			inner join ingredients ON ingredients.id = links.ingredient_id
+			join importances on links.importance_id = importances.id
+			join vw_recipe_totals rt on rt.recipe_id = recipes.id
+			WHERE ingredients.id NOT IN (?)
+			AND ingredients.id IN (select parent_id from ingredients WHERE id in (?))
+			GROUP BY recipes.id, difficulties.id, rt.likes, rt.opinions
+
+			UNION
+			SELECT recipes.*,
+			difficulties.description AS dif_desc,
+			sum(importances.weight*0.75) as weight,
+			rt.likes as num_likes,
+			rt.opinions as num_opinions
+			FROM recipes
+			INNER JOIN difficulties ON difficulties.id = recipes.difficulty_id
+			INNER JOIN links ON links.recipe_id = recipes.id
+			inner join ingredients ON ingredients.id = links.ingredient_id
+			join importances on links.importance_id = importances.id
+			join vw_recipe_totals rt on rt.recipe_id = recipes.id
+			WHERE ingredients.id NOT IN (?)
+			AND ingredients.parent_id IN (select id from ingredients WHERE id in (?))
+			GROUP BY recipes.id, difficulties.id, rt.likes, rt.opinions
+
 			ORDER BY weight desc, num_likes desc, views_count desc",
-			idsIngredients, idsIngredients, idsIngredients]
+			idsIngredients, idsIngredients, idsIngredients, idsIngredients, idsIngredients, idsIngredients, idsIngredients]
 	end
 
 	def average_rate
