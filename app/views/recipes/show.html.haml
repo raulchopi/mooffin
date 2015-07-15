@@ -54,11 +54,6 @@
 							- @recipe.links.order("importance_id desc").each do |link|
 								%li
 									= link.text_link
-									// - if link.unidadSinCeros.to_i > 1 && link.unit.id == 1
-									//	= link.ingredient.name.downcase.pluralize(:es)
-									// - else
-									// = link.ingredient.name.downcase
-									// = link.text_after
 
 				#elaboracion.large-8.columns
 					%ul
