@@ -12,6 +12,7 @@ class Recipe < ActiveRecord::Base
 	has_many :steps, dependent: :destroy
 	has_many :opinions, dependent: :destroy
 	has_many :reports, dependent: :destroy
+	has_many :recipecats, dependent: :destroy
 	has_many :liked, :through => :likes, :source => :user
 
 	accepts_nested_attributes_for :links, :allow_destroy => true
