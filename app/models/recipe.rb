@@ -32,6 +32,7 @@ class Recipe < ActiveRecord::Base
     ]
   end
 
+	# Buscamos recetas con ingrediente + recetas 'hermanas' + recetas 'padre' + recetas 'hijas'
 	def self.find_proposals(idsIngredients)
 		logger.info('Dentro do find_proposals')
 
