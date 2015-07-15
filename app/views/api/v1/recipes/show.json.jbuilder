@@ -16,12 +16,7 @@ end
 json.ingredientes(@recipe.links.order("importance_id desc")) do |link|
   json.id link.id
   json.nombre link.ingredient.name.downcase
-  json.cantidad link.unidadSinCeros
-  if link.unit
-    json.unidades link.unit.description
-  else
-    json.unidades ''
-  end
+  json.texto link.text_link
 end
 
 json.pasos(@recipe.steps) do |step|
