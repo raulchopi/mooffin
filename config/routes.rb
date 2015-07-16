@@ -26,7 +26,7 @@ Mooffin::Application.routes.draw do
   resources :courses
   resources :units
   resources :importances
-  resources :recipes, path: 'recetas', path_names: path_names_fem do
+  resources :recipes, path: 'receta', path_names: path_names_fem do
     resources :opinions
     resources :likes, path: 'favoritas'
     resources :reports
@@ -43,6 +43,7 @@ Mooffin::Application.routes.draw do
   resources :opinions
   resources :partners
   resources :reasons
+  resources :categories, path: 'recetas'
 
   #OAuth
   get '/auth/:provider/callback', :to => 'sessions#create'
