@@ -1,7 +1,7 @@
 #recipesProposals_grid.row{'ng-cloak' => ''}
 	.proposal.large-3.columns{ 'ng-repeat' => 'recipe in lastRecipes' }
 		#proposal_container
-			%a{href: 'recetas/{{recipe.slug}}'}
+			%a{href: 'receta/{{recipe.slug}}'}
 
 				%span.rating{'ng-bind' => 'recipe.rating', 'ng-show' => 'recipe.numOpinions > 0'}
 				#overlay
