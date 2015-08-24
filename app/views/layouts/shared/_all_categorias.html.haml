@@ -1,0 +1,5 @@
+#recipesProposals_grid.row{'ng-cloak' => ''}
+	.category_container.large-3.columns{ 'ng-repeat' => 'cat in categories' }
+		%a{href: 'recetas/{{cat.slug}}'}
+			.category
+				%h4 {{cat.description}}

@@ -13,10 +13,12 @@ class Recipe < ActiveRecord::Base
 	has_many :opinions, dependent: :destroy
 	has_many :reports, dependent: :destroy
 	has_many :recipecats, dependent: :destroy
+	has_many :categories, :through => :recipecats
 	has_many :liked, :through => :likes, :source => :user
 
 	accepts_nested_attributes_for :links, :allow_destroy => true
 	accepts_nested_attributes_for :steps, :allow_destroy => true
+	accepts_nested_attributes_for :recipecats, :allow_destroy => true
 
 	has_attached_file :photo, :styles => { :original => "1000x1000", :medium => "400x400>", :thumb => "100x100>" }, :default_url => "default_img_recipe_:style.png"
 	validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/

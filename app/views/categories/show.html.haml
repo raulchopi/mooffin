@@ -3,3 +3,49 @@
 #wrapper
 
 	= render :partial => 'layouts/shared/header'
+
+
+	#content.row{ 'ng-controller' => 'CategoryRecipesController' }
+
+		= hidden_field_tag 'idCatHidden', @category.id, id: 'idCatHidden'
+
+		#main.large-12.columns
+
+			#recipesProposals_grid.row{'ng-show' => "layout == 'grid'", 'ng-cloak' => ''}
+				.proposal.large-3.columns{ 'ng-repeat' => 'recipe in categoryRecipes' }
+					#proposal_container
+						%a{href: 'receta/{{recipe.slug}}'}
+
+							%span.rating{'ng-bind' => 'recipe.rating', 'ng-show' => 'recipe.numOpinions > 0'}
+							#overlay
+								%span.ion-ios7-timer-outline
+								%span.time{'ng-bind' => 'recipe.time'}
+								%span.icono.ion-ios7-gear-outline
+								%span.dif{'ng-bind' => 'recipe.dif_desc'}
+								#desc
+									%span{'ng-bind' => 'recipe.description'}
+								#counters
+									%span.icono.ion-ios7-heart-outline
+									%span.texto{'ng-bind' => 'recipe.num_likes'}
+									%span.icono.ion-ios7-chatbubble-outline
+									%span.texto{'ng-bind' => 'recipe.num_opinions'}
+									%span.icono.ion-ios7-eye-outline
+									%span.texto{'ng-bind' => 'recipe.views_count'}
+
+							#foto
+								%img{'ng-if' => 'recipe.photo_file_name != null', 'ng-src' => '{{recipe.photo_url}}', 'alt' => '{{recipe.title}}', 'title' => '{{recipe.title}}'}
+								%img{'ng-if' => 'recipe.photo_file_name == null', 'ng-src' => '/assets/{{recipe.photo_url}}', 'alt' => '{{recipe.title}}', 'title' => '{{recipe.title}}'}
+							#titulo
+								%span{'ng-bind' => 'recipe.title'}
+
+
+
+			#recipesProposals_list{'ng-show' => "layout == 'list'", 'ng-cloak' => ''}
+				.proposal{ 'ng-repeat' => 'recipe in categoryRecipes' }
+					#title
+						%a{href: 'receta/{{recipe.slug}}'}
+							%span{'ng-bind' => 'recipe.title'}
+
+					#rating
+						%span{'ng-bind' => 'recipe.rating'}
+		= render :partial => 'layouts/shared/list_types'

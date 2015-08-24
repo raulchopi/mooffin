@@ -52,6 +52,27 @@ angular.module('mooffin.controllers', [])
     $scope.lastRecipes = last
 ]
 
+.controller 'AllCategoriesController', ['$scope',
+'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
+
+  $scope.categories = InstantIngredientsSearchFactory.getCategories().then (categories) ->
+    $scope.categories = categories
+]
+
+.controller 'CategoryRecipesController', ['$scope',
+'InstantIngredientsSearchFactory', ($scope, InstantIngredientsSearchFactory) ->
+
+  # Dependendo do tamanho da ventana, carga en modo lista ou grid
+  if $(window).width() < 658
+    $scope.layout = 'list'
+  else
+    $scope.layout = 'grid'
+
+  $scope.categoryId = angular.element("#idCatHidden").val()
+  categoryIdentifier = { 'id' : $scope.categoryId }
+  $scope.categoryRecipes = InstantIngredientsSearchFactory.getCategoryRecipes(categoryIdentifier).then (categoryRecipes) ->
+    $scope.categoryRecipes = categoryRecipes
+]
 
 .controller 'UserRecipesController', ['$scope', '$timeout',
 'InstantIngredientsSearchFactory', ($scope, $timeout, InstantIngredientsSearchFactory) ->
@@ -179,6 +200,9 @@ angular.module('mooffin.controllers', [])
 
   $scope.courses = InstantIngredientsSearchFactory.getCourses().then (courses) ->
     $scope.courses = courses
+
+  $scope.categories = InstantIngredientsSearchFactory.getCategories().then (categories) ->
+    $scope.categories = categories
 
   $scope.difficulties = InstantIngredientsSearchFactory.getDifficulties().then (difficulties) ->
     $scope.difficulties = difficulties

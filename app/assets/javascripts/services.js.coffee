@@ -33,6 +33,10 @@ angular.module('mooffin.services', [])
     $http.get("/courses.json").then (result) ->
       result.data
 
+  getCategories: ->
+    $http.get("/recetas.json").then (result) ->
+      result.data
+
   getReasons: ->
     $http.get("/reasons.json").then (result) ->
       result.data
@@ -63,6 +67,10 @@ angular.module('mooffin.services', [])
 
   getUserRecipes: (userIdentifier) ->
     $http.get("/userrecipes.json", params: userIdentifier).then (result) ->
+      result.data
+
+  getCategoryRecipes: (categoryIdentifier) ->
+    $http.get("/categoryrecipes.json", params: categoryIdentifier).then (result) ->
       result.data
 
   updateRecipe: (recipe, links, steps) ->

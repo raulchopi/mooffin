@@ -1,0 +1,25 @@
+=effect($time)
+  -webkit-transition: all $time ease-out
+  -moz-transition: all $time ease
+  -o-transition: all $time ease
+
+#recetasPorCategorias
+  margin-top: 40px
+
+  .category_container
+    padding: 10px
+
+    .category
+      border: 1px solid #d8d8d8
+      border-radius: 50px
+
+      h4
+        font-size: 17px
+        padding-top: 5px
+
+    &:hover
+      .category
+        +effect(0.5s)
+        background-color: #3ebaff
+        h4
+          color: white
