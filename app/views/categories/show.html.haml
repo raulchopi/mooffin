@@ -14,7 +14,7 @@
 			#recipesProposals_grid.row{'ng-show' => "layout == 'grid'", 'ng-cloak' => ''}
 				.proposal.large-3.columns{ 'ng-repeat' => 'recipe in categoryRecipes' }
 					#proposal_container
-						%a{href: 'receta/{{recipe.slug}}'}
+						%a{href: '/receta/{{recipe.slug}}'}
 
 							%span.rating{'ng-bind' => 'recipe.rating', 'ng-show' => 'recipe.numOpinions > 0'}
 							#overlay
@@ -43,7 +43,7 @@
 			#recipesProposals_list{'ng-show' => "layout == 'list'", 'ng-cloak' => ''}
 				.proposal{ 'ng-repeat' => 'recipe in categoryRecipes' }
 					#title
-						%a{href: 'receta/{{recipe.slug}}'}
+						%a{href: '/receta/{{recipe.slug}}'}
 							%span{'ng-bind' => 'recipe.title'}
 
 					#rating
