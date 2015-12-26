@@ -22,6 +22,11 @@
 						Recetas de cocina más recientes
 					= render partial: 'layouts/shared/ultimas_recetas'
 
+				#recetasPorCategorias{ 'ng-controller' => 'AllCategoriesController' }
+					%h3
+						Recetas por categorías
+					= render partial: 'layouts/shared/all_categorias'
+
 				#subSubMensajeInicio
 					%p
 						<b>Regístrate</b> con google o facebook en la cabecera de la web para sacar el máximo partido a <strong>Mooffin</strong>: Crea recetas, guarda tus favoritas, valora y comparte en redes sociales...

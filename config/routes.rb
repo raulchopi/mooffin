@@ -37,6 +37,7 @@ Mooffin::Application.routes.draw do
   get '/userrecipes' => 'users#userrecipes'
   get '/userRecipeLike' => 'likes#getUserRecipeLike'
   get '/lastRecipes' => 'recipes#getLastRecipes'
+  get '/categoryrecipes' => 'categories#getCategoryRecipes'
 
   resources :links
   resources :likes, path: 'favoritas'
