@@ -170,6 +170,7 @@ angular.module('mooffin.controllers', [])
   stepsH = []
   diffH = []
   courseH = []
+  $scope.alerts = []
 
   $scope.ingredients = InstantIngredientsSearchFactory.getIngredients().then (ingredients) ->
     $scope.ingredients = ingredients
@@ -262,12 +263,25 @@ angular.module('mooffin.controllers', [])
     angular.element(".btn_crearReceta")[0].textContent = "Guardando receta..."
     angular.element(".btn_crearReceta")[0].disabled = true
     recipe = { 'recipe': { 'title': $scope.recipeTitle, 'description': $scope.recipeDescription, 'time': $scope.recipeTime,
+    'source': $scope.recipeSource, 'url_source': $scope.recipeUrlSource,
     'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id, 'course_id': $scope.recipeCourse.id,
-    'photo': photo, 'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
+    'photo': photo, 'steps_attributes': $scope.steps, 'links_attributes': $scope.links}}
+    # ,
+    # 'recipecats_attributes': $scope.recipeCategories }}
     links = $scope.links
     steps = $scope.steps
-    InstantIngredientsSearchFactory.setRecipe recipe, links, steps, userId
-
+    # recipecats = $scope.recipeCategories
+    InstantIngredientsSearchFactory.setRecipe(recipe, links, steps, userId).then (response) ->
+      if(response)
+        $scope.alerts.push
+          type: "success"
+          msg: "Receta guardada"
+      else
+        $scope.alerts.push
+          type: "danger"
+          msg: "Error al guardar receta"
+        angular.element(".btn_crearReceta")[0].textContent = "Guardar"
+        angular.element(".btn_crearReceta")[0].disabled = false
 
   $scope.updateRecipe = () ->
     angular.element(".btn_crearReceta")[0].textContent = "Editando receta..."
@@ -276,15 +290,21 @@ angular.module('mooffin.controllers', [])
     if photo == null #If the user did not change the photo, do not save it
       recipe = { 'id': $scope.recipeId, 'recipe': { 'title': $scope.recipeTitle,
       'description': $scope.recipeDescription, 'time': $scope.recipeTime,
+      'source': $scope.recipeSource, 'url_source': $scope.recipeUrlSource,
       'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
       'course_id': $scope.recipeCourse.id,
-      'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
+      'steps_attributes': $scope.steps, 'links_attributes': $scope.links}}
+      # ,
+      # 'recipecats_attributes': $scope.recipeCategories }}
     else
       recipe = { 'id': $scope.recipeId, 'recipe': { 'title': $scope.recipeTitle,
       'description': $scope.recipeDescription, 'time': $scope.recipeTime,
+      'source': $scope.recipeSource, 'url_source': $scope.recipeUrlSource,
       'servings': $scope.recipeServings, 'difficulty_id': $scope.recipeDifficulty.id,
       'photo': photo, 'course_id': $scope.recipeCourse.id,
-      'steps_attributes': $scope.steps, 'links_attributes': $scope.links }}
+      'steps_attributes': $scope.steps, 'links_attributes': $scope.links}}
+      # ,
+      # 'recipecats_attributes': $scope.recipeCategories }}
 
     links = $scope.links
     steps = $scope.steps
@@ -308,6 +328,8 @@ angular.module('mooffin.controllers', [])
     $scope.recipeId = angular.element("#idRecipeHidden").val()
     $scope.recipeTitle = angular.element("#recipe_title").val()
     $scope.recipeDescription = angular.element("#recipe_description").val()
+    $scope.recipeSource = angular.element("#recipe_source").val()
+    $scope.recipeUrlSource = angular.element("#recipe_url_source").val()
     $scope.recipeTime = angular.element("#recipe_time").val()
     $scope.recipeServings = angular.element("#recipe_servings").val()
     linksH = JSON.parse(angular.element("#linksHidden").val())
@@ -338,4 +360,23 @@ angular.module('mooffin.controllers', [])
       $scope.steps.push newStep
       newStep = {}
       numSteps = $scope.steps.length
+
+  $scope.addAlert = (alert) ->
+    $scope.alerts.push alert
+
+  $scope.closeAlert = (index) ->
+    $scope.alerts.splice index, 1
+
+  $scope.$watch 'alerts', ((n = [], old = []) ->
+    if $scope.delay and old.length < n.length
+      item = $scope.alerts[$scope.alerts.length - 1]
+      timeout = setTimeout((->
+        $scope.alerts = $scope.alerts.filter((alert) ->
+          alert != item
+        )
+        $scope.$apply()
+        return
+      ), $scope.delay)
+    return
+  ), true
 ]

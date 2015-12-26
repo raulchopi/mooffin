@@ -40,6 +40,12 @@
 
 				%input#photoUpload{ :type => 'file', :onchange => 'angular.element(this).scope().readFile()', 'ng-model' => 'recipePhoto' }
 
+				#sourceWrapper.row
+					#source.large-6.columns
+						= text_field :recipe, :source, placeholder: 'Fuente de la receta original', 'ng-model' => 'recipeSource'
+					#url_sourcelarge-6.columns
+						= text_field :recipe, :url_source, placeholder: 'Url de la receta original', 'ng-model' => 'recipeUrlSource'
+
 				#detalles.row
 					#plato.large-3.columns
 						%select.selector_plato{ placeholder: 'Plato', "ng-model" => "recipeCourse", :required => '', "ng-options" => "c.description for c in courses"}

@@ -90,15 +90,23 @@ class RecipesController < ApplicationController
 
 	private
 		def recipe_params
-			params.require(:recipe).permit(:recipe, :description, :title, :time, :servings, :difficulty_id, :course_id,
+			params.require(:recipe).permit(:recipe, :description, :title, :time,
+				:source, :url_source,
+				:servings, :difficulty_id, :course_id,
 				:photo, steps_attributes: [:orden, :description],
 				links_attributes: [:ingredient_id, :importance_id, :text_link])
+				# ,
+				# recipecats_attributes: [:recipe_id, :category_id])
 		end
 
 		def recipe_update_params
-			params.require(:recipe).permit(:recipe, :description, :title, :time, :servings, :difficulty_id, :course_id,
+			params.require(:recipe).permit(:recipe, :description, :title, :time,
+				:source, :url_source,
+				:servings, :difficulty_id, :course_id,
 				:photo, steps_attributes: [:id, :orden, :description, :_destroy],
 				links_attributes: [:id, :ingredient_id, :importance_id, :text_link, :_destroy])
+				# ,
+				# recipecats_attributes: [:recipe_id, :category_id]
 		end
 
 		def proposals_params

@@ -38,8 +38,12 @@ angular.module('mooffin.services', [])
       result.data
 
   setRecipe: (recipe, links, steps, userId) ->
-    $http.post("/receta", recipe, links, steps).then ->
-      $window.location.href = "/usuarios/#{ userId }"
+    $http.post("/receta", recipe, links, steps)
+      .then ->
+        $window.location.href = "/usuarios/#{ userId }"
+        return true
+      .catch ->
+        return false
 
   setOpinion: (recipe, opinion) ->
     $http.post("/receta/#{ recipe.id }/opinions", opinion).then ->
