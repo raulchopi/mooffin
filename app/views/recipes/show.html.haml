@@ -68,7 +68,7 @@
 									de
 									%span.source
 										#{@recipe.source}
-					- elsif @recipe.source
+					- elsif @recipe.source && @recipe.source != ''
 						.originalWrapper
 							.linkToOriginal
 								%span.original
