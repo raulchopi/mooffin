@@ -59,7 +59,7 @@
 					%ul
 						- @recipe.steps.order("orden asc").each do |step|
 							%li= step.description
-					- if @recipe.url_source
+					- if @recipe.url_source && @recipe.url_source != ''
 						.originalWrapper
 							%a.linkToOriginal{href: @recipe.url_source}
 								%span.original
@@ -68,6 +68,13 @@
 									de
 									%span.source
 										#{@recipe.source}
+					- elsif @recipe.source
+						.originalWrapper
+							.linkToOriginal
+								%span.original
+									Receta de
+								%span.source
+									#{@recipe.source}
 			#opciones.row
 				= render :partial => 'layouts/shared/new_report'
 
