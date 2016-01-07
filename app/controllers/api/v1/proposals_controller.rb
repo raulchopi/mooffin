@@ -4,14 +4,14 @@ module Api
     class ProposalsController < ApiControllerBase
 
       def index
-        idsIngredients = []
-    		idsIngredients = proposals_params
-        @proposals = Recipe.find_proposals(idsIngredients)
+        ids = []
+    		ids = proposals_params
+        @proposals = Recipe.find_proposals(ids)
       end
 
       private
         def proposals_params
-          params.require(:idsIngredients)
+          params.require(:ids)
         end
 
     end
