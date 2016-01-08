@@ -71,6 +71,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'pin_it', '~> 0.0.7'
 
+gem 'rack-cors', :require => 'rack/cors'
+
 gem 'ionicons-rails'
 
 # panel de administracion
