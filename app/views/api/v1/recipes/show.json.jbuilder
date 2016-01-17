@@ -13,6 +13,7 @@ json.usuario do |json|
   json.nombre @recipe.user.name
   json.apellidos @recipe.user.surname
   json.nombreusuario @recipe.user.username
+  json.avatar @recipe.user.avatar.url
 end
 
 json.ingredientes(@recipe.links.order("importance_id desc")) do |link|
