@@ -4,8 +4,9 @@ module Api
     class RecipesController < ApiControllerBase
 
       def show
-    		@recipe = Recipe.find(params[:id])
-    	end
+        @recipe = Recipe.find(params[:id])
+        @recipe.increment!(:views_count, by = 1)	#-Contador de visitas
+      end
 
     end
   end
