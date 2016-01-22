@@ -49,6 +49,9 @@ Mooffin::Application.routes.draw do
   #OAuth
   get '/auth/:provider/callback', :to => 'sessions#create'
 
+  #ruta para probar que funcione el oauth en la app móvil
+  get '/callback' => 'recipes#appauth'
+
   # API
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
