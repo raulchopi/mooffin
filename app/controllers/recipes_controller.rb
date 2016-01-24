@@ -88,6 +88,10 @@ class RecipesController < ApplicationController
 		end
 	end
 
+	def appauth
+		head 200, content_type: "text/html"
+	end
+
 	private
 		def recipe_params
 			params.require(:recipe).permit(:recipe, :description, :title, :time,
