@@ -52,10 +52,11 @@ Mooffin::Application.routes.draw do
   # API
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :recipes, only: [:index, :show]
+      resources :recipes, only: [:show]
       resources :ingredients, only: [:index]
       resources :proposals, only: [:index]
       resources :likes, only: [:show]
+      get '/lastRecipes/:number' => 'recipes#lastRecipes'
     end
   end
 

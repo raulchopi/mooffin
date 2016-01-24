@@ -8,6 +8,10 @@ module Api
         @recipe.increment!(:views_count, by = 1)	#-Contador de visitas
       end
 
+      def lastRecipes
+    		@lastRecipes = Recipe.last(params[:number]).reverse
+    	end
+
     end
   end
 end
