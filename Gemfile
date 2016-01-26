@@ -73,6 +73,8 @@ gem 'pin_it', '~> 0.0.7'
 
 gem 'rack-cors', :require => 'rack/cors'
 
+gem 'ng-rails-csrf'
+
 gem 'ionicons-rails'
 
 # panel de administracion
