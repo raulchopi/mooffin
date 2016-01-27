@@ -61,6 +61,8 @@ Mooffin::Application.routes.draw do
       resources :likes, only: [:show]
       get '/lastRecipes/:number' => 'recipes#lastRecipes'
       post '/userByUid' => 'users#getUserByUid'
+      get '/user/:id/favs' => 'users#getUserFavRecipes'
+      get '/user/:id/recipes' => 'users#getUserRecipes'
     end
   end
 
