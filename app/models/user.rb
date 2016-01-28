@@ -77,6 +77,18 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.create_with_omniauth_mobile(auth)
+    create! do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.name
+      user.surname = auth.surname
+      user.username = auth.uid
+      user.email = auth.email
+      user.avatar = auth.avatar
+    end
+  end
+
   #Returns average rate of user's recipes (only 1 decimal)
   def average_rate_recipes
     val = 0
