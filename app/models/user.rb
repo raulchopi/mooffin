@@ -81,8 +81,8 @@ class User < ActiveRecord::Base
     create! do |user|
       user.provider = auth['provider']
       user.uid = auth['uid']
-      user.name = auth['name']
-      user.surname = auth['surname']
+      user.name = auth['first_name']
+      user.surname = auth['last_name']
       user.username = auth['uid']
       user.email = auth['email']
       user.avatar = auth['avatar']
