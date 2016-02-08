@@ -79,13 +79,13 @@ class User < ActiveRecord::Base
 
   def self.create_with_omniauth_mobile(auth)
     create! do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.name = auth.name
-      user.surname = auth.surname
-      user.username = auth.uid
-      user.email = auth.email
-      user.avatar = auth.avatar
+      user.provider = auth['provider']
+      user.uid = auth['uid']
+      user.name = auth['name']
+      user.surname = auth['surname']
+      user.username = auth['uid']
+      user.email = auth['email']
+      user.avatar = auth['avatar']
     end
   end
 
