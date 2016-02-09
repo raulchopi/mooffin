@@ -63,6 +63,7 @@ Mooffin::Application.routes.draw do
       post '/userByUid' => 'users#getUserByUid'
       get '/user/:id/favs' => 'users#getUserFavRecipes'
       get '/user/:id/recipes' => 'users#getUserRecipes'
+      get '/user/:userId/likes/:recipeId' => 'likes#userLikesRecipe'
     end
   end
 

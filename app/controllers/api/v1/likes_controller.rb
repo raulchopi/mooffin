@@ -7,6 +7,10 @@ module Api
         @likes = User.find(params[:id]).likes
       end
 
+      def userLikesRecipe
+        @like = Like.find_by user_id: params[:userId], recipe_id: params[:recipeId]
+      end
+
     end
   end
 end
