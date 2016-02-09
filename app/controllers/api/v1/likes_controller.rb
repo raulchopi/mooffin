@@ -24,7 +24,7 @@ module Api
 
       private
     		def userLike_params
-    			params.require(:userId, :recipeId)
+    			params.require(:data).permit(:userId, :recipeId)
     		end
     end
   end
