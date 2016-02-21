@@ -12,6 +12,10 @@ module Api
     		@lastRecipes = Recipe.last(params[:number]).reverse
     	end
 
+      def searchByName
+        @recipes = Recipe.searchByName(params[:name])
+      end
+
     end
   end
 end

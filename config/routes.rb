@@ -60,6 +60,7 @@ Mooffin::Application.routes.draw do
       resources :proposals, only: [:index]
       resources :likes, only: [:show]
       get '/lastRecipes/:number' => 'recipes#lastRecipes'
+      get '/searchByName/:name' => 'recipes#searchByName'
       post '/userByUid' => 'users#getUserByUid'
       get '/user/:id/favs' => 'users#getUserFavRecipes'
       get '/user/:id/recipes' => 'users#getUserRecipes'

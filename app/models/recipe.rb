@@ -105,6 +105,11 @@ class Recipe < ActiveRecord::Base
 			idsIngredients, idsIngredients, idsIngredients, idsIngredients, idsIngredients, idsIngredients, idsIngredients]
 	end
 
+	def self.searchByName(name)
+		@recipes = Recipe.find_by_sql ["SELECT recipes.*
+			FROM recipes WHERE lower_unaccent(recipes.title) LIKE ?", "%#{name.downcase}%"]
+	end
+
 	def average_rate
 		val = 0
 		if opinions.count > 0
