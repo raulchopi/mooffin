@@ -7,6 +7,7 @@ json.comensales @recipe.servings
 json.dificultad @recipe.difficulty.description
 json.image @recipe.photo_url
 json.image_name @recipe.photo_file_name
+json.slug @recipe.slug
 
 json.usuario do |json|
   json.id @recipe.user.id
