@@ -67,6 +67,7 @@ Mooffin::Application.routes.draw do
       get '/user/:userId/likes/:recipeId' => 'likes#userLikesRecipe'
       post '/doLikeRecipe' => 'likes#doLike'
       post '/dontLikeRecipe' => 'likes#dontLike'
+      get '/getMovistarEpg' => 'movistar#getEpg'
     end
   end
 

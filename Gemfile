@@ -55,6 +55,8 @@ gem 'select2-rails', '~> 3.5.9.1'
 
 gem 'json', '~> 1.8.1'
 
+gem 'http'
+
 gem "paperclip", "~> 4.2"
 
 gem 'sorcery', '~> 0.8.5'
