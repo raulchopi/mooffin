@@ -79,6 +79,8 @@ gem 'ng-rails-csrf'
 
 gem 'ionicons-rails'
 
+gem 'whenever', :require => false
+
 # panel de administracion
 gem 'rails_admin'
 

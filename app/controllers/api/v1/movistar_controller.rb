@@ -8,9 +8,10 @@ module Api
         @epg = []
         now = Time.now
         nowStr = Time.now.strftime("%H:%M")
-        today = Time.now.strftime("%Y-%m-%d")
-        @response = HTTP.get("http://www.plus.es/guia/" + today + "/?v=json")
-        @epgAux = ActiveSupport::JSON.decode(@response)['data']
+        # today = Time.now.strftime("%Y-%m-%d")
+        # @response = HTTP.get("http://www.plus.es/guia/" + today + "/?v=json")
+        readed = File.readlines "./movistar/today.txt"
+        @epgAux = ActiveSupport::JSON.decode(readed[0])['data']
 
         @epgAux.each do |key, value|
           @epg.push(value)

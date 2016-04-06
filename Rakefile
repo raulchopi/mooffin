@@ -4,3 +4,15 @@
 require File.expand_path('../config/application', __FILE__)
 
 Mooffin::Application.load_tasks
+
+namespace :mooffin do
+  desc "Get Movistar+ epg"
+  task getEpgToday: :environment do
+    today = Time.now.strftime("%Y-%m-%d")
+    path = "./movistar/today.txt"
+    response = HTTP.get("http://www.plus.es/guia/" + today + "/?v=json")
+    File.open(path, "w+") do |f|
+      f.write(response)
+    end
+  end
+end
