@@ -4,7 +4,7 @@ module Api
   module V1
     class MovistarController < ApiControllerBase
 
-      def getEpg
+      def getEpgToday
         @epg = []
         now = Time.now
         nowStr = Time.now.strftime("%H:%M")
@@ -25,10 +25,44 @@ module Api
             end
           end
         end
+        @epg
+      end
+
+      def getEpgTomorrow
+        @epg = []
+        today = (Time.now + 1.days).strftime("%Y-%m-%d")
+        puts today
+        @response = HTTP.get("http://www.plus.es/guia/" + today + "/?v=json&canal=" + epg_params)
+        @epgAux = ActiveSupport::JSON.decode(@response)['data']
+
+        @epgAux.each do |key, value|
+          @epg.push(value)
+        end
 
         @epg
-        
       end
+
+
+      def getEpgAfterTomorrow
+        @epg = []
+        today = (Time.now + 2.days).strftime("%Y-%m-%d")
+        puts today
+        @response = HTTP.get("http://www.plus.es/guia/" + today + "/?v=json&canal=" + epg_params)
+        @epgAux = ActiveSupport::JSON.decode(@response)['data']
+
+        @epgAux.each do |key, value|
+          @epg.push(value)
+        end
+
+        @epg
+
+      end
+
+      private
+        def epg_params
+          params.require(:code)
+        end
+
     end
   end
 end
