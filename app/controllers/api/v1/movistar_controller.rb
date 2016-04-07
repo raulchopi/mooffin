@@ -8,7 +8,8 @@ module Api
         @epg = []
         now = Time.now
         nowStr = Time.now.strftime("%H:%M")
-        readed = File.readlines "./movistar/today.txt"
+        today = Time.now.strftime("%Y-%m-%d")
+        readed = File.readlines "./movistar/" + today + ".txt"
         @epgAux = ActiveSupport::JSON.decode(readed[0])['data']
 
         @epgAux.each do |key, value|
