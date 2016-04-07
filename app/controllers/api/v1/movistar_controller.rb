@@ -8,8 +8,6 @@ module Api
         @epg = []
         now = Time.now
         nowStr = Time.now.strftime("%H:%M")
-        # today = Time.now.strftime("%Y-%m-%d")
-        # @response = HTTP.get("http://www.plus.es/guia/" + today + "/?v=json")
         readed = File.readlines "./movistar/today.txt"
         @epgAux = ActiveSupport::JSON.decode(readed[0])['data']
 
@@ -19,9 +17,13 @@ module Api
 
         @epg.each do |c|
           c['PROGRAMAS'].each_with_index do |p, index|
-            if(nowStr > p['HORA_INICIO'] && nowStr < p['HORA_FIN'])
+            # controlamos programa actual, la 2da condicion es para controlar programa de medianoche
+            if( (nowStr >= p['HORA_INICIO'] && nowStr < p['HORA_FIN']) || (nowStr >= p['HORA_INICIO'] && nowStr > p['HORA_FIN']))
               c['DATOS_CADENA'][:ACTUAL] = index
               p[:PORCENTAJE] = (((now - Time.parse(p['HORA_INICIO'])) / (p['DURACION'] * 60)) * 100).to_i
+              if(p[:PORCENTAJE] < 0) # controlamos programas de medianoche
+                p[:PORCENTAJE] = (((now - Time.parse(p['HORA_INICIO'] + 86400)) / (p['DURACION'] * 60)) * 100).to_i
+              end
               break
             end
           end
@@ -32,7 +34,6 @@ module Api
       def getEpgTomorrow
         @epg = []
         today = (Time.now + 1.days).strftime("%Y-%m-%d")
-        puts today
         @response = HTTP.get("http://www.plus.es/guia/" + today + "/?v=json&canal=" + epg_params)
         @epgAux = ActiveSupport::JSON.decode(@response)['data']
 
@@ -47,7 +48,6 @@ module Api
       def getEpgAfterTomorrow
         @epg = []
         today = (Time.now + 2.days).strftime("%Y-%m-%d")
-        puts today
         @response = HTTP.get("http://www.plus.es/guia/" + today + "/?v=json&canal=" + epg_params)
         @epgAux = ActiveSupport::JSON.decode(@response)['data']
 
