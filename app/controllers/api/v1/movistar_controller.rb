@@ -18,7 +18,7 @@ module Api
         @epg.each do |c|
           c['PROGRAMAS'].each_with_index do |p, index|
             # controlamos programa actual, la 2da condicion es para controlar programa de medianoche
-            if( (nowStr >= p['HORA_INICIO'] && nowStr < p['HORA_FIN']) || (nowStr >= p['HORA_INICIO'] && nowStr > p['HORA_FIN']))
+            if( (nowStr >= p['HORA_INICIO'] && nowStr < p['HORA_FIN']) || (p['HORA_INICIO'] > P['HORA_FIN'] && nowStr >= p['HORA_INICIO'] && nowStr > p['HORA_FIN']))
               c['DATOS_CADENA'][:ACTUAL] = index
               p[:PORCENTAJE] = (((now - Time.parse(p['HORA_INICIO'])) / (p['DURACION'] * 60)) * 100).to_i
               if(p[:PORCENTAJE] < 0) # controlamos programas de medianoche
