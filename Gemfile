@@ -79,6 +79,8 @@ gem 'ng-rails-csrf'
 
 gem 'ionicons-rails'
 
+gem 'nokogiri'
+
 gem 'whenever', :require => false
 
 # panel de administracion

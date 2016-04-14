@@ -70,6 +70,7 @@ Mooffin::Application.routes.draw do
       get '/getMovistarEpgToday' => 'movistar#getEpgToday'
       get '/getMovistarEpgTomorrow' => 'movistar#getEpgTomorrow'
       get '/getMovistarEpgAfterTomorrow' => 'movistar#getEpgAfterTomorrow'
+      get '/getMovistarProgramInfo' => 'movistar#getProgramInfo'
     end
   end
 

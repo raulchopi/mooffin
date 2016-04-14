@@ -59,9 +59,31 @@ module Api
 
       end
 
+
+      def getProgramInfo
+        @info = {}
+
+        response = Nokogiri::HTML(open("http://www.plus.es/ficha?tipo=R&id=" + programInfo_params))
+
+        @info['title'] = response.css('div[class=title-image]').css('p[class=h-gamma]').text
+        @info['subtitle'] = response.css('div[class=title-image]').css('h1[class=h-epsilon]').text
+        @info['synopsis'] = response.css('div[itemprop=description]').text
+        @info['genre'] = response.css('p[itemprop=genre]').text
+        @info['duration'] = response.css('span[itemprop=duration]').text
+        @info['date'] = response.css('p[itemprop=datePublished]').text
+        @info['moral'] = response.css('div[class=moral]').css('img')[0]['alt']
+        @info['image'] = response.css('div[class=cover]').css('img')[0]['src']
+
+        @info
+      end
+
       private
         def epg_params
           params.require(:code)
+        end
+
+        def programInfo_params
+          params.require(:program)
         end
 
     end
