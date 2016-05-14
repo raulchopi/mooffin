@@ -30,7 +30,7 @@ module Api
               c['DATOS_CADENA'][:ACTUAL] = index
               p[:PORCENTAJE] = (((now - Time.parse(p['HORA_INICIO'])) / (p['DURACION'] * 60)) * 100).to_i
               if(p[:PORCENTAJE] < 0) # controlamos programas de medianoche
-                p[:PORCENTAJE] = (((now - Time.parse(p['HORA_INICIO'] + 86400)) / (p['DURACION'] * 60)) * 100).to_i
+                p[:PORCENTAJE] = (((now - Time.parse(p['HORA_INICIO']) + 86400) / (p['DURACION'] * 60)) * 100).to_i
               end
               break
             end
