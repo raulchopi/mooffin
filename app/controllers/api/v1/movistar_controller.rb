@@ -5,26 +5,13 @@ module Api
     class MovistarController < ApiControllerBase
 
       def getEpgToday
-        @epg = []
         now = Time.now
         nowStr = Time.now.strftime("%H:%M")
-        readed = File.readlines "./movistar/today.txt"
-        @epgAux = ActiveSupport::JSON.decode(readed[0])['data']
-
-        @epgAux.each do |key, value|
-          @epg.push(value)
-        end
+        readed = File.read("./movistar/today.txt")
+        @epg = ActiveSupport::JSON.decode(readed)
 
         @epg.each do |c|
-          # c.delete('EXCLUSIVA')
-          # c.delete('URL')
-          # c.delete('DIALES')
-          # c.delete('DIAL_PRINCIPAL')
           c['PROGRAMAS'].each_with_index do |p, index|
-            # p.delete('URL')
-            # p.delete('ELEMENTO')
-            # p.delete('DURACION_VISUAL')
-            # p.delete('ESTRENO')
             # controlamos programa actual, la 2da condicion es para controlar programa de medianoche
             if( (nowStr >= p['HORA_INICIO'] && nowStr < p['HORA_FIN']) || (p['HORA_INICIO'] > p['HORA_FIN'] && nowStr <= p['HORA_INICIO'] && nowStr <= p['HORA_FIN']))
               c['DATOS_CADENA'][:ACTUAL] = index
