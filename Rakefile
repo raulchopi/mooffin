@@ -2,6 +2,7 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require File.expand_path('../config/application', __FILE__)
+require 'open-uri'
 
 Mooffin::Application.load_tasks
 
@@ -18,9 +19,10 @@ namespace :mooffin do
     today = Time.now.strftime("%Y-%m-%d")
     path = "./movistar/today.txt"
     @epg = []
-    response = HTTP.get("http://www.plus.es/guia/" + today + "/?v=json")
+    url = "http://www.plus.es/guia/" + today + "/?v=json"
+    response = open(url).read
 
-    @epgAux = ActiveSupport::JSON.decode(response.body)['data']
+    @epgAux = ActiveSupport::JSON.decode(response)['data']
 
     @epgAux.each do |key, value|
       @epg.push(value)
