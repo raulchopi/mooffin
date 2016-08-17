@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 
+require 'open-uri'
+
 module Api
   module V1
     class MovistarController < ApiControllerBase
@@ -29,8 +31,9 @@ module Api
       def getEpgTomorrow
         @epg = []
         today = (Time.now + 1.days).strftime("%Y-%m-%d")
-        @response = HTTP.get("http://www.plus.es/guia/" + today + "/?v=json&canal=" + epg_params)
-        @epgAux = ActiveSupport::JSON.decode(@response)['data']
+        url = "http://www.plus.es/guia/" + today + "/?v=json&canal=" + epg_params
+        response = open(url).read
+        @epgAux = ActiveSupport::JSON.decode(response)['data']
 
         @epgAux.each do |key, value|
           @epg.push(value)
@@ -43,8 +46,9 @@ module Api
       def getEpgAfterTomorrow
         @epg = []
         today = (Time.now + 2.days).strftime("%Y-%m-%d")
-        @response = HTTP.get("http://www.plus.es/guia/" + today + "/?v=json&canal=" + epg_params)
-        @epgAux = ActiveSupport::JSON.decode(@response)['data']
+        url = "http://www.plus.es/guia/" + today + "/?v=json&canal=" + epg_params
+        response = open(url).read
+        @epgAux = ActiveSupport::JSON.decode(response)['data']
 
         @epgAux.each do |key, value|
           @epg.push(value)
