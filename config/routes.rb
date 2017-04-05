@@ -67,10 +67,14 @@ Mooffin::Application.routes.draw do
       get '/user/:userId/likes/:recipeId' => 'likes#userLikesRecipe'
       post '/doLikeRecipe' => 'likes#doLike'
       post '/dontLikeRecipe' => 'likes#dontLike'
+
       get '/getMovistarEpgToday' => 'movistar#getEpgToday'
       get '/getMovistarEpgTomorrow' => 'movistar#getEpgTomorrow'
       get '/getMovistarEpgAfterTomorrow' => 'movistar#getEpgAfterTomorrow'
       get '/getMovistarProgramInfo' => 'movistar#getProgramInfo'
+
+      get '/getComuniazoJornada' => 'comuniazo#getJornada'
+      get '/getComuniazoPartido' => 'comuniazo#getPartido'
     end
   end
 
