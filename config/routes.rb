@@ -75,6 +75,7 @@ Mooffin::Application.routes.draw do
 
       get '/getComuniazoJornada' => 'comuniazo#getJornada'
       get '/getComuniazoPartido' => 'comuniazo#getPartido'
+      get '/getComuniazoPuntos' => 'comuniazo#getPuntos'
     end
   end
 

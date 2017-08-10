@@ -15,7 +15,7 @@ module Api
         #   f.write(page)
         # end
 
-        page.css('div.group.partidos')[1].css('div.partido').each do |partido|
+        page.css('div.group.partidos')[0].css('div.partido').each do |partido|
           @partido = {}
           @partido['res'] = partido.css('div.score').text
           @partido['fecha'] = partido.css('div.fecha').text
@@ -29,15 +29,66 @@ module Api
           end
           @jornada['resultados'].push @partido
         end
-        # @jornada['subtitle'] = response.css('div[class=title-image]').css('h1[class=h-epsilon]').text
-        # @jornada['synopsis'] = response.css('div[itemprop=description]').text
-        # @jornada['genre'] = response.css('p[itemprop=genre]').text
-        # @jornada['duration'] = response.css('span[itemprop=duration]').text
-        # @jornada['date'] = response.css('p[itemprop=datePublished]').text
-        # @jornada['moral'] = response.css('div[class=moral]').css('img')[0]['alt']
-        # @jornada['image'] = response.css('div[class=cover]').css('img')[0]['src']
 
         @jornada
+      end
+
+      def getPuntos
+        @puntos = {}
+        @puntos['partidos'] = []
+
+        page = Nokogiri::HTML(open("http://www.comuniazo.com/comunio/puntos"))
+
+        page.css('div.partido-small').each do |part|
+          @p = {}
+          @casa = []
+          @fuera = []
+          @p['escudo1'] = part.css('div.escudo-box')[0].css('i')[0]['class']
+          @p['escudo2'] = part.css('div.escudo-box')[1].css('i')[0]['class']
+          @p['local'] = part.css('div.equipo')[0].text
+          @p['visitante'] = part.css('div.equipo')[1].text
+          @p['marcador1'] = part.css('div.marcador').css('span')[0].text
+          @p['marcador2'] = part.css('div.marcador').css('span')[1].text
+
+          #Alineacion de casa
+          part.css('div.left').css('tr').each do |j|
+            @j = {}
+            @j['nombre'] = j.css('td.ancho').css('strong').text
+            @j['pos'] = j.css('td')[0].css('span')[0]['class']
+            if j.at_css('td.pt-comunio')
+              @j['puntos'] = j.css('td.pt-comunio').text
+              @j['val'] = j.css('td.pt-comunio')[0]['class'].split(' ').second
+            end
+            @j['eventos'] = []
+            j.css('div.eventos').css('i').each do |e|
+              @j['eventos'].push e['class'].split(' ').last
+            end
+            @casa.push @j
+          end
+
+          #Alineacion de fuera
+          part.css('div.right').css('tr').each do |j|
+            @j = {}
+            @j['nombre'] = j.css('td.ancho').css('strong').text
+            @j['pos'] = j.css('td')[0].css('span')[0]['class']
+            if j.at_css('td.pt-comunio')
+              @j['puntos'] = j.css('td.pt-comunio').text
+              @j['val'] = j.css('td.pt-comunio')[0]['class'].split(' ').second
+            end
+            @j['eventos'] = []
+            j.css('div.eventos').css('i').each do |e|
+              @j['eventos'].push e['class'].split(' ').last
+            end
+            @fuera.push @j
+          end
+
+          @p['casa'] = @casa
+          @p['fuera'] = @fuera
+          @puntos['partidos'].push @p
+
+        end
+
+        @puntos
       end
 
       def getPartido
@@ -51,7 +102,17 @@ module Api
 
         @casa = []
         @fuera = []
+        @casales = []
+        @fuerales = []
 
+        @partido['casajugdisp'] = page.css('div.content').css('div.group').css('div.col')[0].css('div.alert').text
+        @partido['fuerajugdisp'] = page.css('div.content').css('div.group').css('div.col')[2].css('div.alert').text
+        @partido['casaconvdisp'] = page.css('div.content').css('div.group')[1].css('div.col')[0].css('div.box')[0].css('div.alert').text
+        @partido['fueraconvdisp'] = page.css('div.content').css('div.group')[1].css('div.col')[2].css('div.box')[0].css('div.alert').text
+        @partido['casalesdisp'] = page.css('div.content').css('div.group')[1].css('div.col')[0].css('div.box')[1].css('div.alert').text
+        @partido['fueralesdisp'] = page.css('div.content').css('div.group')[1].css('div.col')[2].css('div.box')[1].css('div.alert').text
+
+        #Alineacion de casa
         page.css('div.content').css('div.group').css('div.col')[0].css('tbody').css('tr').each do |j|
           @j = {}
           @j['nombre'] = j.css('strong').text
@@ -67,6 +128,7 @@ module Api
           @casa.push @j
         end
 
+        #Alineacion de fuera
         page.css('div.content').css('div.group').css('div.col')[2].css('tbody').css('tr').each do |j|
           @j = {}
           @j['nombre'] = j.css('strong').text
@@ -82,12 +144,35 @@ module Api
           @fuera.push @j
         end
 
+        #Lesionados de casa
+        page.css('div.content').css('div.group')[1].css('div.col')[0].css('div.box')[1].css('tbody').css('tr').each do |l|
+          @l = {}
+          @l['nombre'] = l.css('strong').text
+          @l['pos'] = l.css('span')[0]['class']
+          @l['time'] = l.css('div.font-op').text
+          @casales.push @l
+        end
+
+        #Lesionados de fuera
+        page.css('div.content').css('div.group')[1].css('div.col')[2].css('div.box')[1].css('tbody').css('tr').each do |l|
+          @l = {}
+          @l['nombre'] = l.css('strong').text
+          @l['pos'] = l.css('span')[0]['class']
+          @l['time'] = l.css('div.font-op').text
+          @fuerales.push @l
+        end
+
         @partido['casa'] = @casa
         @partido['fuera'] = @fuera
+        @partido['casales'] = @casales
+        @partido['fuerales'] = @fuerales
         @partido['escudo1'] = page.css('td.escudo-mid')[0].css('img')[0]['src']
         @partido['escudo2'] = page.css('td.escudo-mid')[1].css('img')[0]['src']
+        @partido['local'] = page.css('td.escudo-mid')[0].css('img')[0]['alt']
+        @partido['visitante'] = page.css('td.escudo-mid')[1].css('img')[0]['alt']
         @partido['marcador1'] = page.css('td.marcador').css('span')[0].text
         @partido['marcador2'] = page.css('td.marcador').css('span')[1].text
+        @partido['fecha'] = page.css('td.fecha')[0].text
 
       end
 
