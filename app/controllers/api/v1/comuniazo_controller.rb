@@ -11,10 +11,6 @@ module Api
 
         page = Nokogiri::HTML(open("http://www.comuniazo.com"))
 
-        # File.open("./elhtml.html", "w+") do |f|
-        #   f.write(page)
-        # end
-
         page.css('div.group.partidos')[0].css('div.partido').each do |partido|
           @partido = {}
           @partido['res'] = partido.css('div.score').text
@@ -26,6 +22,9 @@ module Api
             @partido['puntos'] = 'si'
           else
             @partido['puntos'] = 'no'
+          end
+          if partido.at_css('img.tv')
+            @partido['tv'] = partido.css('img.tv')[0]['src']
           end
           @jornada['resultados'].push @partido
         end
@@ -96,21 +95,24 @@ module Api
 
         page = Nokogiri::HTML(open(url_game))
 
-        # File.open("./elpartido.html", "w+") do |f|
-        #   f.write(page)
-        # end
-
         @casa = []
         @fuera = []
         @casales = []
         @fuerales = []
 
+        @partido['casajugtit'] = page.css('div.content').css('div.group').css('div.col')[0].css('tr.head').css('h2').text
+        @partido['fuerajugtit'] = page.css('div.content').css('div.group').css('div.col')[2].css('tr.head').css('h2').text
+
         @partido['casajugdisp'] = page.css('div.content').css('div.group').css('div.col')[0].css('div.alert').text
         @partido['fuerajugdisp'] = page.css('div.content').css('div.group').css('div.col')[2].css('div.alert').text
         @partido['casaconvdisp'] = page.css('div.content').css('div.group')[1].css('div.col')[0].css('div.box')[0].css('div.alert').text
         @partido['fueraconvdisp'] = page.css('div.content').css('div.group')[1].css('div.col')[2].css('div.box')[0].css('div.alert').text
-        @partido['casalesdisp'] = page.css('div.content').css('div.group')[1].css('div.col')[0].css('div.box')[1].css('div.alert').text
-        @partido['fueralesdisp'] = page.css('div.content').css('div.group')[1].css('div.col')[2].css('div.box')[1].css('div.alert').text
+        if page.css('div.content').css('div.group')[1].css('div.col')[0].css('div.box')[1]
+          @partido['casalesdisp'] = page.css('div.content').css('div.group')[1].css('div.col')[0].css('div.box')[1].css('div.alert').text
+        end
+        if page.css('div.content').css('div.group')[1].css('div.col')[2].css('div.box')[1]
+          @partido['fueralesdisp'] = page.css('div.content').css('div.group')[1].css('div.col')[2].css('div.box')[1].css('div.alert').text
+        end
 
         #Alineacion de casa
         page.css('div.content').css('div.group').css('div.col')[0].css('tbody').css('tr').each do |j|
@@ -145,21 +147,25 @@ module Api
         end
 
         #Lesionados de casa
-        page.css('div.content').css('div.group')[1].css('div.col')[0].css('div.box')[1].css('tbody').css('tr').each do |l|
-          @l = {}
-          @l['nombre'] = l.css('strong').text
-          @l['pos'] = l.css('span')[0]['class']
-          @l['time'] = l.css('div.font-op').text
-          @casales.push @l
+        if page.css('div.content').css('div.group')[1].css('div.col')[0].css('div.box')[1]
+          page.css('div.content').css('div.group')[1].css('div.col')[0].css('div.box')[1].css('tbody').css('tr').each do |l|
+            @l = {}
+            @l['nombre'] = l.css('strong').text
+            @l['pos'] = l.css('span')[0]['class']
+            @l['time'] = l.css('div.font-op').text
+            @casales.push @l
+          end
         end
 
         #Lesionados de fuera
-        page.css('div.content').css('div.group')[1].css('div.col')[2].css('div.box')[1].css('tbody').css('tr').each do |l|
-          @l = {}
-          @l['nombre'] = l.css('strong').text
-          @l['pos'] = l.css('span')[0]['class']
-          @l['time'] = l.css('div.font-op').text
-          @fuerales.push @l
+        if page.css('div.content').css('div.group')[1].css('div.col')[2].css('div.box')[1]
+          page.css('div.content').css('div.group')[1].css('div.col')[2].css('div.box')[1].css('tbody').css('tr').each do |l|
+            @l = {}
+            @l['nombre'] = l.css('strong').text
+            @l['pos'] = l.css('span')[0]['class']
+            @l['time'] = l.css('div.font-op').text
+            @fuerales.push @l
+          end
         end
 
         @partido['casa'] = @casa
