@@ -74,6 +74,8 @@ Mooffin::Application.routes.draw do
       get '/getMovistarProgramInfo' => 'movistar#getProgramInfo'
 
       get '/getComuniazoJornada' => 'comuniazo#getJornada'
+      get '/getComuniazoJornadaAnterior' => 'comuniazo#getJornadaAnterior'
+      get '/getComuniazoJornadaSiguiente' => 'comuniazo#getJornadaSiguiente'
       get '/getComuniazoPartido' => 'comuniazo#getPartido'
       get '/getComuniazoPuntos' => 'comuniazo#getPuntos'
     end

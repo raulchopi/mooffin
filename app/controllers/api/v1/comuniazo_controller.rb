@@ -10,6 +10,40 @@ module Api
         @jornada['resultados'] = []
 
         page = Nokogiri::HTML(open("http://www.comuniazo.com"))
+        @jornada['num'] = page.css('div.gameweek').css('h3').text
+
+        page.css('div.group.partidos')[1].css('div.partido').each do |partido|
+          @partido = {}
+          @partido['res'] = partido.css('div.score').text
+          @partido['fecha'] = partido.css('div.fecha').text
+          @partido['local'] = partido.css('div.casa').css('i')[0]['class']
+          @partido['visitante'] = partido.css('div.fuera').css('i')[0]['class']
+          @partido['url'] = partido.css('a.match')[0]['href']
+          if partido.at_css('div.bubble.bg-3')
+            @partido['puntos'] = 'si'
+          else
+            @partido['puntos'] = 'no'
+          end
+          if partido.at_css('div.bubble.bg-4')
+            @partido['conv'] = 'si'
+          else
+            @partido['conv'] = 'no'
+          end
+          if partido.at_css('img.tv')
+            @partido['tv'] = partido.css('img.tv')[0]['src']
+          end
+          @jornada['resultados'].push @partido
+        end
+
+        @jornada
+      end
+
+      def getJornadaAnterior
+        @jornada = {}
+        @jornada['resultados'] = []
+
+        page = Nokogiri::HTML(open("http://www.comuniazo.com"))
+        @jornada['num'] = page.css('div.gameweek').css('h3').text
 
         page.css('div.group.partidos')[0].css('div.partido').each do |partido|
           @partido = {}
@@ -18,11 +52,34 @@ module Api
           @partido['local'] = partido.css('div.casa').css('i')[0]['class']
           @partido['visitante'] = partido.css('div.fuera').css('i')[0]['class']
           @partido['url'] = partido.css('a.match')[0]['href']
-          if partido.at_css('div.bubble-puntos')
+          if partido.at_css('div.bubble.bg-3')
             @partido['puntos'] = 'si'
           else
             @partido['puntos'] = 'no'
           end
+          if partido.at_css('img.tv')
+            @partido['tv'] = partido.css('img.tv')[0]['src']
+          end
+          @jornada['resultados'].push @partido
+        end
+
+        @jornada
+      end
+
+      def getJornadaSiguiente
+        @jornada = {}
+        @jornada['resultados'] = []
+
+        page = Nokogiri::HTML(open("http://www.comuniazo.com"))
+        @jornada['num'] = page.css('div.gameweek').css('h3').text
+
+        page.css('div.group.partidos')[2].css('div.partido').each do |partido|
+          @partido = {}
+          @partido['res'] = partido.css('div.score').text
+          @partido['fecha'] = partido.css('div.fecha').text
+          @partido['local'] = partido.css('div.casa').css('i')[0]['class']
+          @partido['visitante'] = partido.css('div.fuera').css('i')[0]['class']
+          @partido['url'] = partido.css('a.match')[0]['href']
           if partido.at_css('img.tv')
             @partido['tv'] = partido.css('img.tv')[0]['src']
           end
